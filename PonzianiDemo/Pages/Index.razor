@@ -1,0 +1,76 @@
+﻿@page "/"
+
+<Chessboard Id="Test"
+			 ShowCoordinates="@model.ShowCoordinates"
+			 Size="@model.Size"
+			 Rotate="@model.Rotate"
+			 SetupMode="@model.SetupMode"
+			 Fen="@model.Fen"
+			 HighlightLastAppliedMove="@model.HighlightLastMove"
+			 OnMovePlayed=@OnMovePlayed
+			 OnSetupChanged="@OnSetupChanged"
+			 @ref="chessboard" />
+
+<EditForm Model="@model">
+	<div class="form-group">
+		<label>
+			Size:
+		</label>
+		<InputNumber class="form-control" @bind-Value="model.Size" />
+	</div>
+	<div class="form-check">
+
+		<InputCheckbox class="form-check-input" @bind-Value="model.ShowCoordinates" />
+		<label>
+			Show Coordinates:
+		</label>
+	</div>
+	<div class="form-check">
+		<InputCheckbox class="form-check-input" @bind-Value="model.Rotate" />
+		<label>
+			Rotate:
+		</label>
+	</div>
+	<div class="form-check">
+		<InputCheckbox class="form-check-input" @bind-Value="model.HighlightLastMove" />
+		<label>
+			Highlight Last Move:
+		</label>
+	</div>
+	<div class="form-check">
+		<InputCheckbox class="form-check-input" @bind-Value="model.SetupMode" />
+		<label>
+			Setup Mode:
+		</label>
+	</div>
+	<div class="form-group">
+		<label>
+			Fen:
+		</label>
+		<InputText class="form-control" @bind-Value="model.Fen" />
+	</div>
+	@if (!model.SetupMode)
+	{
+		Position pos = new Position(model.Fen);
+		var moves = pos.GetMoves();
+	 <div class="form-group">
+	  <label>
+	   Apply Move:
+	  </label>
+	  <select class="form-control" @onchange=ApplyMove>
+	   <option>Select Move</option>
+				@foreach (Move m in moves)
+				{
+		   <option value="@m.ToUCIString()">@pos.ToSAN(m)</option>
+				}
+	  </select>
+	 </div>
+	}
+</EditForm>
+<div class="alert alert-success" role="alert">
+	@EventInfoText
+</div>
+
+@code {
+
+}

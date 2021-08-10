@@ -1,3 +1,99 @@
-﻿<div class="my-component">
-    This Blazor component is defined in the <strong>PonzianiComponents</strong> package.
+﻿<div class="modal @clsShowModal">
+	<div class="modal-content">
+		@if (position.SideToMove == Chesslib.Side.WHITE)
+		{
+	  <input type="image" id="qPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/wQ.png" style="width: 60px;" @onclick="@(e => SetPromoPieceAsync(e, Chesslib.PieceType.QUEEN))" />
+	  <input type="image" id="rPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/wR.png" style="width: 60px;" @onclick="@(e => SetPromoPieceAsync(e, Chesslib.PieceType.ROOK))" />
+	  <input type="image" id="bPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/wB.png" style="width: 60px;" @onclick="@(e => SetPromoPieceAsync(e, Chesslib.PieceType.BISHOP))" />
+	  <input type="image" id="nPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/wN.png" style="width: 60px;" @onclick="@(e => SetPromoPieceAsync(e, Chesslib.PieceType.KNIGHT))" />
+		}
+		else
+		{
+	  <input type="image" id="qPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/bQ.png" style="width: 60px;" @onclick="@(e => SetPromoPieceAsync(e, Chesslib.PieceType.QUEEN))" />
+	  <input type="image" id="rPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/bR.png" style="width: 60px;" @onclick="@(e => SetPromoPieceAsync(e, Chesslib.PieceType.ROOK))" />
+	  <input type="image" id="bPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/bB.png" style="width: 60px;" @onclick="@(e => SetPromoPieceAsync(e, Chesslib.PieceType.BISHOP))" />
+	  <input type="image" id="nPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/bN.png" style="width: 60px;" @onclick="@(e => SetPromoPieceAsync(e, Chesslib.PieceType.KNIGHT))" />
+		}
+ </div>
 </div>
+
+
+
+<div id="@Id" style="@BoardStyle" @ondrop="HandleDropAsync">
+	@if (SetupMode)
+	{
+		<div class="pzSparePieces" style=@($"padding-left: {(Size - 6 * SquareSize) / 2}px") ondragover="event.preventDefault();"  @ondragenter="() => HandleDragEnterOutside()" >
+		@{
+			string imgs = "KQRBNP";
+				char side = Rotate ? 'w' : 'b';
+				for (int i = 0; i < imgs.Length; ++i)
+				{
+					char pc = imgs[i];
+					char pieceChar = side == 'w' ? pc : Char.ToLower(pc);
+					<img src=@($"{PathPieceImages}{side}{pc}.png") 
+					     style="width: @(SquareSize)px; height: @(SquareSize)px;"
+						 draggable="true"
+						 @ondragstart="() => HandleDragStartSparePieces(pieceChar)"/>
+				}
+		 }
+		</div>
+	}
+	<div class="pzBoard" 
+	     style="@BoardStyle"
+		 ondragover="event.preventDefault();">
+		@for (int rank = RankStart; rank >= 0 && rank < 8; rank += RankStep)
+		{
+			<div class="pzBoardRow">
+				@for (int file = FileStart; file >= 0 && file < 8; file += FileStep)
+				{
+					Chesslib.Square square = (Chesslib.Square)(8 * rank + file);
+					var board = Chesslib.Fen.GetPieceArray(setupFen);
+					<div class="@SquareClass(rank, file)" style="@SquareStyle" @ondragenter="() => HandleDragEnter(square)" id="@SquareId(square)">
+						@if (ShowCoordinates && file == FileStart)
+						{
+							<div class="pzNotation pzNumeric">@(rank+1)</div>
+						}
+						@if (ShowCoordinates && rank == RankEnd)
+						{
+							<div class="pzNotation pzAlpha">@SquareName(0, file)[0]</div>
+						}
+						@if (board[8*rank +file] != Chesslib.Fen.PIECE_CHAR_NONE)
+						{
+							<img class="pzPieceImage" 
+							     src="@GetPieceImageSource(board[8*rank +file])" 
+								 title="Piece"
+								 draggable="@IsDraggable(square)"
+								 @ondragstart="() => HandleDragStart(square)"
+								 style="width: @(SquareSize)px; height: @(SquareSize)px;"
+								 id="sq_@(8 * rank + file)"/> 
+						}
+					 </div>
+				}
+				<div class="pzClearfix"/>
+			</div>
+		}
+	</div>
+	@if (SetupMode)
+	{
+		<div class="pzSparePieces" style=@($"padding-left: {(Size - 6 * SquareSize) / 2}px") ondragover="event.preventDefault();" @ondragenter="() => HandleDragEnterOutside()">
+		@{
+			string imgs = "KQRBNP";
+				char side = Rotate ? 'b' : 'w';
+				for (int i = 0; i < imgs.Length; ++i)
+				{
+					char pc = imgs[i];
+					char pieceChar = side == 'w' ? pc : Char.ToLower(pc);
+					<img src=@($"{PathPieceImages}{side}{pc}.png") 
+					     style="width: @(SquareSize)px; height: @(SquareSize)px;"
+						 draggable="true"
+						 @ondragstart="() => HandleDragStartSparePieces(pieceChar)"/>
+				}
+		 }
+		</div>
+	}
+</div>
+
+@code {
+
+
+}

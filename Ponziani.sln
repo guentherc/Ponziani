@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonzianiComponents", "PonzianiComponents\PonzianiComponents.csproj", "{9F07A870-54FC-4CCA-860B-582D150620E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonzianiDemo", "PonzianiDemo\PonzianiDemo.csproj", "{372C704D-6622-4B62-BE16-E97D9DD3AE80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9F07A870-54FC-4CCA-860B-582D150620E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F07A870-54FC-4CCA-860B-582D150620E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F07A870-54FC-4CCA-860B-582D150620E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{372C704D-6622-4B62-BE16-E97D9DD3AE80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{372C704D-6622-4B62-BE16-E97D9DD3AE80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{372C704D-6622-4B62-BE16-E97D9DD3AE80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{372C704D-6622-4B62-BE16-E97D9DD3AE80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
