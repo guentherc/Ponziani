@@ -1,0 +1,27 @@
+﻿@page "/lichesstv"
+@inject HttpClient HttpClient
+
+<h3>LichessTV</h3>
+
+<div class="container">
+	<div class="row" sytle="width: 400px">
+		@white - @black
+	</div>
+
+    <div class="row" sytle="width: 400px">
+		@wtime - @btime
+	</div>
+	<div class="row">
+		<Chessboard @ref="cb" Fen="@fen" Size="400" />
+	</div>
+	<div class="btn-group">
+		<button type="button" class="btn btn-info" @onclick="Get">Start</button>
+		<button type="button" class="btn btn-danger" @onclick="Stop">Stop</button>
+	</div>
+</div>
+
+
+
+@code {
+
+}

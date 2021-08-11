@@ -57,6 +57,8 @@ namespace PonzianiComponents
             return true;
         }
 
+        public void ClearHighlighting() => highlightedSquares = 0;
+
         public void SetHighlightSquare(Square s, bool highlight = true)
         {
             if (highlight) highlightedSquares |= 1ul << (int)s;
