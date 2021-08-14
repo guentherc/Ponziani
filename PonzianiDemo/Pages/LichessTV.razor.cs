@@ -59,6 +59,7 @@ namespace PonzianiDemo.Pages
                 lines = lines.Where(l => l != null && l.Trim().Length > 50 && l.StartsWith(@"{""t""")).ToList();
                 if (lines.Count > 1)
                 {
+                    cb.ClearHighlighting();
                     for (int i = 0; i < lines.Count; ++i)
                     {
                         string line = lines[i].Trim();
@@ -68,7 +69,6 @@ namespace PonzianiDemo.Pages
                         {
                             LichessTVRecord ltv = JsonSerializer.Deserialize<LichessTVRecord>(line);
                             lines.Clear();
-                            cb.ClearHighlighting();
                             if (ltv.d.lm != null && ltv.d.lm.Length >= 4)
                             {
                                 PonzianiComponents.Chesslib.Move move = new(ltv.d.lm);

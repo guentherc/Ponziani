@@ -1,0 +1,33 @@
+﻿@page "/multiple"
+@inject IJSRuntime js
+
+<h3>Multiple Boards</h3>
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<div class="row justify-content-center">Najdorf</div>
+			<div class="row justify-content-center">
+				<Chessboard Fen="@Fen1" Size="280" Id="board1" OnMovePlayed="OnMovePlayed"/>
+			</div>
+			<div class="row justify-content-center">@Fen1</div>
+		</div>
+		<div class="col">
+			<div class="row justify-content-center">Ruy-Lopez</div>
+			<div class="row justify-content-center">
+				<Chessboard Fen="@Fen2" Size="280" Id="board2" OnMovePlayed="OnMovePlayed" />
+			</div>
+			<div class="row justify-content-center">@Fen2</div>
+		</div>
+		<div class="col">
+			<div class="row justify-content-center">Kings-Indian</div>
+			<div class="row justify-content-center">
+				<Chessboard Fen="@Fen3" Size="280" Id="board3" OnMovePlayed="OnMovePlayed" />
+			</div>
+			<div class="row justify-content-center">@Fen3</div>
+		</div>
+	</div>
+</div>
+
+@code {
+
+}

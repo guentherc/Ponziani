@@ -153,6 +153,7 @@ namespace PonzianiComponents
                 {
                     highlightedSquares = 0;
                     MovePlayedInfo mpi = new MovePlayedInfo();
+                    mpi.BoardId = Id;
                     mpi.Move = moves[index];
                     mpi.OldFen = position.FEN;
                     mpi.San = position.ToSAN(mpi.Move);
@@ -240,6 +241,7 @@ namespace PonzianiComponents
 
     public class MovePlayedInfo
     {
+        public string BoardId { set; get; }
         public Move Move { set; get; }
         public string NewFen { set; get; }
         public string OldFen { set; get; }
