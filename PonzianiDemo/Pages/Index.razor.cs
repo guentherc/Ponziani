@@ -15,7 +15,6 @@ namespace PonzianiDemo.Pages
         public int Size { set; get; } = 400;
         public bool Rotate { set; get; } = false;
         public string Fen { set; get; } = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
-        public bool SetupMode { set; get; } = false;
         public bool HighlightLastMove { set; get; } = false;
     }
 
@@ -24,6 +23,10 @@ namespace PonzianiDemo.Pages
         private Model model = new Model();
         private string EventInfoText { set; get; } = "";
         private Chessboard chessboard;
+        private bool SetupMode { 
+            set { if (value && value != chessboard.SetupMode) chessboard.SwitchToSetupMode(); else chessboard.ExitSetupMode(); }
+            get { return chessboard != null && chessboard.SetupMode; } 
+        }
 
         private void OnMovePlayed(MovePlayedInfo mpi)
         {
@@ -41,6 +44,11 @@ namespace PonzianiDemo.Pages
         {
             chessboard.ApplyMove(new Move(e.Value.ToString()));
             model.Fen = chessboard.Fen;
+        }
+
+        private void HandleSetupModeChanged(bool isChecked)
+        {
+            Console.WriteLine(isChecked);
         }
     }
 }

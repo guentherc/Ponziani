@@ -8,10 +8,26 @@ using System.Threading.Tasks;
 
 namespace PonzianiComponents
 {
+    /// <summary>
+    /// <para>Blazor Component for adding an interactive chessboard to a Blazor application. It was build as a Blazor version of <see href="https://chessboardjs.com/index.html">chessboard.js</see>
+    /// and allows to use this functionality without the need to interop with javascript.</para>
+    /// <para> There are however quite some differences:
+    /// <list type="bullet">
+    /// <item><see cref="Chessboard">Chessboard</see>doesn't support animations</item>
+    /// <item><see cref="Chessboard">Chessboard</see> has chess knowledge and therefore provides legal move check out of the box</item>
+    /// </list>
+    /// </para>
+    /// </summary>
     public partial class Chessboard
     {
+        /// <summary>
+        /// Id of the rendered HTML element
+        /// </summary>
         [Parameter]
         public string Id { get; set; } = "board";
+        /// <summary>
+        /// Position displayed on the board in <see href="https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation">Forsyth-Edwards-Notation</see>
+        /// </summary>
         [Parameter]
         public string Fen
         {
@@ -26,20 +42,48 @@ namespace PonzianiComponents
                 if (!SetupMode) position = new Position(value);
             }
         }
+        /// <summary>
+        /// SetupMode can be used to allow the user to set up a new position. If SetupMode is active pieces can be freely moved, added and removed. 
+        /// There are spare pieces shown outside the board. 
+        /// If SetupMode isn't active only legal moves can be played.
+        /// Default is false.
+        /// </summary>
         [Parameter]
-        public bool SetupMode { get; set; } = false;
+        public bool SetupMode { get { return _setupMode; } set { if (value) SwitchToSetupMode(); else ExitSetupMode(); } }
+        /// <summary>
+        /// The size (in pixels) of the board (default 400)
+        /// </summary>
         [Parameter]
         public int Size { get; set; } = 400;
+        /// <summary>
+        /// If true, the file and rank labels are displayed
+        /// </summary>
         [Parameter]
         public bool ShowCoordinates { get; set; } = true;
+        /// <summary>
+        /// If true the board's orientation is reversed
+        /// </summary>
         [Parameter]
         public bool Rotate { get; set; } = false;
+        /// <summary>
+        /// Allowing to replace the current piece images with a different set. The piece images must follow the naming convention
+        /// {color}{piecetype}.png, so wB.png for white Bishop, bP.png for black Pawn
+        /// </summary>
         [Parameter]
         public string PathPieceImages { get; set; } = "_content/PonzianiComponents/img/chesspieces/wikipedia/";
+        /// <summary>
+        /// If true, the squares of the last applied Move get highlighted
+        /// </summary>
         [Parameter]
         public bool HighlightLastAppliedMove { get; set; } = false;
+        /// <summary>
+        /// Is called whenever the user played a move on the board. Only active if <see cref="SetupMode"/> is false.
+        /// </summary>
         [Parameter]
         public EventCallback<MovePlayedInfo> OnMovePlayed { get; set; }
+        /// <summary>
+        /// Is called whenever the user changed the board's setup be moving, adding or removing a piece in <see cref="SetupMode"/> 
+        /// </summary>
         [Parameter]
         public EventCallback<SetupChangedInfo> OnSetupChanged { get; set; }
 
@@ -57,6 +101,48 @@ namespace PonzianiComponents
             return true;
         }
 
+        public void SwitchToSetupMode()
+        {
+            _setupMode = true;
+        }
+
+        public void ExitSetupMode()
+        {
+            if (_setupMode)
+            {
+                addSI = new AdditionalSetupInfo(setupFen);
+                Position pos = new(setupFen);
+                string message;
+                if (pos.CheckLegal(out message))
+                {
+                    SetupErrorMessage = null;
+                    clsShowModalSetup = " show-modal";
+                }
+                else
+                    SetupErrorMessage = message;
+            }
+        }
+
+        public string SetupErrorMessage { set; get; } = null;
+
+        private async Task CloseSetupDialogAsync()
+        {
+            clsShowModalSetup = "";
+            Position pos = new(addSI.Fen);
+            string message;
+            if (!pos.CheckLegal(out message))
+            {
+                SetupErrorMessage = message;
+                return;
+            }
+            SetupChangedInfo sci = new SetupChangedInfo();
+            sci.OldFen = Fen;
+            Fen = addSI.Fen;
+            sci.NewFen = Fen;
+            await OnSetupChanged.InvokeAsync(sci);
+            _setupMode = false;
+        }
+
         public void ClearHighlighting() => highlightedSquares = 0;
 
         public void SetHighlightSquare(Square s, bool highlight = true)
@@ -69,6 +155,8 @@ namespace PonzianiComponents
 
         public int SquareSize => (Size - 4) / 8;
 
+        private bool _setupMode = false;
+        private AdditionalSetupInfo addSI { set; get; } = new AdditionalSetupInfo(Chesslib.Fen.INITIAL_POSITION);
         private string SquareStyle => $"width: {SquareSize}px; height: {SquareSize}px";
         private string BoardStyle => $"width: {8 * SquareSize + 4}px";
         private int RankStart => Rotate ? 0 : 7;
@@ -83,7 +171,8 @@ namespace PonzianiComponents
         private Square draggedEnterPieceSquare = Square.OUTSIDE;
         private PieceType promoPiece = PieceType.NONE;
         private string setupFen = Chesslib.Fen.INITIAL_POSITION;
-        private string clsShowModal { set; get; }
+        private string clsShowModalPromo { set; get; }
+        private string clsShowModalSetup { set; get; } = "";
         private UInt64 highlightedSquares = 0ul;
 
         private string[] pieceImages = new string[] { "wQ", "bQ", "wR", "bR", "wB", "bB", "wN", "bN", "wP", "bP", "wK", "bK", "" };
@@ -103,6 +192,11 @@ namespace PonzianiComponents
         }
 
         private List<Move> legalMoves = new List<Move>();
+
+        private async Task HandleSetupSubmitAsync()
+        {
+            await CloseSetupDialogAsync();
+        }
 
         private async Task HandleDropAsync()
         {
@@ -135,9 +229,10 @@ namespace PonzianiComponents
             draggedPiece = Piece.BLANK;
             SetupChangedInfo sci = new();
             sci.OldFen = Fen;
-            Fen = $"{Chesslib.Fen.FenPartFromBoard(board)} - - 0 1";
+            Fen = $"{Chesslib.Fen.FenPartFromBoard(board)} w - - 0 1";
             sci.NewFen = Fen;
             await OnSetupChanged.InvokeAsync(sci);
+            SetupErrorMessage = null;
         }
 
         private async Task HandleDropStandard()
@@ -168,14 +263,14 @@ namespace PonzianiComponents
                     draggedEnterPieceSquare = Square.OUTSIDE;
                     draggedPieceSquare = Square.OUTSIDE;
                     promoPiece = PieceType.NONE;
-                    clsShowModal = "";
+                    clsShowModalPromo = "";
                 }
                 else
                 {
                     index = moves.FindIndex(m => m.From == draggedPieceSquare && m.To == draggedEnterPieceSquare);
                     if (index >= 0) //Maybe promotion?
                     {
-                        clsShowModal = " show-modal";
+                        clsShowModalPromo = " show-modal";
                     }
                 }
             }
@@ -232,19 +327,147 @@ namespace PonzianiComponents
         }
         private static string FileChars = "abcdefgh";
     }
-
+    /// <summary>
+    /// Callback information provided by <see cref="Chessboard.OnSetupChanged"/>
+    /// </summary>
     public class SetupChangedInfo
     {
+        /// <summary>
+        /// Position after the last user interaction in <see href="https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation">Forsyth-Edwards-Notation</see>
+        /// <remark>During setup the positions are usually not legal, therefore don't expect that the value represents a legal position</remark>
+        /// </summary>
         public string NewFen { set; get; }
+        /// <summary>
+        /// Position before the last user interaction in <see href="https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation">Forsyth-Edwards-Notation</see>
+        /// <remark>During setup the positions are usually not legal, therefore don't expect that the value represents a legal position</remark>
+        /// </summary>
         public string OldFen { set; get; }
     }
-
+    /// <summary>
+    /// Callback information provided by <see cref="Chessboard.OnMovePlayed"/>
+    /// </summary>
     public class MovePlayedInfo
     {
+        /// <summary>
+        /// Id of the board, where the move was played (needed in multiboard scenarios)
+        /// </summary>
         public string BoardId { set; get; }
+        /// <summary>
+        /// The move which was played
+        /// </summary>
         public Move Move { set; get; }
+        /// <summary>
+        /// Position after the move in <see href="https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation">Forsyth-Edwards-Notation</see>
+        /// </summary>
         public string NewFen { set; get; }
+        /// <summary>
+        /// Position before the move in <see href="https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation">Forsyth-Edwards-Notation</see>
+        /// </summary>
         public string OldFen { set; get; }
+        /// <summary>
+        /// Move in SAN (<see href="https://en.wikipedia.org/wiki/Algebraic_notation_(chess)"> Standard Algebraic Notation</see>)
+        /// </summary>
         public string San { set; get; }
+    }
+
+    internal class AdditionalSetupInfo
+    {
+        public AdditionalSetupInfo(string fen)
+        {
+            _fen = fen.Trim();
+            pboard = Chesslib.Fen.GetPieceArray(_fen);
+            string[] token = _fen.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            if (token.Length < 2) return;
+            Side = token[1];
+            if (token.Length < 3) return;
+            if (token[2] != "-")
+            {
+                CastlingWhiteKingside = token[2].Contains('K');
+                CastlingWhiteQueenside = token[2].Contains('Q');
+                CastlingBlackKingside = token[2].Contains('k');
+                CastlingBlackQueenside = token[2].Contains('q');
+            }
+            Console.WriteLine("CastlingWhiteKingside: " + CastlingWhiteKingside);
+            if (token.Length < 4) return;
+            EnPassantSquare = token[3];
+            if (token.Length > 4) DrawPlyCount = int.Parse(token[4]);
+            if (token.Length > 5) MoveNumber = int.Parse(token[5]);
+
+        }
+
+        public string Fen { get
+            {
+                StringBuilder fen = new StringBuilder();
+                string[] token = _fen.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                fen.Append(token[0]).Append(' ').Append(Side);
+                fen.Append(' ').Append(castlingString()).Append(' ');
+                fen.Append(EnPassantSquare);
+                fen.Append(' ').Append(DrawPlyCount).Append(' ').Append(MoveNumber);
+                return fen.ToString();
+            } }
+
+        private string _fen;
+        private char[] pboard;
+
+        public string Side { set; get; } = "w";
+        public bool CastlingWhiteKingside { set; get; } = false;
+        public bool CastlingWhiteQueenside { set; get; } = false;
+        public bool CastlingBlackKingside { set; get; } = false;
+        public bool CastlingBlackQueenside { set; get; } = false;
+        public bool CastlingWhiteKingsidePossible => pboard[(int)Square.E1] == Chesslib.Fen.PIECE_CHAR_WKING && pboard[(int)Square.H1] == Chesslib.Fen.PIECE_CHAR_WROOK;
+        public bool CastlingWhiteQueensidePossible => pboard[(int)Square.E1] == Chesslib.Fen.PIECE_CHAR_WKING && pboard[(int)Square.A1] == Chesslib.Fen.PIECE_CHAR_WROOK;
+        public bool CastlingBlackKingsidePossible => pboard[(int)Square.E8] == Chesslib.Fen.PIECE_CHAR_BKING && pboard[(int)Square.H8] == Chesslib.Fen.PIECE_CHAR_BROOK;
+        public bool CastlingBlackQueensidePossible => pboard[(int)Square.E8] == Chesslib.Fen.PIECE_CHAR_BKING && pboard[(int)Square.A8] == Chesslib.Fen.PIECE_CHAR_BROOK;
+        public string EnPassantSquare { get; set; } = "-";
+        public int DrawPlyCount { get; set; } = 0;
+        public int MoveNumber { get; set; } = 1;
+
+        private string castlingString()
+        {
+            string cs = "";
+            if (CastlingWhiteKingside) cs += 'K';
+            if (CastlingWhiteQueenside) cs += 'Q';
+            if (CastlingBlackKingside) cs += 'k';
+            if (CastlingBlackQueenside) cs += 'q';
+            if (cs.Length == 0) cs = "-";
+            return cs;
+        }
+
+        public List<string> EnPassantSquares()
+        {
+            List<string> result = new List<string>();
+            result.Add("-");
+            for (int s = (int)Square.A4; s <= (int)Square.H4; ++s)
+            {
+                if (pboard[s] != Chesslib.Fen.PIECE_CHAR_BPAWN || pboard[s-8] != Chesslib.Fen.PIECE_CHAR_NONE) continue;
+                if (s > (int)Square.A4 && pboard[s-1] == Chesslib.Fen.PIECE_CHAR_WPAWN)
+                {
+                    result.Add(Chess.SquareToString((Square)(s - 8)));
+                    continue;
+                }
+                if (pboard[s] != Chesslib.Fen.PIECE_CHAR_BPAWN) continue;
+                if (s < (int)Square.H4 && pboard[s + 1] == Chesslib.Fen.PIECE_CHAR_WPAWN)
+                {
+                    result.Add(Chess.SquareToString((Square)(s - 8)));
+                    continue;
+                }
+            }
+            for (int s = (int)Square.A5; s <= (int)Square.H5; ++s)
+            {
+                if (pboard[s] != Chesslib.Fen.PIECE_CHAR_WPAWN || pboard[s + 8] != Chesslib.Fen.PIECE_CHAR_NONE) continue;
+                if (s > (int)Square.A5 && pboard[s - 1] == Chesslib.Fen.PIECE_CHAR_BPAWN)
+                {
+                    result.Add(Chess.SquareToString((Square)(s+8)));
+                    continue;
+                }
+                if (pboard[s] != Chesslib.Fen.PIECE_CHAR_WPAWN) continue;
+                if (s < (int)Square.H5 && pboard[s + 1] == Chesslib.Fen.PIECE_CHAR_BPAWN)
+                {
+                    result.Add(Chess.SquareToString((Square)(s+8)));
+                    continue;
+                }
+            }
+            return result;
+        }
     }
 }

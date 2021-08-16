@@ -1,4 +1,4 @@
-﻿<div class="modal @clsShowModal">
+﻿<div class="modal @clsShowModalPromo">
 	<div class="modal-content">
 		@if (position.SideToMove == Chesslib.Side.WHITE)
 		{
@@ -17,8 +17,83 @@
  </div>
 </div>
 
+<div class="modal @clsShowModalSetup">
+	<div class="modal-content" style="width: 500px;">
+		<EditForm Model="addSI" OnValidSubmit="@HandleSetupSubmitAsync">
+		<div class="form-group row">
+			 <label for="setupSide"  class="col-sm-6 col-form-label">Side to Move</label>
+			 <div class="col-sm-6">
+			<InputSelect @bind-Value="addSI.Side" id="setupSide">
+				<option value="w">White</option>
+				<option value="b">Black</option>
+			</InputSelect>
+			</div>
+		</div>
+		@if (addSI.CastlingWhiteKingsidePossible) {
+		<div class="form-check">
+			<InputCheckbox class="form-check-input" @bind-Value="addSI.CastlingWhiteKingside" id="setupCastlesWK"/>
+			<label class="form-check-label" for="setupCastlesWK"> White Kingside </label>
+		</div>
+		}
+		@if (addSI.CastlingWhiteQueensidePossible) {
+		<div class="form-check">
+			<InputCheckbox class="form-check-input" @bind-Value="addSI.CastlingWhiteQueenside" id="setupCastlesWQ"/>
+			<label class="form-check-label" for="setupCastlesWQ"> White Queenside </label>
+		</div>
+		}
+		@if (addSI.CastlingBlackKingsidePossible) {
+		<div class="form-check">
+			<InputCheckbox class="form-check-input" @bind-Value="addSI.CastlingBlackKingside" id="setupCastlesBK"/>
+			<label class="form-check-label" for="setupCastlesBK"> Black Kingside </label>
+		</div>
+		}
+		@if (addSI.CastlingBlackQueensidePossible)
+		{
+		<div class="form-check">
+			<InputCheckbox class="form-check-input" @bind-Value="addSI.CastlingBlackQueenside" id="setupCastlesBQ"/>
+			<label class="form-check-label" for="setupCastlesWQ"> Black Queenside </label>
+		</div>
+		}
+	    @if (addSI.EnPassantSquares().Count > 1)
+			{
+				<div class="form-group row">
+					<label for="setupEP" class="col-sm-6 col-form-label">En Passant</label>
+				<div class="col-sm-6">
+					<InputSelect @bind-Value="addSI.EnPassantSquare" id="setupSide">
+						@foreach (var v in addSI.EnPassantSquares())
+						{
+						<option value="@v">@v</option>
+						}
+			</InputSelect>
+			</div>
+		</div>
+		}
+		<div class="form-group row">
+			 <label for="setupDrawplaycount" class="col-sm-6 col-form-label">Half-move Counter</label>
+			 <div class="col-sm-6">
+			<InputNumber @bind-Value="addSI.DrawPlyCount" id="setupDrawplaycount" max="999" min="0" size="3" style="width: 3em;"/>
+			</div>
+		</div>
+		<div class="form-group row">
+			 <label for="setupMovenumber" class="col-sm-6 col-form-label">Move Number</label>
+			 <div class="col-sm-6">
+			<InputNumber @bind-Value="addSI.MoveNumber" id="setupMovenumber" max="999" min="1" size="3" style="width: 3em;"/>
+			</div>
+		</div>
+		 <div class="form-group row">
+        <div class="col-sm-6 offset-sm-6">
+		<button class="btn btn-primary" type="submit">Ok</button>
+        </div>
+		 </div>
 
+		</EditForm>
+	</div>
+</div>
 
+@if (SetupErrorMessage != null)
+{
+	<div class="alert alert-danger" role="alert"> @SetupErrorMessage</div>
+}
 <div id="@Id" style="@BoardStyle" @ondrop="HandleDropAsync">
 	@if (SetupMode)
 	{

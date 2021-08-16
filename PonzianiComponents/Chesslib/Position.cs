@@ -485,6 +485,37 @@ namespace PonzianiComponents.Chesslib
             return sb.ToString();
         }
         /// <summary>
+        /// Checks if a position is legal and consistent
+        /// </summary>
+        /// <param name="message">out parameter providing information about cause of illegality</param>
+        /// <returns>true, if position is legal, false otherwise</returns>
+        public bool CheckLegal(out string message)
+        {
+            message = null;
+            //Check if there is exactly one king for each side
+            var psl = GetPieceSquareList();
+            if (!psl.ContainsKey(Piece.WKING)) message = "White king is missing";
+            else if (psl[Piece.WKING].Count > 1) message = $"{psl[Piece.WKING].Count} white kings";
+            else if(!psl.ContainsKey(Piece.BKING)) message = "Black king is missing";
+            else if (psl[Piece.BKING].Count > 1) message = $"{psl[Piece.BKING].Count} black kings";
+            if (message != null) return false;
+            var moves = GetMoves();
+            Piece oKing = SideToMove == Side.WHITE ? Piece.BKING : Piece.WKING;
+            if (moves.FindIndex(m => GetPiece(m.To) == oKing) >= 0) message = $"Side to move is giving check!";
+            if (psl.ContainsKey(Piece.WPAWN))
+            {
+                if (psl[Piece.WPAWN].FindIndex(s => s <= Square.H1 || s >= Square.A8) >= 0) message = $"White pawn(s) on 1st or last rank!";
+            }
+            if (psl.ContainsKey(Piece.BPAWN))
+            {
+                if (psl[Piece.BPAWN].FindIndex(s => s <= Square.H1 || s >= Square.A8) >= 0) message = $"Black pawn(s) on 1st or last rank!";
+            }
+            if (message != null) return false;
+            return message == null;
+
+        }
+
+        /// <summary>
         /// Calculates the perft value of the current position
         /// See https://chessprogramming.wikispaces.com/Perft
         /// </summary>
@@ -1375,5 +1406,10 @@ namespace PonzianiComponents.Chesslib
             if (CastlingAllowed(CastleFlag.B0_0) && (GetPiece(Square.E8) != Piece.BKING || GetPiece(Square.H8) != Piece.BROOK)) castlings &= ~(int)CastleFlag.B0_0;
             if (CastlingAllowed(CastleFlag.B0_0_0) && (GetPiece(Square.E8) != Piece.BKING || GetPiece(Square.A8) != Piece.BROOK)) castlings &= ~(int)CastleFlag.B0_0_0;
         }
+    }
+
+    public class IllegalPositionException: Exception
+    {
+
     }
 }

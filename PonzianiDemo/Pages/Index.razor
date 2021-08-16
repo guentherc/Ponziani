@@ -4,7 +4,7 @@
 			 ShowCoordinates="@model.ShowCoordinates"
 			 Size="@model.Size"
 			 Rotate="@model.Rotate"
-			 SetupMode="@model.SetupMode"
+			 SetupMode="@SetupMode"
 			 Fen="@model.Fen"
 			 HighlightLastAppliedMove="@model.HighlightLastMove"
 			 OnMovePlayed=@OnMovePlayed
@@ -38,7 +38,7 @@
 		</label>
 	</div>
 	<div class="form-check">
-		<InputCheckbox class="form-check-input" @bind-Value="model.SetupMode" />
+		<InputCheckbox class="form-check-input" @bind-Value="@SetupMode"/>
 		<label>
 			Setup Mode:
 		</label>
@@ -49,9 +49,11 @@
 		</label>
 		<InputText class="form-control" @bind-Value="model.Fen" />
 	</div>
-	@if (!model.SetupMode)
+	@if (!SetupMode)
 	{
 		Position pos = new Position(model.Fen);
+		string message;
+		if (pos.CheckLegal(out message)) {
 		var moves = pos.GetMoves();
 	 <div class="form-group">
 	  <label>
@@ -65,6 +67,10 @@
 				}
 	  </select>
 	 </div>
+	} else
+	{
+	 <div class="alert alert-danger" role="alert"> @message</div>		
+	}
 	}
 </EditForm>
 <div class="alert alert-success" role="alert">
