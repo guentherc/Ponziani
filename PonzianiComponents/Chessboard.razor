@@ -94,7 +94,7 @@
 {
 	<div class="alert alert-danger" role="alert"> @SetupErrorMessage</div>
 }
-<div id="@Id" style="@BoardStyle" @ondrop="HandleDropAsync">
+<div id="@Id" style="@BoardStyle" @ondrop="HandleDropAsync" class="pzChessboard">
 	@if (SetupMode)
 	{
 		<div class="pzSparePieces" style=@($"padding-left: {(Size - 6 * SquareSize) / 2}px") ondragover="event.preventDefault();"  @ondragenter="() => HandleDragEnterOutside()" >
@@ -139,8 +139,7 @@
 								 title="Piece"
 								 draggable="@IsDraggable(square)"
 								 @ondragstart="() => HandleDragStart(square)"
-								 style="width: @(SquareSize)px; height: @(SquareSize)px;"
-								 id="sq_@(8 * rank + file)"/> 
+								 style="width: @(SquareSize)px; height: @(SquareSize)px;" /> 
 						}
 					 </div>
 				}

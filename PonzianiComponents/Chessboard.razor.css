@@ -1,4 +1,8 @@
-﻿.pzBoard {
+﻿.pzChessboard {
+
+}
+
+.pzBoard {
     border: 2px solid #404040;
     box-sizing: border-box;
 }

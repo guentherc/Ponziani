@@ -1,0 +1,21 @@
+﻿@using Bunit
+@using Microsoft.VisualStudio.TestTools.UnitTesting
+@using PonzianiComponents
+@using PonzianiComponentsTest
+@using System.Linq
+@using AngleSharp.Dom
+@attribute [TestClass]
+@inherits BunitTestContext
+
+@code {
+	[TestMethod]
+	public void ChessboardComponentRendersCorrectly()
+	{
+		// Act
+		var cut = RenderComponent<Chessboard>();
+		// Assert
+		Assert.AreEqual("board", GetId(cut));
+		Assert.AreEqual(64, GetSquareDivs(cut).Count());
+		Assert.IsTrue(cut.Instance.Fen.StartsWith(GetBoardPartFromComponent(cut)));
+	}
+}

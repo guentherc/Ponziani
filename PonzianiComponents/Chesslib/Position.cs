@@ -260,59 +260,6 @@ namespace PonzianiComponents.Chesslib
             ApplyMove(new Move(moveInUCINotation));
         }
         /// <summary>
-        /// Returns a string representation of the material distribution, e.g. "QP2qb" is a position where
-        /// White has a queen and 2 pawns while black has a queen and a bishop, Th material key for the
-        /// initial position is "QR2B2N2P8qr2b2n2p8"
-        /// </summary>
-        /// <returns>the material string</returns>
-        public string GetMaterialString()
-        {
-            const string PieceChars = "QqRrBbNnPp";
-            StringBuilder sb = new StringBuilder();
-            for (int side = 0; side <= 1; ++side)
-            {
-                for (int pt = 0; pt < 5; ++pt)
-                {
-                    int indx = side + 2 * pt;
-                    if (material[indx] == 1)
-                    {
-                        sb.Append(PieceChars[indx]);
-
-                    }
-                    else if (material[indx] > 1) sb.Append(PieceChars[indx]).Append(material[indx]);
-                }
-            }
-            return sb.ToString();
-        }
-        /// <summary>
-        /// Calculates the total number of pieces which are on the board
-        /// </summary>
-        /// <returns>The piece count</returns>
-        public int GetPieceCount()
-        {
-            int count = 0;
-            foreach (int pc in material) count += pc;
-            return count;
-        }
-        /// <summary>
-        /// Calculates number of a certain piece on the board
-        /// </summary>
-        /// <param name="piece">Piece (white queen, black pawn, ...)</param>
-        /// <returns>The piece count</returns>
-        public int GetPieceCount(Piece piece)
-        {
-            return material[(int)piece];
-        }
-        /// <summary>
-        /// Calculates number of pieces of a certain piece type on the board
-        /// </summary>
-        /// <param name="pieceType">Piece Type (queen, pawn, ...)</param>
-        /// <returns>The piece count</returns>
-        public int GetPieceCount(PieceType pieceType)
-        {
-            return material[2 * (int)pieceType] + material[2 * (int)pieceType + 1];
-        }
-        /// <summary>
         /// Calculates a list of squares for each piece
         /// </summary>
         /// <returns></returns>
@@ -511,6 +458,22 @@ namespace PonzianiComponents.Chesslib
                 if (psl[Piece.BPAWN].FindIndex(s => s <= Square.H1 || s >= Square.A8) >= 0) message = $"Black pawn(s) on 1st or last rank!";
             }
             if (message != null) return false;
+            if (EPSquare != Square.OUTSIDE)
+            {
+                if (SideToMove == Side.WHITE && EPSquare < Square.A5) message = $"Invalid EPSquare {Chess.SquareToString(EPSquare)}";
+                if (SideToMove == Side.BLACK && EPSquare > Square.H4) message = $"Invalid EPSquare {Chess.SquareToString(EPSquare)}";
+                if ((EPSquare < Square.A3 || EPSquare > Square.H3) && (EPSquare < Square.A6 || EPSquare > Square.H6)) message = $"Invalid EPSquare {Chess.SquareToString(EPSquare)}";
+                if (GetPiece(EPSquare) != Piece.BLANK) message = $"EnPassant Square {Chess.SquareToString(EPSquare)} is not empty!";
+                if (EPSquare >= Square.A6)
+                {
+                    Square s = (Square)((int)EPSquare - 8);
+                    if (GetPiece(s) != Piece.BPAWN) message = $"Missing EnPassant target on {Chess.SquareToString(s)}!";
+                } else if (EPSquare >= Square.A3)
+                {
+                    Square s = (Square)((int)EPSquare + 8);
+                    if (GetPiece(s) != Piece.WPAWN) message = $"Missing EnPassant target on {Chess.SquareToString(s)}!";
+                }
+            }
             return message == null;
 
         }
