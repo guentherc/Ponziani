@@ -38,7 +38,15 @@ namespace PonzianiComponentsTest
                 int square = (int)Fen.ParseSquare(ss);
                 board[square] = pieceChar;
             }
-            return Fen.FenPartFromBoard(board);
+            string fenpart = Fen.FenPartFromBoard(board);
+            return fenpart;
+        }
+
+        public IElement GetSquareDiv(IRenderedComponent<Chessboard> cb, Square s) => GetSquareDivs(cb).Where(e => e.Id.EndsWith(Chess.SquareToString(s))).First();
+
+        public IElement GetPieceImage(IRenderedComponent<Chessboard> cb, Square s)
+        {
+            return GetSquareDiv(cb, s).GetElementsByTagName("img").First();
         }
     }
 }

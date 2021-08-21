@@ -1,4 +1,4 @@
-﻿<div class="modal @clsShowModalPromo">
+﻿<div class="modal @clsShowModalPromo" id="@PromoDialogId">
 	<div class="modal-content">
 		@if (position.SideToMove == Chesslib.Side.WHITE)
 		{
@@ -116,13 +116,14 @@
 	<div class="pzBoard" 
 	     style="@BoardStyle"
 		 ondragover="event.preventDefault();">
+		@{
+		char[] board = Chesslib.Fen.GetPieceArray(setupFen);
 		@for (int rank = RankStart; rank >= 0 && rank < 8; rank += RankStep)
 		{
 			<div class="pzBoardRow">
 				@for (int file = FileStart; file >= 0 && file < 8; file += FileStep)
 				{
-					Chesslib.Square square = (Chesslib.Square)(8 * rank + file);
-					var board = Chesslib.Fen.GetPieceArray(setupFen);
+					Chesslib.Square square = (Chesslib.Square)(8 * rank + file);					
 					<div class="@SquareClass(rank, file)" style="@SquareStyle" @ondragenter="() => HandleDragEnter(square)" id="@SquareId(square)">
 						@if (ShowCoordinates && file == FileStart)
 						{
@@ -145,6 +146,7 @@
 				}
 				<div class="pzClearfix"/>
 			</div>
+		}
 		}
 	</div>
 	@if (SetupMode)

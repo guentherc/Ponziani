@@ -1,6 +1,7 @@
 ﻿@using Bunit
 @using Microsoft.VisualStudio.TestTools.UnitTesting
 @using PonzianiComponents
+@using PonzianiComponents.Chesslib
 @using PonzianiComponentsTest
 @using System.Linq
 @using AngleSharp.Dom
@@ -9,7 +10,7 @@
 
 @code {
 	[TestMethod]
-	public void ChessboardComponentRendersCorrectly()
+	public void TestInitialRendering()
 	{
 		// Act
 		var cut = RenderComponent<Chessboard>();
@@ -17,5 +18,123 @@
 		Assert.AreEqual("board", GetId(cut));
 		Assert.AreEqual(64, GetSquareDivs(cut).Count());
 		Assert.IsTrue(cut.Instance.Fen.StartsWith(GetBoardPartFromComponent(cut)));
+	}
+
+	[TestMethod]
+	public void TestFenParameter()
+	{
+		string fen = "6k1/5p2/p3p2p/1p4pP/1PpP2P1/P1Qq1P2/7K/8 w - - 3 35";
+		// Act
+		var cut = RenderComponent<Chessboard>(parameters => parameters.Add(p => p.Fen, fen));
+		// Assert
+		Assert.IsTrue(fen.StartsWith(GetBoardPartFromComponent(cut)));
+	}
+
+	[TestMethod]
+	public void TestIdParameter()
+	{
+		string id = "dummyID";
+		var cut = RenderComponent<Chessboard>(parameters => parameters.Add(p => p.Id, id));
+		Assert.AreEqual(id, GetId(cut));
+	}
+
+	[TestMethod]
+	public void TestSizeParameter()
+	{
+		string id = "dummyIDTestSize";
+		int size = 1200;
+		var cut = RenderComponent<Chessboard>(parameters => parameters.Add(p => p.Size, size).Add(p => p.Id, id));
+		Assert.AreEqual(id, GetId(cut));
+		var div = (IElement)cut.Find($"#{id}");
+		var style = div.GetAttribute("style");
+		Assert.IsTrue(style.Contains($"width: {8 * cut.Instance.SquareSize + 4}px"));
+	}
+
+	[TestMethod]
+	public void TestShowCoordinatesParameter()
+	{
+		var cut = RenderComponent<Chessboard>(parameters => parameters.Add(p => p.ShowCoordinates, true));
+		var elements = cut.FindAll("div.pzNotation");
+		Assert.AreEqual(16, elements.Count);
+		cut = RenderComponent<Chessboard>(parameters => parameters.Add(p => p.ShowCoordinates, false));
+		elements = cut.FindAll("div.pzNotation");
+		Assert.AreEqual(0, elements.Count);
+	}
+
+	[TestMethod]
+	public void TestRotateParameter()
+	{
+		var cut = RenderComponent<Chessboard>(parameters => parameters.Add(p => p.Rotate, false));
+		Assert.IsTrue(cut.Find("div.pzSquare").Id.IndexOf("a8") >= 0);
+		cut = RenderComponent<Chessboard>(parameters => parameters.Add(p => p.Rotate, true));
+		Assert.IsTrue(cut.Find("div.pzSquare").Id.IndexOf("h1") >= 0);
+	}
+
+	[TestMethod]
+	public void TestSetupModeParameter()
+	{
+		var cut = RenderComponent<Chessboard>(parameters => parameters.Add(p => p.SetupMode, false));
+		Assert.AreEqual(0, cut.FindAll("div.pzSparePieces").Count);
+		cut = RenderComponent<Chessboard>(parameters => parameters.Add(p => p.SetupMode, true));
+		Assert.AreEqual(2, cut.FindAll("div.pzSparePieces").Count);
+	}
+
+	[TestMethod]
+	public void TestPlayMoveByDnD()
+	{
+		//Play e2-e4 from initial position via Drag&Drop
+		var cut = RenderComponent<Chessboard>();
+		GetPieceImage(cut, Square.E2).DragStart();
+		GetSquareDiv(cut, Square.E3).DragEnter();
+		GetSquareDiv(cut, Square.E4).DragEnter();
+		cut.Find(".pzChessboard").Drop();
+		cut.WaitForAssertion(() => Assert.AreEqual("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR", GetBoardPartFromComponent(cut)), TimeSpan.FromSeconds(2));
+		//Negative test: play c7-d6 which is illegal
+		GetPieceImage(cut, Square.C7).DragStart();
+		GetSquareDiv(cut, Square.C6).DragEnter();
+		GetSquareDiv(cut, Square.D6).DragEnter();
+		cut.Find(".pzChessboard").Drop();
+		cut.WaitForAssertion(() => Assert.AreEqual("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR", GetBoardPartFromComponent(cut)), TimeSpan.FromSeconds(2));		
+	}
+
+	[TestMethod]
+	public void TestPlayPromotionMoveByDnD()
+	{
+		string fen = "8/P7/3k4/8/3K4/8/7p/8 w - - 0 1";
+		var cut = RenderComponent<Chessboard>(parameters => parameters.Add(p => p.Fen, fen));
+		GetPieceImage(cut, Square.A7).DragStart();
+		GetSquareDiv(cut, Square.A8).DragEnter();
+		cut.Find(".pzChessboard").Drop();
+		cut.WaitForState(() => cut.Find("#" + cut.Instance.Id + "-promodialog").ClassList.Contains("show-modal"));
+		var pieceImage = cut.Find("#rPP");
+		pieceImage.Click();
+		cut.WaitForAssertion(() => Assert.AreEqual("R7/8/3k4/8/3K4/8/7p/8", GetBoardPartFromComponent(cut)), TimeSpan.FromSeconds(2));
+		GetPieceImage(cut, Square.H2).DragStart();
+		GetSquareDiv(cut, Square.H1).DragEnter();
+		cut.Find(".pzChessboard").Drop();
+		cut.WaitForState(() => cut.Find("#" + cut.Instance.Id + "-promodialog").ClassList.Contains("show-modal"));
+		pieceImage = cut.Find("#qPP");
+		pieceImage.Click();
+		cut.WaitForAssertion(() => Assert.AreEqual("R7/8/3k4/8/3K4/8/8/7q", GetBoardPartFromComponent(cut)), TimeSpan.FromSeconds(2));
+	}
+
+	[TestMethod]
+	public void TestOnMovePlayed()
+	{
+		
+		bool executed = false;
+		Action<MovePlayedInfo> onMovePlayed = (MovePlayedInfo mpi) => {
+			Assert.AreEqual(Fen.INITIAL_POSITION, mpi.OldFen);
+			Assert.AreEqual("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1", mpi.NewFen);
+			Assert.AreEqual(new Move(Square.E2, Square.E4), mpi.Move);
+			Assert.AreEqual("e4", mpi.San);
+			executed = true;
+		};
+		var cut = RenderComponent<Chessboard>(parameters => parameters.Add(p => p.OnMovePlayed, onMovePlayed));
+		GetPieceImage(cut, Square.E2).DragStart();
+		GetSquareDiv(cut, Square.E3).DragEnter();
+		GetSquareDiv(cut, Square.E4).DragEnter();
+		cut.Find(".pzChessboard").Drop();
+		cut.WaitForAssertion(() => Assert.IsTrue(executed), TimeSpan.FromSeconds(2));
 	}
 }

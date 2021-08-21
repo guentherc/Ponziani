@@ -185,6 +185,7 @@ namespace PonzianiComponents
         private string GetPieceImageSource(char pieceChar) => $"{PathPieceImages}{GetPieceImage(pieceChar)}.png";
 
         private string SquareId(Square square) => $"square-{Chesslib.Chess.SquareToString(square)}";
+        private string PromoDialogId => $"{Id}-promodialog";
 
         private string IsDraggable(Square square)
         {
@@ -259,6 +260,7 @@ namespace PonzianiComponents
                         SetHighlightSquare(mpi.Move.From);
                         SetHighlightSquare(mpi.Move.To);
                     }
+                    setupFen = mpi.NewFen;
                     await OnMovePlayed.InvokeAsync(mpi);
                     draggedEnterPieceSquare = Square.OUTSIDE;
                     draggedPieceSquare = Square.OUTSIDE;
@@ -387,7 +389,6 @@ namespace PonzianiComponents
                 CastlingBlackKingside = token[2].Contains('k');
                 CastlingBlackQueenside = token[2].Contains('q');
             }
-            Console.WriteLine("CastlingWhiteKingside: " + CastlingWhiteKingside);
             if (token.Length < 4) return;
             EnPassantSquare = token[3];
             if (token.Length > 4) DrawPlyCount = int.Parse(token[4]);
