@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace PonzianiComponents.Chesslib
 {
     /// <summary>
-    /// Representation of a Move
+    /// Representation of a Chess Move
     /// </summary>
     public class Move
     {

@@ -40,7 +40,8 @@ namespace PonzianiComponents.Chesslib
         /// </summary>
         public int MoveNumber { private set; get; }
         /// <summary>
-        /// The En-Passant Square
+        /// The En-Passant Square (the to-square of an en passant capture). This square is only set, if an enpassant 
+        /// capture is possible (not after any pawn double move as in FEN standard)
         /// </summary>
         public Square EPSquare { private set; get; } = Square.OUTSIDE;
         /// <summary>
@@ -52,7 +53,7 @@ namespace PonzianiComponents.Chesslib
         /// </summary>
         public bool IsCheck { get { return Checked(); } }
         /// <summary>
-        /// Returns true is side to move is double-checked
+        /// Returns true if side to move is double-checked
         /// </summary>
         public bool IsDoubleCheck { get { return Checked() && _checkstate == Checkstate.DOUBLE_CHECKED; } }
         /// <summary>
@@ -60,7 +61,7 @@ namespace PonzianiComponents.Chesslib
         /// </summary>
         public bool IsMate { get { return GetMoves().Count == 0 && IsCheck; } }
         /// <summary>
-        /// Returns true id position is stalemate
+        /// Returns true if position is stalemate
         /// </summary>
         public bool IsStalemate { get { return GetMoves().Count == 0 && !IsCheck; } }
         /// <summary>
@@ -262,7 +263,7 @@ namespace PonzianiComponents.Chesslib
         /// <summary>
         /// Calculates a list of squares for each piece
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Dictionary with list of <see cref="Square">squares</see> for each <see cref="Piece">Piece</see></returns>
         public Dictionary<Piece, List<Square>> GetPieceSquareList()
         {
             Dictionary<Piece, List<Square>> psqList = new Dictionary<Piece, List<Square>>();
@@ -339,7 +340,10 @@ namespace PonzianiComponents.Chesslib
             if (_moves == null) GenerateMoves();
             return new List<Move>(_moves);
         }
-
+        /// <summary>
+        /// ASCII rendering of position. Allows to printout a position diagram in console applications
+        /// </summary>
+        /// <returns>ASCII based position diagramm</returns>
         public string ASCII()
         {
             string pc = "QqRrBbNnPpKk ";
@@ -359,7 +363,10 @@ namespace PonzianiComponents.Chesslib
             }
             return sb.ToString();
         }
-
+        /// <summary>
+        /// HTML rendering of position. Useful for debugging within Visual Studio
+        /// </summary>
+        /// <returns>An HTML string showing the position diagram</returns>
         public string AsHTML()
         {
             char[] upiece = { '\u2655', '\u265b', '\u2656', '\u265c', '\u2657', '\u265d', '\u2658', '\u265e', '\u2659', '\u265f', '\u2654', '\u265a', '\u0020' };

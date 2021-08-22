@@ -43,7 +43,7 @@ namespace PonzianiComponents.Chesslib
     public enum Side { WHITE, BLACK }
 
     /// <summary>
-    /// Castles
+    /// Castling Options
     /// </summary>
     public enum CastleFlag
     {
@@ -70,7 +70,7 @@ namespace PonzianiComponents.Chesslib
     }
 
     /// <summary>
-    /// This class contains general static methods
+    /// This class contains static methods useful when dealing with chess
     /// </summary>
     public class Chess
     {

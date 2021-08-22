@@ -17,18 +17,57 @@ namespace PonzianiComponents.Chesslib
         public const string INITIAL_POSITION = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 
 #pragma warning disable CS1591
+        /// <summary>
+        /// Character representing the white king in <see href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</see> 
+        /// </summary>
         public const char PIECE_CHAR_WKING = 'K';
+        /// <summary>
+        /// Character representing the white king in <see href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</see> 
+        /// </summary>
         public const char PIECE_CHAR_BKING = 'k';
+        /// <summary>
+        /// Character representing the white king in <see href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</see> 
+        /// </summary>
         public const char PIECE_CHAR_WQUEEN = 'Q';
+        /// <summary>
+        /// Character representing the black king in <see href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</see> 
+        /// </summary>
         public const char PIECE_CHAR_BQUEEN = 'q';
+        /// <summary>
+        /// Character representing the white queen in <see href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</see> 
+        /// </summary>
         public const char PIECE_CHAR_WROOK = 'R';
+        /// <summary>
+        /// Character representing the black queen in <see href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</see> 
+        /// </summary>
         public const char PIECE_CHAR_BROOK = 'r';
+        /// <summary>
+        /// Character representing the white bishop in <see href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</see> 
+        /// </summary>
         public const char PIECE_CHAR_WBISHOP = 'B';
+        /// <summary>
+        /// Character representing the black bishop in <see href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</see> 
+        /// </summary>
         public const char PIECE_CHAR_BBISHOP = 'b';
+        /// <summary>
+        /// Character representing the white knight in <see href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</see> 
+        /// </summary>
         public const char PIECE_CHAR_WKNIGHT = 'N';
+        /// <summary>
+        /// Character representing the black knight in <see href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</see> 
+        /// </summary>
         public const char PIECE_CHAR_BKNIGHT = 'n';
+        /// <summary>
+        /// Character representing the white pawn in <see href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</see> 
+        /// </summary>
         public const char PIECE_CHAR_WPAWN = 'P';
+        /// <summary>
+        /// Character representing the black pawn in <see href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</see> 
+        /// </summary>
         public const char PIECE_CHAR_BPAWN = 'p';
+        /// <summary>
+        /// Character representing no piece (empty square)
+        /// </summary>
         public const char PIECE_CHAR_NONE = ' ';
 #pragma warning restore CS1591
 
@@ -164,7 +203,7 @@ namespace PonzianiComponents.Chesslib
         }
 
         internal static Dictionary<char, CastleFlag> CastleFlagMapping = new Dictionary<char, CastleFlag> { { 'K', CastleFlag.W0_0 }, { 'Q', CastleFlag.W0_0_0 }, { 'k', CastleFlag.B0_0 }, { 'q', CastleFlag.B0_0_0 }, { '-', CastleFlag.NONE } };
-        public static Dictionary<char, Piece> PieceMapping = new Dictionary<char, Piece>() {
+        internal static Dictionary<char, Piece> PieceMapping = new Dictionary<char, Piece>() {
             { 'Q', Piece.WQUEEN }, { 'R', Piece.WROOK }, { 'B', Piece.WBISHOP }, { 'N', Piece.WKNIGHT }, { 'P', Piece.WPAWN }, { 'K', Piece.WKING },
             { 'q', Piece.BQUEEN }, { 'r', Piece.BROOK }, { 'b', Piece.BBISHOP }, { 'n', Piece.BKNIGHT }, { 'p', Piece.BPAWN }, { 'k', Piece.BKING }};
     }

@@ -11,12 +11,11 @@ namespace PonzianiComponents
     /// <summary>
     /// <para>Blazor Component for adding an interactive chessboard to a Blazor application. It was build as a Blazor version of <see href="https://chessboardjs.com/index.html">chessboard.js</see>
     /// and allows to use this functionality without the need to interop with javascript.</para>
-    /// <para> There are however quite some differences:
-    /// <list type="bullet">
-    /// <item><see cref="Chessboard">Chessboard</see>doesn't support animations</item>
-    /// <item><see cref="Chessboard">Chessboard</see> has chess knowledge and therefore provides legal move check out of the box</item>
-    /// </list>
-    /// </para>
+    /// <para> There are however quite some differences:</para>
+    /// <ul>
+    /// <li>No animations</li>
+    /// <li>It has chess knowledge and therefore provides legal move check out of the box</li>
+    /// </ul>
     /// </summary>
     public partial class Chessboard
     {
