@@ -97,6 +97,23 @@
 		cut.WaitForAssertion(() => Assert.AreEqual("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR", GetBoardPartFromComponent(cut)), TimeSpan.FromSeconds(2));		
 	}
 
+	
+	[TestMethod]
+	public void TestPlayMoveByApiCall()
+	{
+		//Play e2-e4 from initial position via Drag&Drop
+		var cut = RenderComponent<Chessboard>();
+		bool result = cut.Instance.ApplyMove(new Move("e2e4"));
+		Assert.IsTrue(result);
+		cut.Render();
+		cut.WaitForAssertion(() => Assert.AreEqual("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR", GetBoardPartFromComponent(cut)), TimeSpan.FromSeconds(5));
+		//Negative test: play c7-d6 which is illegal
+		result = cut.Instance.ApplyMove(new Move("c7d6"));
+		Assert.IsFalse(result);
+		cut.Render();
+		cut.WaitForAssertion(() => Assert.AreEqual("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR", GetBoardPartFromComponent(cut)), TimeSpan.FromSeconds(5));		
+	}
+
 	[TestMethod]
 	public void TestPlayPromotionMoveByDnD()
 	{

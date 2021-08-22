@@ -33,12 +33,12 @@ namespace PonzianiComponents
         {
             get
             {
-                if (!SetupMode) setupFen = position.FEN;
-                return setupFen;
+                if (!SetupMode) _fen = position.FEN;
+                return _fen;
             }
             set
             {
-                setupFen = value;
+                _fen = value;
                 if (!SetupMode) position = new Position(value);
             }
         }
@@ -86,32 +86,42 @@ namespace PonzianiComponents
         /// </summary>
         [Parameter]
         public EventCallback<SetupChangedInfo> OnSetupChanged { get; set; }
-
+        /// <summary>
+        /// Applies a move to the current board
+        /// </summary>
+        /// <param name="move">The move which shall be applied</param>
+        /// <returns>true, if move could be applied</returns>
         public bool ApplyMove(Move move)
         {
             if (SetupMode) return false;
             highlightedSquares = 0;
             if (position.GetMoves().FindIndex(m => m.From == move.From && m.To == move.To) < 0) return false;
             position.ApplyMove(move);
+            _fen = position.FEN;
             if (HighlightLastAppliedMove)
             {
                 SetHighlightSquare(move.From);
                 SetHighlightSquare(move.To);
             }
+            InvokeAsync(() => StateHasChanged());
             return true;
         }
-
+        /// <summary>
+        /// Enter setup mode (API-call to set parameter <see cref="SetupMode"/> to true)
+        /// </summary>
         public void SwitchToSetupMode()
         {
             _setupMode = true;
         }
-
+        /// <summary>
+        /// Leave setup mode (API-call to set parameter <see cref="SetupMode"/> to false)
+        /// </summary>
         public void ExitSetupMode()
         {
             if (_setupMode)
             {
-                addSI = new AdditionalSetupInfo(setupFen);
-                Position pos = new(setupFen);
+                addSI = new AdditionalSetupInfo(_fen);
+                Position pos = new(_fen);
                 string message;
                 if (pos.CheckLegal(out message))
                 {
@@ -122,8 +132,32 @@ namespace PonzianiComponents
                     SetupErrorMessage = message;
             }
         }
+        /// <summary>
+        /// Method to mark/highlight a square
+        /// </summary>
+        /// <param name="s">The square, which shall be highlighted</param>
+        /// <param name="highlight">if true, square will be highlighted, if false highlight is switched off</param>
+        public void SetHighlightSquare(Square s, bool highlight = true)
+        {
+            if (highlight) highlightedSquares |= 1ul << (int)s;
+            else highlightedSquares &= ~(1ul << (int)s);
+        }
+        /// <summary>
+        /// Removes all square highlights which have been sett by <see cref="SetHighlightSquare(Square, bool)"/>
+        /// </summary>
+        public void ClearHighlighting() => highlightedSquares = 0;
+        /// <summary>
+        /// Checks if a square is highlighted (marked) or not
+        /// </summary>
+        /// <param name="s">Square</param>
+        /// <returns>true if highlighted</returns>
+        public bool IsHighlighted(Square s) => (highlightedSquares & (1ul << (int)s)) != 0;
+        /// <summary>
+        /// Size (in pixels) of one square
+        /// </summary>
+        public int SquareSize => (Size - 4) / 8;
 
-        public string SetupErrorMessage { set; get; } = null;
+        private string SetupErrorMessage { set; get; } = null;
 
         private async Task CloseSetupDialogAsync()
         {
@@ -143,18 +177,6 @@ namespace PonzianiComponents
             _setupMode = false;
         }
 
-        public void ClearHighlighting() => highlightedSquares = 0;
-
-        public void SetHighlightSquare(Square s, bool highlight = true)
-        {
-            if (highlight) highlightedSquares |= 1ul << (int)s;
-            else highlightedSquares &= ~(1ul << (int)s);
-        }
-
-        public bool IsHighlighted(Square s) => (highlightedSquares & (1ul << (int)s)) != 0;
-
-        public int SquareSize => (Size - 4) / 8;
-
         private bool _setupMode = false;
         private AdditionalSetupInfo addSI { set; get; } = new AdditionalSetupInfo(Chesslib.Fen.INITIAL_POSITION);
         private string SquareStyle => $"width: {SquareSize}px; height: {SquareSize}px";
@@ -170,7 +192,7 @@ namespace PonzianiComponents
         private Square draggedPieceSquare = Square.OUTSIDE;
         private Square draggedEnterPieceSquare = Square.OUTSIDE;
         private PieceType promoPiece = PieceType.NONE;
-        private string setupFen = Chesslib.Fen.INITIAL_POSITION;
+        private string _fen = Chesslib.Fen.INITIAL_POSITION;
         private string clsShowModalPromo { set; get; }
         private string clsShowModalSetup { set; get; } = "";
         private UInt64 highlightedSquares = 0ul;
@@ -260,7 +282,7 @@ namespace PonzianiComponents
                         SetHighlightSquare(mpi.Move.From);
                         SetHighlightSquare(mpi.Move.To);
                     }
-                    setupFen = mpi.NewFen;
+                    _fen = mpi.NewFen;
                     await OnMovePlayed.InvokeAsync(mpi);
                     draggedEnterPieceSquare = Square.OUTSIDE;
                     draggedPieceSquare = Square.OUTSIDE;

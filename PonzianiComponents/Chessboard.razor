@@ -117,7 +117,7 @@
 	     style="@BoardStyle"
 		 ondragover="event.preventDefault();">
 		@{
-		char[] board = Chesslib.Fen.GetPieceArray(setupFen);
+		char[] board = Chesslib.Fen.GetPieceArray(_fen);
 		@for (int rank = RankStart; rank >= 0 && rank < 8; rank += RankStep)
 		{
 			<div class="pzBoardRow">
