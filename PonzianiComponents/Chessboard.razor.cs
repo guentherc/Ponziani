@@ -155,6 +155,14 @@ namespace PonzianiComponents
         /// Size (in pixels) of one square
         /// </summary>
         public int SquareSize => (Size - 4) / 8;
+        /// <summary>
+        /// API call to set the position
+        /// </summary>
+        /// <param name="fen">The new position in FEN-Notation</param>
+        public void SetFen(string fen)
+        {
+            Fen = fen;
+        }
 
         private string SetupErrorMessage { set; get; } = null;
 
@@ -172,6 +180,7 @@ namespace PonzianiComponents
             sci.OldFen = Fen;
             Fen = addSI.Fen;
             sci.NewFen = Fen;
+            position = pos;
             await OnSetupChanged.InvokeAsync(sci);
             _setupMode = false;
         }

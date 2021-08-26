@@ -48,5 +48,15 @@ namespace PonzianiComponentsTest
         {
             return GetSquareDiv(cb, s).GetElementsByTagName("img").First();
         }
+
+        public IElement GetSparePieceImage(IRenderedComponent<Chessboard> cb, Piece p)
+        {
+            var pieceImages = cb.FindAll("div.pzSparePieces > img");
+            char pc = Char.ToUpper(Fen.PieceChar(p));
+            char s = ((int)p & 1) == 0 ? 'w' : 'b';
+            string end = $"{s}{pc}.png";
+            IElement pieceImage = pieceImages.Where(p => p.GetAttribute("src").EndsWith(end)).First();
+            return pieceImage;
+        }
     }
 }

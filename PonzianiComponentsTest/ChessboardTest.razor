@@ -137,8 +137,7 @@
 
 	[TestMethod]
 	public void TestOnMovePlayed()
-	{
-		
+	{	
 		bool executed = false;
 		Action<MovePlayedInfo> onMovePlayed = (MovePlayedInfo mpi) => {
 			Assert.AreEqual(Fen.INITIAL_POSITION, mpi.OldFen);
@@ -153,5 +152,39 @@
 		GetSquareDiv(cut, Square.E4).DragEnter();
 		cut.Find(".pzChessboard").Drop();
 		cut.WaitForAssertion(() => Assert.IsTrue(executed), TimeSpan.FromSeconds(2));
+	}
+
+	/// <summary>
+	/// Try to setup the final position of WC match Fischer-Spassky 1972 (8/3B4/5p2/5P1p/P4k2/1P6/r4PK1/8 b - - 1 41) via D&D
+	/// </summary>
+	[TestMethod]
+	public void TestSetupPosition()
+	{
+		var cut = RenderComponent<Chessboard>();
+		cut.Instance.SwitchToSetupMode();
+		//Clear board
+		cut.Instance.SetFen("8/8/8/8/8/8/8/8 w - - 0 1");
+		cut.Render();
+		//check board is empty
+		Assert.AreEqual(0, cut.FindAll("div.pzSquare > img.pzPieceImage").Count());
+		Position pos = new("8/3B4/5p2/5P1p/P4k2/1P6/r4PK1/8 b - - 1 41");
+		var psl = pos.GetPieceSquareList();
+		foreach (Piece p in psl.Keys)
+		{
+			foreach (Square s in psl[p])
+			{
+				var image = GetSparePieceImage(cut, p);
+				image.DragStart();
+				GetSquareDiv(cut, s).DragEnter();
+				cut.Find(".pzChessboard").Drop();
+			}
+		}
+		cut.WaitForAssertion(() => Assert.AreEqual("8/3B4/5p2/5P1p/P4k2/1P6/r4PK1/8", GetBoardPartFromComponent(cut)), TimeSpan.FromSeconds(2));
+		cut.Instance.ExitSetupMode();
+		cut.Find("#setupSide").Change("b");
+		cut.Find("#setupDrawplaycount").Change("1");
+		cut.Find("#setupMovenumber").Change("41");
+		cut.Find("#SetupDialog").Submit();
+		cut.WaitForAssertion(() => Assert.AreEqual("8/3B4/5p2/5P1p/P4k2/1P6/r4PK1/8 b - - 1 41", cut.Instance.Fen));
 	}
 }
