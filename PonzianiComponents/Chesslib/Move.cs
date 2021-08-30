@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace PonzianiComponents.Chesslib
@@ -173,5 +175,70 @@ namespace PonzianiComponents.Chesslib
         /// The Side which played the move
         /// </summary>
         public Side SideToMove { set; get; } = Side.WHITE;
+
+        //Tries to get infos from Comment
+        public void ParseComment()
+        {
+            if (Comment == null || Comment.Trim().Length == 0) return;
+            int indx = 0;
+            foreach (Regex regex in commentRegexList)
+            {
+                Match m = regex.Match(Comment);
+                if (m.Success)
+                {
+                    if (regex == regexTCECComment)
+                    {
+                        for (int i = 0; i < m.Groups[2].Captures.Count; ++i)
+                        {
+                            string key = m.Groups[2].Captures[i].Value;
+                            if (key == "d") Depth = Int32.Parse(m.Groups[3].Captures[i].Value);
+                            else if (key == "mt") UsedThinkTime = TimeSpan.FromMilliseconds(Int32.Parse(m.Groups[3].Captures[i].Value));
+                            else if (key == "tl") Clock = TimeSpan.FromMilliseconds(Int32.Parse(m.Groups[3].Captures[i].Value));
+                        }
+                    }
+                    else if (regex == regexCutechessComment)
+                    {
+                        Evaluation = (int)(100 * Double.Parse(m.Groups[1].Value, CultureInfo.InvariantCulture));
+                        Depth = Int32.Parse(m.Groups[2].Value);
+                        UsedThinkTime = TimeSpan.FromSeconds(Double.Parse(m.Groups[3].Value, CultureInfo.InvariantCulture));
+                    }
+                    else if (regex == regexGrahamComment)
+                    {
+                        Evaluation = Int32.Parse(m.Groups[1].Value);
+                        Depth = Int32.Parse(m.Groups[2].Value);
+                        try
+                        {
+                            UsedThinkTime = TimeSpan.Parse(m.Groups[3].Value);
+                        }
+                        catch (Exception)
+                        {
+                            string secondTry = m.Groups[3].Value.Replace(" ", string.Empty);
+                            try
+                            {
+                                UsedThinkTime = TimeSpan.Parse(m.Groups[3].Value);
+                            }
+                            catch (Exception)
+                            {
+
+                            }
+                        }
+                    }
+                    break;
+                }
+                indx++;
+            }
+            if (indx > 0 && indx < commentRegexList.Count)
+            {
+                Regex tmp = commentRegexList[0];
+                commentRegexList[0] = commentRegexList[indx];
+                commentRegexList[indx] = tmp;
+            }
+        }
+
+        static readonly Regex regexCutechessComment = new Regex(@"((?:\+|-)[\d\.]+)/(\d+)\s([\d\.]+)s");
+        static readonly Regex regexGrahamComment = new Regex(@"\[\%eval (\-?\d+),(\d+)\]\s?\[\%emt (\d?\d\:\s?\d\d\:\d\d)\]");
+        static readonly Regex regexTCECComment = new Regex(@"((\w+)=([^,]+),\s?)+");
+
+        static List<Regex> commentRegexList = new List<Regex>() { regexCutechessComment, regexGrahamComment, regexTCECComment };
     }
 }

@@ -69,6 +69,84 @@ namespace PonzianiComponents.Chesslib
         B0_0_0 = 8
     }
 
+    public enum Result { OPEN, WHITE_WINS, BLACK_WINS, DRAW, ABANDONED }
+    public enum ResultDetail
+    {
+        UNKNOWN, MATE, ABANDONED, TIME_FORFEIT, ILLEGAL_MOVE, THREE_FOLD_REPETITION, FIFTY_MOVES,
+        NO_MATING_MATERIAL, ADJUDICATION_WIN, ADJUDICATION_DRAW, STALEMATE
+    }
+
+    /// <summary>
+    /// The detailed result, containing the information about the game's outcome
+    /// </summary>
+    public struct DetailedResult
+    {
+        /// <summary>
+        /// Creates a new Detailed result
+        /// </summary>
+        /// <param name="result">The result (white wins, black wins or draw)</param>
+        /// <param name="detail">The result's detail giving the reason for the result</param>
+        /// <param name="additionalInfo">additional info (like which illegal move was played)</param>
+        public DetailedResult(Result result, ResultDetail detail = ResultDetail.UNKNOWN, object additionalInfo = null) { Result = result; Detail = detail; AdditionalInfo = additionalInfo; }
+        /// <summary>
+        /// The result (white wins, black wins or draw)
+        /// </summary>
+        public Result Result { private set; get; }
+        /// <summary>
+        /// The result's detail giving the reason for the result
+        /// </summary>
+        public ResultDetail Detail { private set; get; }
+        /// <summary>
+        /// Additional info (like which illegal move was played)
+        /// </summary>
+        public object AdditionalInfo { private set; get; }
+        /// <summary>
+        /// Creates a string representation, mimicing the result info from cutechess
+        /// </summary>
+        /// <returns>the string representation</returns>
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(PGN.ResultToString(Result));
+            if (Result != Result.OPEN && Detail != ResultDetail.UNKNOWN)
+            {
+                string resultPhrase = ResultPhrase[(int)Detail];
+                if (Result == Result.WHITE_WINS)
+                {
+                    resultPhrase = resultPhrase.Replace("<winner>", "White");
+                    resultPhrase = resultPhrase.Replace("<looser>", "Black");
+                }
+                else if (Result == Result.BLACK_WINS)
+                {
+                    resultPhrase = resultPhrase.Replace("<winner>", "Black");
+                    resultPhrase = resultPhrase.Replace("<looser>", "White");
+                }
+                if (AdditionalInfo != null) resultPhrase = resultPhrase.Replace("<info>", AdditionalInfo.ToString());
+                sb.Append(resultPhrase);
+            }
+            return sb.ToString();
+        }
+        /// <summary>
+        /// The termination tag value as used in PGN Termination tag
+        /// </summary>
+        public string Termination
+        {
+            get
+            {
+                if (Result == Result.OPEN) return "unterminated";
+                else return PGNTerminationTerms[Detail];
+            }
+        }
+
+        private static readonly string[] ResultPhrase = new string[11] { "", " {<winner> mates}", " {<looser> resigns}", " {<looser> loses on time}", " {<looser> makes an illegal move: <info>}",
+                                                                  " {Draw by 3-fold repetition}", " {Draw by fifty moves rule}", " {Draw by insufficient mating material}",
+                                                                  " {<winner> wins by adjudication}", " {Draw by adjudication}", " {Draw by stalemate}"};
+        private static readonly Dictionary<ResultDetail, string> PGNTerminationTerms = new Dictionary<ResultDetail, string>() { { ResultDetail.ABANDONED, "abandoned" },
+                { ResultDetail.ADJUDICATION_DRAW, "adjudication" }, { ResultDetail.ADJUDICATION_WIN, "adjudication" }, { ResultDetail.TIME_FORFEIT, "time forfeit" },
+                { ResultDetail.ILLEGAL_MOVE, "rules infraction" }, { ResultDetail.MATE, "normal" }, { ResultDetail.STALEMATE, "normal" }, { ResultDetail.FIFTY_MOVES, "normal" },
+                { ResultDetail.NO_MATING_MATERIAL, "normal" }, { ResultDetail.THREE_FOLD_REPETITION, "normal" }, { ResultDetail.UNKNOWN, null }};
+    }
+
     /// <summary>
     /// This class contains static methods useful when dealing with chess
     /// </summary>
