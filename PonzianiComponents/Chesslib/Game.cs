@@ -125,8 +125,25 @@ namespace PonzianiComponents.Chesslib
             sb.AppendLine();
             return sb.ToString();
         }
+        /// <summary>
+        /// Position for a given move within the game
+        /// </summary>
+        /// <param name="moveNumber">Move number for which the position should be determined</param>
+        /// <param name="side">Side (White/Black) for which the position should be determined</param>
+        /// <returns>The position at that point wiithin the game</returns>
+        public Position GetPosition(int moveNumber, Side side)
+        {
+            Position pos = new Position(StartPosition);
+            int i = 0;
+            while (i < Moves.Count && (pos.MoveNumber < moveNumber || pos.SideToMove != side))
+            {
+                pos.ApplyMove(Moves[i]);
+                ++i;
+            }
+            return (pos.MoveNumber == moveNumber && pos.SideToMove == side) ? pos : null;
+        }
 
-        public string PGNTagSection()
+        private string PGNTagSection()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"[Event \"{Event}\"]");

@@ -99,5 +99,19 @@ namespace PonzianiComponentsTest
             }
         }
 
+        [TestMethod]
+        public void TestGetPosition()
+        {
+            Game game = new Game();
+            string[] moves = "e2e4 e7e5 g1f3 b8c6 f1c4 d7d6 b1c3 c8g4 h2h3 g4h5 f3e5 h5d1 c4f7 e8e7 c3d5".Split(' ');
+            foreach (string m in moves) game.Add(new ExtendedMove(m));
+            Position pos1 = game.GetPosition(4, Side.BLACK);
+            Position pos2 = new Position("r1bqkbnr/ppp2ppp/2np4/4p3/2B1P3/2N2N2/PPPP1PPP/R1BQK2R b KQkq - 1 4");
+            Assert.AreEqual(pos2.PolyglotKey, pos1.PolyglotKey);
+            pos1 = game.GetPosition(5, Side.WHITE);
+            pos2 = new Position("r2qkbnr/ppp2ppp/2np4/4p3/2B1P1b1/2N2N2/PPPP1PPP/R1BQK2R w KQkq - 2 5");
+            Assert.AreEqual(pos2.PolyglotKey, pos1.PolyglotKey);
+        }
+
     }
 }
