@@ -1,0 +1,28 @@
+﻿table.pzNotTable > tbody > tr > td:not(:last-child) {
+    border-right: 1px solid black;
+}
+
+.pzNotTable {
+    border: 1px solid black;
+    overflow: auto;
+}
+
+.pzNotColMovenumber {
+    text-align: center;
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.pzNotColWhite {
+    text-align: right;
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.pzNotColBlack {
+    text-align: right;
+    background-color: lightgray;
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

@@ -248,5 +248,26 @@ cxb5 {-0.10/5 0.118s} Na7 {0.10/4 0.097s} 16. a4 {-0.19/4 0.131s} Nd5 {0.06/4
 0.074s} 31. Qxh1 {-14.43/6 0.041s} Rxh1+ {14.54/6 0.089s} 32. Kxh1 {-14.54/6
 0.031s} Qxf2 {15.60/6 0.168s} 33. Rxe2 {-15.61/6 0.2s} Qf1+ {15.60/5 0.036s} 34.
 Kh2 {-15.95/6 0.096s} 0-1";
+
+        public static string PGN_LICHESS_SINGLE_GAME = @"[Event ""Rated Blitz game""]
+[Site ""https://lichess.org/wS7qATxP""]
+[Date ""2021.08.29""]
+[White ""Florentino""]
+[Black ""mc_prabu71""]
+[Result ""1-0""]
+[UTCDate ""2021.08.29""]
+[UTCTime ""13:00:28""]
+[WhiteElo ""2058""]
+[BlackElo ""2022""]
+[WhiteRatingDiff ""+6""]
+[BlackRatingDiff ""-5""]
+[Variant ""Standard""]
+[TimeControl ""180+0""]
+[ECO ""A40""]
+[Opening ""English Defense""]
+[Termination ""Normal""]
+[Annotator ""lichess.org""]
+
+1. d4 e6 2. c4 b6 { A40 English Defense } 3. Nc3 Bb7 4. e4 Qe7 5. Bd3 Nc6 6. Nge2 O-O-O 7. O-O h5 8. a4 a5 9. Nb5 g5 10. d5 Ne5 11. Be3 exd5 12. cxd5 Nxd3 13. Qxd3 g4 14. Rac1 c6 15. Na7+ Kb8 16. Bxb6 cxd5 17. Qd4 dxe4 18. Bxd8 Qxd8 19. Qxh8 Nh6 20. Qd4 d6 21. Nb5 Nf5 22. Qa7# { White wins by checkmate. } 1-0";
     }
 }

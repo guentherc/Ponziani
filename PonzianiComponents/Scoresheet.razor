@@ -1,0 +1,40 @@
+﻿@if (Mode == DisplayMode.TABULAR)
+{
+	Game g = new Game(Game.StartPosition);
+	<table class="pzNotTable" id="@Id">
+		<thead class="pzNotTableHead">
+		</thead>
+		<tbody class="pzNotTableBody" style="overflow-y:scroll; display:block; height: @(Height)px;">
+			@if (Game.Moves.Count > 0)
+			{
+				@if (g.Position.SideToMove == Side.BLACK)
+				{
+					<tr><td class="pzNotColMovenumber">@g.Position.MoveNumber</td><td class="pzNotColWhite">...</td><td class="pzNotColBlack">@g.Position.ToSAN(Game.Moves[0])</td></tr>
+					g.Add(Game.Moves[0]);
+				}
+				@for (int i = g.Moves.Count; g.Moves.Count < Game.Moves.Count; i += 2)
+				{
+					<tr>
+						<td class="pzNotColMovenumber">@g.Position.MoveNumber</td>
+						<td class="pzNotColWhite">@g.Position.ToSAN(Game.Moves[i])</td>
+						@{ g.Add(Game.Moves[i]); }
+						@if (g.Moves.Count < Game.Moves.Count)
+						{
+							<td class="pzNotColBlack">@g.Position.ToSAN(Game.Moves[i+1])</td>
+							g.Add(Game.Moves[i + 1]);
+						}
+						else
+						{
+							<td class="pzNotColBlack"></td>
+						}
+
+					</tr>
+				}
+			}
+	 </tbody>
+	</table>
+}
+
+@code {
+
+}

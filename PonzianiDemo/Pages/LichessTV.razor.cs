@@ -56,6 +56,7 @@ namespace PonzianiDemo.Pages
                     }
                     else lines.Add(raw);
                 }
+                foreach (var l in lines) Console.WriteLine(l);
                 lines = lines.Where(l => l != null && l.Trim().Length > 50 && l.StartsWith(@"{""t""")).ToList();
                 if (lines.Count > 1)
                 {

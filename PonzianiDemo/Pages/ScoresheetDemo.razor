@@ -1,0 +1,22 @@
+﻿@page "/scoresheet"
+<h3>ScoresheetDemo</h3>
+
+<Scoresheet Game="@game" Height="@model.Height" />
+
+<EditForm Model="@model" OnValidSubmit="@HandleValidSubmit">
+	<div class="form-group">
+		<label for="taPGN">Enter PGN</label>
+		<InputTextArea class="form-control" id="taPGN" rows="10" @bind-Value="model.PGNText" />
+	</div>
+	<div class="form-group">
+		<label>
+			Height:
+		</label>
+		<InputNumber class="form-control" @bind-Value="model.Height" />
+	</div>
+	<button type="submit">Submit</button>
+</EditForm>
+
+@code {
+
+}

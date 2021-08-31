@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PonzianiComponents", "Ponzi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PonzianiDemo", "PonzianiDemo\PonzianiDemo.csproj", "{372C704D-6622-4B62-BE16-E97D9DD3AE80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PonzianiComponentsTest", "PonzianiComponentsTest\PonzianiComponentsTest.csproj", "{2B304448-FFFE-43C3-866F-23E3563399B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PonzianiComponentsTest", "PonzianiComponentsTest\PonzianiComponentsTest.csproj", "{2B304448-FFFE-43C3-866F-23E3563399B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

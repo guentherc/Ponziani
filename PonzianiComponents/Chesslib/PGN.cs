@@ -445,7 +445,7 @@ namespace PonzianiComponents.Chesslib
             return move;
         }
 
-        private static Regex regexPGNGame = new Regex(@"((?:^\[[^\]]+\]\s*$?){2,})(?:\r?\n)+((?:\S.*\r?\n)+)", RegexOptions.Multiline);
+        private static Regex regexPGNGame = new Regex(@"((?:^\[[^\]]+\]\s*$?){2,})(?:\r?\n)+(^[^\[\s].*)", RegexOptions.Multiline);
         private static Regex regexPGNTag = new Regex(@"\[([^\s]*)\s+""(.*)""\]", RegexOptions.Multiline);
         private static Regex regexPGNComment = new Regex(@"\{(?>\{(?<c>)|[^{}]+|\}(?<-c>))*(?(c)(?!))\}", RegexOptions.Singleline);
         private static Regex regexPGNVariations = new Regex(@"\((?>\((?<c>)|[^()]+|\)(?<-c>))*(?(c)(?!))\)", RegexOptions.Singleline);
