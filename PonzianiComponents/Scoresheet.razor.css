@@ -2,6 +2,10 @@
     border-right: 1px solid black;
 }
 
+span.pzMoveText {
+    white-space: pre-wrap;
+}
+
 .pzNotTable {
     border: 1px solid black;
     overflow: auto;

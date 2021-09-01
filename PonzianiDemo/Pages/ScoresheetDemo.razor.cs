@@ -13,6 +13,7 @@ namespace PonzianiDemo.Pages
     {
         public string PGNText { set; get; }
         public int Height { set; get; } = 400;
+        public bool InlineMode { set; get; } = false;
     }
 
     public partial class ScoresheetDemo
@@ -26,6 +27,8 @@ namespace PonzianiDemo.Pages
             }
             get { return game.ToPGN(); }
         }
+
+        public Scoresheet.DisplayMode DisplayMode => model.InlineMode ? Scoresheet.DisplayMode.INLINE : Scoresheet.DisplayMode.TABULAR;
 
         private string EventInfoText { set; get; } = "";
 
