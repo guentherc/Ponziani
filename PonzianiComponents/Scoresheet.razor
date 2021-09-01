@@ -1,12 +1,12 @@
 ﻿@if (Mode == DisplayMode.TABULAR)
 {
 	Game g = new Game(Game.StartPosition);
-	<table class="pzNotTable" id="@Id">
+	<table class="pzNotTable" id="@Id" @attributes=OtherAttributes>
 	 <thead class="pzNotTableHead">
 	 </thead>
 		@if (Game.Moves.Count > 0)
 		{
-		 <tbody class="pzNotTableBody" style="overflow-y:scroll; display:block; height: @(Height)px;">
+		 <tbody class="pzNotTableBody" style="@($"overflow-y:scroll; display:block;{Height()}")">
 
 				@if (g.Position.SideToMove == Side.BLACK)
 				{
@@ -45,7 +45,7 @@
 } else if (Mode == DisplayMode.INLINE)
 {
 	Game g = new Game(Game.StartPosition);
-	<div id="@Id">
+	<div id="@Id" @attributes=OtherAttributes>
 		@if (g.SideToMove == Side.BLACK)
 		{
 			<text>&#32;</text><span class="pzMoveText">@g.Position.MoveNumber. ...</span>	

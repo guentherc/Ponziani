@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace PonzianiComponents
@@ -59,21 +60,35 @@ namespace PonzianiComponents
         [Parameter]
         public NotationType NotatationType { set; get; } = NotationType.SAN;
         /// <summary>
-        /// The Height (in pixels) of the scoresheet (default 400)
-        /// </summary>
-        [Parameter]
-        public int Height { get; set; } = 400;
-        /// <summary>
         /// Is called whenever the user selects a move by clicking it 
         /// </summary>
         [Parameter]
         public EventCallback<MoveSelectInfo> OnMoveSelected { get; set; }
+        /// <summary>
+        /// <para>Other HTML Attributes, which are applied to the root element of the rendered scoresheet. Depending
+        /// on <see cref="Mode"/> this is either a &lt;table&gt; or a &lt;div&gt; </para>
+        /// <para>With this mechanism it's possible e.g. to set the width of the scoresheet (in inline mode)</para>
+        /// </summary>
+        [Parameter(CaptureUnmatchedValues = true)]
+        public Dictionary<string, object> OtherAttributes { get; set; }
 
         private async Task SelectMoveAsync(EventArgs eventArgs, int moveNumber, Side side)
         {
             MoveSelectInfo msi = new( Id, Game.GetPosition(moveNumber, side), Game.GetMove(moveNumber, side) );
             await OnMoveSelected.InvokeAsync(msi);
         }
+
+        private string Height()
+        {
+            if (OtherAttributes.ContainsKey("style"))
+            {
+                Match m = regexHeight.Match((string)OtherAttributes["style"]);
+                if (m.Success) return $"{m.Value.Trim()};";
+            }
+            return "";
+        }
+
+        private Regex regexHeight = new Regex(@"height\:\s*([^;]+)");
     }
 
     public class MoveSelectInfo

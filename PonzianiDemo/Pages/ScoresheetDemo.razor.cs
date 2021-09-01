@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace PonzianiDemo.Pages
@@ -14,6 +15,7 @@ namespace PonzianiDemo.Pages
         public string PGNText { set; get; }
         public int Height { set; get; } = 400;
         public bool InlineMode { set; get; } = false;
+        public string OtherAttributes { set; get; } = @"style=""width: 800px; height: 400px""";
     }
 
     public partial class ScoresheetDemo
@@ -32,8 +34,22 @@ namespace PonzianiDemo.Pages
 
         private string EventInfoText { set; get; } = "";
 
+        private static Regex regexOtherAttributes = new Regex(@"(\w+)=\""([^\""]+)\""");
         private SDModel model { set; get; } = new SDModel();
         private Game game = new Game();
+        private Dictionary<string, object> OtherAttributes
+        {
+            get
+            {
+                Dictionary<string, object> oo = new Dictionary<string, object>();
+                MatchCollection mc = regexOtherAttributes.Matches(model.OtherAttributes);
+                foreach (Match m in mc)
+                {
+                    oo.Add(m.Groups[1].Value, m.Groups[2].Value);
+                }
+                return oo;
+            }
+        }
 
         private void HandleValidSubmit()
         {
