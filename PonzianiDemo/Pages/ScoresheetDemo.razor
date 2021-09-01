@@ -1,7 +1,7 @@
 ﻿@page "/scoresheet"
 <h3>ScoresheetDemo</h3>
 
-<Scoresheet Game="@game" Height="@model.Height" />
+<Scoresheet Game="@game" Height="@model.Height" OnMoveSelected="@OnMoveSelected"/>
 
 <EditForm Model="@model" OnValidSubmit="@HandleValidSubmit">
 	<div class="form-group">
@@ -16,6 +16,9 @@
 	</div>
 	<button type="submit">Submit</button>
 </EditForm>
+<div class="alert alert-success" role="alert">
+	@EventInfoText
+</div>
 
 @code {
 

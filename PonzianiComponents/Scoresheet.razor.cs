@@ -63,7 +63,40 @@ namespace PonzianiComponents
         /// </summary>
         [Parameter]
         public int Height { get; set; } = 400;
+        /// <summary>
+        /// Is called whenever the user selects a move by clicking it 
+        /// </summary>
+        [Parameter]
+        public EventCallback<MoveSelectInfo> OnMoveSelected { get; set; }
 
+        private async Task SelectMoveAsync(EventArgs eventArgs, int moveNumber, Side side)
+        {
+            MoveSelectInfo msi = new( Id, Game.GetPosition(moveNumber, side), Game.GetMove(moveNumber, side) );
+            await OnMoveSelected.InvokeAsync(msi);
+        }
+    }
+
+    public class MoveSelectInfo
+    {
+        public MoveSelectInfo(string scoresheetId, Position position, ExtendedMove move)
+        {
+            ScoresheetId = scoresheetId;
+            Position = position;
+            Move = move;
+        }
+
+        /// <summary>
+        /// Id of the scoresheet, where the move was selected (needed in multiboard scenarios)
+        /// </summary>
+        public string ScoresheetId { set; get; }
+        /// <summary>
+        /// Position object corresponding to the situation before the selected move has been played
+        /// </summary>
+        public Position Position { set; get; }
+        /// <summary>
+        /// The selected Move
+        /// </summary>
+        public ExtendedMove Move { set; get; }
     }
 
 

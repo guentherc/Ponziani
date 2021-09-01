@@ -113,5 +113,15 @@ namespace PonzianiComponentsTest
             Assert.AreEqual(pos2.PolyglotKey, pos1.PolyglotKey);
         }
 
+        [TestMethod]
+        public void TestGetMove()
+        {
+            Game game = new Game();
+            string[] moves = "e2e4 e7e5 g1f3 b8c6 f1c4 d7d6 b1c3 c8g4 h2h3 g4h5 f3e5 h5d1 c4f7 e8e7 c3d5".Split(' ');
+            foreach (string m in moves) game.Add(new ExtendedMove(m));
+            Assert.AreEqual("c8g4", game.GetMove(4, Side.BLACK).ToUCIString());
+            Assert.AreEqual("h2h3", game.GetMove(5, Side.WHITE).ToUCIString());
+        }
+
     }
 }

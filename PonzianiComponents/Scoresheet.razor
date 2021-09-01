@@ -9,18 +9,21 @@
 			{
 				@if (g.Position.SideToMove == Side.BLACK)
 				{
-					<tr><td class="pzNotColMovenumber">@g.Position.MoveNumber</td><td class="pzNotColWhite">...</td><td class="pzNotColBlack">@g.Position.ToSAN(Game.Moves[0])</td></tr>
+					int moveNumber = g.Position.MoveNumber;
+					<tr><td class="pzNotColMovenumber">@g.Position.MoveNumber</td><td class="pzNotColWhite">...</td>
+						<td class="pzNotColBlack" @onclick="@(e => SelectMoveAsync(e, moveNumber, Side.BLACK))">@g.Position.ToSAN(Game.Moves[0])</td></tr>
 					g.Add(Game.Moves[0]);
 				}
 				@for (int i = g.Moves.Count; g.Moves.Count < Game.Moves.Count; i += 2)
 				{
+					int moveNumber = g.Position.MoveNumber;
 					<tr>
 						<td class="pzNotColMovenumber">@g.Position.MoveNumber</td>
-						<td class="pzNotColWhite">@g.Position.ToSAN(Game.Moves[i])</td>
+						<td class="pzNotColWhite" @onclick="@(e => SelectMoveAsync(e, moveNumber, Side.WHITE))">@g.Position.ToSAN(Game.Moves[i])</td>
 						@{ g.Add(Game.Moves[i]); }
 						@if (g.Moves.Count < Game.Moves.Count)
 						{
-							<td class="pzNotColBlack">@g.Position.ToSAN(Game.Moves[i+1])</td>
+							<td class="pzNotColBlack" @onclick="@(e => SelectMoveAsync(e, moveNumber, Side.BLACK))">@g.Position.ToSAN(Game.Moves[i+1])</td>
 							g.Add(Game.Moves[i + 1]);
 						}
 						else

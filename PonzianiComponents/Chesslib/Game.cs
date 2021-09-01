@@ -130,7 +130,7 @@ namespace PonzianiComponents.Chesslib
         /// </summary>
         /// <param name="moveNumber">Move number for which the position should be determined</param>
         /// <param name="side">Side (White/Black) for which the position should be determined</param>
-        /// <returns>The position at that point wiithin the game</returns>
+        /// <returns>The position at that point within the game</returns>
         public Position GetPosition(int moveNumber, Side side)
         {
             Position pos = new Position(StartPosition);
@@ -141,6 +141,24 @@ namespace PonzianiComponents.Chesslib
                 ++i;
             }
             return (pos.MoveNumber == moveNumber && pos.SideToMove == side) ? pos : null;
+        }
+        /// <summary>
+        /// Move for a given movenumber and side
+        /// </summary>
+        /// <param name="moveNumber">Move number for which the position should be determined</param>
+        /// <param name="side">Side (White/Black) for which the position should be determined</param>
+        /// <returns>The move at that point within the game</returns>
+        public ExtendedMove GetMove(int moveNumber, Side side)
+        {
+            int targetPly = PlyIndex(moveNumber, side);
+            int currentPly = PlyIndex(position.MoveNumber, position.SideToMove);
+            int indx = Moves.Count - (currentPly - targetPly);
+            return indx >= 0 && indx < Moves.Count ? Moves[indx] : null;
+        }
+
+        public static int PlyIndex(int moveNumber, Side side)
+        {
+            return 2 * (moveNumber - 1) + (int)side; 
         }
 
         private string PGNTagSection()

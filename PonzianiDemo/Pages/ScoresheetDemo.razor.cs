@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
+using PonzianiComponents;
 using PonzianiComponents.Chesslib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace PonzianiDemo.Pages
@@ -25,12 +27,19 @@ namespace PonzianiDemo.Pages
             get { return game.ToPGN(); }
         }
 
+        private string EventInfoText { set; get; } = "";
+
         private SDModel model { set; get; } = new SDModel();
         private Game game = new Game();
 
         private void HandleValidSubmit()
         {
             PGN = model.PGNText;
+        }
+
+        private void OnMoveSelected(MoveSelectInfo msi)
+        {
+            EventInfoText = $"OnMoveSelected({JsonSerializer.Serialize(msi)})";
         }
     }
 }
