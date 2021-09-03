@@ -1,5 +1,11 @@
 ﻿.pzChessboard {
+    width: 400px;
+    height: 400px;
+}
 
+.pzChessboardSetup {
+    width: 400px;
+    height: 500px;
 }
 
 .pzBoard {

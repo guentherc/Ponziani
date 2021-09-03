@@ -11,7 +11,11 @@ namespace PonzianiComponentsTest
     public abstract class BunitTestContext : TestContextWrapper
     {
         [TestInitialize]
-        public void Setup() => TestContext = new Bunit.TestContext();
+        public void Setup()
+        {
+            TestContext = new Bunit.TestContext();
+            TestContext.JSInterop.Mode = JSRuntimeMode.Loose;
+        }
 
         [TestCleanup]
         public void TearDown() => TestContext?.Dispose();

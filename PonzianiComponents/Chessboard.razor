@@ -1,4 +1,6 @@
-﻿<div class="modal @clsShowModalPromo" id="@PromoDialogId">
+﻿@inject IJSRuntime js
+
+<div class="modal @clsShowModalPromo" id="@PromoDialogId">
 	<div class="modal-content">
 		@if (position.SideToMove == Chesslib.Side.WHITE)
 		{
@@ -94,10 +96,10 @@
 {
 	<div class="alert alert-danger" role="alert"> @SetupErrorMessage</div>
 }
-<div id="@Id" style="@BoardStyle" @ondrop="HandleDropAsync" class="pzChessboard">
+<div id="@Id" @ondrop="HandleDropAsync" class="pzChessboard" @attributes=OtherAttributes @ref="_div">
 	@if (SetupMode)
 	{
-		<div class="pzSparePieces" style=@($"padding-left: {(Size - 6 * SquareSize) / 2}px") ondragover="event.preventDefault();"  @ondragenter="() => HandleDragEnterOutside()" >
+		<div class="pzSparePieces" style="align-content:center; height:10%; width:100%; padding-left:12.5%" ondragover="event.preventDefault();"  @ondragenter="() => HandleDragEnterOutside()" >
 		@{
 			string imgs = "KQRBNP";
 				char side = Rotate ? 'w' : 'b';
@@ -106,7 +108,7 @@
 					char pc = imgs[i];
 					char pieceChar = side == 'w' ? pc : Char.ToLower(pc);
 					<img src=@($"{PathPieceImages}{side}{pc}.png") 
-					     style="width: @(SquareSize)px; height: @(SquareSize)px;"
+					     style="width: 14.3%; height: 100%;"
 						 draggable="true"
 						 @ondragstart="() => HandleDragStartSparePieces(pieceChar)"/>
 				}
@@ -120,7 +122,7 @@
 		char[] board = Chesslib.Fen.GetPieceArray(_fen);
 		@for (int rank = RankStart; rank >= 0 && rank < 8; rank += RankStep)
 		{
-			<div class="pzBoardRow">
+			<div class="pzBoardRow" style="height: 12.5%; width: 100%;">
 				@for (int file = FileStart; file >= 0 && file < 8; file += FileStep)
 				{
 					Chesslib.Square square = (Chesslib.Square)(8 * rank + file);					
@@ -140,7 +142,7 @@
 								 title="Piece"
 								 draggable="@IsDraggable(square)"
 								 @ondragstart="() => HandleDragStart(square)"
-								 style="width: @(SquareSize)px; height: @(SquareSize)px;" /> 
+								 style="width: 100%; height: 100%;" /> 
 						}
 					 </div>
 				}
@@ -151,7 +153,7 @@
 	</div>
 	@if (SetupMode)
 	{
-		<div class="pzSparePieces" style=@($"padding-left: {(Size - 6 * SquareSize) / 2}px") ondragover="event.preventDefault();" @ondragenter="() => HandleDragEnterOutside()">
+		<div class="pzSparePieces" style="align-content:center; height:10%; width:100%; padding-left:12.5%" ondragover="event.preventDefault();" @ondragenter="() => HandleDragEnterOutside()">
 		@{
 			string imgs = "KQRBNP";
 				char side = Rotate ? 'b' : 'w';
@@ -160,7 +162,7 @@
 					char pc = imgs[i];
 					char pieceChar = side == 'w' ? pc : Char.ToLower(pc);
 					<img src=@($"{PathPieceImages}{side}{pc}.png") 
-					     style="width: @(SquareSize)px; height: @(SquareSize)px;"
+					     style="width: 14.3%; height: 100%;"
 						 draggable="true"
 						 @ondragstart="() => HandleDragStartSparePieces(pieceChar)"/>
 				}

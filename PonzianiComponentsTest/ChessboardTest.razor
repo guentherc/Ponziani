@@ -39,18 +39,6 @@
 	}
 
 	[TestMethod]
-	public void TestSizeParameter()
-	{
-		string id = "dummyIDTestSize";
-		int size = 1200;
-		var cut = RenderComponent<Chessboard>(parameters => parameters.Add(p => p.Size, size).Add(p => p.Id, id));
-		Assert.AreEqual(id, GetId(cut));
-		var div = (IElement)cut.Find($"#{id}");
-		var style = div.GetAttribute("style");
-		Assert.IsTrue(style.Contains($"width: {8 * cut.Instance.SquareSize + 4}px"));
-	}
-
-	[TestMethod]
 	public void TestShowCoordinatesParameter()
 	{
 		var cut = RenderComponent<Chessboard>(parameters => parameters.Add(p => p.ShowCoordinates, true));

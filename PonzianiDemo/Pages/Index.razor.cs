@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace PonzianiDemo.Pages
@@ -16,6 +17,7 @@ namespace PonzianiDemo.Pages
         public bool Rotate { set; get; } = false;
         public string Fen { set; get; } = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
         public bool HighlightLastMove { set; get; } = false;
+        public string OtherAttributes { set; get; } = @"style=""width: 400px;""";
     }
 
     public partial class Index
@@ -26,6 +28,21 @@ namespace PonzianiDemo.Pages
         private bool SetupMode { 
             set { if (value && value != chessboard.SetupMode) chessboard.SwitchToSetupMode(); else chessboard.ExitSetupMode(); }
             get { return chessboard != null && chessboard.SetupMode; } 
+        }
+
+        private static Regex regexOtherAttributes = new Regex(@"(\w+)=\""([^\""]+)\""");
+        private Dictionary<string, object> OtherAttributes
+        {
+            get
+            {
+                Dictionary<string, object> oo = new Dictionary<string, object>();
+                MatchCollection mc = regexOtherAttributes.Matches(model.OtherAttributes);
+                foreach (Match m in mc)
+                {
+                    oo.Add(m.Groups[1].Value, m.Groups[2].Value);
+                }
+                return oo;
+            }
         }
 
         private void OnMovePlayed(MovePlayedInfo mpi)

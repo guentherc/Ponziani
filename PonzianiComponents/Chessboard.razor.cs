@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using PonzianiComponents.Chesslib;
 using System;
 using System.Collections.Generic;
@@ -50,11 +51,6 @@ namespace PonzianiComponents
         [Parameter]
         public bool SetupMode { get { return _setupMode; } set { if (value) SwitchToSetupMode(); else ExitSetupMode(); } }
         /// <summary>
-        /// The size (in pixels) of the board (default 400)
-        /// </summary>
-        [Parameter]
-        public int Size { get; set; } = 400;
-        /// <summary>
         /// If true, the file and rank labels are displayed
         /// </summary>
         [Parameter]
@@ -75,6 +71,11 @@ namespace PonzianiComponents
         /// </summary>
         [Parameter]
         public bool HighlightLastAppliedMove { get; set; } = false;
+        /// <summary>
+        /// <para>Other HTML Attributes, which are applied to the root element of the rendered scoresheet.
+        /// </summary>
+        [Parameter(CaptureUnmatchedValues = true)]
+        public Dictionary<string, object> OtherAttributes { get; set; }
         /// <summary>
         /// Is called whenever the user played a move on the board. Only active if <see cref="SetupMode"/> is false.
         /// </summary>
@@ -152,10 +153,6 @@ namespace PonzianiComponents
         /// <returns>true if highlighted</returns>
         public bool IsHighlighted(Square s) => (highlightedSquares & (1ul << (int)s)) != 0;
         /// <summary>
-        /// Size (in pixels) of one square
-        /// </summary>
-        public int SquareSize => (Size - 4) / 8;
-        /// <summary>
         /// API call to set the position
         /// </summary>
         /// <param name="fen">The new position in FEN-Notation</param>
@@ -185,10 +182,11 @@ namespace PonzianiComponents
             _setupMode = false;
         }
 
+        private IJSObjectReference module = null;
         private bool _setupMode = false;
         private AdditionalSetupInfo addSI { set; get; } = new AdditionalSetupInfo(Chesslib.Fen.INITIAL_POSITION);
-        private string SquareStyle => $"width: {SquareSize}px; height: {SquareSize}px";
-        private string BoardStyle => $"width: {8 * SquareSize + 4}px";
+        private string SquareStyle => SetupMode ? $"width: 12.5%; height: 100%;" : $"width: 12.5%; height: 100%;";
+        private string BoardStyle => SetupMode ? $"width: 100%; height: 80%" : $"width: 100%; height: 100%";
         private int RankStart => Rotate ? 0 : 7;
         private int RankEnd => Rotate ? 7 : 0;
         private int RankStep => Rotate ? 1 : -1;
@@ -204,6 +202,8 @@ namespace PonzianiComponents
         private string clsShowModalPromo { set; get; }
         private string clsShowModalSetup { set; get; } = "";
         private UInt64 highlightedSquares = 0ul;
+        private ElementReference _div;
+        private double factor = 0;
 
         private string[] pieceImages = new string[] { "wQ", "bQ", "wR", "bR", "wB", "bB", "wN", "bN", "wP", "bP", "wK", "bK", "" };
         private string GetPieceImage(char pieceChar)
@@ -235,6 +235,19 @@ namespace PonzianiComponents
                 await HandleDropSetupMode();
             else
                 await HandleDropStandard();
+        }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender || module == null)
+            {
+                module = await js.InvokeAsync<IJSObjectReference>("import", "./_content/PonzianiComponents/ponziani.js");
+            }
+            if (module != null)
+            {
+                if (SetupMode) factor = 1.25; else factor = 1;
+                await module.InvokeVoidAsync("setHeight", new object[] { _div, factor });
+            }
         }
 
         private async Task HandleDropSetupMode()

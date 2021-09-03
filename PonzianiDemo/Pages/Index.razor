@@ -2,7 +2,7 @@
 
 <Chessboard Id="Test"
 			 ShowCoordinates="@model.ShowCoordinates"
-			 Size="@model.Size"
+			  OtherAttributes="@OtherAttributes"
 			 Rotate="@model.Rotate"
 			 SetupMode="@SetupMode"
 			 Fen="@model.Fen"
@@ -12,11 +12,11 @@
 			 @ref="chessboard" />
 
 <EditForm Model="@model">
-	<div class="form-group">
+		<div class="form-group">
 		<label>
-			Size:
+			Other Attributes:
 		</label>
-		<InputNumber class="form-control" @bind-Value="model.Size" />
+		<InputText class="form-control" @bind-Value="model.OtherAttributes" />
 	</div>
 	<div class="form-check">
 
