@@ -186,7 +186,10 @@ namespace PonzianiComponents.Chesslib
                 Match m = regex.Match(Comment);
                 if (m.Success)
                 {
-                    if (regex == regexTCECComment)
+                    if (regex == regexLichessComment) {
+                        Clock = TimeSpan.Parse(m.Groups[1].Value);
+                    }
+                    else if (regex == regexTCECComment)
                     {
                         for (int i = 0; i < m.Groups[2].Captures.Count; ++i)
                         {
@@ -238,7 +241,8 @@ namespace PonzianiComponents.Chesslib
         static readonly Regex regexCutechessComment = new Regex(@"((?:\+|-)[\d\.]+)/(\d+)\s([\d\.]+)s");
         static readonly Regex regexGrahamComment = new Regex(@"\[\%eval (\-?\d+),(\d+)\]\s?\[\%emt (\d?\d\:\s?\d\d\:\d\d)\]");
         static readonly Regex regexTCECComment = new Regex(@"((\w+)=([^,]+),\s?)+");
+        static readonly Regex regexLichessComment = new Regex(@"\[\%clk (\d?\d\:\s?\d\d\:\d\d)\]");
 
-        static List<Regex> commentRegexList = new List<Regex>() { regexCutechessComment, regexGrahamComment, regexTCECComment };
+        static List<Regex> commentRegexList = new List<Regex>() { regexLichessComment, regexCutechessComment, regexGrahamComment, regexTCECComment };
     }
 }

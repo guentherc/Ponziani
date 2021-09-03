@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Microsoft.JSInterop;
 
 namespace PonzianiComponents
 {
@@ -71,6 +72,43 @@ namespace PonzianiComponents
         /// </summary>
         [Parameter(CaptureUnmatchedValues = true)]
         public Dictionary<string, object> OtherAttributes { get; set; }
+        /// <summary>
+        /// API Method to add a move to the scoresheet
+        /// </summary>
+        /// <param name="move">Move to be added</param>
+        /// <returns>true, if move was added successful, false if not</returns>
+        public async Task<bool> AddMoveAsync(ExtendedMove move)
+        {
+            bool result = Game.Add(move);
+            //await resultElement.FocusAsync();
+            StateHasChanged();
+            return result;
+        }
+        /// <summary>
+        /// API Method to add a move to the scoresheet
+        /// </summary>
+        /// <param name="move">Move to be added</param>
+        /// <returns>true, if move was added successful, false if not</returns>
+        public async Task<bool> AddMoveAsync(Move move)
+        {
+            bool result = Game.Add(new ExtendedMove(move));
+            //await resultElement.FocusAsync();
+            StateHasChanged();
+            return result;
+        }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender || module == null)
+            {
+                module = await js.InvokeAsync<IJSObjectReference>("import", "./_content/PonzianiComponents/ponziani.js");
+            }
+            if (!firstRender && module != null && _tbody.Context != null && Mode == DisplayMode.TABULAR && scrolledMoveNumber != Game.Position.MoveNumber)
+            {
+                await module.InvokeVoidAsync("scrollToBottom", new object[] { _tbody });
+                scrolledMoveNumber = Game.Position.MoveNumber;
+            }
+        }
 
         private async Task SelectMoveAsync(EventArgs eventArgs, int moveNumber, Side side)
         {
@@ -89,6 +127,10 @@ namespace PonzianiComponents
         }
 
         private Regex regexHeight = new Regex(@"height\:\s*([^;]+)");
+        private IJSObjectReference module = null;
+        private int scrolledMoveNumber = 0;
+        private ElementReference _tbody;
+
     }
 
     public class MoveSelectInfo

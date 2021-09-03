@@ -269,5 +269,24 @@ Kh2 {-15.95/6 0.096s} 0-1";
 [Annotator ""lichess.org""]
 
 1. d4 e6 2. c4 b6 { A40 English Defense } 3. Nc3 Bb7 4. e4 Qe7 5. Bd3 Nc6 6. Nge2 O-O-O 7. O-O h5 8. a4 a5 9. Nb5 g5 10. d5 Ne5 11. Be3 exd5 12. cxd5 Nxd3 13. Qxd3 g4 14. Rac1 c6 15. Na7+ Kb8 16. Bxb6 cxd5 17. Qd4 dxe4 18. Bxd8 Qxd8 19. Qxh8 Nh6 20. Qd4 d6 21. Nb5 Nf5 22. Qa7# { White wins by checkmate. } 1-0";
+
+        public static string PGN_LICHESS_LIVE_GAME = @"[Event ""Rated Classical game""]
+[Site ""https://lichess.org/gwyo6R4g""]
+[Date ""2021.09.02""]
+[White ""Google_999""]
+[Black ""heyitsMiro""]
+[Result ""*""]
+[UTCDate ""2021.09.02""]
+[UTCTime ""06:04:00""]
+[WhiteElo ""2003""]
+[BlackElo ""2157""]
+[Variant ""Standard""]
+[TimeControl ""1800+0""]
+[ECO ""A46""]
+[Opening ""Indian Defense: Spielmann-Indian""]
+[Termination ""Unterminated""]
+
+1. d4 { [%clk 0:30:00] } 1... Nf6 { [%clk 0:30:00] } 2. Nf3 { [%clk 0:29:55] } 2... c5 { [%clk 0:29:52] } 3. c3 { [%clk 0:29:48] } 3... b6 { [%clk 0:29:37] } 4. g3 { [%clk 0:29:46] } 4... Bb7 { [%clk 0:29:35] } 5. Bg2 { [%clk 0:29:45] } 5... e6 { [%clk 0:29:29] } 6. O-O { [%clk 0:29:43] } 6... Be7 { [%clk 0:29:14] } 7. Nbd2 { [%clk 0:29:40] } 7... O-O { [%clk 0:29:08] } 8. Re1 { [%clk 0:29:38] } 8... d5 { [%clk 0:22:23] } 9. b3 { [%clk 0:29:21] } 9... Nbd7 { [%clk 0:21:26] } 10. Bb2 { [%clk 0:29:16] } 10... Qc7 { [%clk 0:20:00] } 11. Rc1 { [%clk 0:29:12] } 11... c4 { [%clk 0:17:59] } 12. bxc4 { [%clk 0:29:06] } 12... dxc4 { [%clk 0:17:52] } 13. e4 { [%clk 0:29:01] } 13... e5 { [%clk 0:17:21] } 14. d5 { [%clk 0:28:55] } 14... Nc5 { [%clk 0:17:15] } 15. Bf1 { [%clk 0:28:30] } 15... b5 { [%clk 0:16:50] } 16. Ba3 { [%clk 0:28:07] } *
+";
     }
 }

@@ -22,6 +22,7 @@ span.pzMoveText {
     padding: 3px;
     padding-left: 10px;
     padding-right: 10px;
+    width: 50%;
 }
 .pzNotColBlack {
     text-align: right;
@@ -29,4 +30,8 @@ span.pzMoveText {
     padding: 3px;
     padding-left: 10px;
     padding-right: 10px;
+    width: 50%;
+}
+.pzNotResult {
+    font-weight: bold
 }
