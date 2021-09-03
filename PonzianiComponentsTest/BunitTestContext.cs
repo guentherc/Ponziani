@@ -14,7 +14,9 @@ namespace PonzianiComponentsTest
         public void Setup()
         {
             TestContext = new Bunit.TestContext();
-            TestContext.JSInterop.Mode = JSRuntimeMode.Loose;
+            var moduleInterop = TestContext.JSInterop.SetupModule("./_content/PonzianiComponents/ponziani.js");
+            moduleInterop.SetupVoid("setHeight", _ => true);
+            moduleInterop.SetupVoid("scrollToBottom", _ => true);
         }
 
         [TestCleanup]
