@@ -4,16 +4,33 @@
 <h3>Lichess TV</h3>
 
 <div class="container">
-	<div class="row justify-content-center">
-		<h4>@PairingString</h4>
-	</div>
-	<div class="row justify-content-center">
-		<h6>@Clock</h6>
-	</div>
-	<div class="row justify-content-center">
-		<Chessboard Fen="@Game.Position.FEN" @ref="chessboard" />
-		<Scoresheet Game="@Game" style="width: 400px; height: 400px; padding:5px" />
-	</div>
+	<div class="row">
+		<EditForm Model="@this">
+			  <div class="form-group">
+				  <label for="inpChannel">Select channel</label>
+			<InputSelect Name="channels" ValueExpression="@(()=>selectedChannel)" ValueChanged="@((string value) => OnChannelSelected(value))" id="inpChannel">
+			@if (selectedChannel == null)
+				{
+				<option Name="channels" Value="off">Off</option>			
+				}
+				@foreach (var channel in games.Keys)
+				{
+		<option Name="channels" Value="@channel">@channel</option>
+				}
+   </InputSelect>
+   </div>
+  </EditForm>
+ </div>
+ <div class="row justify-content-center">
+  <h4>@PairingString</h4>
+ </div>
+ <div class="row justify-content-center">
+  <h6>@Clock</h6>
+ </div>
+ <div class="row justify-content-center">
+  <Chessboard Fen="@Game.Position.FEN" @ref="chessboard" />
+  <Scoresheet Game="@Game" style="width: 400px; height: 400px; padding:5px" />
+ </div>
 </div>
 
 @code {

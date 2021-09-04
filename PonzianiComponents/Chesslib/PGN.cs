@@ -425,7 +425,7 @@ namespace PonzianiComponents.Chesslib
                     if (potMove.To == to && potMove.PromoteTo == promoType
                         && pos.GetPiece(potMove.From) == movingPiece) potMoves.Add(potMove);
                 }
-                Debug.Assert(potMoves.Count > 0);
+                Debug.Assert(potMoves.Count > 0, $"Couldn't parse token: {token} m: {m.Value} pos: {pos.FEN}");
                 if (potMoves.Count == 1) move = potMoves[0];
                 else
                 {

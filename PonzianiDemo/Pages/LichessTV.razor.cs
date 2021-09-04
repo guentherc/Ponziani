@@ -12,15 +12,21 @@ namespace PonzianiDemo.Pages
     public partial class LichessTV
     {
         private Game Game = new Game();
-        private Dictionary<string, string> games = null;
+        private Dictionary<string, string> games = new Dictionary<string, string>();
         private string gameid = null;
         private Chessboard chessboard;
-        CancellationTokenSource cts;
+        Dictionary<string, CancellationTokenSource> cts = new Dictionary<string, CancellationTokenSource>();
+        private string selectedChannel = null;
 
         private string Clock { get
             {
-                string clock0 = Game.Moves.Count > 0 ? Game.Moves.Last().Clock.ToString() : "0";
-                string clock1 = Game.Moves.Count > 1 ? Game.Moves[Game.Moves.Count - 2].Clock.ToString() : "0";
+                TimeSpan c0 = Game.Moves.Count > 0 ? Game.Moves.Last().Clock : new TimeSpan(0);
+                TimeSpan c1 = Game.Moves.Count > 1 ? Game.Moves[Game.Moves.Count - 2].Clock : new TimeSpan(0);
+                string format = "";
+                if (c0 < new TimeSpan(0, 1, 0) && c1 < new TimeSpan(0, 1, 0)) format = @"s\.f";
+                else if (c0 < new TimeSpan(1, 0, 0) && c1 < new TimeSpan(1, 0, 0)) format = @"m\:ss";
+                string clock0 = c0.ToString(format);
+                string clock1 = c1.ToString(format);
                 if (Game.SideToMove == Side.BLACK) return $"{clock0} - {clock1}"; else return $"{clock1} - {clock0}";
             } }
 
@@ -35,7 +41,22 @@ namespace PonzianiDemo.Pages
                 }
             }
             gameid = games["Top Rated"];
-            Get();
+        }
+
+        private async Task OnChannelSelected(string channel)
+        {
+            Console.WriteLine($"Selected Channel: {channel}");
+            if (selectedChannel != null && cts.ContainsKey(selectedChannel) && !cts[selectedChannel].IsCancellationRequested)
+            {
+                Stop();
+            }
+            if (channel == "off")
+            {
+                selectedChannel = null;
+                return;
+            }
+            selectedChannel = channel;
+            Get(channel);
         }
 
         private async Task Update()
@@ -61,31 +82,37 @@ namespace PonzianiDemo.Pages
             return gameids;
         }
 
-        async Task Get()
+        async Task Get(string channel)
         {
-            cts = new CancellationTokenSource();
+            games = await GetGameIdsAsync();
+            gameid = games[channel];
+            if (cts.ContainsKey(channel))
+                cts[channel] = new CancellationTokenSource();
+            else cts.Add(channel, new CancellationTokenSource());
 
-            while (!cts.Token.IsCancellationRequested)
+            while (!cts[channel].Token.IsCancellationRequested)
             {
-                Console.WriteLine("Update!");
                 string pgn = await HttpClient.GetStringAsync($"https://lichess.org/game/export/{gameid}");
                 Game = PGN.Parse(pgn, true)[0];
                 if (Game.Result != Result.OPEN)
                 {
                     games = await GetGameIdsAsync();
-                    gameid = games["Top Rated"];
+                    gameid = games[channel];
 
                 }
                 chessboard.ClearHighlighting();
-                chessboard.SetHighlightSquare(Game.Moves.Last().From);
-                chessboard.SetHighlightSquare(Game.Moves.Last().To);
+                if (Game.Moves.Count > 0)
+                {
+                    chessboard.SetHighlightSquare(Game.Moves.Last().From);
+                    chessboard.SetHighlightSquare(Game.Moves.Last().To);
+                }
                 StateHasChanged();
                 await Task.Delay(1000);
             }
         }
 
 
-        void Stop() => cts?.Cancel();
+        void Stop() => cts[selectedChannel].Cancel();
 
         private static HashSet<string> supported = new HashSet<string>() { "Bot", "UltraBullet", "Bullet", "Computer", "Rapid", "Top Rated", "Blitz", "Classical" };
 
