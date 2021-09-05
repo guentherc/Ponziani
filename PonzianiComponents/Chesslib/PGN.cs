@@ -351,6 +351,7 @@ namespace PonzianiComponents.Chesslib
             //Replace wrong castlings
             moveText = moveText.Replace("0-0-0", "O-O-O");
             moveText = moveText.Replace("0-0", "O-O");
+            moveText = moveText.Replace("\r\n", "\n");
             //Now everything should be prepared to parse the moves
             string[] tokens = moveText.Split(new char[] { ' ', '\n' }, StringSplitOptions.RemoveEmptyEntries);
             Position beforePos = null;
@@ -417,6 +418,7 @@ namespace PonzianiComponents.Chesslib
         {
             Game vGame = new Game(pos.FEN);
             Position beforePos = null;
+            variation = variation.Replace("\r\n", "\n");
             string[] tokens = variation.Split(new char[] { ' ', '\n' }, StringSplitOptions.RemoveEmptyEntries);
             foreach (string token in tokens)
             {

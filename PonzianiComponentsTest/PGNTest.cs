@@ -117,5 +117,22 @@ namespace PonzianiComponentsTest
             Assert.IsNotNull(games[0].Moves[12].Variations);
             Assert.AreEqual(2, games[0].Moves[20].Variations[0][4].Variations[0].Count);
         }
+
+        [TestMethod]
+        public void ParseScidFile()
+        {
+            var games = PGN.Parse(Data.PGN_SCID, true, true);
+            Assert.AreEqual(1, games.Count);
+            Assert.AreEqual(57, games[0].Moves.Count);
+            Assert.AreEqual(3, games[0].Moves[10].Variations[0].Count);
+            Assert.AreEqual(2, games[0].Moves[31].Variations.Count);
+            string pgn = games[0].ToPGN(null, true);
+            games = null;
+            games = PGN.Parse(pgn, true, true);
+            Assert.AreEqual(1, games.Count);
+            Assert.AreEqual(57, games[0].Moves.Count);
+            Assert.AreEqual(3, games[0].Moves[10].Variations[0].Count);
+            Assert.AreEqual(2, games[0].Moves[31].Variations.Count);
+        }
     }
 }

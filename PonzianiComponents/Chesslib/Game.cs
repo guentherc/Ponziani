@@ -83,12 +83,19 @@ namespace PonzianiComponents.Chesslib
         /// Outputs the Game in SAN (Standard Algebraic Notation) Notation
         /// </summary>
         /// <returns>A string containing the notation</returns>
-        public string SANNotation(bool withComments = true)
+        public string SANNotation(bool withComments = true , bool withVariations = false)
         {
             Position pos = new Position(StartPosition);
+            StringBuilder sb = GetMoveText(pos, moves, withComments, withVariations);
+            sb.Append(PGN.ResultToString(Result));
+            return sb.ToString().Trim();
+        }
+
+        private StringBuilder GetMoveText(Position pos, List<ExtendedMove> _moves, bool withComments, bool withVariations)
+        {
             StringBuilder sb = new StringBuilder();
             if (pos.SideToMove == Side.BLACK) sb.Append($"{pos.MoveNumber}... ");
-            foreach (ExtendedMove m in moves)
+            foreach (ExtendedMove m in _moves)
             {
                 if (pos.SideToMove == Side.WHITE) sb.Append($"{pos.MoveNumber}. ");
                 sb.Append(pos.ToSAN(m)).Append(" ");
@@ -96,23 +103,30 @@ namespace PonzianiComponents.Chesslib
                 {
                     sb.Append("{").Append(m.Comment).Append("} ");
                 }
+                if (withVariations && m.Variations != null)
+                {
+                    foreach (var variation in m.Variations)
+                    {
+                        sb.Append($"( {GetMoveText((Position)pos.Clone(), variation, withComments, withVariations)} ) ");
+                    }
+                }
                 pos.ApplyMove(m);
             }
-            sb.Append(PGN.ResultToString(Result));
-            return sb.ToString().Trim();
+            return sb;
         }
+
         /// <summary>
         /// Outputs the Game in PGN (Portable Game Notation) format
         /// </summary>
         /// <param name="formatter">A <see cref="IPGNOutputFormatter"/>, which creates PGN comments for each move</param>
         /// <returns>A string containing the pgn formatted gamse</returns>
-        public string ToPGN(IPGNOutputFormatter formatter = null)
+        public string ToPGN(IPGNOutputFormatter formatter = null, bool withVariations = false)
         {
             if (formatter != null) foreach (ExtendedMove m in moves) m.Comment = formatter.Comment(m);
             StringBuilder sb = new StringBuilder(PGNTagSection());
             sb.AppendLine();
             //split movetext to lines with max 80 characters
-            string movetext = SANNotation();
+            string movetext = SANNotation(true, withVariations);
             while (movetext.Length > 80)
             {
                 string m80 = movetext.Substring(0, 81);
