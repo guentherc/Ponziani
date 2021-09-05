@@ -366,7 +366,7 @@ namespace PonzianiComponents.Chesslib
                         int indx = Int32.Parse(m.Groups[1].Value);
                         if (game.Moves.Count > 0)
                         {
-                            game.Moves.Last().Comment = commentBuffer[indx];
+                            game.Moves.Last().Comment =  RemoveLineBreaks(commentBuffer[indx]);
                             game.Moves.Last().ParseComment();
                         }
                     }
@@ -393,6 +393,11 @@ namespace PonzianiComponents.Chesslib
             }
 
             return game;
+        }
+
+        internal static string RemoveLineBreaks(string comment)
+        {
+            return regexReplaceLineBreakTimeSpan.Replace(comment, ":$1").Replace('\n', ' ').Replace("\r", "");
         }
 
         internal static bool ParseMove(Position pos, string token, out Move move)
@@ -445,17 +450,19 @@ namespace PonzianiComponents.Chesslib
             return move;
         }
 
-        private static Regex regexPGNGame = new Regex(@"((?:^\[[^\]]+\]\s*$?){2,})(?:\r?\n)+(^[^\[\s].*)", RegexOptions.Multiline);
-        private static Regex regexPGNTag = new Regex(@"\[([^\s]*)\s+""(.*)""\]", RegexOptions.Multiline);
-        private static Regex regexPGNComment = new Regex(@"\{(?>\{(?<c>)|[^{}]+|\}(?<-c>))*(?(c)(?!))\}", RegexOptions.Singleline);
-        private static Regex regexPGNVariations = new Regex(@"\((?>\((?<c>)|[^()]+|\)(?<-c>))*(?(c)(?!))\)", RegexOptions.Singleline);
-        private static Regex regexPGNNag = new Regex(@"\$\d+");
-        private static Regex regexPGNCommentPlaceholder = new Regex(@"@(\d+)@");
-        private static Regex regexPGNBlackMovenumber = new Regex(@"(\d+\.)\.+");
-        private static Regex regexPGNWhitespace = new Regex(@"\s{2,}", RegexOptions.Singleline);
-        private static Regex regexPGNMovenumberWithoutSpace = new Regex(@"\d+\.[OQRBNKa-h]");
-        private static Regex regexPGNMovenumber = new Regex(@"(\d+)\.");
-        internal static Regex regexPGNMove = new Regex(@"(?:([QRBNK])?([1-8a-h])?(x?)([a-h][1-8])(?:=([QRBN]))?[\+#!\?]*)|(?:O-O-O[\+#!\?]*)|(?:O-O[\+#!\?]*)");
+        private static readonly Regex regexPGNGame = new Regex(@"((?:^\[[^\]]+\]\s*$?){2,})(?:^\s*)(?:^\{[^\}]+\}\r?\n)?(^[^\[\{].*(?:\r?\n^\S.*$)*)", RegexOptions.Multiline | RegexOptions.Compiled);
+        private static readonly Regex regexPGNTag = new Regex(@"\[([^\s]*)\s+""(.*)""\]", RegexOptions.Multiline | RegexOptions.Compiled);
+        private static readonly Regex regexPGNComment = new Regex(@"\{(?>\{(?<c>)|[^{}]+|\}(?<-c>))*(?(c)(?!))\}", RegexOptions.Singleline | RegexOptions.Compiled);
+        private static readonly Regex regexPGNVariations = new Regex(@"\((?>\((?<c>)|[^()]+|\)(?<-c>))*(?(c)(?!))\)", RegexOptions.Singleline | RegexOptions.Compiled);
+        private static readonly Regex regexPGNNag = new Regex(@"\$\d+", RegexOptions.Compiled);
+        private static readonly Regex regexPGNCommentPlaceholder = new Regex(@"@(\d+)@", RegexOptions.Compiled);
+        private static readonly Regex regexPGNBlackMovenumber = new Regex(@"(\d+\.)\.+", RegexOptions.Compiled);
+        private static readonly Regex regexPGNWhitespace = new Regex(@"\s{2,}", RegexOptions.Singleline | RegexOptions.Compiled);
+        private static readonly Regex regexPGNMovenumberWithoutSpace = new Regex(@"\d+\.[OQRBNKa-h]", RegexOptions.Compiled);
+        private static readonly Regex regexPGNMovenumber = new Regex(@"(\d+)\.", RegexOptions.Compiled);
+        internal static readonly Regex regexPGNMove = new Regex(@"(?:([QRBNK])?([1-8a-h])?(x?)([a-h][1-8])(?:=([QRBN]))?[\+#!\?]*)|(?:O-O-O[\+#!\?]*)|(?:O-O[\+#!\?]*)");
+        private static readonly Regex regexReplaceLineBreakTimeSpan = new Regex(@"\:\r?\n^(\d)", RegexOptions.Multiline | RegexOptions.Compiled);
+        private static readonly Regex regexReplaceLineBreak = new Regex(@"\r?\n^", RegexOptions.Multiline | RegexOptions.Compiled);
 
         private static List<string> commentBuffer = null;
 

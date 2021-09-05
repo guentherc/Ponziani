@@ -114,7 +114,7 @@ namespace PonzianiComponents.Chesslib
                 return Chess.SquareToString(From) + Chess.SquareToString(To);
             else return Chess.SquareToString(From) + Chess.SquareToString(To) + "qrbn"[(int)PromoteTo];
         }
-        
+
         private static Dictionary<char, PieceType> PieceTypeByChar = new Dictionary<char, PieceType>()
                              { { 'q', PieceType.QUEEN }, { 'r', PieceType.ROOK }, { 'b', PieceType.BISHOP }, { 'n', PieceType.KNIGHT }, { 'p', PieceType.PAWN}, { 'k', PieceType.KING },
                                { 'Q', PieceType.QUEEN }, { 'R', PieceType.ROOK }, { 'B', PieceType.BISHOP }, { 'N', PieceType.KNIGHT }, { 'P', PieceType.PAWN}, { 'K', PieceType.KING }};
@@ -186,8 +186,25 @@ namespace PonzianiComponents.Chesslib
                 Match m = regex.Match(Comment);
                 if (m.Success)
                 {
-                    if (regex == regexLichessComment) {
-                        Clock = TimeSpan.Parse(m.Groups[1].Value);
+                    if (regex == regexLichessComment)
+                    {
+                        for (int i = 0; i < m.Groups[1].Captures.Count; ++i)
+                        {
+                            string key = m.Groups[1].Captures[i].Value;
+                            string value = m.Groups[2].Captures[i].Value.Trim();
+                            if (key == "clk") Clock = TimeSpan.Parse(value);
+                            else if (key == "eval")
+                            {
+                                var token = value.Split(',');
+                                Evaluation = token[0].IndexOf('.') >= 0 ? (int)(100 * Double.Parse(token[0], CultureInfo.InvariantCulture)) : int.Parse(token[0]);
+                                if (token.Length > 1) Depth = Int32.Parse(token[1]);
+                            }
+                            else if (key == "emt")
+                            {
+                                if (value.IndexOf(':') > 0) UsedThinkTime = TimeSpan.Parse(value);
+                                else UsedThinkTime = TimeSpan.FromSeconds(Double.Parse(value, CultureInfo.InvariantCulture));
+                            }
+                        }
                     }
                     else if (regex == regexTCECComment)
                     {
@@ -205,27 +222,6 @@ namespace PonzianiComponents.Chesslib
                         Depth = Int32.Parse(m.Groups[2].Value);
                         UsedThinkTime = TimeSpan.FromSeconds(Double.Parse(m.Groups[3].Value, CultureInfo.InvariantCulture));
                     }
-                    else if (regex == regexGrahamComment)
-                    {
-                        Evaluation = Int32.Parse(m.Groups[1].Value);
-                        Depth = Int32.Parse(m.Groups[2].Value);
-                        try
-                        {
-                            UsedThinkTime = TimeSpan.Parse(m.Groups[3].Value);
-                        }
-                        catch (Exception)
-                        {
-                            string secondTry = m.Groups[3].Value.Replace(" ", string.Empty);
-                            try
-                            {
-                                UsedThinkTime = TimeSpan.Parse(m.Groups[3].Value);
-                            }
-                            catch (Exception)
-                            {
-
-                            }
-                        }
-                    }
                     break;
                 }
                 indx++;
@@ -238,11 +234,10 @@ namespace PonzianiComponents.Chesslib
             }
         }
 
-        static readonly Regex regexCutechessComment = new Regex(@"((?:\+|-)[\d\.]+)/(\d+)\s([\d\.]+)s");
-        static readonly Regex regexGrahamComment = new Regex(@"\[\%eval (\-?\d+),(\d+)\]\s?\[\%emt (\d?\d\:\s?\d\d\:\d\d)\]");
-        static readonly Regex regexTCECComment = new Regex(@"((\w+)=([^,]+),\s?)+");
-        static readonly Regex regexLichessComment = new Regex(@"\[\%clk (\d?\d\:\s?\d\d\:\d\d)\]");
+        static readonly Regex regexCutechessComment = new Regex(@"((?:\+|-)?[\d\.]+)/(\d+)[\s\r\n]+([\d\.]+)s", RegexOptions.Compiled);
+        static readonly Regex regexTCECComment = new Regex(@"((\w+)=([^,]+),\s?)+", RegexOptions.Compiled);
+        static readonly Regex regexLichessComment = new Regex(@"(?:\[\%(\w+)([^\]]+)\]\s?)+", RegexOptions.Compiled);
 
-        static List<Regex> commentRegexList = new List<Regex>() { regexLichessComment, regexCutechessComment, regexGrahamComment, regexTCECComment };
+        static List<Regex> commentRegexList = new List<Regex>() { regexLichessComment, regexCutechessComment, regexTCECComment };
     }
 }
