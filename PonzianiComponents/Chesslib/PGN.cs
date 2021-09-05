@@ -300,20 +300,21 @@ namespace PonzianiComponents.Chesslib
         /// </summary>
         /// <param name="pgn">The PGN input</param>
         /// <param name="comments">if true, comments are parsed as well</param>
+        /// <param name="variations">if true, variations are parsed as well</param>
         /// <returns>List of parsed Games</returns>
-        public static List<Game> Parse(string pgn, bool comments = false)
+        public static List<Game> Parse(string pgn, bool comments = false, bool variations = false)
         {
             MatchCollection mcGames = regexPGNGame.Matches(pgn);
             List<Game> games = new List<Game>(mcGames.Count);
             foreach (Match mGame in mcGames)
             {
-                Game game = ParseGame(mGame, comments);
+                Game game = ParseGame(mGame, comments, variations);
                 games.Add(game);
             }
             return games;
         }
 
-        private static Game ParseGame(Match mGame, bool comments = false)
+        private static Game ParseGame(Match mGame, bool comments = false, bool variations = false)
         {
             string tags = mGame.Groups[1].Value;
             string moveText = mGame.Groups[2].Value;
@@ -331,11 +332,16 @@ namespace PonzianiComponents.Chesslib
                 moveText = regexPGNComment.Replace(moveText, ReplaceComment);
             }
             else moveText = regexPGNComment.Replace(moveText, string.Empty);
-            //Remove variations
-            moveText = regexPGNVariations.Replace(moveText, string.Empty);
             //Remove NAGs
             moveText = regexPGNNag.Replace(moveText, string.Empty);
             moveText = moveText.Trim();
+            //Remove variations
+            if (variations)
+            {
+                variationBuffer = new List<string>();
+                moveText = regexPGNVariations.Replace(moveText, ReplaceVariation);
+            }
+            else moveText = regexPGNVariations.Replace(moveText, string.Empty);
             //Replace Black move numbering
             moveText = moveText[0] + regexPGNBlackMovenumber.Replace(moveText.Substring(1), string.Empty);
             //Add missing spaces after move number
@@ -347,11 +353,13 @@ namespace PonzianiComponents.Chesslib
             moveText = moveText.Replace("0-0", "O-O");
             //Now everything should be prepared to parse the moves
             string[] tokens = moveText.Split(new char[] { ' ', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            Position beforePos = null;
             foreach (string token in tokens)
             {
                 Match m;
                 if (ParseMove(game.Position, token, out Move move))
                 {
+                    beforePos = game.Position;
                     game.Add(new ExtendedMove(move));
                 }
                 else if ((m = regexPGNMovenumber.Match(token)).Success)
@@ -374,8 +382,17 @@ namespace PonzianiComponents.Chesslib
                     {
                         Debug.Fail(ex.Message);
                     }
-                }
-                else if (token == "1-0")
+                } else if (variations && (m = regexPGNVariationPlaceholder.Match(token)).Success) {
+                    try
+                    {
+                        int indx = Int32.Parse(m.Groups[1].Value);
+                        AddVariation(game, beforePos, variationBuffer[indx]);
+                    }
+                    catch (ArgumentOutOfRangeException ex)
+                    {
+                        Debug.Fail(ex.Message);
+                    }
+                } else if (token == "1-0")
                 {
                     game.Result = Result.WHITE_WINS;
                 }
@@ -391,8 +408,75 @@ namespace PonzianiComponents.Chesslib
                 else if (token == "...") continue;
                 else Debug.Fail("Could not interpret token: " + token);
             }
-
+            commentBuffer = null;
+            variationBuffer = null;
             return game;
+        }
+
+        private static void AddVariation(Game game, Position pos, string variation)
+        {
+            Game vGame = new Game(pos.FEN);
+            Position beforePos = null;
+            string[] tokens = variation.Split(new char[] { ' ', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string token in tokens)
+            {
+                Match m;
+                if (ParseMove(vGame.Position, token, out Move move))
+                {
+                    beforePos = vGame.Position;
+                    vGame.Add(new ExtendedMove(move));
+                }
+                else if ((m = regexPGNMovenumber.Match(token)).Success)
+                {
+                    int movenumber = Int32.Parse(m.Groups[1].Value);
+                    Debug.Assert(movenumber == vGame.Position.MoveNumber);
+                }
+                else if (commentBuffer != null && (m = regexPGNCommentPlaceholder.Match(token)).Success)
+                {
+                    try
+                    {
+                        int indx = Int32.Parse(m.Groups[1].Value);
+                        if (vGame.Moves.Count > 0)
+                        {
+                            vGame.Moves.Last().Comment = RemoveLineBreaks(commentBuffer[indx]);
+                            vGame.Moves.Last().ParseComment();
+                        }
+                    }
+                    catch (ArgumentOutOfRangeException ex)
+                    {
+                        Debug.Fail(ex.Message);
+                    }
+                }
+                else if ((m = regexPGNVariationPlaceholder.Match(token)).Success)
+                {
+                    try
+                    {
+                        int indx = Int32.Parse(m.Groups[1].Value);
+                        AddVariation(vGame, beforePos, variationBuffer[indx]);
+                    }
+                    catch (ArgumentOutOfRangeException ex)
+                    {
+                        Debug.Fail(ex.Message);
+                    }
+                }
+                else if (token == "1-0")
+                {
+                    vGame.Result = Result.WHITE_WINS;
+                }
+                else if (token == "0-1")
+                {
+                    vGame.Result = Result.BLACK_WINS;
+                }
+                else if (token == "1/2-1/2")
+                {
+                    vGame.Result = Result.DRAW;
+                }
+                else if (token == "*") vGame.Result = Result.OPEN;
+                else if (token == "...") continue;
+                else Debug.Fail("Could not interpret token: " + token);
+            }
+            if (game.Moves.Last().Variations == null) game.Moves.Last().Variations = new List<List<ExtendedMove>>();
+            game.Moves.Last().Variations.Add(vGame.Moves);
         }
 
         internal static string RemoveLineBreaks(string comment)
@@ -456,6 +540,7 @@ namespace PonzianiComponents.Chesslib
         private static readonly Regex regexPGNVariations = new Regex(@"\((?>\((?<c>)|[^()]+|\)(?<-c>))*(?(c)(?!))\)", RegexOptions.Singleline | RegexOptions.Compiled);
         private static readonly Regex regexPGNNag = new Regex(@"\$\d+", RegexOptions.Compiled);
         private static readonly Regex regexPGNCommentPlaceholder = new Regex(@"@(\d+)@", RegexOptions.Compiled);
+        private static readonly Regex regexPGNVariationPlaceholder = new Regex(@"@V(\d+)@", RegexOptions.Compiled);
         private static readonly Regex regexPGNBlackMovenumber = new Regex(@"(\d+\.)\.+", RegexOptions.Compiled);
         private static readonly Regex regexPGNWhitespace = new Regex(@"\s{2,}", RegexOptions.Singleline | RegexOptions.Compiled);
         private static readonly Regex regexPGNMovenumberWithoutSpace = new Regex(@"\d+\.[OQRBNKa-h]", RegexOptions.Compiled);
@@ -465,6 +550,7 @@ namespace PonzianiComponents.Chesslib
         private static readonly Regex regexReplaceLineBreak = new Regex(@"\r?\n^", RegexOptions.Multiline | RegexOptions.Compiled);
 
         private static List<string> commentBuffer = null;
+        private static List<string> variationBuffer = null;
 
         private static string ReplaceComment(Match m)
         {
@@ -472,6 +558,22 @@ namespace PonzianiComponents.Chesslib
             {
                 commentBuffer.Add(m.Value.Substring(1, m.Value.Length - 2));
                 return $"@{commentBuffer.Count - 1}@";
+            }
+            catch (NullReferenceException)
+            {
+                return string.Empty;
+            }
+        }
+
+        private static string ReplaceVariation(Match m)
+        {
+            try
+            {
+                string v = m.Value.Substring(1, m.Value.Length - 2);
+                if (commentBuffer != null) v = regexPGNComment.Replace(v, ReplaceComment);
+                v = regexPGNVariations.Replace(v, ReplaceVariation);
+                variationBuffer.Add(v);
+                return $"@V{variationBuffer.Count - 1}@";
             }
             catch (NullReferenceException)
             {

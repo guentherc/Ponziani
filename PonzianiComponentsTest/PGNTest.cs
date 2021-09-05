@@ -103,8 +103,19 @@ namespace PonzianiComponentsTest
             var games = PGN.Parse(Data.PGN_CHESS24, true);
             Assert.AreEqual(1, games.Count);
             Assert.AreEqual(Result.OPEN, games[0].Result);
-            for (int i = 0; i < games[0].Moves.Count; ++i) 
+            for (int i = 0; i < games[0].Moves.Count; ++i)
                 Assert.IsTrue(games[0].Moves[i].Clock > TimeSpan.FromHours(1));
+        }
+
+        [TestMethod]
+        public void ParseLichessStudy()
+        {
+            var games = PGN.Parse(Data.PGN_LICHESS_STUYDY, true, true);
+            Assert.AreEqual(2, games.Count);
+            Assert.AreEqual(30, games[0].Moves.Count);
+            Assert.IsTrue(games[0].Moves[7].Comment.Length > 50);
+            Assert.IsNotNull(games[0].Moves[12].Variations);
+            Assert.AreEqual(2, games[0].Moves[20].Variations[0][4].Variations[0].Count);
         }
     }
 }

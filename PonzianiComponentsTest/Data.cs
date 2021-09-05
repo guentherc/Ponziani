@@ -547,5 +547,33 @@ Kd8 {d=88, sd=88, pd=Qa7+, mt=13476, tl=494974, s=254903225, n=3435075869, pv=Kd
 Nh4 {[%clk 1:32:00]} Bc7 {[%clk 1:24:26]} 9. f4 {[%clk 1:28:53]} f5 {[%clk
 1:23:29]} 10. b3 {[%clk 1:25:31]} dxe4 {[%clk 1:23:24]} 11. Ba3 {[%clk 1:21:50]}
 exd3 {[%clk 1:15:33]} 12. Bxc5 {[%clk 1:20:26]} *";
+        /// <summary>
+        /// <see href="https://lichess.org/study/ZWHbJIPd"/>
+        /// </summary>
+        public static string PGN_LICHESS_STUYDY = @"[Event ""🏆 Nimzo/Bogo Indian Repertoire 🏆: London System""]
+[Site ""https://lichess.org/study/DeAekads/TzNlHqMZ""]
+[Result ""*""]
+[Annotator ""https://lichess.org/@/Mr_Penings""]
+[UTCDate ""2020.06.23""]
+[UTCTime ""18:24:23""]
+[Variant ""Standard""]
+[ECO ""A46""]
+[Opening ""Indian Defense: London System""]
+
+{ The infamous London System has brought fear to many players. I will teach you how to beat it Nimzo-Indian style. See my Kings Indian guide for my favorite way to counter the London. This guide is aimed at Nimzo Indian players. }
+1. d4 Nf6 2. Nf3 e6 3. Bf4 b6 4. e3 Bb7 { Generally, the London System is less effective if Black hasn't played d5. Here, the goal is to restrict the Bf4 by playing d6 and playing a Hedgehog structure, which prefers flexibility. } 5. Nbd2 c5 6. c3 Be7 7. h3 (7. Bd3 Nh5!? { Guarantees the bishop pair since White does not have h2 to retreat to. This is a tricky move order and happens quite often. } 8. Bg3 d6 { No rush in playing Nxg3. Wait for White to castle first } 9. O-O Nxg3 10. hxg3 O-O) 7... O-O 8. Bd3 d6 { The goal is to play a Hedgehog structure, which lacks space but has no weaknesses. See below for possible continuations. } 9. O-O Nbd7 10. Qe2 cxd4 { It is fine to exchange center pawns because White's knight is already developed to d2. If it was still on b1, White can recapture cxd4 and play Nc3, its ideal spot. } 11. exd4 (11. cxd4 Nd5 12. Bg3 Nb4 13. Bc4 (13. Bb1 Ba6) 13... d5 14. Bb5 a6 15. Ba4 b5 16. Bb3 Rc8 { Black's doing fine here. Likely a lot of trades on the c-file leading to an even endgame. }) 11... a6 { To prevent White from playing Ba6, offering a bishop trade. You may want to keep your bishop since it has activity down the main diagonal. } 12. Rfe1 Re8 13. a4 Qc7 14. Bh2 Bf8 15. Rab1 g6 { See Kamsky - Carlsen 0-1 below for a sample game in this line. } *
+
+[Event ""Stafford Gambit Traps: Oh no my queen!""]
+[Site ""https://lichess.org/study/whCVdUeM/Ue5KaLXB""]
+[Result "" * ""]
+[UTCDate ""2020.08.04""]
+[UTCTime ""05:38:56""]
+[Variant ""Standard""]
+[ECO ""C42""]
+[Opening ""Russian Game: Stafford Gambit""]
+[Annotator ""https://lichess.org/@/EricRosen""]
+
+1.e4 e5 2.Nf3 Nf6 3.Nxe5 Nc6 4.Nxc6 dxc6 5.d3 Bc5 6.Bg5? Nxe4!! { Oh no! My queen! } 7. Bxd8 (7. dxe4 Bxf2+! {[% cal Gd8d1,Re1d1] } 8. Kxf2(8. Ke2 Bg4+ $19) 8... Qxd1 $19)  (7. Qe2 Qxg5 8. Qxe4+ Kd8! 9. Be2 Qc1+ { Yuuki_is_here - IM EricRosen, 0-1, -, https://lichess.org/f2yOCAVe }) 7... Bxf2+ 8. Ke2 Bg4# *
+";
     }
 }

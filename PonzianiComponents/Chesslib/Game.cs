@@ -23,7 +23,6 @@ namespace PonzianiComponents.Chesslib
             position = new Position(StartPosition);
             hashes.Add(position.PolyglotKey);
         }
-
         /// <summary>
         /// Name of the player playing the white pieces
         /// </summary>

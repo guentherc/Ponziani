@@ -175,6 +175,10 @@ namespace PonzianiComponents.Chesslib
         /// The Side which played the move
         /// </summary>
         public Side SideToMove { set; get; } = Side.WHITE;
+        /// <summary>
+        /// Variations
+        /// </summary>
+        public List<List<ExtendedMove>> Variations { set; get; }
 
         //Tries to get infos from Comment
         public void ParseComment()
