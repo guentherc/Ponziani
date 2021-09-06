@@ -1,7 +1,7 @@
 ﻿@page "/scoresheet"
 <h3>ScoresheetDemo</h3>
 
-<Scoresheet Game="@game" OnMoveSelected="@OnMoveSelected" Mode="@DisplayMode" OtherAttributes="@OtherAttributes"/>
+<Scoresheet Game="@game" OnMoveSelected="@OnMoveSelected" Mode="@DisplayMode" Type="@model.NotationType" OtherAttributes="@OtherAttributes" />
 
 <EditForm Model="@model" OnValidSubmit="@HandleValidSubmit">
 	<div class="form-group">
@@ -14,13 +14,22 @@
 			Inline Mode:
 		</label>
 	</div>
-		<div class="form-group">
-		<label>
-			Other Attributes:
-		</label>
-		<InputText class="form-control" @bind-Value="model.OtherAttributes" />
-	</div>
-	<button type="submit">Submit</button>
+	<div class="form-group">
+		<label for="inpType">Select Type</label>
+		<InputSelect Name="type" @bind-Value="model.NotationType" id="inpType">
+			@foreach (var t in Enum.GetNames(typeof(Scoresheet.NotationType)))
+			{
+	   <option Name="type" Value="@t">@t</option>
+			}
+  </InputSelect>
+ </div>
+ <div class="form-group">
+  <label>
+   Other Attributes:
+  </label>
+  <InputText class="form-control" @bind-Value="model.OtherAttributes" />
+ </div>
+ <button type="submit">Submit</button>
 </EditForm>
 <div class="alert alert-success" role="alert">
 	@EventInfoText

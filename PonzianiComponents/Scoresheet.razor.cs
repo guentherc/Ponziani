@@ -59,7 +59,7 @@ namespace PonzianiComponents
         /// Notation Type
         /// </summary>
         [Parameter]
-        public NotationType NotatationType { set; get; } = NotationType.SAN;
+        public NotationType Type { set; get; } = NotationType.SAN;
         /// <summary>
         /// Is called whenever the user selects a move by clicking it 
         /// </summary>
@@ -124,6 +124,20 @@ namespace PonzianiComponents
                 if (m.Success) return $"{m.Value.Trim()};";
             }
             return "";
+        }
+
+        private string Print(Game g, int moveIndex)
+        {
+            switch (Type)
+            {
+                case NotationType.SAN:
+                    return g.Position.ToSAN(Game.Moves[moveIndex]);
+                case NotationType.UCI:
+                    return Game.Moves[moveIndex].ToUCIString();
+                default:
+                    return g.Position.ToSAN(Game.Moves[moveIndex]);
+            }
+
         }
 
         private Regex regexHeight = new Regex(@"height\:\s*([^;]+)");

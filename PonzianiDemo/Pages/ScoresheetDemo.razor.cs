@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static PonzianiComponents.Scoresheet;
 
 namespace PonzianiDemo.Pages
 {
@@ -14,6 +15,7 @@ namespace PonzianiDemo.Pages
     {
         public string PGNText { set; get; }
         public int Height { set; get; } = 400;
+        public NotationType NotationType { set; get; } = NotationType.SAN;
         public bool InlineMode { set; get; } = false;
         public string OtherAttributes { set; get; } = @"style=""width: 800px; height: 400px""";
     }

@@ -124,4 +124,81 @@ namespace PonzianiComponentsTest
         }
 
     }
+
+    [TestClass]
+    public class TimeControlTest
+    {
+        [TestMethod]
+        public void TestConstructor()
+        {
+            TimeControl tc = new TimeControl("300");
+            Assert.AreEqual(1, tc.Controls[0].From);
+            Assert.AreEqual(int.MaxValue, tc.Controls[0].To);
+            Assert.AreEqual(TimeSpan.FromMinutes(5), tc.Controls[0].Time);
+            Assert.AreEqual(TimeSpan.Zero, tc.Controls[0].Increment);
+            tc = new TimeControl("40/300");
+            Assert.AreEqual(1, tc.Controls[0].From);
+            Assert.AreEqual(40, tc.Controls[0].To);
+            Assert.AreEqual(TimeSpan.FromMinutes(5), tc.Controls[0].Time);
+            Assert.AreEqual(TimeSpan.Zero, tc.Controls[0].Increment);
+            tc = new TimeControl("40/300+10");
+            Assert.AreEqual(1, tc.Controls[0].From);
+            Assert.AreEqual(40, tc.Controls[0].To);
+            Assert.AreEqual(TimeSpan.FromMinutes(5), tc.Controls[0].Time);
+            Assert.AreEqual(TimeSpan.FromSeconds(10), tc.Controls[0].Increment);
+            tc = new TimeControl("40/300+0.5");
+            Assert.AreEqual(1, tc.Controls[0].From);
+            Assert.AreEqual(40, tc.Controls[0].To);
+            Assert.AreEqual(TimeSpan.FromMinutes(5), tc.Controls[0].Time);
+            Assert.AreEqual(TimeSpan.FromSeconds(0.5), tc.Controls[0].Increment);
+            tc = new TimeControl("180+2");
+            Assert.AreEqual(1, tc.Controls[0].From);
+            Assert.AreEqual(int.MaxValue, tc.Controls[0].To);
+            Assert.AreEqual(TimeSpan.FromMinutes(3), tc.Controls[0].Time);
+            Assert.AreEqual(TimeSpan.FromSeconds(2), tc.Controls[0].Increment);
+            tc = new TimeControl("40/5400+30:3600+30");
+            Assert.AreEqual(1, tc.Controls[0].From);
+            Assert.AreEqual(40, tc.Controls[0].To);
+            Assert.AreEqual(TimeSpan.FromMinutes(90), tc.Controls[0].Time);
+            Assert.AreEqual(TimeSpan.FromSeconds(30), tc.Controls[0].Increment);
+            Assert.AreEqual(41, tc.Controls[1].From);
+            Assert.AreEqual(int.MaxValue, tc.Controls[1].To);
+            Assert.AreEqual(TimeSpan.FromMinutes(60), tc.Controls[1].Time);
+            Assert.AreEqual(TimeSpan.FromSeconds(30), tc.Controls[1].Increment);
+        }
+
+        [TestMethod]
+        public void TestTotalAvailableTime()
+        {
+            TimeControl tc = new TimeControl("300");
+            Assert.AreEqual(TimeSpan.FromMinutes(5), tc.TotalAvailableTime(10));
+            Assert.AreEqual(TimeSpan.FromMinutes(5), tc.TotalAvailableTime(100));
+            Assert.AreEqual(TimeSpan.FromMinutes(5), tc.TotalAvailableTime(1000));
+            tc = new TimeControl("40/300");
+            Assert.AreEqual(TimeSpan.FromMinutes(5), tc.TotalAvailableTime(10));
+            Assert.AreEqual(TimeSpan.FromMinutes(15), tc.TotalAvailableTime(100));
+            Assert.AreEqual(TimeSpan.FromMinutes(25), tc.TotalAvailableTime(200));
+            Assert.AreEqual(TimeSpan.FromMinutes(30), tc.TotalAvailableTime(201));
+            tc = new TimeControl("40/5400+30:3600+30");
+            Assert.AreEqual(new TimeSpan(0, 90, 30), tc.TotalAvailableTime(1));
+            Assert.AreEqual(new TimeSpan(0, 110, 0), tc.TotalAvailableTime(40));
+            Assert.AreEqual(new TimeSpan(0, 170, 30), tc.TotalAvailableTime(41));
+        }
+
+        [TestMethod]
+        public void TestAddThinkTimes()
+        {
+            var games = PGN.Parse(Data.PGN_LICHESS_LIVE_GAME, true);
+            Assert.AreEqual(1, games.Count);
+            Assert.AreEqual(1, games[0].TimeControl.Controls.Count);
+            games[0].TimeControl.AddThinkTimes(games[0]);
+            foreach (var m in games[0].Moves)
+            {
+                Assert.IsTrue(m.UsedThinkTime >= TimeSpan.Zero);
+            }
+            Assert.AreEqual(TimeSpan.FromSeconds(5), games[0].Moves[2].UsedThinkTime);
+            Assert.AreEqual(TimeSpan.FromSeconds(8), games[0].Moves[3].UsedThinkTime);
+        }
+    }
+
 }

@@ -20,8 +20,8 @@ namespace PonzianiDemo.Pages
 
         private string Clock { get
             {
-                TimeSpan c0 = Game.Moves.Count > 0 ? Game.Moves.Last().Clock : new TimeSpan(0);
-                TimeSpan c1 = Game.Moves.Count > 1 ? Game.Moves[Game.Moves.Count - 2].Clock : new TimeSpan(0);
+                TimeSpan c0 = Game.Moves.Count > 0 ? Game.Moves.Last().Clock : TimeSpan.Zero;
+                TimeSpan c1 = Game.Moves.Count > 1 ? Game.Moves[Game.Moves.Count - 2].Clock : TimeSpan.Zero;
                 string format = "";
                 if (c0 < new TimeSpan(0, 1, 0) && c1 < new TimeSpan(0, 1, 0)) format = @"s\.f";
                 else if (c0 < new TimeSpan(1, 0, 0) && c1 < new TimeSpan(1, 0, 0)) format = @"m\:ss";

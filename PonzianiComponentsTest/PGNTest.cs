@@ -71,7 +71,7 @@ namespace PonzianiComponentsTest
             {
                 Assert.IsTrue(games[1].Moves[i].Evaluation != 0);
                 Assert.IsTrue(games[1].Moves[i].Depth > 0);
-                Assert.IsTrue(games[1].Moves[i].UsedThinkTime > new TimeSpan(0));
+                Assert.IsTrue(games[1].Moves[i].UsedThinkTime > TimeSpan.Zero);
                 Assert.IsTrue(games[1].Moves[i].UsedThinkTime < TimeSpan.FromSeconds(2));
             }
         }
@@ -94,7 +94,7 @@ namespace PonzianiComponentsTest
             var games = PGN.Parse(Data.PGN_CHESS_RESULTS, true);
             Assert.AreEqual(1, games.Count);
             Assert.AreEqual(Result.DRAW, games[0].Result);
-            for (int i = 0; i < games[0].Moves.Count; ++i) Assert.IsTrue(games[0].Moves[i].UsedThinkTime > new TimeSpan(0));
+            for (int i = 0; i < games[0].Moves.Count; ++i) Assert.IsTrue(games[0].Moves[i].UsedThinkTime > TimeSpan.Zero);
         }
 
         [TestMethod]
