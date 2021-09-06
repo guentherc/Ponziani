@@ -94,6 +94,7 @@ namespace PonzianiDemo.Pages
             {
                 string pgn = await HttpClient.GetStringAsync($"https://lichess.org/game/export/{gameid}");
                 Game = PGN.Parse(pgn, true)[0];
+                Game.TimeControl.AddThinkTimes(Game);
                 if (Game.Result != Result.OPEN)
                 {
                     games = await GetGameIdsAsync();

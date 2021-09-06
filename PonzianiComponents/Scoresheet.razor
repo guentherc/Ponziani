@@ -41,9 +41,9 @@
 						}
 			  </tr>
 				}
-				@if(g.SideToMove ==Side.WHITE)
+				@if (g.SideToMove == Side.WHITE)
 				{
-					<tr> <td class="pzNotColMovenumber">@g.Position.MoveNumber</td><td class="pzNotColWhite pzNotResult">@PGN.ResultToString(Game.Result)</td><td class="pzNotColBlack"></td></tr>
+			  <tr> <td class="pzNotColMovenumber">@g.Position.MoveNumber</td><td class="pzNotColWhite pzNotResult">@PGN.ResultToString(Game.Result)</td><td class="pzNotColBlack"></td></tr>
 				}
 		 </tbody>
 		}

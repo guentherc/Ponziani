@@ -499,7 +499,7 @@ namespace PonzianiComponents.Chesslib
         {
             string[] ftoken = game.StartPosition.Split(' ');
             Side side = ftoken[1] == "w" ? Side.WHITE : Side.BLACK;
-            int movenumber = int.Parse(ftoken[5]) + 1;
+            int movenumber = int.Parse(ftoken[5]);
             if (side == Side.WHITE && movenumber == 1)
             {
                 game.Moves[0].UsedThinkTime = TotalAvailableTime(1) - game.Moves[0].Clock;

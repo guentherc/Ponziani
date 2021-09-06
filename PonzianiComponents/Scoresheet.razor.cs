@@ -61,6 +61,11 @@ namespace PonzianiComponents
         [Parameter]
         public NotationType Type { set; get; } = NotationType.SAN;
         /// <summary>
+        /// If true and extended move info is available (think time, evaluation or depth) this info will be outputted in tabular mode
+        /// </summary>
+        [Parameter]
+        public bool ExtendedMoveInfo { set; get; } = false;
+        /// <summary>
         /// Is called whenever the user selects a move by clicking it 
         /// </summary>
         [Parameter]
@@ -110,6 +115,10 @@ namespace PonzianiComponents
             }
         }
 
+        private bool EvaluationAvailable => Game.Moves.FindIndex(m => m.Evaluation != 0) >= 0;
+        private bool ThinkTimeAvailable => Game.Moves.FindIndex(m => m.UsedThinkTime > TimeSpan.Zero) >= 0;
+        private bool DepthAvailable => Game.Moves.FindIndex(m => m.Depth > 0) >= 0;
+
         private async Task SelectMoveAsync(EventArgs eventArgs, int moveNumber, Side side)
         {
             MoveSelectInfo msi = new( Id, Game.GetPosition(moveNumber, side), Game.GetMove(moveNumber, side) );
@@ -128,16 +137,32 @@ namespace PonzianiComponents
 
         private string Print(Game g, int moveIndex)
         {
+            StringBuilder sb;
             switch (Type)
             {
                 case NotationType.SAN:
-                    return g.Position.ToSAN(Game.Moves[moveIndex]);
+                    sb = new StringBuilder(g.Position.ToSAN(Game.Moves[moveIndex]));
+                    break;
                 case NotationType.UCI:
                     return Game.Moves[moveIndex].ToUCIString();
                 default:
                     return g.Position.ToSAN(Game.Moves[moveIndex]);
             }
-
+            if (Mode == DisplayMode.TABULAR && ExtendedMoveInfo)
+            {
+                List<string> sbs = new List<string>();
+                sb.Append(" (");
+                if (ThinkTimeAvailable) sbs.Add(Game.Moves[moveIndex].UsedThinkTime.ToString(@"m\:ss"));
+                if (DepthAvailable) sbs.Add(Game.Moves[moveIndex].Depth.ToString());
+                if (EvaluationAvailable) sbs.Add(Game.Moves[moveIndex].Evaluation.ToString());
+                for (int i = 0; i<sbs.Count; ++i)
+                {
+                    if (i > 0) sb.Append(" ");
+                    sb.Append(sbs[i]);
+                }
+                sb.Append(")");
+            }
+            return sb.ToString();
         }
 
         private Regex regexHeight = new Regex(@"height\:\s*([^;]+)");

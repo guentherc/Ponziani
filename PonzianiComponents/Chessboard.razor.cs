@@ -72,7 +72,7 @@ namespace PonzianiComponents
         [Parameter]
         public bool HighlightLastAppliedMove { get; set; } = false;
         /// <summary>
-        /// <para>Other HTML Attributes, which are applied to the root element of the rendered scoresheet.
+        /// Other HTML Attributes, which are applied to the root element of the rendered scoresheet.
         /// </summary>
         [Parameter(CaptureUnmatchedValues = true)]
         public Dictionary<string, object> OtherAttributes { get; set; }
