@@ -35,3 +35,7 @@ span.pzMoveText {
 .pzNotResult {
     font-weight: bold
 }
+
+.pzMoveTextComment {
+    color:blue;
+}

@@ -17,6 +17,7 @@ namespace PonzianiDemo.Pages
         public int Height { set; get; } = 400;
         public NotationType NotationType { set; get; } = NotationType.SAN;
         public bool InlineMode { set; get; } = false;
+        public bool Comments { set; get; } = false;
         public string OtherAttributes { set; get; } = @"style=""width: 800px; height: 400px""";
     }
 
@@ -26,7 +27,7 @@ namespace PonzianiDemo.Pages
         {
             set
             {
-                var games = PonzianiComponents.Chesslib.PGN.Parse(value);
+                var games = PonzianiComponents.Chesslib.PGN.Parse(value, true);
                 if (games != null && games.Count > 0) game = games[0]; else game = new Game();
             }
             get { return game.ToPGN(); }

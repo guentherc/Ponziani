@@ -66,6 +66,11 @@ namespace PonzianiComponents
         [Parameter]
         public bool ExtendedMoveInfo { set; get; } = false;
         /// <summary>
+        /// If true comments are displayed
+        /// </summary>
+        [Parameter]
+        public bool Comments { set; get; } = false;
+        /// <summary>
         /// Is called whenever the user selects a move by clicking it 
         /// </summary>
         [Parameter]
