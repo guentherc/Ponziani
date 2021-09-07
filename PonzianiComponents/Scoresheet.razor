@@ -24,23 +24,56 @@
 				@for (int i = g.Moves.Count; g.Moves.Count < Game.Moves.Count; i += 2)
 				{
 					int moveNumber = g.Position.MoveNumber;
-			  <tr>
-			   <td class="pzNotColMovenumber">@g.Position.MoveNumber</td>
-			   <td class="pzNotColWhite" @onclick="@(e => SelectMoveAsync(e, moveNumber, Side.WHITE))">@Print(g, i)</td>
-						@{
-							g.Add(Game.Moves[i]);
-						}
-						@if (g.Moves.Count < Game.Moves.Count)
-						{
-				   <td class="pzNotColBlack" @onclick="@(e => SelectMoveAsync(e, moveNumber, Side.BLACK))">@Print(g, i + 1)</td>
-							g.Add(Game.Moves[i + 1]);
-						}
-						else
-						{
-				   <td class="pzNotColBlack  pzNotResult">@PGN.ResultToString(Game.Result)</td>
-						}
-			  </tr>
-				}
+					@if (Comments && Game.Moves[i].Comment != null && Game.Moves[i].Comment.Length > 0)
+					{
+						<tr>
+							<td class="pzNotColMovenumber">@g.Position.MoveNumber</td>
+
+							<td class="pzNotColWhite" @onclick="@(e => SelectMoveAsync(e, moveNumber, Side.WHITE))">@Print(g, i)</td><td  class="pzNotColBlack"></td>
+						</tr>
+						 <tr class="pzComment"><td colspan="3">@Game.Moves[i].Comment</td></tr>
+						<tr>
+							<td class="pzNotColMovenumber">@g.Position.MoveNumber</td>
+							<td class="pzNotColWhite">...</td>
+							@{
+								g.Add(Game.Moves[i]);
+							}
+							@if (g.Moves.Count < Game.Moves.Count)
+							{
+								<td class="pzNotColBlack" @onclick="@(e => SelectMoveAsync(e, moveNumber, Side.BLACK))">@Print(g, i + 1)</td>
+								g.Add(Game.Moves[i + 1]);
+							}
+							else
+							{
+								<td class="pzNotColBlack  pzNotResult">@PGN.ResultToString(Game.Result)</td>
+							}
+						</tr>
+					}
+					else
+					{
+						<tr>
+							<td class="pzNotColMovenumber">@g.Position.MoveNumber</td>
+
+							<td class="pzNotColWhite" @onclick="@(e => SelectMoveAsync(e, moveNumber, Side.WHITE))">@Print(g, i)</td>
+							@{
+								g.Add(Game.Moves[i]);
+							}
+							@if (g.Moves.Count < Game.Moves.Count)
+							{
+								<td class="pzNotColBlack" @onclick="@(e => SelectMoveAsync(e, moveNumber, Side.BLACK))">@Print(g, i + 1)</td>
+								g.Add(Game.Moves[i + 1]);
+							}
+							else
+							{
+								<td class="pzNotColBlack  pzNotResult">@PGN.ResultToString(Game.Result)</td>
+							}
+						</tr>
+					}
+					@if (Comments && Game.Moves[i+1].Comment != null && Game.Moves[i+1].Comment.Length > 0)
+					{
+						<tr class="pzComment"><td colspan="3">@Game.Moves[i+1].Comment</td></tr>
+					}
+		}
 				@if (g.SideToMove == Side.WHITE)
 				{
 			  <tr> <td class="pzNotColMovenumber">@g.Position.MoveNumber</td><td class="pzNotColWhite pzNotResult">@PGN.ResultToString(Game.Result)</td><td class="pzNotColBlack"></td></tr>

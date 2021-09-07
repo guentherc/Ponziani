@@ -226,6 +226,7 @@ namespace PonzianiComponents.Chesslib
                         Depth = Int32.Parse(m.Groups[2].Value);
                         UsedThinkTime = TimeSpan.FromSeconds(Double.Parse(m.Groups[3].Value, CultureInfo.InvariantCulture));
                     }
+                    Comment = (Comment.Substring(0, m.Index) + Comment.Substring(m.Index + m.Length)).Trim();
                     break;
                 }
                 indx++;
