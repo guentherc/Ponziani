@@ -574,7 +574,7 @@ exd3 {[%clk 1:15:33]} 12. Bxc5 {[%clk 1:20:26]} *";
 [Annotator ""https://lichess.org/@/EricRosen""]
 
 1.e4 e5 2.Nf3 Nf6 3.Nxe5 Nc6 4.Nxc6 dxc6 5.d3 Bc5 6.Bg5? Nxe4!! { Oh no! My queen! } 7. Bxd8 (7. dxe4 Bxf2+! {[% cal Gd8d1,Re1d1] } 8. Kxf2(8. Ke2 Bg4+ $19) 8... Qxd1 $19)  (7. Qe2 Qxg5 8. Qxe4+ Kd8! 9. Be2 Qc1+ { Yuuki_is_here - IM EricRosen, 0-1, -, https://lichess.org/f2yOCAVe }) 7... Bxf2+ 8. Ke2 Bg4# *
-";
+"; 
 
         public static string PGN_SCID = @"[Event ""Wch11""]
 [Site ""Berlin GER""]
@@ -613,6 +613,53 @@ Suddenly White strikes.} 20...gxf6 21.Bf3 Qe5 22.Nxa7+ Kc7 23.Naxc6 bxc6
 Lasker came back from a lost opening.} 1-0
 
 ";
+
+        public static string PGN_3_EP_CAPTURES = @"[Event ""Dortmund""]
+[Site ""Dortmund FRG""]
+[Date ""1980.07.??""]
+[EventDate ""?""]
+[Round ""?""]
+[Result ""1/2-1/2""]
+[White ""Alexandru Sorin Segal""]
+[Black ""Karl-Heinz Podzielny""]
+[ECO ""A69""]
+[WhiteElo ""?""]
+[BlackElo ""?""]
+[PlyCount ""140""]
+
+1.d4 Nf6 2.c4 c5 3.d5 e6 4.Nc3 exd5 5.cxd5 d6 6.e4 g6 7.f4 Bg7
+8.Nf3 O-O 9.Be2 Re8 10.Nd2 a6 11.a4 Nbd7 12.O-O Rb8 13.a5 Qc7
+14.Qc2 b5 15.axb6 Nxb6 16.Bf3 c4 17.Kh1 Bh6 18.Ne2 Qc5 19.b4
+cxb3 20.Qxb3 Qc7 21.Qd3 Bd7 22.Rxa6 Nbxd5 23.Qd4 Bb5 24.Ra7
+Qc5 25.Qxc5 dxc5 26.exd5 Bxe2 27.Bxe2 Rxe2 28.d6 Bf8 29.f5
+gxf5 30.Ra6 Rd8 31.Nc4 Re4 32.Ne3 Rxd6 33.Ra8 f4 34.Nf5 Rd5
+35.g4 fxg3 36.Nxg3 Re8 37.Ra2 Bg7 38.Nf5 Kf8 39.Nxg7 Kxg7
+40.Rg2+ Kf8 41.Bh6+ Ke7 42.Bg5 Rxg5 43.Rxg5 Rg8 44.Rxc5 Rg6
+45.Rc8 Nd5 46.Ra8 Rf6 47.Rb1 Rf5 48.Rh8 h5 49.Re1+ Kf6 50.Rh6+
+Kg7 51.Rd6 Kh7 52.Ra6 Nc7 53.Raa1 Ne6 54.Rf1 Rxf1+ 55.Rxf1 Kg6
+56.Kg2 Nd4 57.Ra1 Kg5 58.Ra5+ f5 59.h4+ Kf4 60.Ra6 Ne2 61.Rg6
+Nd4 62.Rg8 Nc6 63.Rg5 Ne5 64.Kh3 Nd3 65.Rxh5 Nf2+ 66.Kg2 Kg4
+67.Rh8 Nd3 68.Rg8+ Kxh4 69.Kf3 Kh5 70.Re8 Kg5 1/2-1/2";
+
+        public static string PGN_UNDERPROMOTION = @"[Event ""World Cup""]
+[Site ""Khanty-Mansiysk RUS""]
+[Date ""2009.12.03""]
+[EventDate ""2009.11.21""]
+[Round ""5.1""]
+[Result ""0-1""]
+[White ""Peter Svidler""]
+[Black ""Vladimir Malakhov""]
+[ECO ""D15""]
+[WhiteElo ""2754""]
+[BlackElo ""2706""]
+[PlyCount ""62""]
+
+1. d4 d5 2. c4 c6 3. Nc3 Nf6 4. Nf3 a6 5. e3 b5 6. c5 g6
+7. Bd3 Bg4 8. h3 Bxf3 9. Qxf3 Bg7 10. g4 e5 11. Qg3 Nfd7
+12. Ne2 Qe7 13. O-O h5 14. f3 Nf8 15. a4 b4 16. Bd2 a5 17. e4
+dxe4 18. Bxe4 Ne6 19. Rae1 h4 20. Qf2 O-O 21. f4 exd4 22. f5
+Nxc5 23. Bb1 d3 24. Nc1 Qd6 25. Ba2 Bd4 26. Be3 Ne4 27. Qxh4
+g5 28. Qh5 d2 29. f6 Qxf6 30. Bxd4 Qxd4+ 31. Kg2 dxe1=N+ 0-1";
     }
 }
  

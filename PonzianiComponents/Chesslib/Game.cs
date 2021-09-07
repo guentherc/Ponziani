@@ -280,10 +280,11 @@ namespace PonzianiComponents.Chesslib
                 }
             }
             if (!legal) return false;
+            bool isPromotion = (extendedMove.To >= Square.A8 || extendedMove.To <= Square.H1) && position.GetPiece(extendedMove.From) == (Piece)(8 + (int)position.SideToMove);
+            extendedMove.UndoInfo = new UndoInfo(position.DrawPlyCount, position.GetPiece(extendedMove.To), position.EPSquare, position.castlings, isPromotion);
             extendedMove.SideToMove = position.SideToMove;
             position.ApplyMove(extendedMove);
             moves.Add(extendedMove);
-            if (position.DrawPlyCount == 0) hashes.Clear();
             hashes.Add(position.PolyglotKey);
             if (position.IsMate)
             {
@@ -313,17 +314,36 @@ namespace PonzianiComponents.Chesslib
             return true;
         }
         /// <summary>
+        /// Undos the last applied move from the game
+        /// </summary>
+        /// <returns>true if successful</returns>
+        public bool UndoLastMove()
+        {
+            if (position.UndoMove(Moves.Last(), hashes[hashes.Count - 2]))
+            {
+                Result = Result.OPEN;
+                hashes.RemoveAt(hashes.Count - 1);
+                Moves.RemoveAt(Moves.Count - 1);
+            }
+            else
+            {
+                Debug.Assert(false); //Shouldn't happen!
+                return false;
+            }
+            return true;
+        }
+        /// <summary>
         /// Checks if current position has been 3-fold repeated
         /// </summary>
         /// <returns>true, if position has already repeated 3 times</returns>
         private bool Check3FoldRepetition()
         {
-            if (hashes.Count < 8) return false;
+            if (Position.DrawPlyCount < 8) return false;
             ulong checkHash = hashes.Last();
             int repetitions = 0;
-            foreach (ulong hash in hashes)
+            for (int i = hashes.Count - Position.DrawPlyCount; i< hashes.Count; ++i)
             {
-                if (hash == checkHash) ++repetitions;
+                if (hashes[i] == checkHash) ++repetitions;
             }
             return repetitions >= 3;
         }

@@ -123,6 +123,39 @@ namespace PonzianiComponentsTest
             Assert.AreEqual("h2h3", game.GetMove(5, Side.WHITE).ToUCIString());
         }
 
+        [TestMethod]
+        public void TestUndoMove()
+        {
+            List<string> pgns = new List<string>()
+            {
+                Data.PGN_CCRL_CHESSGUI_GAME,
+                Data.PGN_CHESS24,
+                Data.PGN_CHESS_RESULTS,
+                Data.PGN_CUTECHESS,
+                Data.PGN_LICHESS_COMMENTED_GAME,
+                Data.PGN_LICHESS_LIVE_GAME,
+                Data.PGN_LICHESS_STUYDY,
+                Data.PGN_SCID,
+                Data.PGN_TCEC,
+                Data.PGN_TWIC,
+                Data.PGN_3_EP_CAPTURES,
+                Data.PGN_UNDERPROMOTION
+            };
+            foreach (var pgn in pgns)
+            {
+                var games = PGN.Parse(pgn);
+                foreach (Game game in games)
+                {
+                    var key = (new Position(game.StartPosition)).PolyglotKey;
+                    while (game.Moves.Count > 0)
+                    {
+                        game.UndoLastMove();
+                    }
+                    Assert.AreEqual(game.StartPosition, game.Position.FEN);
+                    Assert.AreEqual(key, game.Position.PolyglotKey);
+                }
+            }
+        }
     }
 
     [TestClass]

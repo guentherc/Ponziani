@@ -180,6 +180,8 @@ namespace PonzianiComponents.Chesslib
         /// </summary>
         public List<List<ExtendedMove>> Variations { set; get; }
 
+        internal UndoInfo UndoInfo { set; get; }
+
         //Tries to get infos from Comment
         public void ParseComment()
         {
@@ -244,5 +246,22 @@ namespace PonzianiComponents.Chesslib
         static readonly Regex regexLichessComment = new Regex(@"(?:\[\%(\w+)([^\]]+)\]\s?)+", RegexOptions.Compiled);
 
         static List<Regex> commentRegexList = new List<Regex>() { regexLichessComment, regexCutechessComment, regexTCECComment };
+    }
+
+    internal struct UndoInfo
+    {
+        private Int32 data;
+
+        public UndoInfo(int drawPlyCount, Piece capturedPiece, Square epSquare, int castles, bool isPromotion = false) : this()
+        {
+            data = (drawPlyCount & 0xFF) + (((int)capturedPiece) << 8) + (((int)epSquare) << 16) + ((castles) << 24);
+            if (isPromotion) data |= 0x1000;
+        }
+
+        public int DrawPlyCount => (int)(data & 0xFF);
+        public Piece CapturedPiece => (Piece)((data >> 8) & 0xF);
+        public Square EPSquare => (Square)((data >> 16) & 0xFF);
+        public int Castles => (int)((data >> 24) & 0xFF);
+        public bool IsPromotion => (data & 0x1000) != 0;
     }
 }

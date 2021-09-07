@@ -242,6 +242,72 @@ namespace PonzianiComponents.Chesslib
             Debug.Assert(CheckCastlings(), $"Invalid castle flags: {FEN}");
         }
 
+        internal bool UndoMove(ExtendedMove move, ulong polyglotKeyBefore)
+        {
+            DrawPlyCount = move.UndoInfo.DrawPlyCount;
+            castlings = move.UndoInfo.Castles;
+            EPSquare = move.UndoInfo.EPSquare;
+            _chessGivingSquare = x88Square.OUTSIDE;
+            _moves = null;
+            _checkstate = Checkstate.UNDEFINED;
+            Piece p = move.UndoInfo.IsPromotion ? (Piece)(9 - (int)SideToMove) : GetPiece(move.To);
+            Debug.Assert(p != Piece.BLANK);
+            if (p == Piece.BLANK) return false;
+            PieceType pt = Chess.GetPieceType(p);
+            x88Square from = (x88Square)x88.x88Index((int)move.From);
+            x88Square to = (x88Square)x88.x88Index((int)move.To);
+            if (pt == PieceType.PAWN && move.To == EPSquare)
+            {
+                //EP Capture
+                x88board[(int)from] = p;
+                x88board[(int)to] = Piece.BLANK;
+                if (SideToMove == Side.WHITE) x88board[(int)to + 16] = Piece.WPAWN;
+                else x88board[(int)to - 16] = Piece.BPAWN;
+            } 
+            else 
+            {
+                x88board[(int)to] = move.UndoInfo.CapturedPiece;
+                x88board[(int)from] = p;
+                if (pt == PieceType.KING && Math.Abs((int)move.From - (int)move.To) == 2)
+                {
+                    //Castling
+                    switch (move.To)
+                    {
+                        case Square.G1:
+                            x88board[(int)x88Square.H1] = Piece.WROOK; 
+                            x88board[(int)x88Square.F1] = Piece.BLANK;
+                            break;
+                        case Square.C1:
+                            x88board[(int)x88Square.A1] = Piece.WROOK;
+                            x88board[(int)x88Square.D1] = Piece.BLANK;
+                            break;
+                        case Square.G8:
+                            x88board[(int)x88Square.H8] = Piece.BROOK;
+                            x88board[(int)x88Square.F8] = Piece.BLANK;
+                            break;
+                        case Square.C8:
+                            x88board[(int)x88Square.A8] = Piece.BROOK;
+                            x88board[(int)x88Square.D8] = Piece.BLANK;
+                            break;
+                        default:
+                            Debug.Assert(false);
+                            return false;
+                    }
+                }
+            }
+            if (SideToMove == Side.WHITE)
+            {
+                SideToMove = Side.BLACK;
+                MoveNumber--;
+            }
+            else
+            {
+                SideToMove = Side.WHITE;
+            }
+            PolyglotKey = polyglotKeyBefore;
+            return true;
+        }
+
 
         private bool CheckCastlings()
         {
@@ -523,7 +589,7 @@ namespace PonzianiComponents.Chesslib
         private enum Checkstate { UNDEFINED, NO_CHECK, CHECKED, DOUBLE_CHECKED };
 
         private Piece[] x88board = new Piece[120];
-        private int castlings = 0;
+        internal int castlings = 0;
         private List<Move> _moves = null;
         private bool _generatePseudoLegalMoves = false;
         private Checkstate _checkstate = Checkstate.UNDEFINED;
