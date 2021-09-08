@@ -13,3 +13,7 @@
 span.pzMoveText {
     white-space: pre-wrap;
 }
+
+.pzMoveTextLevel0 {
+    font-weight: bold
+}

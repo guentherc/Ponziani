@@ -10,7 +10,7 @@
 }
 @if (g.SideToMove == Side.BLACK)
 {
-	<span class="pzMoveText">@g.Position.MoveNumber. ...</span><text>&#32;</text>
+	<span class="pzMoveText @($"pzMoveTextLevel{Level}")">@g.Position.MoveNumber. ...</span><text>&#32;</text>
 }
 @for (int i = 0; i < Game.Moves.Count; ++i)
 {
@@ -22,9 +22,9 @@
 	}
 	@if (side == Side.WHITE)
 	{
-		<span class="pzMoveText">@g.Position.MoveNumber.</span><text>&#32;</text>
+		<span class="pzMoveText @($"pzMoveTextLevel{Level}")">@g.Position.MoveNumber.</span><text>&#32;</text>
 	}
-	<span class="pzMoveText" @onclick="@(e => SelectMoveAsync(e, moveNumber, side))">@Print(g, i)</span>
+	<span class="pzMoveText @($"pzMoveTextLevel{Level}")" @onclick="@(e => SelectMoveAsync(e, moveNumber, side))">@Print(g, i)</span>
 	if (i < Game.Moves.Count - 1)
 	{
 		<text>&#32;</text>
@@ -51,13 +51,17 @@
 			</CascadingValue>
 		</CascadingValue>
 		}
+		@if (vgames.Count > 0 && g.SideToMove == Side.BLACK)
+		{
+			<span class="pzMoveText @($"pzMoveTextLevel{Level}")">@g.Position.MoveNumber. ...</span><text>&#32;</text>
+		}
 	}
 }
 @if (Level > 0)
 {
 	@CV
 } else {
-<text>&#32;</text><span class="pzMoveText pzNotResult">@PGN.ResultToString(Game.Result)</span>
+<text>&#32;</text><span class="pzMoveText pzNotResult @($"pzMoveTextLevel{Level}")">@PGN.ResultToString(Game.Result)</span>
 }
 
 @code {
