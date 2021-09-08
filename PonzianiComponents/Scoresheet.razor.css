@@ -2,7 +2,7 @@
     border-right: 1px solid black;
 }
 
-span.pzMoveText {
+::deep span.pzMoveText {
     white-space: pre-wrap;
 }
 
@@ -32,14 +32,18 @@ span.pzMoveText {
     padding-right: 10px;
     width: 50%;
 }
-.pzNotResult {
+::deep .pzNotResult {
     font-weight: bold
 }
 
-.pzMoveTextComment {
-    color:blue;
+::deep .pzMoveTextComment {
+    color: blue;
 }
 
-.pzComment {
+::deep .pzComment {
     background-color: #FFEBE4;
+}
+
+::deep .pzMoveTextLevel0 {
+    font-weight: bold
 }

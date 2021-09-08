@@ -156,6 +156,37 @@ namespace PonzianiComponentsTest
                 }
             }
         }
+
+        [TestMethod]
+        public void TestToPGNWithVariations()
+        {
+            var games = PGN.Parse(Data.PGN_LICHESS_STUYDY, true, true);
+            foreach (Game game in games)
+            {
+                string pgn = game.ToPGN(null, true);
+                Game g = PGN.Parse(pgn, true, true)[0];
+                CheckMovesAreEqual(game.Moves, g.Moves);
+            }
+        }
+
+        private void CheckMovesAreEqual(List<ExtendedMove> expectedMoves, List<ExtendedMove> testMoves)
+        {
+            Assert.AreEqual(expectedMoves.Count, testMoves.Count);
+            for (int i = 0; i < expectedMoves.Count; ++i)
+            {
+                Assert.AreEqual(expectedMoves[i], testMoves[i]);
+                if (expectedMoves[i].Variations != null)
+                {
+                    Assert.IsNotNull(testMoves[i].Variations);
+                    Assert.AreEqual(expectedMoves[i].Variations.Count, testMoves[i].Variations.Count);
+                    for (int j = 0; j < expectedMoves[i].Variations.Count; ++j)
+                    {
+                        CheckMovesAreEqual(expectedMoves[i].Variations[j], testMoves[i].Variations[j]);
+                    }
+                }
+            }
+        }
+
     }
 
     [TestClass]
@@ -232,6 +263,7 @@ namespace PonzianiComponentsTest
             Assert.AreEqual(TimeSpan.FromSeconds(5), games[0].Moves[2].UsedThinkTime);
             Assert.AreEqual(TimeSpan.FromSeconds(8), games[0].Moves[3].UsedThinkTime);
         }
+
     }
 
 }
