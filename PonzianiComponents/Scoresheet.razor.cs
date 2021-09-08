@@ -71,6 +71,11 @@ namespace PonzianiComponents
         [Parameter]
         public bool Comments { set; get; } = false;
         /// <summary>
+        /// If true, variations are displayed
+        /// </summary>
+        [Parameter]
+        public bool Variations { set; get; } = false;
+        /// <summary>
         /// Is called whenever the user selects a move by clicking it 
         /// </summary>
         [Parameter]

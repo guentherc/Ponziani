@@ -341,7 +341,7 @@ namespace PonzianiComponents.Chesslib
             if (Position.DrawPlyCount < 8) return false;
             ulong checkHash = hashes.Last();
             int repetitions = 0;
-            for (int i = hashes.Count - Position.DrawPlyCount; i< hashes.Count; ++i)
+            for (int i = hashes.Count - Position.DrawPlyCount; i < hashes.Count; ++i)
             {
                 if (hashes[i] == checkHash) ++repetitions;
             }
@@ -366,6 +366,25 @@ namespace PonzianiComponents.Chesslib
                 White = White
             };
             return game;
+        }
+
+        internal List<Game> VariationGames()
+        {
+            List<Game> vgames = new List<Game>();
+            if (Moves.Last().Variations != null)
+            {
+                foreach (var variation in Moves.Last().Variations)
+                {
+                    Game g = (Game)Clone();
+                    g.UndoLastMove();
+                    foreach (var move in variation)
+                    {
+                        g.Add(move);
+                    }
+                    vgames.Add(g);
+                }
+            }
+            return vgames;
         }
 
         private List<ExtendedMove> moves = new List<ExtendedMove>();
@@ -484,7 +503,8 @@ namespace PonzianiComponents.Chesslib
                 if (movenumber > entry.To)
                 {
                     total += entry.Time + (entry.To - entry.From + 1) * entry.Increment;
-                } else
+                }
+                else
                 {
                     total += entry.Time + (movenumber - entry.From + 1) * entry.Increment;
                     break;
@@ -525,9 +545,9 @@ namespace PonzianiComponents.Chesslib
                 game.Moves[0].UsedThinkTime = TotalAvailableTime(1) - game.Moves[0].Clock;
                 game.Moves[1].UsedThinkTime = TotalAvailableTime(1) - game.Moves[1].Clock;
             }
-            for (int i = 2; i<game.Moves.Count; ++i)
+            for (int i = 2; i < game.Moves.Count; ++i)
             {
-                game.Moves[i].UsedThinkTime = (game.Moves[i-2].Clock - game.Moves[i].Clock) - (TotalAvailableTime(movenumber) - TotalAvailableTime(movenumber - 1));
+                game.Moves[i].UsedThinkTime = (game.Moves[i - 2].Clock - game.Moves[i].Clock) - (TotalAvailableTime(movenumber) - TotalAvailableTime(movenumber - 1));
                 side = (Side)((int)side ^ 1);
                 if (side == Side.WHITE) ++movenumber;
             }

@@ -1,7 +1,8 @@
 ﻿@page "/scoresheet"
 <h3>ScoresheetDemo</h3>
 
-<Scoresheet Game="@game" OnMoveSelected="@OnMoveSelected" Mode="@DisplayMode" Type="@model.NotationType" OtherAttributes="@OtherAttributes" Comments="@model.Comments" />
+<Scoresheet Game="@game" OnMoveSelected="@OnMoveSelected" Mode="@DisplayMode" Type="@model.NotationType" OtherAttributes="@OtherAttributes" Comments="@model.Comments" 
+			Variations ="@model.Variations"/>
 
 <EditForm Model="@model" OnValidSubmit="@HandleValidSubmit">
 	<div class="form-group">
@@ -18,6 +19,12 @@
 		<InputCheckbox class="form-check-input" @bind-Value="model.Comments" />
 		<label>
 			Show Comments:
+		</label>
+	</div>
+	<div class="form-check">
+		<InputCheckbox class="form-check-input" @bind-Value="model.Variations" />
+		<label>
+			Show Variations:
 		</label>
 	</div>
 	<div class="form-group">

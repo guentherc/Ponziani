@@ -1,0 +1,15 @@
+﻿.pzNotResult {
+    font-weight: bold
+}
+
+.pzMoveTextComment {
+    color: blue;
+}
+
+.pzComment {
+    background-color: #FFEBE4;
+}
+
+span.pzMoveText {
+    white-space: pre-wrap;
+}

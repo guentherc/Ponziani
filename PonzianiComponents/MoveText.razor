@@ -1,5 +1,126 @@
-﻿<h3>MoveText</h3>
+﻿@using System.Text
+@using PonzianiComponents.Chesslib
+@using static PonzianiComponents.Scoresheet
+@if (Level > 0)
+{
+	@OV
+}
+@{
+	Game g = new Game(Game.StartPosition);
+}
+@if (g.SideToMove == Side.BLACK)
+{
+	<span class="pzMoveText">@g.Position.MoveNumber. ...</span><text>&#32;</text>
+}
+@for (int i = 0; i < Game.Moves.Count; ++i)
+{
+	int moveNumber = g.Position.MoveNumber;
+	Side side = g.SideToMove;
+	@if (moveNumber < MoveNumber || (moveNumber == MoveNumber && Side == Side.BLACK && side == Side.WHITE)) {
+		g.Add(Game.Moves[i]);
+		continue;
+	}
+	@if (side == Side.WHITE)
+	{
+		<span class="pzMoveText">@g.Position.MoveNumber.</span><text>&#32;</text>
+	}
+	<span class="pzMoveText" @onclick="@(e => SelectMoveAsync(e, moveNumber, side))">@Print(g, i)</span>
+	if (i < Game.Moves.Count - 1)
+	{
+		<text>&#32;</text>
+	}
+	@if (Comments && Game.Moves[i].Comment != null && Game.Moves[i].Comment.Length > 0)
+	{
+		<span class="pzMoveTextComment">@Game.Moves[i].Comment</span><text>&#32;</text>
+	}
+	g.Add(Game.Moves[i]);
+	@if (Variations)
+	{
+		List<Game> vgames = g.VariationGames();
+		foreach (var vgame in vgames)
+		{
+		<CascadingValue Value="@Id" Name="Id">
+			<CascadingValue Value="@Comments" Name="Comments">
+				<CascadingValue Value="@Comments" Name="Comments">
+				<CascadingValue Value="@Type">
+					<CascadingValue Value="@OnMoveSelected">
+						<MoveText Game="vgame" MoveNumber="moveNumber" Side="side" Level="@NextLevel"></MoveText>
+					</CascadingValue>
+				</CascadingValue>
+				</CascadingValue>
+			</CascadingValue>
+		</CascadingValue>
+		}
+	}
+}
+@if (Level > 0)
+{
+	@CV
+} else {
+<text>&#32;</text><span class="pzMoveText pzNotResult">@PGN.ResultToString(Game.Result)</span>
+}
 
 @code {
+	/// <summary>
+	/// The game whose moves are listed
+	/// </summary>
+	[Parameter]
+	public Game Game { set; get; } = new Game();
+	/// <summary>
+	/// Is called whenever the user selects a move by clicking it
+	/// </summary>
+	[CascadingParameter]
+	public EventCallback<MoveSelectInfo> OnMoveSelected { get; set; }
+	/// <summary>
+	/// Movenumber from where movetext will start
+	/// </summary>
+	[Parameter]
+	public int MoveNumber { set; get; } = 1;
+	/// <summary>
+	/// Side to move from where movetext will start
+	/// </summary>
+	[Parameter]
+	public Side Side { set; get; } = Side.WHITE;
+	/// <summary>
+	/// Variation Level (Main line = 0)
+	/// </summary>
+	[Parameter]
+	public int Level { set; get; } = 0;
 
+	[CascadingParameter(Name = "Id")]
+    protected string Id { get; set; }
+
+	[CascadingParameter(Name = "Comments")]
+    protected bool Comments { get; set; }
+
+	[CascadingParameter(Name = "Variations")]
+    protected bool Variations { get; set; }
+
+    [CascadingParameter]
+    protected NotationType Type { get; set; }
+
+	private int NextLevel => Level + 1;
+
+	private static string OV = " (";
+	private static string CV = ") ";
+
+	private string Print(Game g, int moveIndex)
+    {
+        switch (Type)
+        {
+            case NotationType.SAN:
+                return g.Position.ToSAN(Game.Moves[moveIndex]);
+                break;
+            case NotationType.UCI:
+                return Game.Moves[moveIndex].ToUCIString();
+            default:
+                return g.Position.ToSAN(Game.Moves[moveIndex]);
+        }
+    }
+
+	private async Task SelectMoveAsync(EventArgs eventArgs, int moveNumber, Side side)
+    {
+        MoveSelectInfo msi = new( Id, Game.GetPosition(moveNumber, side), Game.GetMove(moveNumber, side) );
+        await OnMoveSelected.InvokeAsync(msi);
+    }
 }
