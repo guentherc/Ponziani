@@ -301,15 +301,21 @@ namespace PonzianiComponents.Chesslib
         /// <param name="pgn">The PGN input</param>
         /// <param name="comments">if true, comments are parsed as well</param>
         /// <param name="variations">if true, variations are parsed as well</param>
+        /// <param name="count">Number of games to be parsed (default: all)</param>
+        /// <param name="offset">Index of first game to be parsed</param>
         /// <returns>List of parsed Games</returns>
-        public static List<Game> Parse(string pgn, bool comments = false, bool variations = false)
+        public static List<Game> Parse(string pgn, bool comments = false, bool variations = false, int count = Int32.MaxValue, int offset = 0)
         {
             MatchCollection mcGames = regexPGNGame.Matches(pgn);
             List<Game> games = new List<Game>(mcGames.Count);
+            int indx = 0;
             foreach (Match mGame in mcGames)
             {
+                if (indx < offset) continue;
                 Game game = ParseGame(mGame, comments, variations);
                 games.Add(game);
+                if (indx >= count) break;
+                indx++;
             }
             return games;
         }

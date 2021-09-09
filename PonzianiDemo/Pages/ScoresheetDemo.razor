@@ -1,14 +1,28 @@
 ﻿@page "/scoresheet"
 <h3>ScoresheetDemo</h3>
 
+@if (game.Moves.Count > 0) {
 <Scoresheet Game="@game" OnMoveSelected="@OnMoveSelected" Mode="@DisplayMode" Type="@model.NotationType" OtherAttributes="@OtherAttributes" Comments="@model.Comments" 
 			Variations ="@model.Variations"/>
+}
 
 <EditForm Model="@model" OnValidSubmit="@HandleValidSubmit">
 	<div class="form-group">
-		<label for="taPGN">Enter PGN</label>
-		<InputTextArea class="form-control" id="taPGN" rows="10" @bind-Value="model.PGNText" />
+		<label for="inpType">Select Sample PGN</label>
+		<InputSelect Name="pgnkey" @bind-Value="model.PGNKey" id="inpPgnKey">
+			@foreach (var t in SampleData.PGNSamples.Keys)
+			{
+	   <option Name="pgnkey" Value="@t">@t</option>
+			}
+  </InputSelect>
+  	<button type="submit">Load</button>
+ </div>
+ <label>Or Upload PGN (only first game will be loaded)</label>
+	<div class="form-group">
+		<InputFile OnChange="@LoadFile" />
+
 	</div>
+
 	<div class="form-check">
 		<InputCheckbox class="form-check-input" @bind-Value="model.InlineMode" />
 		<label>
@@ -42,7 +56,6 @@
   </label>
   <InputText class="form-control" @bind-Value="model.OtherAttributes" />
  </div>
- <button type="submit">Submit</button>
 </EditForm>
 <div class="alert alert-success" role="alert">
 	@EventInfoText
