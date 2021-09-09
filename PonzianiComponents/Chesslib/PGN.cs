@@ -36,7 +36,7 @@ namespace PonzianiComponents.Chesslib
 
     /// <summary>
     /// Formats the PGN output the way chessbase (resp. DGT) does.
-    /// <see href="!:http://www.enpassant.dk/chess/palview/enhancedpgn.htm"/>
+    /// <see href="http://www.enpassant.dk/chess/palview/enhancedpgn.htm"/>
     /// </summary>
     public class ChessbaseCommenter : IPGNOutputFormatter
     {
@@ -80,7 +80,7 @@ namespace PonzianiComponents.Chesslib
     }
 
     /// <summary>
-    /// Represents a <see href="!:http://www.saremba.de/chessgml/standards/pgn/pgn-complete.htm"/>PGN (portable game notation) file. 
+    /// Represents a <see href="http://www.saremba.de/chessgml/standards/pgn/pgn-complete.htm"/>PGN (portable game notation) file. 
     /// </summary>
     public class PGN
     {
