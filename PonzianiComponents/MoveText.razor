@@ -1,12 +1,9 @@
 ﻿@using System.Text
 @using PonzianiComponents.Chesslib
 @using static PonzianiComponents.Scoresheet
-@if (Level > 0)
-{
-	@OV
-}
 @{
 	Game g = new Game(Game.StartPosition);
+	bool first = true;
 }
 @if (g.SideToMove == Side.BLACK)
 {
@@ -23,7 +20,11 @@
 	@if (side == Side.WHITE)
 	{
 		<span class="pzMoveText @($"pzMoveTextLevel{Level}")">@g.Position.MoveNumber.</span><text>&#32;</text>
+	} else if (first)
+	{
+		<span class="pzMoveText @($"pzMoveTextLevel{Level}")">@g.Position.MoveNumber. ...</span><text>&#32;</text>
 	}
+	first = false;
 	<span class="pzMoveText @($"pzMoveTextLevel{Level}")" @onclick="@(e => SelectMoveAsync(e, moveNumber, side))">@Print(g, i)</span>
 	if (i < Game.Moves.Count - 1)
 	{
@@ -31,7 +32,7 @@
 	}
 	@if (Comments && Game.Moves[i].Comment != null && Game.Moves[i].Comment.Length > 0)
 	{
-		<span class="pzMoveTextComment">@Game.Moves[i].Comment</span><text>&#32;</text>
+		<text>&#32;</text><span class="pzMoveTextComment">@Game.Moves[i].Comment</span>
 	}
 	g.Add(Game.Moves[i]);
 	@if (Variations)
@@ -39,6 +40,7 @@
 		List<Game> vgames = g.VariationGames();
 		foreach (var vgame in vgames)
 		{
+		@OV
 		<CascadingValue Value="@Id" Name="Id">
 			<CascadingValue Value="@Comments" Name="Comments">
 				<CascadingValue Value="@Comments" Name="Comments">
@@ -50,6 +52,7 @@
 				</CascadingValue>
 			</CascadingValue>
 		</CascadingValue>
+		@CV
 		}
 		@if (vgames.Count > 0 && g.SideToMove == Side.BLACK)
 		{
@@ -57,11 +60,8 @@
 		}
 	}
 }
-@if (Level > 0)
-{
-	@CV
-} else {
-<text>&#32;</text><span class="pzMoveText pzNotResult @($"pzMoveTextLevel{Level}")">@PGN.ResultToString(Game.Result)</span>
+@if (Level == 0) {
+	<text>&#32;</text><span class="pzMoveText pzNotResult @($"pzMoveTextLevel{Level}")">@PGN.ResultToString(Game.Result)</span>
 }
 
 @code {

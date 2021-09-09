@@ -44,6 +44,10 @@
     background-color: #FFEBE4;
 }
 
+::deep .pzVariation {
+    background-color: #EBE4FF;
+}
+
 ::deep .pzMoveTextLevel0 {
     font-weight: bold
 }

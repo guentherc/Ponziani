@@ -14,7 +14,7 @@ namespace PonzianiDemo.Pages
 {
     public class SDModel
     {
-        public string PGNKey { set; get; }
+        public string PGNKey { set; get; } = "Lichess Study";
         public string PGNText { set; get; }
         public int Height { set; get; } = 400;
         public NotationType NotationType { set; get; } = NotationType.SAN;
@@ -60,7 +60,6 @@ namespace PonzianiDemo.Pages
         private async Task LoadFile(InputFileChangeEventArgs e)
         {
             model.PGNText = await new StreamReader(e.File.OpenReadStream()).ReadToEndAsync();
-            model.PGNKey = "load";
             HandleValidSubmit();
         }
 
