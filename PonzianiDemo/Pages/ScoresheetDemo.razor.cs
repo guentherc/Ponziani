@@ -21,6 +21,7 @@ namespace PonzianiDemo.Pages
         public bool InlineMode { set; get; } = false;
         public bool Comments { set; get; } = false;
         public bool Variations { set; get; } = false;
+        public bool HierarchicalDisplay { set; get; } = false;
         public string OtherAttributes { set; get; } = @"style=""width: 800px; height: 400px""";
     }
 

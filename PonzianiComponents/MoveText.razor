@@ -13,14 +13,16 @@
 {
 	int moveNumber = g.Position.MoveNumber;
 	Side side = g.SideToMove;
-	@if (moveNumber < MoveNumber || (moveNumber == MoveNumber && Side == Side.BLACK && side == Side.WHITE)) {
+	@if (moveNumber < MoveNumber || (moveNumber == MoveNumber && Side == Side.BLACK && side == Side.WHITE))
+	{
 		g.Add(Game.Moves[i]);
 		continue;
 	}
 	@if (side == Side.WHITE)
 	{
 		<span class="pzMoveText @($"pzMoveTextLevel{Level}")">@g.Position.MoveNumber.</span><text>&#32;</text>
-	} else if (first)
+	}
+	else if (first)
 	{
 		<span class="pzMoveText @($"pzMoveTextLevel{Level}")">@g.Position.MoveNumber. ...</span><text>&#32;</text>
 	}
@@ -40,27 +42,40 @@
 		List<Game> vgames = g.VariationGames();
 		foreach (var vgame in vgames)
 		{
-		@OV
-		<CascadingValue Value="@Id" Name="Id">
-			<CascadingValue Value="@Comments" Name="Comments">
-				<CascadingValue Value="@Comments" Name="Comments">
-				<CascadingValue Value="@Type">
-					<CascadingValue Value="@OnMoveSelected">
+			@OV
+			<CascadingValue Value="@Id" Name="Id">
+			 <CascadingValue Value="@Variations" Name="Variations">
+			  <CascadingValue Value="@Comments" Name="Comments">
+			   <CascadingValue Value="@Type">
+				<CascadingValue Value="@HierarchicalDisplay" Name="HierarchicalDisplay">
+				 <CascadingValue Value="@OnMoveSelected">
+					@if (HierarchicalDisplay)
+					{
+						<p class="pzVariation">@("-".Repeat(Level))
+						@if (Level > 0)
+						{
+							@GT
+						}	
+						<MoveText Game="vgame" MoveNumber="moveNumber" Side="side" Level="@NextLevel"></MoveText></p>
+					} else {
 						<MoveText Game="vgame" MoveNumber="moveNumber" Side="side" Level="@NextLevel"></MoveText>
-					</CascadingValue>
+					}
+				 </CascadingValue>
 				</CascadingValue>
-				</CascadingValue>
+			   </CascadingValue>
+			  </CascadingValue>
+			 </CascadingValue>
 			</CascadingValue>
-		</CascadingValue>
-		@CV
+			@CV
 		}
-		@if (vgames.Count > 0 && g.SideToMove == Side.BLACK)
+		if (vgames.Count > 0 && g.SideToMove == Side.BLACK)
 		{
 			<span class="pzMoveText @($"pzMoveTextLevel{Level}")">@g.Position.MoveNumber. ...</span><text>&#32;</text>
 		}
 	}
 }
-@if (Level == 0) {
+@if (Level == 0)
+{
 	<text>&#32;</text><span class="pzMoveText pzNotResult @($"pzMoveTextLevel{Level}")">@PGN.ResultToString(Game.Result)</span>
 }
 
@@ -90,41 +105,62 @@
 	/// </summary>
 	[Parameter]
 	public int Level { set; get; } = 0;
+	/// <summary>
+	/// If true, each variation starts on a new line, subvariations are indented
+	/// </summary>
+	[CascadingParameter(Name = "HierarchicalDisplay")]
+	public bool HierarchicalDisplay { set; get; } = false;
 
 	[CascadingParameter(Name = "Id")]
-    protected string Id { get; set; }
+	protected string Id { get; set; }
 
 	[CascadingParameter(Name = "Comments")]
-    protected bool Comments { get; set; }
+	protected bool Comments { get; set; }
 
 	[CascadingParameter(Name = "Variations")]
-    protected bool Variations { get; set; }
+	protected bool Variations { get; set; }
 
-    [CascadingParameter]
-    protected NotationType Type { get; set; }
+	[CascadingParameter]
+	protected NotationType Type { get; set; }
 
 	private int NextLevel => Level + 1;
 
-	private static string OV = " (";
-	private static string CV = ") ";
+	private string OV = " (";
+	private string CV = ") ";
+	private string GT = ">";
+
+	protected override void OnParametersSet()
+	{
+		base.OnParametersSet();
+		if (HierarchicalDisplay)
+		{
+			OV = "";
+			CV = "";
+		}
+		else {
+			OV = " (";
+			CV = ") ";
+		}
+	}
 
 	private string Print(Game g, int moveIndex)
-    {
-        switch (Type)
-        {
-            case NotationType.SAN:
-                return g.Position.ToSAN(Game.Moves[moveIndex]);
-                break;
-            case NotationType.UCI:
-                return Game.Moves[moveIndex].ToUCIString();
-            default:
-                return g.Position.ToSAN(Game.Moves[moveIndex]);
-        }
-    }
+	{
+		switch (Type)
+		{
+			case NotationType.SAN:
+				return g.Position.ToSAN(Game.Moves[moveIndex]);
+				break;
+			case NotationType.UCI:
+				return Game.Moves[moveIndex].ToUCIString();
+			default:
+				return g.Position.ToSAN(Game.Moves[moveIndex]);
+		}
+	}
 
 	private async Task SelectMoveAsync(EventArgs eventArgs, int moveNumber, Side side)
-    {
-        MoveSelectInfo msi = new( Id, Game.GetPosition(moveNumber, side), Game.GetMove(moveNumber, side) );
-        await OnMoveSelected.InvokeAsync(msi);
-    }
+	{
+		MoveSelectInfo msi = new(Id, Game.GetPosition(moveNumber, side), Game.GetMove(moveNumber, side));
+		await OnMoveSelected.InvokeAsync(msi);
+	}
 }
+

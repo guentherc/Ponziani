@@ -88,6 +88,11 @@ namespace PonzianiComponents
         [Parameter]
         public EventCallback<MoveSelectInfo> OnMoveSelected { get; set; }
         /// <summary>
+        /// If true, each variation starts on a new line, subvariations are indented
+        /// </summary>
+        [Parameter]
+        public bool HierarchicalDisplay { set; get; } = false;
+        /// <summary>
         /// <para>Other HTML Attributes, which are applied to the root element of the rendered scoresheet. Depending
         /// on <see cref="Mode"/> this is either a &lt;table&gt; or a &lt;div&gt; </para>
         /// <para>With this mechanism it's possible e.g. to set the width of the scoresheet (in inline mode)</para>
@@ -212,5 +217,14 @@ namespace PonzianiComponents
         public ExtendedMove Move { set; get; }
     }
 
+    internal static class StringExtensions
+    {
+        public static string Repeat(this string s, int n)
+        {
+            return new StringBuilder(s.Length * n)
+                            .AppendJoin(s, new string[n + 1])
+                            .ToString();
+        }
+    }
 
 }

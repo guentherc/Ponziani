@@ -1,10 +1,16 @@
 # PonzianiComponents #
-offers a set of Blazor components allowing to create chess related Blazor apps.
+
+### Blazor Components ###
+PonzianiComponents offers a set of Blazor components allowing to create chess related Blazor apps.
 So far these components are available:
 1. [Chessboard](api/PonzianiComponents.Chessboard.html)
 	a component allowing to show an interactive chessboard, where moves can be be played by drag&drop
 2. [Scoresheet](api/PonzianiComponents.Scoresheet.html)
 	a component which can be used to list the moves (including comments and variations) of a chess game either in tabular or inline mode
+
+### Chess API ###
+There is also a [Chess API](api/PonzianiComponents.Chesslib.html) included, offering chess related functionality like legal move generation,
+PGN parsing and ECO classification
 
 ## Installation ##
 
