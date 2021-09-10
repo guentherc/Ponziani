@@ -660,6 +660,11 @@ Nd4 62.Rg8 Nc6 63.Rg5 Ne5 64.Kh3 Nd3 65.Rxh5 Nf2+ 66.Kg2 Kg4
 dxe4 18. Bxe4 Ne6 19. Rae1 h4 20. Qf2 O-O 21. f4 exd4 22. f5
 Nxc5 23. Bb1 d3 24. Nc1 Qd6 25. Ba2 Bd4 26. Be3 Ne4 27. Qxh4
 g5 28. Qh5 d2 29. f6 Qxf6 30. Bxd4 Qxd4+ 31. Kg2 dxe1=N+ 0-1";
+
+        public static List<string> GetAllPGN()
+        {
+            return Type.GetType("PonzianiComponentsTest.Data").GetFields().Where(n => n.Name.StartsWith("PGN_")).Select(p => p.GetValue(null).ToString()).ToList();
+        }
     }
 }
  

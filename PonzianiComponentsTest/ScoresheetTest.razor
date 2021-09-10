@@ -1,0 +1,59 @@
+﻿@using Bunit
+@using Microsoft.VisualStudio.TestTools.UnitTesting
+@using PonzianiComponents
+@using PonzianiComponents.Chesslib
+@using PonzianiComponentsTest
+@using System.Linq
+@using AngleSharp.Dom
+@attribute [TestClass]
+@inherits BunitTestContext
+
+@code {
+	[TestMethod]
+	public void TestInitialRendering()
+	{
+		// Default Mode
+		var cut = RenderComponent<Scoresheet>();
+		Assert.AreEqual("scoresheet", GetId(cut));
+		// Inline Mode
+		cut = RenderComponent<Scoresheet>(parameters => parameters.Add(p => p.Mode, Scoresheet.DisplayMode.INLINE));
+		Assert.AreEqual("scoresheet", GetId(cut));
+		// Tabular Mode explicit
+		cut = RenderComponent<Scoresheet>(parameters => parameters.Add(p => p.Mode, Scoresheet.DisplayMode.INLINE));
+		Assert.AreEqual("scoresheet", GetId(cut));
+	}
+
+	[TestMethod]
+	public void TestIdParameter()
+	{
+		string id = "dummyID";
+		var cut = RenderComponent<Scoresheet>(parameters => parameters.Add(p => p.Id, id));
+		Assert.AreEqual(id, GetId(cut));
+		// Inline Mode
+		cut = RenderComponent<Scoresheet>(parameters => parameters.Add(p => p.Id, id).Add(p => p.Mode, Scoresheet.DisplayMode.INLINE));
+		Assert.AreEqual(id, GetId(cut));
+		// Tabular Mode explicit
+		cut = RenderComponent<Scoresheet>(parameters => parameters.Add(p => p.Id, id).Add(p => p.Mode, Scoresheet.DisplayMode.INLINE));
+		Assert.AreEqual(id, GetId(cut));
+	}
+
+	[TestMethod]
+	public void TestGameParameter()
+	{
+		foreach (var pgn in Data.GetAllPGN())
+		{
+			var games = PGN.Parse(pgn);
+			foreach (Game game in games) {
+				//Tabular Mode
+				var cut = RenderComponent<Scoresheet>(parameters => parameters.Add(p => p.Game, game).Add(p => p.Mode, Scoresheet.DisplayMode.TABULAR));
+				var elements = cut.FindAll("tbody.pzNotTableBody > tr");
+				int expectedRows = game.Position.MoveNumber;
+				Assert.AreEqual(expectedRows, elements.Count, pgn);
+				cut = RenderComponent<Scoresheet>(parameters => parameters.Add(p => p.Game, game).Add(p => p.Mode, Scoresheet.DisplayMode.INLINE));
+				elements = cut.FindAll("span.pzMoveText");
+				int expectedCount = game.Position.SideToMove == Side.WHITE ? 3 * game.Position.MoveNumber - 2 : 3 * game.Position.MoveNumber;
+				Assert.AreEqual(expectedCount, elements.Count, pgn);
+			}
+		}
+	}
+}

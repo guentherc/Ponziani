@@ -149,7 +149,7 @@ namespace PonzianiComponents
 
         private string Height()
         {
-            if (OtherAttributes.ContainsKey("style"))
+            if (OtherAttributes != null && OtherAttributes.ContainsKey("style"))
             {
                 Match m = regexHeight.Match((string)OtherAttributes["style"]);
                 if (m.Success) return $"{m.Value.Trim()};";
