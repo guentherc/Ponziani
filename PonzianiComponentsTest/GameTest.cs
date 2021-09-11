@@ -134,7 +134,7 @@ namespace PonzianiComponentsTest
                 Data.PGN_CUTECHESS,
                 Data.PGN_LICHESS_COMMENTED_GAME,
                 Data.PGN_LICHESS_LIVE_GAME,
-                Data.PGN_LICHESS_STUYDY,
+                Data.PGN_LICHESS_STUDY,
                 Data.PGN_SCID,
                 Data.PGN_TCEC,
                 Data.PGN_TWIC,
@@ -160,7 +160,7 @@ namespace PonzianiComponentsTest
         [TestMethod]
         public void TestToPGNWithVariations()
         {
-            var games = PGN.Parse(Data.PGN_LICHESS_STUYDY, true, true);
+            var games = PGN.Parse(Data.PGN_LICHESS_STUDY, true, true);
             foreach (Game game in games)
             {
                 string pgn = game.ToPGN(null, true);

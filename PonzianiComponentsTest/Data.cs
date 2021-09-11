@@ -550,7 +550,7 @@ exd3 {[%clk 1:15:33]} 12. Bxc5 {[%clk 1:20:26]} *";
         /// <summary>
         /// <see href="https://lichess.org/study/ZWHbJIPd"/>
         /// </summary>
-        public static string PGN_LICHESS_STUYDY = @"[Event ""🏆 Nimzo/Bogo Indian Repertoire 🏆: London System""]
+        public static string PGN_LICHESS_STUDY = @"[Event ""🏆 Nimzo/Bogo Indian Repertoire 🏆: London System""]
 [Site ""https://lichess.org/study/DeAekads/TzNlHqMZ""]
 [Result ""*""]
 [Annotator ""https://lichess.org/@/Mr_Penings""]
@@ -664,6 +664,38 @@ g5 28. Qh5 d2 29. f6 Qxf6 30. Bxd4 Qxd4+ 31. Kg2 dxe1=N+ 0-1";
         public static List<string> GetAllPGN()
         {
             return Type.GetType("PonzianiComponentsTest.Data").GetFields().Where(n => n.Name.StartsWith("PGN_")).Select(p => p.GetValue(null).ToString()).ToList();
+        }
+
+        public static List<string> GetCommentedPGN()
+        {
+            return new List<string>()
+            {
+                 PGN_SCID,
+                 PGN_LICHESS_STUDY
+            };
+        }
+
+        public static List<string> GetEnhancedMoveInfoPGN()
+        {
+            return new List<string>()
+            {
+                 PGN_CUTECHESS,
+                 PGN_LICHESS_LIVE_GAME,
+                 PGN_LICHESS_COMMENTED_GAME,
+                 PGN_CCRL_CHESSGUI_GAME,
+                 PGN_TCEC,
+                 PGN_CHESS_RESULTS,
+                 PGN_CHESS24
+            };
+        }
+
+        public static List<string> GetPGNWithVariations()
+        {
+            return new List<string>()
+            {
+                 PGN_SCID,
+                 PGN_LICHESS_STUDY
+            };
         }
     }
 }

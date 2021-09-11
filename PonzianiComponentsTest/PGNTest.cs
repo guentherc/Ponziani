@@ -110,7 +110,7 @@ namespace PonzianiComponentsTest
         [TestMethod]
         public void ParseLichessStudy()
         {
-            var games = PGN.Parse(Data.PGN_LICHESS_STUYDY, true, true);
+            var games = PGN.Parse(Data.PGN_LICHESS_STUDY, true, true);
             Assert.AreEqual(2, games.Count);
             Assert.AreEqual(30, games[0].Moves.Count);
             Assert.IsTrue(games[0].Moves[7].Comment.Length > 50);

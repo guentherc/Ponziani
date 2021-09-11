@@ -61,7 +61,7 @@ namespace PonzianiDemo.Pages
         private async Task LoadFile(InputFileChangeEventArgs e)
         {
             model.PGNText = await new StreamReader(e.File.OpenReadStream()).ReadToEndAsync();
-            HandleValidSubmit();
+            PGN = model.PGNText;
         }
 
         private void HandleValidSubmit()

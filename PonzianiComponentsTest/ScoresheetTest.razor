@@ -56,4 +56,68 @@
 			}
 		}
 	}
+
+		[TestMethod]
+	public void TestExtendedMoveInfo()
+	{
+		foreach (var pgn in Data.GetEnhancedMoveInfoPGN())
+		{
+			var games = PGN.Parse(pgn, true);
+			foreach (Game game in games) {
+				//Tabular Mode
+				var cut = RenderComponent<Scoresheet>(parameters => parameters.Add(p => p.Game, game).Add(p => p.Mode, Scoresheet.DisplayMode.TABULAR).Add(p=>p.ExtendedMoveInfo, true));
+				var welements = cut.FindAll(".pzNotColWhite").ToList();
+				var belements = cut.FindAll(".pzNotColBlack").ToList();
+				welements.RemoveAt(welements.Count - 1);
+				belements.RemoveAt(belements.Count - 1);
+				welements.AddRange(belements);
+				foreach (var element in welements)
+				{
+					Assert.IsTrue(element.TextContent.IndexOf("(") >= 0);
+					Assert.IsTrue(element.TextContent.IndexOf(")") > element.TextContent.IndexOf("("));
+				}
+			}
+		}		
+	}
+
+	[TestMethod]
+	public void TestComments()
+	{
+		foreach (var pgn in Data.GetCommentedPGN())
+		{
+			var games = PGN.Parse(pgn, true);
+			foreach (Game game in games)
+			{
+				//Tabular Mode
+				var cut = RenderComponent<Scoresheet>(parameters => parameters.Add(p => p.Game, game).Add(p => p.Mode, Scoresheet.DisplayMode.TABULAR).Add(p => p.Comments, true));
+				var elements = cut.FindAll("tbody.pzNotTableBody > tr");
+				Assert.AreEqual(game.Position.MoveNumber + game.NumberOfMovesWithComment() + game.NumberOfWhiteMovesWithComment(), elements.Count, pgn);
+				//Inline Mode
+				cut = RenderComponent<Scoresheet>(parameters => parameters.Add(p => p.Game, game).Add(p => p.Mode, Scoresheet.DisplayMode.INLINE).Add(p => p.Comments, true));
+				elements = cut.FindAll("span.pzMoveTextComment");
+				Assert.AreEqual(game.NumberOfMovesWithComment(), elements.Count, pgn);				
+			}
+		}
+	}
+
+	[TestMethod]
+	public void TestVariations()
+	{
+		foreach (var pgn in Data.GetPGNWithVariations())
+		{
+			var games = PGN.Parse(pgn, false, true);
+			foreach (Game game in games)
+			{
+				int maxLevel = game.MaxVariationLevel();
+				//Tabular Mode
+				var cut = RenderComponent<Scoresheet>(parameters => parameters.Add(p => p.Game, game).Add(p => p.Mode, Scoresheet.DisplayMode.TABULAR).Add(p => p.Variations, true));
+				var elements = cut.FindAll($".pzMoveTextLevel{maxLevel}");
+				Assert.IsTrue(elements.Count > 0);
+				//Inline Mode
+				cut = RenderComponent<Scoresheet>(parameters => parameters.Add(p => p.Game, game).Add(p => p.Mode, Scoresheet.DisplayMode.INLINE).Add(p => p.Variations, true));
+				elements = cut.FindAll($".pzMoveTextLevel{maxLevel}");
+				Assert.IsTrue(elements.Count > 0);			
+			}
+		}
+	}
 }
