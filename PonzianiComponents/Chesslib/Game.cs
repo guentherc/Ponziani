@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace PonzianiComponents.Chesslib
 {
+    /// <summary>
+    /// Representation of a chess game
+    /// </summary>
     public class Game : ICloneable
     {
         /// <summary>

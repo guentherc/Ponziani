@@ -69,7 +69,22 @@ namespace PonzianiComponents.Chesslib
         B0_0_0 = 8
     }
 
-    public enum Result { OPEN, WHITE_WINS, BLACK_WINS, DRAW, ABANDONED }
+    /// <summary>
+    /// Possible outcomes of a chess game
+    /// </summary>
+    public enum Result { 
+        /// <summary>
+        /// Game is still ongoing, resp. result is unknown
+        /// </summary>
+        OPEN, 
+        WHITE_WINS, BLACK_WINS, DRAW, 
+        /// <summary>
+        /// Game has been abandoned (for example in engine matches by a crash
+        /// </summary>
+        ABANDONED }
+    /// <summary>
+    /// More detailed info about game result
+    /// </summary>
     public enum ResultDetail
     {
         UNKNOWN, MATE, ABANDONED, TIME_FORFEIT, ILLEGAL_MOVE, THREE_FOLD_REPETITION, FIFTY_MOVES,

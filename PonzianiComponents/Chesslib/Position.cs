@@ -1443,9 +1443,4 @@ namespace PonzianiComponents.Chesslib
             if (CastlingAllowed(CastleFlag.B0_0_0) && (GetPiece(Square.E8) != Piece.BKING || GetPiece(Square.A8) != Piece.BROOK)) castlings &= ~(int)CastleFlag.B0_0_0;
         }
     }
-
-    public class IllegalPositionException: Exception
-    {
-
-    }
 }

@@ -2,6 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Version>0.1.0</Version>
+    <Copyright>Christian Günther</Copyright>
+    <Authors>Christian Günther</Authors>
+    <Company />
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <RepositoryUrl>https://bitbucket.org/christian_g_nther/ponziani/src/master/</RepositoryUrl>
+    <PackageLicenseFile>gpl-3.0.txt</PackageLicenseFile>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageTags>blazor blazor-component chess</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>3</WarningLevel>
+    <Optimize>true</Optimize>
   </PropertyGroup>
 
   
@@ -15,6 +29,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="gpl-3.0.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
