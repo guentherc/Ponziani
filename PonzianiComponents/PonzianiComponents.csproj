@@ -7,10 +7,11 @@
     <Authors>Christian Günther</Authors>
     <Company />
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <RepositoryUrl>https://bitbucket.org/christian_g_nther/ponziani/src/master/</RepositoryUrl>
-    <PackageLicenseFile>gpl-3.0.txt</PackageLicenseFile>
+    <RepositoryUrl>https://github.com/guentherc/Ponziani</RepositoryUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageTags>blazor blazor-component chess</PackageTags>
+    <Description>.Net 5 library offering chess-related blazor components and functions for chess programming</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -38,7 +39,7 @@
 
   <ItemGroup>
     <None Include="Chessboard.razor.scss" />
-    <None Include="gpl-3.0.txt">
+    <None Include="..\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
