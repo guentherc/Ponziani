@@ -1,0 +1,30 @@
+﻿/* Settings relevant for Chessboard component*/
+
+//Color of dark squares
+$DarkSquaresColor: #b58863;
+
+//Color of light squares
+$LightSquaresColor: #f0d9b5;
+
+//Color of File and Rank label displayed within dark squares
+$DarkSquaresTextColor: $LightSquaresColor;
+
+//Color of File and Rank label displayed within light squares
+$LightSquaresTextColor: $DarkSquaresColor;
+
+//Size of Chessboard
+$Size: 400px;
+
+//Color, with which squares are highlighted
+$HighlightColor: yellow;
+
+/* Settings relevant for Scoresheet component*/
+
+//Color for Comments in Movetext
+$MoveTextCommentColor: blue;
+
+//Background Color for Comments in Tabular Mode
+$CommentBackgroundColor: #FFEBE4;
+
+//Background Color for Variations in Tabular Mode
+$VariationBackgroundColor: #EBE4FF;

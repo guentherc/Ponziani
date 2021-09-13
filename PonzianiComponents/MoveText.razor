@@ -149,7 +149,6 @@
 		{
 			case NotationType.SAN:
 				return g.Position.ToSAN(Game.Moves[moveIndex]);
-				break;
 			case NotationType.UCI:
 				return Game.Moves[moveIndex].ToUCIString();
 			default:

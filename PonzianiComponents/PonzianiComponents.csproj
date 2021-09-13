@@ -18,13 +18,18 @@
     <Optimize>true</Optimize>
   </PropertyGroup>
 
+  <ItemGroup>
+    <SassFile Remove="Chessboard.razor.scss" />
+  </ItemGroup>
+
   
   <ItemGroup>
     <SupportedPlatform Include="browser" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="docfx.console" Version="2.58.0">
+    <PackageReference Include="Delegate.SassBuilder" Version="1.4.0" />
+    <PackageReference Include="docfx.console" Version="2.58.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -32,6 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Chessboard.razor.scss" />
     <None Include="gpl-3.0.txt">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
