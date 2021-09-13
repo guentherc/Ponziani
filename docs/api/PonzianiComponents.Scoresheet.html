@@ -1,0 +1,633 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Scoresheet
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Scoresheet
+   ">
+    <meta name="generator" content="docfx 2.58.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PonzianiComponents.Scoresheet">
+  
+  
+  <h1 id="PonzianiComponents_Scoresheet" data-uid="PonzianiComponents.Scoresheet" class="text-break">Class Scoresheet
+  </h1>
+  <div class="markdown level0 summary"><p>Blazor component to list the moves from a chess game</p>
+<p>It offers <a class="xref" href="PonzianiComponents.Scoresheet.DisplayMode.html">Scoresheet.DisplayMode</a></p>
+<p>You can select if moves shall be outputted in <a class="xref" href="PonzianiComponents.Scoresheet.NotationType.html#PonzianiComponents_Scoresheet_NotationType_SAN">SAN</a> or in
+<a class="xref" href="PonzianiComponents.Scoresheet.NotationType.html#PonzianiComponents_Scoresheet_NotationType_UCI">UCI</a> (as used in UCI protocol for engines)</p>
+<p>The component is able to output <a class="xref" href="PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_Comments">Comments</a> and <a class="xref" href="PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_Variations">Variations</a></p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Scoresheet</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="PonzianiComponents.html">PonzianiComponents</a></h6>
+  <h6><strong>Assembly</strong>: PonzianiComponents.dll</h6>
+  <h5 id="PonzianiComponents_Scoresheet_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Scoresheet</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Scoresheet_Comments.md&amp;value=---%0Auid%3A%20PonzianiComponents.Scoresheet.Comments%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Scoresheet.razor.cs/#L78">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Scoresheet_Comments_" data-uid="PonzianiComponents.Scoresheet.Comments*"></a>
+  <h4 id="PonzianiComponents_Scoresheet_Comments" data-uid="PonzianiComponents.Scoresheet.Comments">Comments</h4>
+  <div class="markdown level1 summary"><p>If true comments are displayed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Parameter]
+public bool Comments { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Scoresheet_ExtendedMoveInfo.md&amp;value=---%0Auid%3A%20PonzianiComponents.Scoresheet.ExtendedMoveInfo%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Scoresheet.razor.cs/#L73">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Scoresheet_ExtendedMoveInfo_" data-uid="PonzianiComponents.Scoresheet.ExtendedMoveInfo*"></a>
+  <h4 id="PonzianiComponents_Scoresheet_ExtendedMoveInfo" data-uid="PonzianiComponents.Scoresheet.ExtendedMoveInfo">ExtendedMoveInfo</h4>
+  <div class="markdown level1 summary"><p>If true and extended move info is available (think time, evaluation or depth) this info will be outputted in tabular mode</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Parameter]
+public bool ExtendedMoveInfo { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Scoresheet_Game.md&amp;value=---%0Auid%3A%20PonzianiComponents.Scoresheet.Game%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Scoresheet.razor.cs/#L58">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Scoresheet_Game_" data-uid="PonzianiComponents.Scoresheet.Game*"></a>
+  <h4 id="PonzianiComponents_Scoresheet_Game" data-uid="PonzianiComponents.Scoresheet.Game">Game</h4>
+  <div class="markdown level1 summary"><p>The game whose moves are listed in the scoresheet</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Parameter]
+public Game Game { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PonzianiComponents.Chesslib.Game.html">Game</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Scoresheet_HierarchicalDisplay.md&amp;value=---%0Auid%3A%20PonzianiComponents.Scoresheet.HierarchicalDisplay%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Scoresheet.razor.cs/#L93">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Scoresheet_HierarchicalDisplay_" data-uid="PonzianiComponents.Scoresheet.HierarchicalDisplay*"></a>
+  <h4 id="PonzianiComponents_Scoresheet_HierarchicalDisplay" data-uid="PonzianiComponents.Scoresheet.HierarchicalDisplay">HierarchicalDisplay</h4>
+  <div class="markdown level1 summary"><p>If true, each variation starts on a new line, subvariations are indented</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Parameter]
+public bool HierarchicalDisplay { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Scoresheet_Id.md&amp;value=---%0Auid%3A%20PonzianiComponents.Scoresheet.Id%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Scoresheet.razor.cs/#L53">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Scoresheet_Id_" data-uid="PonzianiComponents.Scoresheet.Id*"></a>
+  <h4 id="PonzianiComponents_Scoresheet_Id" data-uid="PonzianiComponents.Scoresheet.Id">Id</h4>
+  <div class="markdown level1 summary"><p>Id of the rendered HTML element</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Parameter]
+public string Id { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Scoresheet_Mode.md&amp;value=---%0Auid%3A%20PonzianiComponents.Scoresheet.Mode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Scoresheet.razor.cs/#L63">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Scoresheet_Mode_" data-uid="PonzianiComponents.Scoresheet.Mode*"></a>
+  <h4 id="PonzianiComponents_Scoresheet_Mode" data-uid="PonzianiComponents.Scoresheet.Mode">Mode</h4>
+  <div class="markdown level1 summary"><p>Display Mode (Tabular or inline)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Parameter]
+public Scoresheet.DisplayMode Mode { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PonzianiComponents.Scoresheet.DisplayMode.html">Scoresheet.DisplayMode</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Scoresheet_OnMoveSelected.md&amp;value=---%0Auid%3A%20PonzianiComponents.Scoresheet.OnMoveSelected%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Scoresheet.razor.cs/#L88">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Scoresheet_OnMoveSelected_" data-uid="PonzianiComponents.Scoresheet.OnMoveSelected*"></a>
+  <h4 id="PonzianiComponents_Scoresheet_OnMoveSelected" data-uid="PonzianiComponents.Scoresheet.OnMoveSelected">OnMoveSelected</h4>
+  <div class="markdown level1 summary"><p>Is called whenever the user selects a move by clicking it</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Parameter]
+public EventCallback&lt;MoveSelectInfo&gt; OnMoveSelected { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.AspNetCore.Components.EventCallback</span>&lt;<a class="xref" href="PonzianiComponents.MoveSelectInfo.html">MoveSelectInfo</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Scoresheet_OtherAttributes.md&amp;value=---%0Auid%3A%20PonzianiComponents.Scoresheet.OtherAttributes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Scoresheet.razor.cs/#L100">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Scoresheet_OtherAttributes_" data-uid="PonzianiComponents.Scoresheet.OtherAttributes*"></a>
+  <h4 id="PonzianiComponents_Scoresheet_OtherAttributes" data-uid="PonzianiComponents.Scoresheet.OtherAttributes">OtherAttributes</h4>
+  <div class="markdown level1 summary"><p>Other HTML Attributes, which are applied to the root element of the rendered scoresheet. Depending
+on <a class="xref" href="PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_Mode">Mode</a> this is either a &lt;table> or a &lt;div> </p>
+<p>With this mechanism it&apos;s possible e.g. to set the width of the scoresheet (in inline mode)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Parameter(CaptureUnmatchedValues = true)]
+public Dictionary&lt;string, object&gt; OtherAttributes { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Scoresheet_Type.md&amp;value=---%0Auid%3A%20PonzianiComponents.Scoresheet.Type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Scoresheet.razor.cs/#L68">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Scoresheet_Type_" data-uid="PonzianiComponents.Scoresheet.Type*"></a>
+  <h4 id="PonzianiComponents_Scoresheet_Type" data-uid="PonzianiComponents.Scoresheet.Type">Type</h4>
+  <div class="markdown level1 summary"><p>Notation Type</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Parameter]
+public Scoresheet.NotationType Type { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PonzianiComponents.Scoresheet.NotationType.html">Scoresheet.NotationType</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Scoresheet_Variations.md&amp;value=---%0Auid%3A%20PonzianiComponents.Scoresheet.Variations%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Scoresheet.razor.cs/#L83">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Scoresheet_Variations_" data-uid="PonzianiComponents.Scoresheet.Variations*"></a>
+  <h4 id="PonzianiComponents_Scoresheet_Variations" data-uid="PonzianiComponents.Scoresheet.Variations">Variations</h4>
+  <div class="markdown level1 summary"><p>If true, variations are displayed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Parameter]
+public bool Variations { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Scoresheet_AddMoveAsync_PonzianiComponents_Chesslib_ExtendedMove_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Scoresheet.AddMoveAsync(PonzianiComponents.Chesslib.ExtendedMove)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Scoresheet.razor.cs/#L107">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Scoresheet_AddMoveAsync_" data-uid="PonzianiComponents.Scoresheet.AddMoveAsync*"></a>
+  <h4 id="PonzianiComponents_Scoresheet_AddMoveAsync_PonzianiComponents_Chesslib_ExtendedMove_" data-uid="PonzianiComponents.Scoresheet.AddMoveAsync(PonzianiComponents.Chesslib.ExtendedMove)">AddMoveAsync(ExtendedMove)</h4>
+  <div class="markdown level1 summary"><p>API Method to add a move to the scoresheet</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;bool&gt; AddMoveAsync(ExtendedMove move)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PonzianiComponents.Chesslib.ExtendedMove.html">ExtendedMove</a></td>
+        <td><span class="parametername">move</span></td>
+        <td><p>Move to be added</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><p>true, if move was added successful, false if not</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Scoresheet_AddMoveAsync_PonzianiComponents_Chesslib_Move_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Scoresheet.AddMoveAsync(PonzianiComponents.Chesslib.Move)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Scoresheet.razor.cs/#L119">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Scoresheet_AddMoveAsync_" data-uid="PonzianiComponents.Scoresheet.AddMoveAsync*"></a>
+  <h4 id="PonzianiComponents_Scoresheet_AddMoveAsync_PonzianiComponents_Chesslib_Move_" data-uid="PonzianiComponents.Scoresheet.AddMoveAsync(PonzianiComponents.Chesslib.Move)">AddMoveAsync(Move)</h4>
+  <div class="markdown level1 summary"><p>API Method to add a move to the scoresheet</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;bool&gt; AddMoveAsync(Move move)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PonzianiComponents.Chesslib.Move.html">Move</a></td>
+        <td><span class="parametername">move</span></td>
+        <td><p>Move to be added</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><p>true, if move was added successful, false if not</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Scoresheet_OnAfterRenderAsync_System_Boolean_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Scoresheet.OnAfterRenderAsync(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Scoresheet.razor.cs/#L127">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Scoresheet_OnAfterRenderAsync_" data-uid="PonzianiComponents.Scoresheet.OnAfterRenderAsync*"></a>
+  <h4 id="PonzianiComponents_Scoresheet_OnAfterRenderAsync_System_Boolean_" data-uid="PonzianiComponents.Scoresheet.OnAfterRenderAsync(System.Boolean)">OnAfterRenderAsync(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override async Task OnAfterRenderAsync(bool firstRender)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">firstRender</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Scoresheet.md&amp;value=---%0Auid%3A%20PonzianiComponents.Scoresheet%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Scoresheet.razor.cs/#L20" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

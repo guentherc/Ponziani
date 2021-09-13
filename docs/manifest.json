@@ -1,0 +1,491 @@
+{
+  "homepages": [],
+  "source_base_path": "D:/chrgu/OneDrive/Dokumente/Visual Studio 2019/Projekte/Ponziani/PonzianiComponents",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chessboard.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chessboard.html",
+          "hash": "or9ecpEQGCK+2ummHzpVIGVdcWgppcMTrXRSWaINOzk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.CastleFlag.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.CastleFlag.html",
+          "hash": "KXPJgd1wQmsDI2V46A4fpyICTnaY5YLgOEE/4tOmcPo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.Chess.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.Chess.html",
+          "hash": "K/T60d77Q+RwQ9CQBGU5yECNU3mHcXvmJXBnnF6wop8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.ChessbaseCommenter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.ChessbaseCommenter.html",
+          "hash": "CYDoodtedbXd2ms3k5pX7fbJLXmUoKSIvFrXDEHGkKs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.CutechessCommenter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.CutechessCommenter.html",
+          "hash": "z4aGQ4VP6Z83mP1mahvaQ69WyaHsVqA4RP2XYxEnq6g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.DetailedResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.DetailedResult.html",
+          "hash": "mdACUhbdzi1ODo+PU8SQm+k2/6bYngH/r8nxJ7IVj/A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.Eco.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.Eco.html",
+          "hash": "y328hDd3rc7NP92JOfa63JNcjpzNj1yKFIrZa59+T1E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.ExtendedMove.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.ExtendedMove.html",
+          "hash": "jh9IS6ZyOZEx13WgSEEjYiYYgdleXH5scO/qlTiPngk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.Fen.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.Fen.html",
+          "hash": "oM53+qQJCTp/krtA1cvUpDajvPoy+EPX5Yc+FzaraK8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.Game.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.Game.html",
+          "hash": "JOFiepxoLb/4WdepDGSeJvmBp3RDWarISkRV3een8J8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.IPGNOutputFormatter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.IPGNOutputFormatter.html",
+          "hash": "uKZlBzFD+1e3kbEb6WBs+MBpIj0FzxPg/eYuDWVRNQU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.Move.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.Move.html",
+          "hash": "O7PF5Pxi5vRVl6E4ZVqPdh0+BrVlqnsLJZaehI8xtA0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.PGN.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.PGN.html",
+          "hash": "eLDLfaSDXZh/GsBWFj12G4B97iBcxtXnfcgo6LSbTQY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.Piece.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.Piece.html",
+          "hash": "lfNx5AE8mLL5gD/iWleSSxw+sb4sVuB8XWFKv1bkm1o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.PieceType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.PieceType.html",
+          "hash": "+9GsjI3nG3m1oEW9UZ/zN6CK0MaMeisHzTO9KLS0qG0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.Position.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.Position.html",
+          "hash": "VTQSMVgfFRet1E6TA61g6NKr47rs9j8A1oUp2KDyKxQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.Result.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.Result.html",
+          "hash": "WM/n75/3O+JxXHjrSSNFXQgfE7nyaFeEHa/A9fW47AQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.ResultDetail.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.ResultDetail.html",
+          "hash": "dmYts3JeLFGWqQLskUvs1oLMHZL3RkZgLRpS+ufeaCg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.Side.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.Side.html",
+          "hash": "1umNjwnqgsyJOKbb15xnGzzZ/0/pHtoeYnNffd8wibo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.Square.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.Square.html",
+          "hash": "P6uxcwp7vuyOKxtkmBu4P6ZfZQn22fk1nMHvYpegC1s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.TimeControl.Entry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.TimeControl.Entry.html",
+          "hash": "VS/cNRgNCFqPwnfvoumN+fo3rw9ZyGP/3UnxQyW+DHc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.TimeControl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.TimeControl.html",
+          "hash": "fdKZLLQYKPq/bpK4pK2Kk5haziu6G+Sl/fqqPoNVdyQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.html",
+          "hash": "uvCL6xylIUJx4OlYtUraMGSuZCrC4aBvlThe4OaehAU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.MovePlayedInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.MovePlayedInfo.html",
+          "hash": "YJAfxTXO9UDjsJOhwSKBMk+O0zb9P2l35V0+n3QPJ3I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.MoveSelectInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.MoveSelectInfo.html",
+          "hash": "0QUM4NYwhBnNdjvcv3Pu4fYvoa1AQquq9SxE2/5T548="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Scoresheet.DisplayMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Scoresheet.DisplayMode.html",
+          "hash": "nzIkSXlkQdKqCDN8PQlH4/P7c7CbePVNd+DaZxeVZNo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Scoresheet.NotationType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Scoresheet.NotationType.html",
+          "hash": "23gQryHAWuXuyJQBanS7MGN7paNbNNjG04ldRdWioQk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Scoresheet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Scoresheet.html",
+          "hash": "qKfdbCCkm7Q05bQZu4RTBv1Bp/U0svQ/kJtZeDuoUNs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.SetupChangedInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.SetupChangedInfo.html",
+          "hash": "tq9h8uRO0Fy0wwRmRlitlG/r/y+coH0r/nh96NjPOjg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.html",
+          "hash": "KUYDo7k8X6KhM7SZotoGkZCaQsBn6fX4c4n8B3fw/qA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "AbWrxyflZ+rfyika6Es4/vBtIKs5FXykMDeho+40uiQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "WmiMfDvyWcedeI7d48o38ElncFnD0N0sYO3vPNyfSVk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "2NOog9dk/9pip9PRzxdof22VKq+bW+PUtrW+yYeYYfQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "BlPxk5mtl2kgfcZUgkEguqiSAR/EUyUTT4EdebwkQvs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "nmpN0GA1pN8bBCWHh8PlxEC4Xr7WUtyDzVJpqgsXkXU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "WSuRrYiGwKKMbtdG9z8W9fXmLoCyTnGg9AxbPKLXm2Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Disable incremental build by force rebuild option.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "ForceRebuild"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 30,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

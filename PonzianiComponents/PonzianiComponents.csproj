@@ -30,7 +30,7 @@
 
   <ItemGroup>
     <PackageReference Include="Delegate.SassBuilder" Version="1.4.0" />
-    <PackageReference Include="docfx.console" Version="2.58.3">
+    <PackageReference Include="docfx.console" Version="2.58.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

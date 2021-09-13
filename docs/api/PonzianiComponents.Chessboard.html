@@ -1,0 +1,759 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Chessboard
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Chessboard
+   ">
+    <meta name="generator" content="docfx 2.58.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PonzianiComponents.Chessboard">
+  
+  
+  <h1 id="PonzianiComponents_Chessboard" data-uid="PonzianiComponents.Chessboard" class="text-break">Class Chessboard
+  </h1>
+  <div class="markdown level0 summary"><p>Blazor Component for adding an interactive chessboard to a Blazor application. It was build as a Blazor version of <a href="https://chessboardjs.com/index.html">chessboard.js</a>
+and allows to use this functionality without the need to interop with javascript.</p>
+<p> There are however quite some differences:</p>
+<ul>
+<li>No animations</li>
+<li>It has chess knowledge and therefore provides legal move check out of the box</li>
+</ul>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Chessboard</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="PonzianiComponents.html">PonzianiComponents</a></h6>
+  <h6><strong>Assembly</strong>: PonzianiComponents.dll</h6>
+  <h5 id="PonzianiComponents_Chessboard_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Chessboard</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chessboard_Fen.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chessboard.Fen%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chessboard.razor.cs/#L31">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chessboard_Fen_" data-uid="PonzianiComponents.Chessboard.Fen*"></a>
+  <h4 id="PonzianiComponents_Chessboard_Fen" data-uid="PonzianiComponents.Chessboard.Fen">Fen</h4>
+  <div class="markdown level1 summary"><p>Position displayed on the board in <a href="https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation">Forsyth-Edwards-Notation</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Parameter]
+public string Fen { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chessboard_HighlightLastAppliedMove.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chessboard.HighlightLastAppliedMove%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chessboard.razor.cs/#L72">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chessboard_HighlightLastAppliedMove_" data-uid="PonzianiComponents.Chessboard.HighlightLastAppliedMove*"></a>
+  <h4 id="PonzianiComponents_Chessboard_HighlightLastAppliedMove" data-uid="PonzianiComponents.Chessboard.HighlightLastAppliedMove">HighlightLastAppliedMove</h4>
+  <div class="markdown level1 summary"><p>If true, the squares of the last applied Move get highlighted</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Parameter]
+public bool HighlightLastAppliedMove { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chessboard_Id.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chessboard.Id%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chessboard.razor.cs/#L26">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chessboard_Id_" data-uid="PonzianiComponents.Chessboard.Id*"></a>
+  <h4 id="PonzianiComponents_Chessboard_Id" data-uid="PonzianiComponents.Chessboard.Id">Id</h4>
+  <div class="markdown level1 summary"><p>Id of the rendered HTML element</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Parameter]
+public string Id { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chessboard_OnMovePlayed.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chessboard.OnMovePlayed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chessboard.razor.cs/#L82">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chessboard_OnMovePlayed_" data-uid="PonzianiComponents.Chessboard.OnMovePlayed*"></a>
+  <h4 id="PonzianiComponents_Chessboard_OnMovePlayed" data-uid="PonzianiComponents.Chessboard.OnMovePlayed">OnMovePlayed</h4>
+  <div class="markdown level1 summary"><p>Is called whenever the user played a move on the board. Only active if <a class="xref" href="PonzianiComponents.Chessboard.html#PonzianiComponents_Chessboard_SetupMode">SetupMode</a> is false.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Parameter]
+public EventCallback&lt;MovePlayedInfo&gt; OnMovePlayed { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.AspNetCore.Components.EventCallback</span>&lt;<a class="xref" href="PonzianiComponents.MovePlayedInfo.html">MovePlayedInfo</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chessboard_OnSetupChanged.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chessboard.OnSetupChanged%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chessboard.razor.cs/#L87">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chessboard_OnSetupChanged_" data-uid="PonzianiComponents.Chessboard.OnSetupChanged*"></a>
+  <h4 id="PonzianiComponents_Chessboard_OnSetupChanged" data-uid="PonzianiComponents.Chessboard.OnSetupChanged">OnSetupChanged</h4>
+  <div class="markdown level1 summary"><p>Is called whenever the user changed the board's setup be moving, adding or removing a piece in <a class="xref" href="PonzianiComponents.Chessboard.html#PonzianiComponents_Chessboard_SetupMode">SetupMode</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Parameter]
+public EventCallback&lt;SetupChangedInfo&gt; OnSetupChanged { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.AspNetCore.Components.EventCallback</span>&lt;<a class="xref" href="PonzianiComponents.SetupChangedInfo.html">SetupChangedInfo</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chessboard_OtherAttributes.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chessboard.OtherAttributes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chessboard.razor.cs/#L77">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chessboard_OtherAttributes_" data-uid="PonzianiComponents.Chessboard.OtherAttributes*"></a>
+  <h4 id="PonzianiComponents_Chessboard_OtherAttributes" data-uid="PonzianiComponents.Chessboard.OtherAttributes">OtherAttributes</h4>
+  <div class="markdown level1 summary"><p>Other HTML Attributes, which are applied to the root element of the rendered scoresheet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Parameter(CaptureUnmatchedValues = true)]
+public Dictionary&lt;string, object&gt; OtherAttributes { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chessboard_PathPieceImages.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chessboard.PathPieceImages%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chessboard.razor.cs/#L67">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chessboard_PathPieceImages_" data-uid="PonzianiComponents.Chessboard.PathPieceImages*"></a>
+  <h4 id="PonzianiComponents_Chessboard_PathPieceImages" data-uid="PonzianiComponents.Chessboard.PathPieceImages">PathPieceImages</h4>
+  <div class="markdown level1 summary"><p>Allowing to replace the current piece images with a different set. The piece images must follow the naming convention
+{color}{piecetype}.png, so wB.png for white Bishop, bP.png for black Pawn</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Parameter]
+public string PathPieceImages { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chessboard_Rotate.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chessboard.Rotate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chessboard.razor.cs/#L61">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chessboard_Rotate_" data-uid="PonzianiComponents.Chessboard.Rotate*"></a>
+  <h4 id="PonzianiComponents_Chessboard_Rotate" data-uid="PonzianiComponents.Chessboard.Rotate">Rotate</h4>
+  <div class="markdown level1 summary"><p>If true the board's orientation is reversed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Parameter]
+public bool Rotate { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chessboard_SetupMode.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chessboard.SetupMode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chessboard.razor.cs/#L51">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chessboard_SetupMode_" data-uid="PonzianiComponents.Chessboard.SetupMode*"></a>
+  <h4 id="PonzianiComponents_Chessboard_SetupMode" data-uid="PonzianiComponents.Chessboard.SetupMode">SetupMode</h4>
+  <div class="markdown level1 summary"><p>SetupMode can be used to allow the user to set up a new position. If SetupMode is active pieces can be freely moved, added and removed.
+There are spare pieces shown outside the board.
+If SetupMode isn't active only legal moves can be played.
+Default is false.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Parameter]
+public bool SetupMode { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chessboard_ShowCoordinates.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chessboard.ShowCoordinates%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chessboard.razor.cs/#L56">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chessboard_ShowCoordinates_" data-uid="PonzianiComponents.Chessboard.ShowCoordinates*"></a>
+  <h4 id="PonzianiComponents_Chessboard_ShowCoordinates" data-uid="PonzianiComponents.Chessboard.ShowCoordinates">ShowCoordinates</h4>
+  <div class="markdown level1 summary"><p>If true, the file and rank labels are displayed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Parameter]
+public bool ShowCoordinates { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chessboard_ApplyMove_PonzianiComponents_Chesslib_Move_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chessboard.ApplyMove(PonzianiComponents.Chesslib.Move)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chessboard.razor.cs/#L94">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chessboard_ApplyMove_" data-uid="PonzianiComponents.Chessboard.ApplyMove*"></a>
+  <h4 id="PonzianiComponents_Chessboard_ApplyMove_PonzianiComponents_Chesslib_Move_" data-uid="PonzianiComponents.Chessboard.ApplyMove(PonzianiComponents.Chesslib.Move)">ApplyMove(Move)</h4>
+  <div class="markdown level1 summary"><p>Applies a move to the current board</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ApplyMove(Move move)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PonzianiComponents.Chesslib.Move.html">Move</a></td>
+        <td><span class="parametername">move</span></td>
+        <td><p>The move which shall be applied</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>true, if move could be applied</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chessboard_ClearHighlighting.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chessboard.ClearHighlighting%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chessboard.razor.cs/#L148">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chessboard_ClearHighlighting_" data-uid="PonzianiComponents.Chessboard.ClearHighlighting*"></a>
+  <h4 id="PonzianiComponents_Chessboard_ClearHighlighting" data-uid="PonzianiComponents.Chessboard.ClearHighlighting">ClearHighlighting()</h4>
+  <div class="markdown level1 summary"><p>Removes all square highlights which have been sett by <a class="xref" href="PonzianiComponents.Chessboard.html#PonzianiComponents_Chessboard_SetHighlightSquare_PonzianiComponents_Chesslib_Square_System_Boolean_">SetHighlightSquare(Square, Boolean)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearHighlighting()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chessboard_ExitSetupMode.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chessboard.ExitSetupMode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chessboard.razor.cs/#L119">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chessboard_ExitSetupMode_" data-uid="PonzianiComponents.Chessboard.ExitSetupMode*"></a>
+  <h4 id="PonzianiComponents_Chessboard_ExitSetupMode" data-uid="PonzianiComponents.Chessboard.ExitSetupMode">ExitSetupMode()</h4>
+  <div class="markdown level1 summary"><p>Leave setup mode (API-call to set parameter <a class="xref" href="PonzianiComponents.Chessboard.html#PonzianiComponents_Chessboard_SetupMode">SetupMode</a> to false)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ExitSetupMode()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chessboard_IsHighlighted_PonzianiComponents_Chesslib_Square_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chessboard.IsHighlighted(PonzianiComponents.Chesslib.Square)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chessboard.razor.cs/#L154">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chessboard_IsHighlighted_" data-uid="PonzianiComponents.Chessboard.IsHighlighted*"></a>
+  <h4 id="PonzianiComponents_Chessboard_IsHighlighted_PonzianiComponents_Chesslib_Square_" data-uid="PonzianiComponents.Chessboard.IsHighlighted(PonzianiComponents.Chesslib.Square)">IsHighlighted(Square)</h4>
+  <div class="markdown level1 summary"><p>Checks if a square is highlighted (marked) or not</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsHighlighted(Square s)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PonzianiComponents.Chesslib.Square.html">Square</a></td>
+        <td><span class="parametername">s</span></td>
+        <td><p>Square</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>true if highlighted</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chessboard_OnAfterRenderAsync_System_Boolean_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chessboard.OnAfterRenderAsync(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chessboard.razor.cs/#L240">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chessboard_OnAfterRenderAsync_" data-uid="PonzianiComponents.Chessboard.OnAfterRenderAsync*"></a>
+  <h4 id="PonzianiComponents_Chessboard_OnAfterRenderAsync_System_Boolean_" data-uid="PonzianiComponents.Chessboard.OnAfterRenderAsync(System.Boolean)">OnAfterRenderAsync(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override async Task OnAfterRenderAsync(bool firstRender)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">firstRender</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chessboard_SetFen_System_String_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chessboard.SetFen(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chessboard.razor.cs/#L159">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chessboard_SetFen_" data-uid="PonzianiComponents.Chessboard.SetFen*"></a>
+  <h4 id="PonzianiComponents_Chessboard_SetFen_System_String_" data-uid="PonzianiComponents.Chessboard.SetFen(System.String)">SetFen(String)</h4>
+  <div class="markdown level1 summary"><p>API call to set the position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetFen(string fen)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fen</span></td>
+        <td><p>The new position in FEN-Notation</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chessboard_SetHighlightSquare_PonzianiComponents_Chesslib_Square_System_Boolean_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chessboard.SetHighlightSquare(PonzianiComponents.Chesslib.Square%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chessboard.razor.cs/#L140">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chessboard_SetHighlightSquare_" data-uid="PonzianiComponents.Chessboard.SetHighlightSquare*"></a>
+  <h4 id="PonzianiComponents_Chessboard_SetHighlightSquare_PonzianiComponents_Chesslib_Square_System_Boolean_" data-uid="PonzianiComponents.Chessboard.SetHighlightSquare(PonzianiComponents.Chesslib.Square,System.Boolean)">SetHighlightSquare(Square, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Method to mark/highlight a square</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetHighlightSquare(Square s, bool highlight = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PonzianiComponents.Chesslib.Square.html">Square</a></td>
+        <td><span class="parametername">s</span></td>
+        <td><p>The square, which shall be highlighted</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">highlight</span></td>
+        <td><p>if true, square will be highlighted, if false highlight is switched off</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chessboard_SwitchToSetupMode.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chessboard.SwitchToSetupMode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chessboard.razor.cs/#L112">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chessboard_SwitchToSetupMode_" data-uid="PonzianiComponents.Chessboard.SwitchToSetupMode*"></a>
+  <h4 id="PonzianiComponents_Chessboard_SwitchToSetupMode" data-uid="PonzianiComponents.Chessboard.SwitchToSetupMode">SwitchToSetupMode()</h4>
+  <div class="markdown level1 summary"><p>Enter setup mode (API-call to set parameter <a class="xref" href="PonzianiComponents.Chessboard.html#PonzianiComponents_Chessboard_SetupMode">SetupMode</a> to true)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SwitchToSetupMode()</code></pre>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chessboard.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chessboard%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chessboard.razor.cs/#L21" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

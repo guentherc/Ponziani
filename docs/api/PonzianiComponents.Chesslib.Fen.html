@@ -1,0 +1,878 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Fen
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Fen
+   ">
+    <meta name="generator" content="docfx 2.58.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="PonzianiComponents.Chesslib.Fen">
+  
+  
+  <h1 id="PonzianiComponents_Chesslib_Fen" data-uid="PonzianiComponents.Chesslib.Fen" class="text-break">Class Fen
+  </h1>
+  <div class="markdown level0 summary"><p>This class provides constants and static functions to manage FEN strings (see <a href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation</a>)</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Fen</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="PonzianiComponents.Chesslib.html">PonzianiComponents.Chesslib</a></h6>
+  <h6><strong>Assembly</strong>: PonzianiComponents.dll</h6>
+  <h5 id="PonzianiComponents_Chesslib_Fen_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Fen</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Fen_INITIAL_POSITION.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Fen.INITIAL_POSITION%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Fen.cs/#L17">View Source</a>
+  </span>
+  <h4 id="PonzianiComponents_Chesslib_Fen_INITIAL_POSITION" data-uid="PonzianiComponents.Chesslib.Fen.INITIAL_POSITION">INITIAL_POSITION</h4>
+  <div class="markdown level1 summary"><p>FEN Representation of the starting position in standard chess</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string INITIAL_POSITION = &quot;rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1&quot;</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Fen_PIECE_CHAR_BBISHOP.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Fen.PIECE_CHAR_BBISHOP%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Fen.cs/#L51">View Source</a>
+  </span>
+  <h4 id="PonzianiComponents_Chesslib_Fen_PIECE_CHAR_BBISHOP" data-uid="PonzianiComponents.Chesslib.Fen.PIECE_CHAR_BBISHOP">PIECE_CHAR_BBISHOP</h4>
+  <div class="markdown level1 summary"><p>Character representing the black bishop in <a href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const char PIECE_CHAR_BBISHOP = 'b'</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Fen_PIECE_CHAR_BKING.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Fen.PIECE_CHAR_BKING%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Fen.cs/#L27">View Source</a>
+  </span>
+  <h4 id="PonzianiComponents_Chesslib_Fen_PIECE_CHAR_BKING" data-uid="PonzianiComponents.Chesslib.Fen.PIECE_CHAR_BKING">PIECE_CHAR_BKING</h4>
+  <div class="markdown level1 summary"><p>Character representing the white king in <a href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const char PIECE_CHAR_BKING = 'k'</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Fen_PIECE_CHAR_BKNIGHT.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Fen.PIECE_CHAR_BKNIGHT%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Fen.cs/#L59">View Source</a>
+  </span>
+  <h4 id="PonzianiComponents_Chesslib_Fen_PIECE_CHAR_BKNIGHT" data-uid="PonzianiComponents.Chesslib.Fen.PIECE_CHAR_BKNIGHT">PIECE_CHAR_BKNIGHT</h4>
+  <div class="markdown level1 summary"><p>Character representing the black knight in <a href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const char PIECE_CHAR_BKNIGHT = 'n'</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Fen_PIECE_CHAR_BPAWN.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Fen.PIECE_CHAR_BPAWN%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Fen.cs/#L67">View Source</a>
+  </span>
+  <h4 id="PonzianiComponents_Chesslib_Fen_PIECE_CHAR_BPAWN" data-uid="PonzianiComponents.Chesslib.Fen.PIECE_CHAR_BPAWN">PIECE_CHAR_BPAWN</h4>
+  <div class="markdown level1 summary"><p>Character representing the black pawn in <a href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const char PIECE_CHAR_BPAWN = 'p'</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Fen_PIECE_CHAR_BQUEEN.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Fen.PIECE_CHAR_BQUEEN%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Fen.cs/#L35">View Source</a>
+  </span>
+  <h4 id="PonzianiComponents_Chesslib_Fen_PIECE_CHAR_BQUEEN" data-uid="PonzianiComponents.Chesslib.Fen.PIECE_CHAR_BQUEEN">PIECE_CHAR_BQUEEN</h4>
+  <div class="markdown level1 summary"><p>Character representing the black king in <a href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const char PIECE_CHAR_BQUEEN = 'q'</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Fen_PIECE_CHAR_BROOK.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Fen.PIECE_CHAR_BROOK%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Fen.cs/#L43">View Source</a>
+  </span>
+  <h4 id="PonzianiComponents_Chesslib_Fen_PIECE_CHAR_BROOK" data-uid="PonzianiComponents.Chesslib.Fen.PIECE_CHAR_BROOK">PIECE_CHAR_BROOK</h4>
+  <div class="markdown level1 summary"><p>Character representing the black queen in <a href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const char PIECE_CHAR_BROOK = 'r'</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Fen_PIECE_CHAR_NONE.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Fen.PIECE_CHAR_NONE%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Fen.cs/#L71">View Source</a>
+  </span>
+  <h4 id="PonzianiComponents_Chesslib_Fen_PIECE_CHAR_NONE" data-uid="PonzianiComponents.Chesslib.Fen.PIECE_CHAR_NONE">PIECE_CHAR_NONE</h4>
+  <div class="markdown level1 summary"><p>Character representing no piece (empty square)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const char PIECE_CHAR_NONE = ' '</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Fen_PIECE_CHAR_WBISHOP.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Fen.PIECE_CHAR_WBISHOP%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Fen.cs/#L47">View Source</a>
+  </span>
+  <h4 id="PonzianiComponents_Chesslib_Fen_PIECE_CHAR_WBISHOP" data-uid="PonzianiComponents.Chesslib.Fen.PIECE_CHAR_WBISHOP">PIECE_CHAR_WBISHOP</h4>
+  <div class="markdown level1 summary"><p>Character representing the white bishop in <a href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const char PIECE_CHAR_WBISHOP = 'B'</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Fen_PIECE_CHAR_WKING.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Fen.PIECE_CHAR_WKING%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Fen.cs/#L23">View Source</a>
+  </span>
+  <h4 id="PonzianiComponents_Chesslib_Fen_PIECE_CHAR_WKING" data-uid="PonzianiComponents.Chesslib.Fen.PIECE_CHAR_WKING">PIECE_CHAR_WKING</h4>
+  <div class="markdown level1 summary"><p>Character representing the white king in <a href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const char PIECE_CHAR_WKING = 'K'</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Fen_PIECE_CHAR_WKNIGHT.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Fen.PIECE_CHAR_WKNIGHT%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Fen.cs/#L55">View Source</a>
+  </span>
+  <h4 id="PonzianiComponents_Chesslib_Fen_PIECE_CHAR_WKNIGHT" data-uid="PonzianiComponents.Chesslib.Fen.PIECE_CHAR_WKNIGHT">PIECE_CHAR_WKNIGHT</h4>
+  <div class="markdown level1 summary"><p>Character representing the white knight in <a href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const char PIECE_CHAR_WKNIGHT = 'N'</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Fen_PIECE_CHAR_WPAWN.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Fen.PIECE_CHAR_WPAWN%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Fen.cs/#L63">View Source</a>
+  </span>
+  <h4 id="PonzianiComponents_Chesslib_Fen_PIECE_CHAR_WPAWN" data-uid="PonzianiComponents.Chesslib.Fen.PIECE_CHAR_WPAWN">PIECE_CHAR_WPAWN</h4>
+  <div class="markdown level1 summary"><p>Character representing the white pawn in <a href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const char PIECE_CHAR_WPAWN = 'P'</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Fen_PIECE_CHAR_WQUEEN.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Fen.PIECE_CHAR_WQUEEN%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Fen.cs/#L31">View Source</a>
+  </span>
+  <h4 id="PonzianiComponents_Chesslib_Fen_PIECE_CHAR_WQUEEN" data-uid="PonzianiComponents.Chesslib.Fen.PIECE_CHAR_WQUEEN">PIECE_CHAR_WQUEEN</h4>
+  <div class="markdown level1 summary"><p>Character representing the white king in <a href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const char PIECE_CHAR_WQUEEN = 'Q'</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Fen_PIECE_CHAR_WROOK.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Fen.PIECE_CHAR_WROOK%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Fen.cs/#L39">View Source</a>
+  </span>
+  <h4 id="PonzianiComponents_Chesslib_Fen_PIECE_CHAR_WROOK" data-uid="PonzianiComponents.Chesslib.Fen.PIECE_CHAR_WROOK">PIECE_CHAR_WROOK</h4>
+  <div class="markdown level1 summary"><p>Character representing the white queen in <a href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const char PIECE_CHAR_WROOK = 'R'</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Fen_FenPartFromBoard_System_Char___.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Fen.FenPartFromBoard(System.Char%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Fen.cs/#L120">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chesslib_Fen_FenPartFromBoard_" data-uid="PonzianiComponents.Chesslib.Fen.FenPartFromBoard*"></a>
+  <h4 id="PonzianiComponents_Chesslib_Fen_FenPartFromBoard_System_Char___" data-uid="PonzianiComponents.Chesslib.Fen.FenPartFromBoard(System.Char[])">FenPartFromBoard(Char[])</h4>
+  <div class="markdown level1 summary"><p>Creates the first part of a FEN string from a board array</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string FenPartFromBoard(char[] board)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span>[]</td>
+        <td><span class="parametername">board</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Fen_GetPieceArray_System_String_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Fen.GetPieceArray(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Fen.cs/#L93">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chesslib_Fen_GetPieceArray_" data-uid="PonzianiComponents.Chesslib.Fen.GetPieceArray*"></a>
+  <h4 id="PonzianiComponents_Chesslib_Fen_GetPieceArray_System_String_" data-uid="PonzianiComponents.Chesslib.Fen.GetPieceArray(System.String)">GetPieceArray(String)</h4>
+  <div class="markdown level1 summary"><p>Calulates an Array of Piece Characters represented by the provided string in FEN Notation. The array representation used
+is A1 = 0, H1 = 7, H8 = 63</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static char[] GetPieceArray(string fen)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fen</span></td>
+        <td><p>The position in FEN representation</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Fen_ParsePieceChar_System_Char_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Fen.ParsePieceChar(System.Char)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Fen.cs/#L85">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chesslib_Fen_ParsePieceChar_" data-uid="PonzianiComponents.Chesslib.Fen.ParsePieceChar*"></a>
+  <h4 id="PonzianiComponents_Chesslib_Fen_ParsePieceChar_System_Char_" data-uid="PonzianiComponents.Chesslib.Fen.ParsePieceChar(System.Char)">ParsePieceChar(Char)</h4>
+  <div class="markdown level1 summary"><p>Get's the piece for a piece characteristic (Example Black Queen for 'q' and White Pawn for 'p'</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Piece ParsePieceChar(char c)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span></td>
+        <td><span class="parametername">c</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PonzianiComponents.Chesslib.Piece.html">Piece</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Fen_ParseSquare_System_String_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Fen.ParseSquare(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Fen.cs/#L153">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chesslib_Fen_ParseSquare_" data-uid="PonzianiComponents.Chesslib.Fen.ParseSquare*"></a>
+  <h4 id="PonzianiComponents_Chesslib_Fen_ParseSquare_System_String_" data-uid="PonzianiComponents.Chesslib.Fen.ParseSquare(System.String)">ParseSquare(String)</h4>
+  <div class="markdown level1 summary"><p>Parses a square provided by it's field name (such as 'a1', 'e5' or 'h8')</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Square ParseSquare(string squareString)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">squareString</span></td>
+        <td><p>The square as string</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PonzianiComponents.Chesslib.Square.html">Square</a></td>
+        <td><p>The square defined by <code data-dev-comment-type="paramref" class="paramref">squareString</code></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="PonzianiComponents_Chesslib_Fen_ParseSquare_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method doesn't make any error checking. If invalid input is provided
+this might result in a crash</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Fen_PieceChar_PonzianiComponents_Chesslib_Piece_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Fen.PieceChar(PonzianiComponents.Chesslib.Piece)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Fen.cs/#L79">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chesslib_Fen_PieceChar_" data-uid="PonzianiComponents.Chesslib.Fen.PieceChar*"></a>
+  <h4 id="PonzianiComponents_Chesslib_Fen_PieceChar_PonzianiComponents_Chesslib_Piece_" data-uid="PonzianiComponents.Chesslib.Fen.PieceChar(PonzianiComponents.Chesslib.Piece)">PieceChar(Piece)</h4>
+  <div class="markdown level1 summary"><p>Get's the char used for the piece (Example 'q' for black queen or 'P' for White pawn)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static char PieceChar(Piece piece)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PonzianiComponents.Chesslib.Piece.html">Piece</a></td>
+        <td><span class="parametername">piece</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Fen_Swap_System_String_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Fen.Swap(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Fen.cs/#L165">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chesslib_Fen_Swap_" data-uid="PonzianiComponents.Chesslib.Fen.Swap*"></a>
+  <h4 id="PonzianiComponents_Chesslib_Fen_Swap_System_String_" data-uid="PonzianiComponents.Chesslib.Fen.Swap(System.String)">Swap(String)</h4>
+  <div class="markdown level1 summary"><p>Creates a fen string representing an equivalent position with colors reversed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string Swap(string fen)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fen</span></td>
+        <td><p>the positions which shall be swapped</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>fen string of the swapped position</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Fen.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Fen%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Fen.cs/#L12" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

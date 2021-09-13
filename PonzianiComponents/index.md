@@ -14,6 +14,8 @@ PGN parsing and ECO classification
 
 ## Installation ##
 
+## License ##
+
 ## Usage ##
 Add a using reference in your **_Imports.razor**.
 
