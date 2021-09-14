@@ -1,2 +1,2 @@
 @echo off
-dotnet-serve -d "_site" -h "Cache-Control: no-cache"
+dotnet-serve -d "../docs" -h "Cache-Control: no-cache"

@@ -14,7 +14,11 @@ PGN parsing and ECO classification
 
 ## Installation ##
 
+`dotnet add package Ponziani --version 0.1.0`
+
 ## License ##
+
+[GPL-3.0](../LICENSE)
 
 ## Usage ##
 Add a using reference in your **_Imports.razor**.

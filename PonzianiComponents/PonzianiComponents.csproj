@@ -3,15 +3,24 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Version>0.1.0</Version>
-    <Copyright>Christian Günther</Copyright>
+    <Copyright>Copyright (c) Christian Günther 2021</Copyright>
     <Authors>Christian Günther</Authors>
     <Company />
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/guentherc/Ponziani</RepositoryUrl>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageLicenseFile></PackageLicenseFile>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageTags>blazor blazor-component chess</PackageTags>
-    <Description>.Net 5 library offering chess-related blazor components and functions for chess programming</Description>
+    <Description>.Net 5 based library offering chess-related blazor components and functions for chess programming.
+Blazor-Components: 
+  Chessboard: Interactive Chessboard
+  Scoresheet: Component to list chess moves with support for comments and variations
+Chesslib:
+  API offering legal move generation, PGN parsing, ...</Description>
+    <PackageProjectUrl>https://guentherc.github.io/Ponziani/</PackageProjectUrl>
+    <PackageId>Ponziani</PackageId>
+    <Product>Ponziani</Product>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -39,10 +48,6 @@
 
   <ItemGroup>
     <None Include="Chessboard.razor.scss" />
-    <None Include="..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
 
 </Project>
