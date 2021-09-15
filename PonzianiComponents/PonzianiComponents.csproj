@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Copyright>Copyright (c) Christian Günther 2021</Copyright>
     <Authors>Christian Günther</Authors>
     <Company />
@@ -11,27 +11,20 @@
     <PackageLicenseFile></PackageLicenseFile>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageTags>blazor blazor-component chess</PackageTags>
-    <Description>.Net 5 based library offering chess-related blazor components and functions for chess programming.
-Blazor-Components: 
-  Chessboard: Interactive Chessboard
-  Scoresheet: Component to list chess moves with support for comments and variations
-Chesslib:
-  API offering legal move generation, PGN parsing, ...</Description>
+    <Description>.Net 5 based library offering chess-related blazor components and functions for chess programming.</Description>
     <PackageProjectUrl>https://guentherc.github.io/Ponziani/</PackageProjectUrl>
-    <PackageId>Ponziani</PackageId>
+    <PackageId>PonzianiComponents</PackageId>
     <Product>Ponziani</Product>
     <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>0.1.1.0</AssemblyVersion>
+    <FileVersion>0.1.1.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <WarningLevel>3</WarningLevel>
     <Optimize>true</Optimize>
   </PropertyGroup>
-
-  <ItemGroup>
-    <SassFile Remove="Chessboard.razor.scss" />
-  </ItemGroup>
-
   
   <ItemGroup>
     <SupportedPlatform Include="browser" />
@@ -47,7 +40,49 @@ Chesslib:
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Chessboard.razor.scss" />
+    <Content Update="wwwroot\img\chesspieces\wikipedia\bB.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\img\chesspieces\wikipedia\bK.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\img\chesspieces\wikipedia\bN.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\img\chesspieces\wikipedia\bP.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\img\chesspieces\wikipedia\bQ.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\img\chesspieces\wikipedia\bR.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\img\chesspieces\wikipedia\wB.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\img\chesspieces\wikipedia\wK.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\img\chesspieces\wikipedia\wN.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\img\chesspieces\wikipedia\wP.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\img\chesspieces\wikipedia\wQ.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\img\chesspieces\wikipedia\wR.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\ponziani.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy &quot;$(ProjectDir)$(OutDir)..\*.nupkg&quot; D:\chrgu\OneDrive\Dokumente\Packages /S /Y" />
+  </Target>
 
 </Project>
