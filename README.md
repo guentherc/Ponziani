@@ -6,4 +6,4 @@ This package offers .Net 5 based chess-related blazor components and a library p
 API offering legal move generation, PGN parsing, ...
 
 ## Installation ##
-`dotnet add package Ponziani --version 0.1.0`
+`dotnet add package PonzianiComponents --version 0.1.1`
