@@ -57,7 +57,7 @@
 .pzNotation {
     cursor: default;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: $Size / 30;
+    font-size: div($Size, 30);
     position: absolute;
 }
 
