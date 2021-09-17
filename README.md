@@ -7,3 +7,6 @@ API offering legal move generation, PGN parsing, ...
 
 ## Installation ##
 `dotnet add package PonzianiComponents --version 0.1.1`
+
+## Demo ##
+Have a look at [Ponziani Demo Site](https://ponziani.ddns.net/)
