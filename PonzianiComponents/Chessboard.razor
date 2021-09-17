@@ -99,7 +99,7 @@
 <div id="@Id" @ondrop="HandleDropAsync" class="pzChessboard" @attributes=OtherAttributes @ref="_div">
 	@if (SetupMode)
 	{
-		<div class="pzSparePieces" style="align-content:center; height:10%; width:100%; padding-left:12.5%" ondragover="event.preventDefault();"  @ondragenter="() => HandleDragEnterOutside()" >
+		<div class="pzSparePieces" style="align-content:center; height:10%; width:100%; padding-left:12.5%" ondragover="event.preventDefault();"  @ondragenter="() => HandleDragEnterOutside()" ondrop="event.preventDefault();">
 		@{
 			string imgs = "KQRBNP";
 				char side = Rotate ? 'w' : 'b';
@@ -126,7 +126,7 @@
 				@for (int file = FileStart; file >= 0 && file < 8; file += FileStep)
 				{
 					Chesslib.Square square = (Chesslib.Square)(8 * rank + file);					
-					<div class="@SquareClass(rank, file)" style="@SquareStyle" @ondragenter="() => HandleDragEnter(square)" id="@SquareId(square)">
+					<div class="@SquareClass(rank, file)" style="@SquareStyle" @ondragenter="() => HandleDragEnter(square)" id="@SquareId(square)" ondrop="event.preventDefault();">
 						@if (ShowCoordinates && file == FileStart)
 						{
 							<div class="pzNotation pzNumeric">@(rank+1)</div>
@@ -153,7 +153,7 @@
 	</div>
 	@if (SetupMode)
 	{
-		<div class="pzSparePieces" style="align-content:center; height:10%; width:100%; padding-left:12.5%" ondragover="event.preventDefault();" @ondragenter="() => HandleDragEnterOutside()">
+		<div class="pzSparePieces" style="align-content:center; height:10%; width:100%; padding-left:12.5%" ondragover="event.preventDefault();" @ondragenter="() => HandleDragEnterOutside()" ondrop="event.preventDefault();">
 		@{
 			string imgs = "KQRBNP";
 				char side = Rotate ? 'b' : 'w';
