@@ -1,5 +1,9 @@
-/* Settings relevant for Chessboard component*/
-/* Settings relevant for Scoresheet component*/
+div, img, span, p, tr, td {
+  --move_text_comment_color: blue;
+  --comment_background_color: #FFEBE4;
+  --variation_background_color: #EBE4FF;
+}
+
 table.pzNotTable > tbody > tr > td:not(:last-child) {
   border-right: 1px solid black;
 }
@@ -42,15 +46,15 @@ table.pzNotTable > tbody > tr > td:not(:last-child) {
 }
 
 ::deep .pzMoveTextComment {
-  color: blue;
+  color: var(--move_text_comment_color);
 }
 
 ::deep .pzComment {
-  background-color: #FFEBE4;
+  background-color: var(--comment_background_color);
 }
 
 ::deep .pzVariation {
-  background-color: #EBE4FF;
+  background-color: var(--variation_background_color);
 }
 
 ::deep .pzMoveTextLevel0 {

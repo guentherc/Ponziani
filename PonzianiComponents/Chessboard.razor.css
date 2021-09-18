@@ -1,13 +1,26 @@
-/* Settings relevant for Chessboard component*/
-/* Settings relevant for Scoresheet component*/
+div, img, span, p, tr, td {
+  --size: 400px;
+  --setup_size: 500px;
+  --dark_squares_color: #b58863;
+  --dark_squares_text_color: #f0d9b5;
+  --light_squares_color: #f0d9b5;
+  --light_squares_text_color: #b58863;
+  --darken_dark_squares_color: #110c08;
+  --darken_light_squares_color: #8a5f1c;
+  --darken_dark_squares_text_color: #8a5f1c;
+  --darken_light_squares_text_color: #110c08;
+  --notation_font_size: 13.3333333333px;
+  --highlight_color: {$HighlightColor};
+}
+
 .pzChessboard {
-  width: 400px;
-  height: 400px;
+  width: var(--size);
+  height: var(--size);
 }
 
 .pzChessboardSetup {
-  width: 400px;
-  height: 500px;
+  width: var(--size);
+  height: var(--setup_size);
 }
 
 .pzBoard {
@@ -28,23 +41,23 @@
 }
 
 .pzDarkSquare {
-  background-color: #b58863;
-  color: #f0d9b5;
+  background-color: var(--dark_squares_color);
+  color: var(--dark_squares_text_color);
 }
 
 .pzLightSquare {
-  background-color: #f0d9b5;
-  color: #b58863;
+  background-color: var(--light_squares_color);
+  color: var(--light_squares_text_color);
 }
 
 .pzDarkSquareGrey {
-  background-color: #110c08;
-  color: #8a5f1c;
+  background-color: var(--darken_dark_squares_color);
+  color: var(--darken_dark_squares_text_color);
 }
 
 .pzLightSquareGrey {
-  background-color: #8a5f1c;
-  color: #110c08;
+  background-color: var(--darken_light_squares_color);
+  color: var(--darken_light_squares_text_color);
 }
 
 .pzClearfix {
@@ -54,7 +67,7 @@
 .pzNotation {
   cursor: default;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: div(400px, 30);
+  font-size: var(--notation_font_size);
   position: absolute;
 }
 
@@ -69,7 +82,7 @@
 }
 
 .pzHighlightSquare {
-  box-shadow: inset 0 0 3px 3px yellow;
+  box-shadow: inset 0 0 3px 3px var(--highlight_color);
 }
 
 .modal {

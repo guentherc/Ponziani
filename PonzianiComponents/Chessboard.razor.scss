@@ -1,13 +1,36 @@
-﻿@import 'style.scss';
+﻿@use "sass:math";
+@import 'style.scss';
+
+$SetupSize: 1.25 * $Size;
+$DarkenDarkSquaresColor: darken($DarkSquaresColor, 50%);
+$DarkenLightSquaresColor: darken($LightSquaresColor, 50%);
+$DarkenDarkSquaresTextColor: darken($DarkSquaresTextColor, 50%);
+$DarkenLightSquaresTextColor: darken($LightSquaresTextColor, 50%);
+$NotationFontSize: math.div($Size, 30);
+
+div, img, span, p, tr, td {
+    --size: #{$Size};
+    --setup_size: #{$SetupSize};
+    --dark_squares_color: #{$DarkSquaresColor};
+    --dark_squares_text_color: #{$DarkSquaresTextColor};
+    --light_squares_color: #{$LightSquaresColor};
+    --light_squares_text_color: #{$LightSquaresTextColor};
+    --darken_dark_squares_color: #{$DarkenDarkSquaresColor};
+    --darken_light_squares_color: #{$DarkenLightSquaresColor};
+    --darken_dark_squares_text_color: #{$DarkenDarkSquaresTextColor};
+    --darken_light_squares_text_color: #{$DarkenLightSquaresTextColor};
+    --notation_font_size: #{$NotationFontSize};
+    --highlight_color: {$HighlightColor};
+}
 
 .pzChessboard {
-    width: $Size;
-    height: $Size;
+    width: var(--size);
+    height: var(--size);
 }
 
 .pzChessboardSetup {
-    width: $Size;
-    height: 1.25 * $Size;
+    width: var(--size);
+    height: var(--setup_size);
 }
 
 .pzBoard {
@@ -31,23 +54,23 @@
 }
 
 .pzDarkSquare {
-    background-color: $DarkSquaresColor;
-    color: $DarkSquaresTextColor;
+    background-color: var(--dark_squares_color);
+    color: var(--dark_squares_text_color);
 }
 
 .pzLightSquare {
-    background-color: $LightSquaresColor;
-    color: $LightSquaresTextColor;
+    background-color: var(--light_squares_color);
+    color: var(--light_squares_text_color);
 }
 
 .pzDarkSquareGrey {
-    background-color: darken($DarkSquaresColor, 50%);
-    color: darken($DarkSquaresTextColor, 50%);
+    background-color: var(--darken_dark_squares_color);
+    color: var(--darken_dark_squares_text_color);
 }
 
 .pzLightSquareGrey {
-    background-color: darken($LightSquaresColor, 50%);
-    color: darken($LightSquaresTextColor, 50%);
+    background-color: var(--darken_light_squares_color);
+    color: var(--darken_light_squares_text_color);
 }
 
 .pzClearfix {
@@ -57,7 +80,7 @@
 .pzNotation {
     cursor: default;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: div($Size, 30);
+    font-size: var(--notation_font_size);
     position: absolute;
 }
 
@@ -78,7 +101,7 @@
 }
 
 .pzHighlightSquare {
-    box-shadow: inset 0 0 3px 3px $HighlightColor;
+    box-shadow: inset 0 0 3px 3px var(--highlight_color);
 }
 
 .modal {

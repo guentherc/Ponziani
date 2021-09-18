@@ -1,5 +1,11 @@
 ﻿@import 'style.scss';
 
+div, img, span, p, tr, td {
+    --move_text_comment_color: #{$MoveTextCommentColor};
+    --comment_background_color: #{$CommentBackgroundColor};
+    --variation_background_color: #{$VariationBackgroundColor};
+}
+
 table.pzNotTable > tbody > tr > td:not(:last-child) {
     border-right: 1px solid black;
 }
@@ -39,15 +45,15 @@ table.pzNotTable > tbody > tr > td:not(:last-child) {
 }
 
 ::deep .pzMoveTextComment {
-    color: $MoveTextCommentColor;
+    color: var(--move_text_comment_color);
 }
 
 ::deep .pzComment {
-    background-color: $CommentBackgroundColor;
+    background-color: var(--comment_background_color);
 }
 
 ::deep .pzVariation {
-    background-color: $VariationBackgroundColor;
+    background-color: var(--variation_background_color);
 }
 
 ::deep .pzMoveTextLevel0 {
