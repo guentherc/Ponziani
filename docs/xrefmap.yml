@@ -39,6 +39,45 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Chessboard.ClearHighlighting
   nameWithType: Chessboard.ClearHighlighting
+- uid: PonzianiComponents.Chessboard.ColorDarkSquares
+  name: ColorDarkSquares
+  href: api/PonzianiComponents.Chessboard.html#PonzianiComponents_Chessboard_ColorDarkSquares
+  commentId: P:PonzianiComponents.Chessboard.ColorDarkSquares
+  fullName: PonzianiComponents.Chessboard.ColorDarkSquares
+  nameWithType: Chessboard.ColorDarkSquares
+- uid: PonzianiComponents.Chessboard.ColorDarkSquares*
+  name: ColorDarkSquares
+  href: api/PonzianiComponents.Chessboard.html#PonzianiComponents_Chessboard_ColorDarkSquares_
+  commentId: Overload:PonzianiComponents.Chessboard.ColorDarkSquares
+  isSpec: "True"
+  fullName: PonzianiComponents.Chessboard.ColorDarkSquares
+  nameWithType: Chessboard.ColorDarkSquares
+- uid: PonzianiComponents.Chessboard.ColorHighlight
+  name: ColorHighlight
+  href: api/PonzianiComponents.Chessboard.html#PonzianiComponents_Chessboard_ColorHighlight
+  commentId: P:PonzianiComponents.Chessboard.ColorHighlight
+  fullName: PonzianiComponents.Chessboard.ColorHighlight
+  nameWithType: Chessboard.ColorHighlight
+- uid: PonzianiComponents.Chessboard.ColorHighlight*
+  name: ColorHighlight
+  href: api/PonzianiComponents.Chessboard.html#PonzianiComponents_Chessboard_ColorHighlight_
+  commentId: Overload:PonzianiComponents.Chessboard.ColorHighlight
+  isSpec: "True"
+  fullName: PonzianiComponents.Chessboard.ColorHighlight
+  nameWithType: Chessboard.ColorHighlight
+- uid: PonzianiComponents.Chessboard.ColorLightSquares
+  name: ColorLightSquares
+  href: api/PonzianiComponents.Chessboard.html#PonzianiComponents_Chessboard_ColorLightSquares
+  commentId: P:PonzianiComponents.Chessboard.ColorLightSquares
+  fullName: PonzianiComponents.Chessboard.ColorLightSquares
+  nameWithType: Chessboard.ColorLightSquares
+- uid: PonzianiComponents.Chessboard.ColorLightSquares*
+  name: ColorLightSquares
+  href: api/PonzianiComponents.Chessboard.html#PonzianiComponents_Chessboard_ColorLightSquares_
+  commentId: Overload:PonzianiComponents.Chessboard.ColorLightSquares
+  isSpec: "True"
+  fullName: PonzianiComponents.Chessboard.ColorLightSquares
+  nameWithType: Chessboard.ColorLightSquares
 - uid: PonzianiComponents.Chessboard.ExitSetupMode
   name: ExitSetupMode()
   href: api/PonzianiComponents.Chessboard.html#PonzianiComponents_Chessboard_ExitSetupMode
@@ -234,6 +273,19 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Chessboard.ShowCoordinates
   nameWithType: Chessboard.ShowCoordinates
+- uid: PonzianiComponents.Chessboard.Size
+  name: Size
+  href: api/PonzianiComponents.Chessboard.html#PonzianiComponents_Chessboard_Size
+  commentId: P:PonzianiComponents.Chessboard.Size
+  fullName: PonzianiComponents.Chessboard.Size
+  nameWithType: Chessboard.Size
+- uid: PonzianiComponents.Chessboard.Size*
+  name: Size
+  href: api/PonzianiComponents.Chessboard.html#PonzianiComponents_Chessboard_Size_
+  commentId: Overload:PonzianiComponents.Chessboard.Size
+  isSpec: "True"
+  fullName: PonzianiComponents.Chessboard.Size
+  nameWithType: Chessboard.Size
 - uid: PonzianiComponents.Chessboard.SwitchToSetupMode
   name: SwitchToSetupMode()
   href: api/PonzianiComponents.Chessboard.html#PonzianiComponents_Chessboard_SwitchToSetupMode
@@ -2805,6 +2857,45 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Scoresheet.AddMoveAsync
   nameWithType: Scoresheet.AddMoveAsync
+- uid: PonzianiComponents.Scoresheet.ColorCommentBackground
+  name: ColorCommentBackground
+  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_ColorCommentBackground
+  commentId: P:PonzianiComponents.Scoresheet.ColorCommentBackground
+  fullName: PonzianiComponents.Scoresheet.ColorCommentBackground
+  nameWithType: Scoresheet.ColorCommentBackground
+- uid: PonzianiComponents.Scoresheet.ColorCommentBackground*
+  name: ColorCommentBackground
+  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_ColorCommentBackground_
+  commentId: Overload:PonzianiComponents.Scoresheet.ColorCommentBackground
+  isSpec: "True"
+  fullName: PonzianiComponents.Scoresheet.ColorCommentBackground
+  nameWithType: Scoresheet.ColorCommentBackground
+- uid: PonzianiComponents.Scoresheet.ColorCommentText
+  name: ColorCommentText
+  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_ColorCommentText
+  commentId: P:PonzianiComponents.Scoresheet.ColorCommentText
+  fullName: PonzianiComponents.Scoresheet.ColorCommentText
+  nameWithType: Scoresheet.ColorCommentText
+- uid: PonzianiComponents.Scoresheet.ColorCommentText*
+  name: ColorCommentText
+  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_ColorCommentText_
+  commentId: Overload:PonzianiComponents.Scoresheet.ColorCommentText
+  isSpec: "True"
+  fullName: PonzianiComponents.Scoresheet.ColorCommentText
+  nameWithType: Scoresheet.ColorCommentText
+- uid: PonzianiComponents.Scoresheet.ColorVariationBackground
+  name: ColorVariationBackground
+  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_ColorVariationBackground
+  commentId: P:PonzianiComponents.Scoresheet.ColorVariationBackground
+  fullName: PonzianiComponents.Scoresheet.ColorVariationBackground
+  nameWithType: Scoresheet.ColorVariationBackground
+- uid: PonzianiComponents.Scoresheet.ColorVariationBackground*
+  name: ColorVariationBackground
+  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_ColorVariationBackground_
+  commentId: Overload:PonzianiComponents.Scoresheet.ColorVariationBackground
+  isSpec: "True"
+  fullName: PonzianiComponents.Scoresheet.ColorVariationBackground
+  nameWithType: Scoresheet.ColorVariationBackground
 - uid: PonzianiComponents.Scoresheet.Comments
   name: Comments
   href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_Comments

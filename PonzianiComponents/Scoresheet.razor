@@ -144,7 +144,7 @@
 else if (Mode == DisplayMode.INLINE)
 {
 	Game g = new Game(Game.StartPosition);
-	<div id="@Id" @attributes=OtherAttributes>
+	<div id="@Id" @attributes=OtherAttributes @ref="_div">
 		<CascadingValue Value="@Id" Name="Id">
 			<CascadingValue Value="@Comments" Name="Comments">
 				<CascadingValue Value="@Variations" Name="Variations">

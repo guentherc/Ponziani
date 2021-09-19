@@ -22,7 +22,8 @@ namespace PonzianiComponents
         /// <summary>
         /// Display Mode for Move List
         /// </summary>
-        public enum DisplayMode {
+        public enum DisplayMode
+        {
             /// <summary>
             /// Moves are arranged in a table with one column for white's moves and one cloumn for black's moves
             /// </summary>
@@ -33,11 +34,13 @@ namespace PonzianiComponents
             /// 1. e4 c5 2. Nf3 d6 3. d4 cxd4 4. Nxd4 Nf6 5. Nc3 a6
             /// </example>
             /// </summary>
-            INLINE };
+            INLINE
+        };
         /// <summary>
         /// The output format used for the moves
         /// </summary>
-        public enum NotationType { 
+        public enum NotationType
+        {
             /// <summary>
             /// Standard algebraic notation <example>Nf3, e3, O-O</example>
             /// </summary>
@@ -82,6 +85,21 @@ namespace PonzianiComponents
         /// </summary>
         [Parameter]
         public bool Variations { set; get; } = false;
+        /// <summary>
+        /// Text color for comments in inline modes and for comments within variations in tabular mode
+        /// </summary>
+        [Parameter]
+        public string ColorCommentText { set; get; }
+        /// <summary>
+        /// Background color for comments in tabular mode
+        /// </summary>
+        [Parameter]
+        public string ColorCommentBackground { set; get; }
+        /// <summary>
+        /// Background color for variations in tabular mode
+        /// </summary>
+        [Parameter]
+        public string ColorVariationBackground { set; get; }
         /// <summary>
         /// Is called whenever the user selects a move by clicking it 
         /// </summary>
@@ -130,11 +148,23 @@ namespace PonzianiComponents
             {
                 module = await js.InvokeAsync<IJSObjectReference>("import", "./_content/PonzianiComponents/ponziani.js");
             }
+            await StyleAsync();
             if (!firstRender && module != null && _tbody.Context != null && Mode == DisplayMode.TABULAR && scrolledMoveNumber != Game.Position.MoveNumber)
             {
                 await module.InvokeVoidAsync("scrollToBottom", new object[] { _tbody });
                 scrolledMoveNumber = Game.Position.MoveNumber;
             }
+        }
+
+        private async Task StyleAsync()
+        {
+            var el = Mode == DisplayMode.INLINE ? _div : _tbody;
+            if (ColorCommentText != null)
+                await module.InvokeVoidAsync("setCSSProperty", new object[] { el, ".pzMoveTextComment", "--move_text_comment_color", ColorCommentText });
+            if (ColorCommentBackground != null)
+                await module.InvokeVoidAsync("setCSSProperty", new object[] { el, ".pzComment", "--comment_background_color", ColorCommentBackground });
+            if (ColorVariationBackground != null)
+                await module.InvokeVoidAsync("setCSSProperty", new object[] { el, ".pzVariation", "--variation_background_color", ColorVariationBackground });
         }
 
         private bool EvaluationAvailable => Game.Moves.FindIndex(m => m.Evaluation != 0) >= 0;
@@ -143,7 +173,7 @@ namespace PonzianiComponents
 
         private async Task SelectMoveAsync(EventArgs eventArgs, int moveNumber, Side side)
         {
-            MoveSelectInfo msi = new( Id, Game.GetPosition(moveNumber, side), Game.GetMove(moveNumber, side) );
+            MoveSelectInfo msi = new(Id, Game.GetPosition(moveNumber, side), Game.GetMove(moveNumber, side));
             await OnMoveSelected.InvokeAsync(msi);
         }
 
@@ -177,7 +207,7 @@ namespace PonzianiComponents
                 if (ThinkTimeAvailable) sbs.Add(Game.Moves[moveIndex].UsedThinkTime.ToString(@"m\:ss"));
                 if (DepthAvailable) sbs.Add(Game.Moves[moveIndex].Depth.ToString());
                 if (EvaluationAvailable) sbs.Add(Game.Moves[moveIndex].Evaluation.ToString());
-                for (int i = 0; i<sbs.Count; ++i)
+                for (int i = 0; i < sbs.Count; ++i)
                 {
                     if (i > 0) sb.Append(" ");
                     sb.Append(sbs[i]);
@@ -191,6 +221,7 @@ namespace PonzianiComponents
         private IJSObjectReference module = null;
         private int scrolledMoveNumber = 0;
         private ElementReference _tbody;
+        private ElementReference _div;
 
     }
 

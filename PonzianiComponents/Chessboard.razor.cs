@@ -3,6 +3,7 @@ using Microsoft.JSInterop;
 using PonzianiComponents.Chesslib;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,6 +72,26 @@ namespace PonzianiComponents
         /// </summary>
         [Parameter]
         public bool HighlightLastAppliedMove { get; set; } = false;
+        /// <summary>
+        /// Size (in pixels) of Chessboard
+        /// </summary>
+        [Parameter]
+        public int Size { get; set; } = 0;
+        /// <summary>
+        /// Color of dark squares
+        /// </summary>
+        [Parameter]
+        public string ColorDarkSquares { get; set; }
+        /// <summary>
+        /// Color of light squares
+        /// </summary>
+        [Parameter]
+        public string ColorLightSquares { get; set; }
+        /// <summary>
+        /// Color used for highlighting squares
+        /// </summary>
+        [Parameter]
+        public string ColorHighlight { get; set; }
         /// <summary>
         /// Other HTML Attributes, which are applied to the root element of the rendered scoresheet.
         /// </summary>
@@ -246,7 +267,39 @@ namespace PonzianiComponents
             if (module != null)
             {
                 if (SetupMode) factor = 1.25; else factor = 1;
+                await StyleAsync();
                 await module.InvokeVoidAsync("setHeight", new object[] { _div, factor });
+            }
+        }
+
+        private async Task StyleAsync()
+        {
+            if (Size != 0) {
+                await module.InvokeVoidAsync("setCSSProperty", new object[] { _div, ".pzChessboard", "--size", $"{Size}px" });
+                int nfs = ((int)Math.Ceiling(Size / 30.0));
+                await module.InvokeVoidAsync("setCSSProperty", new object[] { _div, ".pzNotation", "--notation_font_size", $"{nfs}px" });
+            }
+            if (ColorDarkSquares != null)
+            {
+                await module.InvokeVoidAsync("setCSSProperty", new object[] { _div, ".pzDarkSquare", "--dark_squares_color", ColorDarkSquares });
+                await module.InvokeVoidAsync("setCSSProperty", new object[] { _div, ".pzLightSquare", "--light_squares_text_color", ColorDarkSquares });
+                string dark = ColorExtensions.Darken(ColorDarkSquares, 50);
+                await module.InvokeVoidAsync("setCSSProperty", new object[] { _div, ".pzDarkSquareGrey", "--darken_dark_squares_color", dark });
+                dark = ColorExtensions.Darken(ColorDarkSquares, 50);
+                await module.InvokeVoidAsync("setCSSProperty", new object[] { _div, ".pzLightSquareGrey", "--darken_light_squares_text_color", dark });
+            }
+            if (ColorLightSquares != null)
+            {
+                await module.InvokeVoidAsync("setCSSProperty", new object[] { _div, ".pzLightSquare", "--light_squares_color", ColorLightSquares });
+                await module.InvokeVoidAsync("setCSSProperty", new object[] { _div, ".pzDarkSquare", "--dark_squares_text_color", ColorLightSquares });
+                string dark = ColorExtensions.Darken(ColorLightSquares, 50);
+                await module.InvokeVoidAsync("setCSSProperty", new object[] { _div, ".pzLightSquareGrey", "--darken_light_squares_color", dark });
+                dark = ColorExtensions.Darken(ColorLightSquares, 50);
+                await module.InvokeVoidAsync("setCSSProperty", new object[] { _div, ".pzDarkSquareGrey", "--darken_dark_squares_text_color", dark });
+            }
+            if (ColorHighlight != null)
+            {
+                await module.InvokeVoidAsync("setCSSProperty", new object[] { _div, ".pzHighlightSquare", "--highlight_color", ColorHighlight });
             }
         }
 
@@ -512,6 +565,22 @@ namespace PonzianiComponents
                 }
             }
             return result;
+        }
+    }
+
+    internal static class ColorExtensions
+    {
+        public static Color Darken(this Color color, int percentage)
+        {
+            HSLColor hsl = new HSLColor(color);
+            return hsl.Darker(percentage / 100.0f);
+        }
+
+        public static string Darken(string color, int percentage)
+        {
+            Color col = ColorTranslator.FromHtml(color);
+            Color dcol = col.Darken(percentage);
+            return ColorTranslator.ToHtml(dcol);
         }
     }
 }

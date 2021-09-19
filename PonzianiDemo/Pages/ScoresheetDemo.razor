@@ -3,7 +3,8 @@
 
 @if (game.Moves.Count > 0) {
 <Scoresheet Game="@game" OnMoveSelected="@OnMoveSelected" Mode="@DisplayMode" Type="@model.NotationType" OtherAttributes="@OtherAttributes" Comments="@model.Comments" 
-			Variations ="@model.Variations" HierarchicalDisplay="@model.HierarchicalDisplay"/>
+			Variations ="@model.Variations" HierarchicalDisplay="@model.HierarchicalDisplay" ColorCommentText="@model.ColorCommentText"
+			ColorCommentBackground="@model.ColorCommentBackground" ColorVariationBackground="@model.ColorVariationBackground"/>
 }
 
 <EditForm Model="@model" OnValidSubmit="@HandleValidSubmit">
@@ -17,12 +18,11 @@
   </InputSelect>
   	<button type="submit">Load</button>
  </div>
- <label>Or Upload PGN (only first game will be loaded)</label>
 	<div class="form-group">
+		 <label>Or Upload PGN (only first game will be loaded)</label>
 		<InputFile OnChange="@LoadFile" />
-
 	</div>
-
+	@if (game.Moves.Count > 0) {
 	<div class="form-check">
 		<InputCheckbox class="form-check-input" @bind-Value="model.InlineMode" />
 		<label>
@@ -56,16 +56,47 @@
 			}
   </InputSelect>
  </div>
+	@if (model.Comments && (model.InlineMode || model.Variations))
+	{
+		<div class="form-group">
+		<label>
+			Color Comment Text (in inline mode or within Variations):
+		</label>
+		<input type="color" @bind-value="model.ColorCommentText"/>
+	</div>
+	}
+ 	@if (model.Comments && (!model.InlineMode))
+	{
+	<div class="form-group">
+		<label>
+			Color Comment Background:
+		</label>
+		<input type="color" @bind-value="model.ColorCommentBackground"/>
+	</div>
+	}
+	@if (model.Variations && (!model.InlineMode || model.HierarchicalDisplay))
+	{
+	<div class="form-group">
+		<label>
+			Color Variation Background:
+		</label>
+		<input type="color" @bind-value="model.ColorVariationBackground"/>
+	</div>
+	}
+}
  <div class="form-group">
   <label>
    Other Attributes:
   </label>
   <InputText class="form-control" @bind-Value="model.OtherAttributes" />
  </div>
+ }
 </EditForm>
+
 <div class="alert alert-success" role="alert">
 	@EventInfoText
 </div>
+
 
 @code {
 

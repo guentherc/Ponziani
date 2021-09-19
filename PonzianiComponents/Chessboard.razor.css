@@ -1,6 +1,5 @@
 div, img, span, p, tr, td {
   --size: 400px;
-  --setup_size: 500px;
   --dark_squares_color: #b58863;
   --dark_squares_text_color: #f0d9b5;
   --light_squares_color: #f0d9b5;
@@ -10,17 +9,12 @@ div, img, span, p, tr, td {
   --darken_dark_squares_text_color: #8a5f1c;
   --darken_light_squares_text_color: #110c08;
   --notation_font_size: 13.3333333333px;
-  --highlight_color: {$HighlightColor};
+  --highlight_color: yellow;
 }
 
 .pzChessboard {
   width: var(--size);
   height: var(--size);
-}
-
-.pzChessboardSetup {
-  width: var(--size);
-  height: var(--setup_size);
 }
 
 .pzBoard {

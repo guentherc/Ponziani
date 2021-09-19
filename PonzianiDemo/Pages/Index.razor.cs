@@ -13,11 +13,14 @@ namespace PonzianiDemo.Pages
     public class Model
     {
         public bool ShowCoordinates { set; get; } = true;
-        public int Size { set; get; } = 400;
+        public int Size { set; get; }
         public bool Rotate { set; get; } = false;
         public string Fen { set; get; } = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
         public bool HighlightLastMove { set; get; } = false;
-        public string OtherAttributes { set; get; } = @"style=""width: 400px;""";
+        public string OtherAttributes { set; get; }
+        public string ColorDarkSquares { set; get; }
+        public string ColorLightSquares { set; get; }
+        public string HighlightColor { set; get; }
     }
 
     public partial class Index
@@ -36,10 +39,13 @@ namespace PonzianiDemo.Pages
             get
             {
                 Dictionary<string, object> oo = new Dictionary<string, object>();
-                MatchCollection mc = regexOtherAttributes.Matches(model.OtherAttributes);
-                foreach (Match m in mc)
+                if (model.OtherAttributes != null)
                 {
-                    oo.Add(m.Groups[1].Value, m.Groups[2].Value);
+                    MatchCollection mc = regexOtherAttributes.Matches(model.OtherAttributes);
+                    foreach (Match m in mc)
+                    {
+                        oo.Add(m.Groups[1].Value, m.Groups[2].Value);
+                    }
                 }
                 return oo;
             }

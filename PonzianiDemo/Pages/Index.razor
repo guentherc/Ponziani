@@ -2,21 +2,43 @@
 
 <Chessboard Id="Test"
 			 ShowCoordinates="@model.ShowCoordinates"
-			  OtherAttributes="@OtherAttributes"
+			 Size="@model.Size"
+			 OtherAttributes="@OtherAttributes"
 			 Rotate="@model.Rotate"
 			 SetupMode="@SetupMode"
 			 Fen="@model.Fen"
 			 HighlightLastAppliedMove="@model.HighlightLastMove"
 			 OnMovePlayed=@OnMovePlayed
 			 OnSetupChanged="@OnSetupChanged"
+			 ColorDarkSquares="@model.ColorDarkSquares"
+			 ColorLightSquares="@model.ColorLightSquares"
+			 ColorHighlight="@model.HighlightColor"
 			 @ref="chessboard" />
 
 <EditForm Model="@model">
+	<div class="form-group">
+		<label>
+			Size:
+		</label>
+		<InputNumber class="form-control" @bind-Value="model.Size" />
+	</div>
 		<div class="form-group">
 		<label>
-			Other Attributes:
+			Color Dark Squares:
 		</label>
-		<InputText class="form-control" @bind-Value="model.OtherAttributes" />
+		<input type="color" @bind-value="model.ColorDarkSquares"/>
+	</div>
+	<div class="form-group">
+		<label>
+			Color Light Squares:
+		</label>
+		<input type="color" @bind-value="model.ColorLightSquares"/>
+	</div>
+		<div class="form-group">
+		<label>
+			Color Square Highlight:
+		</label>
+		<input type="color" @bind-value="model.HighlightColor"/>
 	</div>
 	<div class="form-check">
 
@@ -48,6 +70,12 @@
 			Fen:
 		</label>
 		<InputText class="form-control" @bind-Value="model.Fen" />
+	</div>
+	<div class="form-group">
+		<label>
+			Other Attributes:
+		</label>
+		<InputText class="form-control" @bind-Value="model.OtherAttributes" />
 	</div>
 	@if (!SetupMode)
 	{

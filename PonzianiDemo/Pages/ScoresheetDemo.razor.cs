@@ -23,6 +23,9 @@ namespace PonzianiDemo.Pages
         public bool Variations { set; get; } = false;
         public bool HierarchicalDisplay { set; get; } = false;
         public string OtherAttributes { set; get; } = @"style=""width: 800px; height: 400px""";
+        public string ColorCommentText { set; get; }
+        public string ColorCommentBackground { set; get; }
+        public string ColorVariationBackground { set; get; }
     }
 
     public partial class ScoresheetDemo

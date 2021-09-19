@@ -1,7 +1,6 @@
 ﻿@use "sass:math";
 @import 'style.scss';
 
-$SetupSize: 1.25 * $Size;
 $DarkenDarkSquaresColor: darken($DarkSquaresColor, 50%);
 $DarkenLightSquaresColor: darken($LightSquaresColor, 50%);
 $DarkenDarkSquaresTextColor: darken($DarkSquaresTextColor, 50%);
@@ -10,7 +9,6 @@ $NotationFontSize: math.div($Size, 30);
 
 div, img, span, p, tr, td {
     --size: #{$Size};
-    --setup_size: #{$SetupSize};
     --dark_squares_color: #{$DarkSquaresColor};
     --dark_squares_text_color: #{$DarkSquaresTextColor};
     --light_squares_color: #{$LightSquaresColor};
@@ -20,17 +18,12 @@ div, img, span, p, tr, td {
     --darken_dark_squares_text_color: #{$DarkenDarkSquaresTextColor};
     --darken_light_squares_text_color: #{$DarkenLightSquaresTextColor};
     --notation_font_size: #{$NotationFontSize};
-    --highlight_color: {$HighlightColor};
+    --highlight_color: #{$HighlightColor};
 }
 
 .pzChessboard {
     width: var(--size);
     height: var(--size);
-}
-
-.pzChessboardSetup {
-    width: var(--size);
-    height: var(--setup_size);
 }
 
 .pzBoard {
