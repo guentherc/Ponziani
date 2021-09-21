@@ -1,4 +1,4 @@
-This package offers .Net 5 based chess-related blazor components and a library providing some for chess related functionality:
+This package offers .Net 5 based chess-related blazor components and a library providing some chess related functionality:
 ### PonzianiComponents ### 
 -  Chessboard: Interactive Chessboard Blazor-Component
 - Scoresheet: Blazor-Component to list chess moves with support for comments and variations
