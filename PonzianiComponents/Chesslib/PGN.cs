@@ -504,8 +504,8 @@ namespace PonzianiComponents.Chesslib
         internal static Move ParseMove(Position pos, string token, Match m)
         {
             Move move = Move.NULL;
-            if (token.StartsWith("O-O-O")) move = pos.SideToMove == Side.WHITE ? Move.W0_0_0 : Move.B0_0_0;
-            else if (token.StartsWith("O-O")) move = pos.SideToMove == Side.WHITE ? Move.W0_0 : Move.B0_0;
+            if (token.StartsWith("O-O-O")) move = pos.CastleMove((CastleFlag)(1 << (1 + 2 * (int)pos.SideToMove)));
+            else if (token.StartsWith("O-O")) move = pos.CastleMove((CastleFlag)(1 << (2 * (int)pos.SideToMove)));
             else
             {
                 Square to = Fen.ParseSquare(m.Groups[4].Value);

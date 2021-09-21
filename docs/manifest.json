@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.Chess.html",
-          "hash": "K/T60d77Q+RwQ9CQBGU5yECNU3mHcXvmJXBnnF6wop8="
+          "hash": "Qj/Z1S56QPqtl/LW4zTUiZTfHvDbCFvLjGm89VHd5BI="
         }
       },
       "is_incremental": true,
@@ -117,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.Game.html",
-          "hash": "JOFiepxoLb/4WdepDGSeJvmBp3RDWarISkRV3een8J8="
+          "hash": "yLbemBHSNOAohYay+FJf8KXEsqcyszPuVWt1g3LCZSM="
         }
       },
       "is_incremental": true,
@@ -189,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.Position.html",
-          "hash": "VTQSMVgfFRet1E6TA61g6NKr47rs9j8A1oUp2KDyKxQ="
+          "hash": "ZjZkPpj2OZP1+Lr5GEKaqxnmJ+Ox4UUjZGQUOiXCFVc="
         }
       },
       "is_incremental": true,
@@ -249,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.TimeControl.Entry.html",
-          "hash": "VS/cNRgNCFqPwnfvoumN+fo3rw9ZyGP/3UnxQyW+DHc="
+          "hash": "uxXbhXmsHxFJ87FNuUhO75Y5+IeELiuJJNPp/6sEhUk="
         }
       },
       "is_incremental": true,
@@ -261,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.TimeControl.html",
-          "hash": "fdKZLLQYKPq/bpK4pK2Kk5haziu6G+Sl/fqqPoNVdyQ="
+          "hash": "rvUaGp/Yzd/AcQ+u4IBR04QClV9Q/r4kuKU6o9PD9dk="
         }
       },
       "is_incremental": true,
@@ -420,7 +420,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "tmQDZGQzSb53/vRXMFv+cYd3n4FYffho9OUDhX1rwe0="
+          "hash": "W+V+FEN8S7aP7yYOK+nMtmG0HYQgXoZOjyIhvUE6BVc="
         }
       },
       "is_incremental": false,

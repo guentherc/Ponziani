@@ -200,6 +200,11 @@ namespace PonzianiComponents.Chesslib
             return sb.ToString();
         }
 
+        public static Piece GetPiece(PieceType pt, Side side)
+        {
+            return (Piece)(2*(int)pt + (int)side);
+        }
+
         private static readonly Dictionary<char, PieceType> PieceTypeMapping = new Dictionary<char, PieceType>() {
             { 'Q', PieceType.QUEEN}, { 'R', PieceType.ROOK},  { 'B', PieceType.BISHOP},
             { 'N', PieceType.KNIGHT},{ 'K', PieceType.KING},{ 'P', PieceType.PAWN}

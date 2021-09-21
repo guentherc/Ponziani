@@ -17,8 +17,9 @@
     <Product>Ponziani</Product>
     <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.2.0.0</AssemblyVersion>
-    <FileVersion>0.2.0.0</FileVersion>
+    <AssemblyVersion>0.2.1.0</AssemblyVersion>
+    <FileVersion>0.2.1.0</FileVersion>
+    <PackageReleaseNotes>Chess960 Support</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

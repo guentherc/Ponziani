@@ -9,12 +9,12 @@ So far these components are available:
 	a component which can be used to list the moves (including comments and variations) of a chess game either in tabular or inline mode
 
 ### Chess API ###
-There is also a [Chess API](api/PonzianiComponents.Chesslib.html) included, offering chess related functionality like legal move generation,
+There is also a [Chess API](api/PonzianiComponents.Chesslib.html) included, offering chess and chess960 related functionality like legal move generation,
 PGN parsing and ECO classification
 
 ## Installation ##
 
-`dotnet add package PonzianiComponents --version 0.2.0`
+`dotnet add package PonzianiComponents --version 0.2.1`
 
 ## License ##
 

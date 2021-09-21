@@ -189,6 +189,10 @@ namespace PonzianiComponents.Chesslib
             sb.AppendLine($"[Event \"{Event}\"]");
             sb.AppendLine($"[Site \"{Site}\"]");
             sb.AppendLine($"[Date \"{Date}\"]");
+            if (position.Chess960)
+            {
+                sb.AppendLine($"[Variant \"Chess960\"]");
+            }
             sb.AppendLine($"[Round \"{Round}\"]");
             sb.AppendLine($"[White \"{White}\"]");
             sb.AppendLine($"[Black \"{Black}\"]");

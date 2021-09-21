@@ -360,6 +360,19 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Chesslib.Chess.GetColor
   nameWithType: Chess.GetColor
+- uid: PonzianiComponents.Chesslib.Chess.GetPiece(PonzianiComponents.Chesslib.PieceType,PonzianiComponents.Chesslib.Side)
+  name: GetPiece(PieceType, Side)
+  href: api/PonzianiComponents.Chesslib.Chess.html#PonzianiComponents_Chesslib_Chess_GetPiece_PonzianiComponents_Chesslib_PieceType_PonzianiComponents_Chesslib_Side_
+  commentId: M:PonzianiComponents.Chesslib.Chess.GetPiece(PonzianiComponents.Chesslib.PieceType,PonzianiComponents.Chesslib.Side)
+  fullName: PonzianiComponents.Chesslib.Chess.GetPiece(PonzianiComponents.Chesslib.PieceType, PonzianiComponents.Chesslib.Side)
+  nameWithType: Chess.GetPiece(PieceType, Side)
+- uid: PonzianiComponents.Chesslib.Chess.GetPiece*
+  name: GetPiece
+  href: api/PonzianiComponents.Chesslib.Chess.html#PonzianiComponents_Chesslib_Chess_GetPiece_
+  commentId: Overload:PonzianiComponents.Chesslib.Chess.GetPiece
+  isSpec: "True"
+  fullName: PonzianiComponents.Chesslib.Chess.GetPiece
+  nameWithType: Chess.GetPiece
 - uid: PonzianiComponents.Chesslib.Chess.GetPieceType(PonzianiComponents.Chesslib.Piece)
   name: GetPieceType(Piece)
   href: api/PonzianiComponents.Chesslib.Chess.html#PonzianiComponents_Chesslib_Chess_GetPieceType_PonzianiComponents_Chesslib_Piece_
@@ -1786,6 +1799,19 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Chesslib.Position.CheckLegal
   nameWithType: Position.CheckLegal
+- uid: PonzianiComponents.Chesslib.Position.Chess960
+  name: Chess960
+  href: api/PonzianiComponents.Chesslib.Position.html#PonzianiComponents_Chesslib_Position_Chess960
+  commentId: P:PonzianiComponents.Chesslib.Position.Chess960
+  fullName: PonzianiComponents.Chesslib.Position.Chess960
+  nameWithType: Position.Chess960
+- uid: PonzianiComponents.Chesslib.Position.Chess960*
+  name: Chess960
+  href: api/PonzianiComponents.Chesslib.Position.html#PonzianiComponents_Chesslib_Position_Chess960_
+  commentId: Overload:PonzianiComponents.Chesslib.Position.Chess960
+  isSpec: "True"
+  fullName: PonzianiComponents.Chesslib.Position.Chess960
+  nameWithType: Position.Chess960
 - uid: PonzianiComponents.Chesslib.Position.Clone
   name: Clone()
   href: api/PonzianiComponents.Chesslib.Position.html#PonzianiComponents_Chesslib_Position_Clone
@@ -2007,12 +2033,12 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Chesslib.Position.MoveNumber
   nameWithType: Position.MoveNumber
-- uid: PonzianiComponents.Chesslib.Position.Perft(System.Int32)
-  name: Perft(Int32)
-  href: api/PonzianiComponents.Chesslib.Position.html#PonzianiComponents_Chesslib_Position_Perft_System_Int32_
-  commentId: M:PonzianiComponents.Chesslib.Position.Perft(System.Int32)
-  fullName: PonzianiComponents.Chesslib.Position.Perft(System.Int32)
-  nameWithType: Position.Perft(Int32)
+- uid: PonzianiComponents.Chesslib.Position.Perft(System.Int32,System.Boolean)
+  name: Perft(Int32, Boolean)
+  href: api/PonzianiComponents.Chesslib.Position.html#PonzianiComponents_Chesslib_Position_Perft_System_Int32_System_Boolean_
+  commentId: M:PonzianiComponents.Chesslib.Position.Perft(System.Int32,System.Boolean)
+  fullName: PonzianiComponents.Chesslib.Position.Perft(System.Int32, System.Boolean)
+  nameWithType: Position.Perft(Int32, Boolean)
 - uid: PonzianiComponents.Chesslib.Position.Perft*
   name: Perft
   href: api/PonzianiComponents.Chesslib.Position.html#PonzianiComponents_Chesslib_Position_Perft_
@@ -2033,6 +2059,19 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Chesslib.Position.PolyglotKey
   nameWithType: Position.PolyglotKey
+- uid: PonzianiComponents.Chesslib.Position.SFEN
+  name: SFEN
+  href: api/PonzianiComponents.Chesslib.Position.html#PonzianiComponents_Chesslib_Position_SFEN
+  commentId: P:PonzianiComponents.Chesslib.Position.SFEN
+  fullName: PonzianiComponents.Chesslib.Position.SFEN
+  nameWithType: Position.SFEN
+- uid: PonzianiComponents.Chesslib.Position.SFEN*
+  name: SFEN
+  href: api/PonzianiComponents.Chesslib.Position.html#PonzianiComponents_Chesslib_Position_SFEN_
+  commentId: Overload:PonzianiComponents.Chesslib.Position.SFEN
+  isSpec: "True"
+  fullName: PonzianiComponents.Chesslib.Position.SFEN
+  nameWithType: Position.SFEN
 - uid: PonzianiComponents.Chesslib.Position.SideToMove
   name: SideToMove
   href: api/PonzianiComponents.Chesslib.Position.html#PonzianiComponents_Chesslib_Position_SideToMove
