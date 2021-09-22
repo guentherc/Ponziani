@@ -1,5 +1,7 @@
 ﻿@page "/"
 
+<div class="container">
+<div class="row justify-content-center form-group">
 <Chessboard Id="Test"
 			 ShowCoordinates="@model.ShowCoordinates"
 			 Size="@model.Size"
@@ -14,34 +16,44 @@
 			 ColorLightSquares="@model.ColorLightSquares"
 			 ColorHighlight="@model.HighlightColor"
 			 @ref="chessboard" />
+</div>
+</div>
 
 <EditForm Model="@model">
-	<div class="form-group">
-		<label>
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label">
 			Size:
 		</label>
+		<div class="input-group col-sm-9">
 		<InputNumber class="form-control" @bind-Value="model.Size" />
+		</div>
 	</div>
-		<div class="form-group">
-		<label>
+		<div class="row form-group">
+		<label class="col-sm-3 col-form-label">
 			Color Dark Squares:
 		</label>
+		<div class="input-group col-sm-9">
 		<input type="color" @bind-value="model.ColorDarkSquares"/>
+		</div>
 	</div>
-	<div class="form-group">
-		<label>
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label">
 			Color Light Squares:
 		</label>
+		<div class="input-group col-sm-9">
 		<input type="color" @bind-value="model.ColorLightSquares"/>
+		</div>
 	</div>
-		<div class="form-group">
-		<label>
+		<div class="row form-group">
+		<label class="col-sm-3 col-form-label">
 			Color Square Highlight:
 		</label>
+		<div class="input-group col-sm-9">
 		<input type="color" @bind-value="model.HighlightColor"/>
+		</div>
 	</div>
+	<div class="form-group">
 	<div class="form-check">
-
 		<InputCheckbox class="form-check-input" @bind-Value="model.ShowCoordinates" />
 		<label>
 			Show Coordinates:
@@ -65,17 +77,22 @@
 			Setup Mode:
 		</label>
 	</div>
-	<div class="form-group">
-		<label>
+	</div>
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label">
 			Fen:
 		</label>
+		<div class="input-group col-sm-9">
 		<InputText class="form-control" @bind-Value="model.Fen" />
+		</div>
 	</div>
-	<div class="form-group">
-		<label>
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label">
 			Other Attributes:
 		</label>
+		<div class="input-group col-sm-9">
 		<InputText class="form-control" @bind-Value="model.OtherAttributes" />
+		</div>
 	</div>
 	@if (!SetupMode)
 	{
@@ -83,10 +100,11 @@
 		string message;
 		if (pos.CheckLegal(out message)) {
 		var moves = pos.GetMoves();
-	 <div class="form-group">
-	  <label>
+	 <div class="row form-group">
+	  <label class="col-sm-3 col-form-label">
 	   Apply Move:
 	  </label>
+	  <div class="input-group col-sm-9">
 	  <select class="form-control" @onchange=ApplyMove>
 	   <option>Select Move</option>
 				@foreach (Move m in moves)
@@ -94,6 +112,7 @@
 		   <option value="@m.ToUCIString()">@pos.ToSAN(m)</option>
 				}
 	  </select>
+	  </div>
 	 </div>
 	} else
 	{

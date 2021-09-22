@@ -26,6 +26,7 @@ namespace PonzianiDemo.Pages
         public string ColorCommentText { set; get; }
         public string ColorCommentBackground { set; get; }
         public string ColorVariationBackground { set; get; }
+        public string Language { set; get; }
     }
 
     public partial class ScoresheetDemo

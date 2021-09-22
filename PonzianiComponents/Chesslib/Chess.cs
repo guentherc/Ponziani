@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -199,16 +200,80 @@ namespace PonzianiComponents.Chesslib
             sb.Append("abcdefgh"[(int)square & 7]).Append(((int)square >> 3) + 1);
             return sb.ToString();
         }
-
+        /// <summary>
+        /// Creates a Piece from <see cref="PieceType"/> and <see cref="Side"/>
+        /// </summary>
+        /// <param name="pt">Piece Type</param>
+        /// <param name="side">Side</param>
+        /// <returns>Piece</returns>
         public static Piece GetPiece(PieceType pt, Side side)
         {
             return (Piece)(2*(int)pt + (int)side);
         }
+        /// <summary>
+        /// List of supported languages 
+        /// </summary>
+        public static List<string> SupportedLanguages => PieceChars.Keys.Select(ci => ci.TwoLetterISOLanguageName).Distinct().ToList();
 
         private static readonly Dictionary<char, PieceType> PieceTypeMapping = new Dictionary<char, PieceType>() {
             { 'Q', PieceType.QUEEN}, { 'R', PieceType.ROOK},  { 'B', PieceType.BISHOP},
             { 'N', PieceType.KNIGHT},{ 'K', PieceType.KING},{ 'P', PieceType.PAWN}
         };
 
+        internal static readonly Dictionary<CultureInfo, IChessPieceStringProvider> PieceChars = new Dictionary<CultureInfo, IChessPieceStringProvider>()
+        {
+            { CultureInfo.InvariantCulture, new CharPieceStringProvider("QRBNPK") },
+            { new CultureInfo("en"), new CharPieceStringProvider("QRBNPK") },
+            { new CultureInfo("de"), new CharPieceStringProvider("DTLSBK") },
+            { new CultureInfo("fr"), new CharPieceStringProvider("DTFCPR") },
+            { new CultureInfo("es"), new CharPieceStringProvider("DTACPR") },
+            { new CultureInfo("it"), new CharPieceStringProvider("DTACPR") },
+            { new CultureInfo("ru"), new StringArrayPieceStringProvider(new string[] {"Ф", "Л", "С", "К", "П", "Кр" }) }
+        };
+    }
+
+    internal interface IChessPieceStringProvider
+    {
+        public string Get(PieceType pt);
+        public string Get(Piece p);
+    }
+
+    internal class CharPieceStringProvider: IChessPieceStringProvider
+    {
+        string piecechars;
+
+        public CharPieceStringProvider(string piecechars)
+        {
+            this.piecechars = piecechars;
+        }
+
+        public string Get(PieceType pt)
+        {
+            return piecechars[(int)pt].ToString();
+        }
+
+        public string Get(Piece p)
+        {
+            return ((int)p & 1) == 0 ? piecechars[(int)p / 2].ToString() : Char.ToLower(piecechars[(int)p / 2]).ToString();
+        }
+    }
+
+    internal class StringArrayPieceStringProvider : IChessPieceStringProvider
+    {
+        string[] piecestrings;
+        public StringArrayPieceStringProvider(string[] piecestrings)
+        {
+            this.piecestrings = piecestrings;
+        }
+
+        public string Get(PieceType pt)
+        {
+            return piecestrings[(int)pt].ToString();
+        }
+
+        public string Get(Piece p)
+        {
+            return ((int)p & 1) == 0 ? piecestrings[(int)p / 2] : piecestrings[(int)p / 2].ToLower();
+        }
     }
 }

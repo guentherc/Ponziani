@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -548,12 +549,7 @@ namespace PonzianiComponents.Chesslib
             return sb.ToString();
         }
 
-        /// <summary>
-        /// Creates the SAN (Standard Algebraic Notation) encoding of a move
-        /// </summary>
-        /// <param name="move">The move to be encoded</param>
-        /// <returns>The SAN encoded move</returns>
-        public string ToSAN(Move move)
+        internal string ToSAN(Move move, IChessPieceStringProvider icp)
         {
             StringBuilder sb = new StringBuilder();
             PieceType pt = Chess.GetPieceType(x88board[x88.x88Index((int)move.From)]);
@@ -578,16 +574,26 @@ namespace PonzianiComponents.Chesslib
                 }
                 bool capture = x88board[x88.x88Index((int)move.To)] != Piece.BLANK
                     || (pt == PieceType.PAWN && move.To == EPSquare);
-                if (pt != PieceType.PAWN) sb.Append("QRBNPK"[(int)pt]).Append(disambiguation);
+                if (pt != PieceType.PAWN) sb.Append(icp.Get(pt)).Append(disambiguation);
                 else if (capture) sb.Append("abcdefgh"[((int)move.From) & 7]);
                 if (capture) sb.Append('x');
                 sb.Append(Chess.SquareToString(move.To));
-                if (move.PromoteTo != PieceType.NONE) sb.Append("=").Append("QRBN"[(int)move.PromoteTo]);
+                if (move.PromoteTo != PieceType.NONE) sb.Append("=").Append(icp.Get(move.PromoteTo));
             }
             Position next = (Position)Clone();
             next.ApplyMove(move);
             if (next.IsMate) sb.Append("#"); else if (next.IsCheck) sb.Append("+");
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Creates the SAN (Standard Algebraic Notation) encoding of a move
+        /// </summary>
+        /// <param name="move">The move to be encoded</param>
+        /// <returns>The SAN encoded move</returns>
+        public string ToSAN(Move move)
+        {
+            return ToSAN(move, Chess.PieceChars[CultureInfo.InvariantCulture]);
         }
         /// <summary>
         /// Checks if a position is legal and consistent

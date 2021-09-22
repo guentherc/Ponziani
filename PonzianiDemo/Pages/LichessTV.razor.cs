@@ -115,7 +115,7 @@ namespace PonzianiDemo.Pages
 
         void Stop() => cts[selectedChannel].Cancel();
 
-        private static HashSet<string> supported = new HashSet<string>() { "Bot", "UltraBullet", "Bullet", "Computer", "Rapid", "Top Rated", "Blitz", "Classical" };
+        private static HashSet<string> supported = new HashSet<string>() { "Bot", "UltraBullet", "Bullet", "Computer", "Rapid", "Top Rated", "Blitz", "Classical", "Chess960" };
 
         private string PairingString => Game.Tags.ContainsKey("WhiteElo") && Game.Tags.ContainsKey("BlackElo") ? $"{Game.White} ({Game.Tags["WhiteElo"]}) - {Game.Black} ({Game.Tags["BlackElo"]})" : $"{Game.White} - {Game.Black}";
     }

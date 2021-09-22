@@ -412,6 +412,19 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Chesslib.Chess.SquareToString
   nameWithType: Chess.SquareToString
+- uid: PonzianiComponents.Chesslib.Chess.SupportedLanguages
+  name: SupportedLanguages
+  href: api/PonzianiComponents.Chesslib.Chess.html#PonzianiComponents_Chesslib_Chess_SupportedLanguages
+  commentId: P:PonzianiComponents.Chesslib.Chess.SupportedLanguages
+  fullName: PonzianiComponents.Chesslib.Chess.SupportedLanguages
+  nameWithType: Chess.SupportedLanguages
+- uid: PonzianiComponents.Chesslib.Chess.SupportedLanguages*
+  name: SupportedLanguages
+  href: api/PonzianiComponents.Chesslib.Chess.html#PonzianiComponents_Chesslib_Chess_SupportedLanguages_
+  commentId: Overload:PonzianiComponents.Chesslib.Chess.SupportedLanguages
+  isSpec: "True"
+  fullName: PonzianiComponents.Chesslib.Chess.SupportedLanguages
+  nameWithType: Chess.SupportedLanguages
 - uid: PonzianiComponents.Chesslib.ChessbaseCommenter
   name: ChessbaseCommenter
   href: api/PonzianiComponents.Chesslib.ChessbaseCommenter.html
@@ -3018,6 +3031,19 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Scoresheet.Id
   nameWithType: Scoresheet.Id
+- uid: PonzianiComponents.Scoresheet.Language
+  name: Language
+  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_Language
+  commentId: P:PonzianiComponents.Scoresheet.Language
+  fullName: PonzianiComponents.Scoresheet.Language
+  nameWithType: Scoresheet.Language
+- uid: PonzianiComponents.Scoresheet.Language*
+  name: Language
+  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_Language_
+  commentId: Overload:PonzianiComponents.Scoresheet.Language
+  isSpec: "True"
+  fullName: PonzianiComponents.Scoresheet.Language
+  nameWithType: Scoresheet.Language
 - uid: PonzianiComponents.Scoresheet.Mode
   name: Mode
   href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_Mode
@@ -3075,6 +3101,19 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Scoresheet.OnMoveSelected
   nameWithType: Scoresheet.OnMoveSelected
+- uid: PonzianiComponents.Scoresheet.OnParametersSetAsync
+  name: OnParametersSetAsync()
+  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_OnParametersSetAsync
+  commentId: M:PonzianiComponents.Scoresheet.OnParametersSetAsync
+  fullName: PonzianiComponents.Scoresheet.OnParametersSetAsync()
+  nameWithType: Scoresheet.OnParametersSetAsync()
+- uid: PonzianiComponents.Scoresheet.OnParametersSetAsync*
+  name: OnParametersSetAsync
+  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_OnParametersSetAsync_
+  commentId: Overload:PonzianiComponents.Scoresheet.OnParametersSetAsync
+  isSpec: "True"
+  fullName: PonzianiComponents.Scoresheet.OnParametersSetAsync
+  nameWithType: Scoresheet.OnParametersSetAsync
 - uid: PonzianiComponents.Scoresheet.OtherAttributes
   name: OtherAttributes
   href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_OtherAttributes

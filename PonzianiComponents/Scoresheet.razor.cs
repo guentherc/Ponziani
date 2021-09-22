@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.JSInterop;
+using System.Globalization;
 
 namespace PonzianiComponents
 {
@@ -111,6 +112,11 @@ namespace PonzianiComponents
         [Parameter]
         public bool HierarchicalDisplay { set; get; } = false;
         /// <summary>
+        /// ISO 639-1 two-letter language code 
+        /// </summary>
+        [Parameter]
+        public string Language { set; get; } = "en";
+        /// <summary>
         /// <para>Other HTML Attributes, which are applied to the root element of the rendered scoresheet. Depending
         /// on <see cref="Mode"/> this is either a &lt;table&gt; or a &lt;div&gt; </para>
         /// <para>With this mechanism it's possible e.g. to set the width of the scoresheet (in inline mode)</para>
@@ -142,6 +148,21 @@ namespace PonzianiComponents
             return result;
         }
 
+        protected override async Task OnParametersSetAsync()
+        {
+            CultureInfo ci = null;
+            try
+            {
+                ci = Language == null ? CultureInfo.InvariantCulture : CultureInfo.GetCultureInfo(Language);
+            }
+            catch (CultureNotFoundException)
+            {
+                ci = CultureInfo.InvariantCulture;
+            }
+            if (!Chess.PieceChars.ContainsKey(ci)) ci = CultureInfo.InvariantCulture;
+            chessPieceStringProvider = Chess.PieceChars[ci];
+        }
+
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender || module == null)
@@ -170,6 +191,7 @@ namespace PonzianiComponents
         private bool EvaluationAvailable => Game.Moves.FindIndex(m => m.Evaluation != 0) >= 0;
         private bool ThinkTimeAvailable => Game.Moves.FindIndex(m => m.UsedThinkTime > TimeSpan.Zero) >= 0;
         private bool DepthAvailable => Game.Moves.FindIndex(m => m.Depth > 0) >= 0;
+        private IChessPieceStringProvider chessPieceStringProvider = null;
 
         private async Task SelectMoveAsync(EventArgs eventArgs, int moveNumber, Side side)
         {
@@ -193,7 +215,7 @@ namespace PonzianiComponents
             switch (Type)
             {
                 case NotationType.SAN:
-                    sb = new StringBuilder(g.Position.ToSAN(Game.Moves[moveIndex]));
+                    sb = new StringBuilder(g.Position.ToSAN(Game.Moves[moveIndex], chessPieceStringProvider));
                     break;
                 case NotationType.UCI:
                     return Game.Moves[moveIndex].ToUCIString();

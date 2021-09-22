@@ -1,5 +1,6 @@
 ﻿@using System.Text
 @using PonzianiComponents.Chesslib
+@using System.Globalization
 @using static PonzianiComponents.Scoresheet
 @{
 	Game g = new Game(Game.StartPosition);
@@ -123,11 +124,15 @@
 	[CascadingParameter]
 	protected NotationType Type { get; set; }
 
+	[CascadingParameter(Name = "Language")]
+	protected string Language { get; set; }
+
 	private int NextLevel => Level + 1;
 
 	private string OV = " (";
 	private string CV = ") ";
 	private string GT = ">";
+	private IChessPieceStringProvider chessPieceStringProvider = null;
 
 	protected override void OnParametersSet()
 	{
@@ -141,6 +146,17 @@
 			OV = " (";
 			CV = ") ";
 		}
+		CultureInfo ci = null;
+        try
+        {
+           ci = Language == null ? CultureInfo.InvariantCulture : CultureInfo.GetCultureInfo(Language);
+        }
+        catch (CultureNotFoundException)
+        {
+           ci = CultureInfo.InvariantCulture;
+        }
+        if (!Chess.PieceChars.ContainsKey(ci)) ci = CultureInfo.InvariantCulture;
+        chessPieceStringProvider = Chess.PieceChars[ci];
 	}
 
 	private string Print(Game g, int moveIndex)
@@ -148,7 +164,7 @@
 		switch (Type)
 		{
 			case NotationType.SAN:
-				return g.Position.ToSAN(Game.Moves[moveIndex]);
+				return g.Position.ToSAN(Game.Moves[moveIndex], chessPieceStringProvider);
 			case NotationType.UCI:
 				return Game.Moves[moveIndex].ToUCIString();
 			default:
