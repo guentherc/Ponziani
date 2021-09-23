@@ -557,9 +557,20 @@ namespace PonzianiComponents.Chesslib
             if (icp == FigurinePieceStringProvider.Instance) side = SideToMove;
             Debug.Assert(pt != PieceType.NONE);
             //Check castling
-            if (pt == PieceType.KING && Math.Abs((int)move.From - (int)move.To) == 2)
+            if (pt == PieceType.KING && !Chess960 && Math.Abs((int)move.From - (int)move.To) == 2)
             {
                 if (move.To > move.From) sb.Append("O-O"); else sb.Append("O-O-O");
+            } else if (pt == PieceType.KING && castlings != 0 && Chess960 && GetPiece(move.To) != Piece.BLANK && ((int)GetPiece(move.To) & 1) == (int)SideToMove)
+            {
+                if (SideToMove == Side.WHITE)
+                {
+                    if (((Move)move).Equals(CastleMove(CastleFlag.W0_0))) sb.Append("O-O");
+                    else if (((Move)move).Equals(CastleMove(CastleFlag.W0_0_0))) sb.Append("O-O-O");
+                } else
+                {
+                    if (((Move)move).Equals(CastleMove(CastleFlag.B0_0))) sb.Append("O-O");
+                    else if (((Move)move).Equals(CastleMove(CastleFlag.B0_0_0))) sb.Append("O-O-O");
+                }
             }
             else
             {

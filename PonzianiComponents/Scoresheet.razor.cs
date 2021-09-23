@@ -14,7 +14,7 @@ namespace PonzianiComponents
     /// <summary>
     /// Blazor component to list the moves from a chess game
     /// <para>It offers <see cref="DisplayMode">2 display modes, Tabular and Inline</see></para>
-    /// <para>You can select if moves shall be outputted in <see cref="NotationType.SAN">SAN-</see> or in
+    /// <para>You can select if moves shall be outputted in <see cref="NotationType.SAN">SAN-</see>,  <see cref="NotationType.FIGURINE">Figurine-</see> or in
     /// <see cref="NotationType.UCI">UCI-Notation</see> (as used in UCI protocol for engines)</para>
     /// <para>The component is able to output <see cref="Comments">comments</see> and <see cref="Variations">variations</see></para>
     /// </summary>
@@ -47,7 +47,7 @@ namespace PonzianiComponents
             /// </summary>
             SAN,
             /// <summary>
-            /// Standard algebraic notation using figurines <example>\u2658f3, e3, O-O</example>
+            /// Standard algebraic notation using figurines <example>♘f3, e3, O-O</example>
             /// </summary>
             FIGURINE,
             /// <summary>
