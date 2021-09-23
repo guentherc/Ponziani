@@ -14,7 +14,7 @@ PGN parsing and ECO classification
 
 ## Installation ##
 
-`dotnet add package PonzianiComponents --version 0.2.2`
+`dotnet add package PonzianiComponents --version 0.2.3`
 
 ## License ##
 
