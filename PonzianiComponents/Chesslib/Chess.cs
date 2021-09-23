@@ -234,7 +234,7 @@ namespace PonzianiComponents.Chesslib
 
     internal interface IChessPieceStringProvider
     {
-        public string Get(PieceType pt);
+        public string Get(PieceType pt, Side side = Side.WHITE);
         public string Get(Piece p);
     }
 
@@ -247,9 +247,9 @@ namespace PonzianiComponents.Chesslib
             this.piecechars = piecechars;
         }
 
-        public string Get(PieceType pt)
+        public string Get(PieceType pt, Side side = Side.WHITE)
         {
-            return piecechars[(int)pt].ToString();
+            return side == Side.WHITE ? piecechars[(int)pt].ToString() : Get(Chess.GetPiece(pt, side)); 
         }
 
         public string Get(Piece p)
@@ -266,14 +266,31 @@ namespace PonzianiComponents.Chesslib
             this.piecestrings = piecestrings;
         }
 
-        public string Get(PieceType pt)
+        public string Get(PieceType pt, Side side = Side.WHITE)
         {
-            return piecestrings[(int)pt].ToString();
+            return side == Side.WHITE ? piecestrings[(int)pt].ToString() : Get(Chess.GetPiece(pt, side));
         }
 
         public string Get(Piece p)
         {
             return ((int)p & 1) == 0 ? piecestrings[(int)p / 2] : piecestrings[(int)p / 2].ToLower();
         }
+    }
+
+    internal class FigurinePieceStringProvider : IChessPieceStringProvider
+    {
+        char[] upiece = { '\u2655', '\u265b', '\u2656', '\u265c', '\u2657', '\u265d', '\u2658', '\u265e', '\u2659', '\u265f', '\u2654', '\u265a', '\u0020' };
+
+        public string Get(PieceType pt, Side side = Side.WHITE)
+        {
+            return upiece[2 * (int)pt + (int)side].ToString();
+        }
+
+        public string Get(Piece p)
+        {
+            return upiece[(int)p].ToString();
+        }
+
+        public static IChessPieceStringProvider Instance { get; private set; } = new FigurinePieceStringProvider();
     }
 }

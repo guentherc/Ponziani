@@ -3063,6 +3063,12 @@ references:
   commentId: T:PonzianiComponents.Scoresheet.NotationType
   fullName: PonzianiComponents.Scoresheet.NotationType
   nameWithType: Scoresheet.NotationType
+- uid: PonzianiComponents.Scoresheet.NotationType.FIGURINE
+  name: FIGURINE
+  href: api/PonzianiComponents.Scoresheet.NotationType.html#PonzianiComponents_Scoresheet_NotationType_FIGURINE
+  commentId: F:PonzianiComponents.Scoresheet.NotationType.FIGURINE
+  fullName: PonzianiComponents.Scoresheet.NotationType.FIGURINE
+  nameWithType: Scoresheet.NotationType.FIGURINE
 - uid: PonzianiComponents.Scoresheet.NotationType.SAN
   name: SAN
   href: api/PonzianiComponents.Scoresheet.NotationType.html#PonzianiComponents_Scoresheet_NotationType_SAN

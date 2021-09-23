@@ -47,6 +47,10 @@ namespace PonzianiComponents
             /// </summary>
             SAN,
             /// <summary>
+            /// Standard algebraic notation using figurines <example>\u2658f3, e3, O-O</example>
+            /// </summary>
+            FIGURINE,
+            /// <summary>
             /// Notation as used in UCI protocol <see href="http://wbec-ridderkerk.nl/html/UCIProtocol.html"/> <example>g1f3, e2e3, e8g8</example>
             /// </summary>
             UCI
@@ -216,6 +220,9 @@ namespace PonzianiComponents
             {
                 case NotationType.SAN:
                     sb = new StringBuilder(g.Position.ToSAN(Game.Moves[moveIndex], chessPieceStringProvider));
+                    break;
+                case NotationType.FIGURINE:
+                    sb = new StringBuilder(g.Position.ToSAN(Game.Moves[moveIndex], FigurinePieceStringProvider.Instance));
                     break;
                 case NotationType.UCI:
                     return Game.Moves[moveIndex].ToUCIString();

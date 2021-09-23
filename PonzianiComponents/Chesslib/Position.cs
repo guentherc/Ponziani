@@ -553,6 +553,8 @@ namespace PonzianiComponents.Chesslib
         {
             StringBuilder sb = new StringBuilder();
             PieceType pt = Chess.GetPieceType(x88board[x88.x88Index((int)move.From)]);
+            Side side = Side.WHITE;
+            if (icp == FigurinePieceStringProvider.Instance) side = SideToMove;
             Debug.Assert(pt != PieceType.NONE);
             //Check castling
             if (pt == PieceType.KING && Math.Abs((int)move.From - (int)move.To) == 2)
@@ -574,11 +576,11 @@ namespace PonzianiComponents.Chesslib
                 }
                 bool capture = x88board[x88.x88Index((int)move.To)] != Piece.BLANK
                     || (pt == PieceType.PAWN && move.To == EPSquare);
-                if (pt != PieceType.PAWN) sb.Append(icp.Get(pt)).Append(disambiguation);
+                if (pt != PieceType.PAWN) sb.Append(icp.Get(pt, side)).Append(disambiguation);
                 else if (capture) sb.Append("abcdefgh"[((int)move.From) & 7]);
                 if (capture) sb.Append('x');
                 sb.Append(Chess.SquareToString(move.To));
-                if (move.PromoteTo != PieceType.NONE) sb.Append("=").Append(icp.Get(move.PromoteTo));
+                if (move.PromoteTo != PieceType.NONE) sb.Append("=").Append(icp.Get(move.PromoteTo, side));
             }
             Position next = (Position)Clone();
             next.ApplyMove(move);

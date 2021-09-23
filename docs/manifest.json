@@ -189,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.Position.html",
-          "hash": "w513f8dEL/oJJU5oCrXl7f2U/v0LiqShn0iQ/CvxXWU="
+          "hash": "FiUDb3zsXVm4iOsn+e307O2NMSQigZDga652FFnzKMk="
         }
       },
       "is_incremental": true,
@@ -297,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.MoveSelectInfo.html",
-          "hash": "ZdNVWSE9WEQRkdyRffeHpu8QG4wXJUupKcqk0bIhiT4="
+          "hash": "eHOBYbVEC6T+S50fumiG8UekNFdbtlzQV3Mh4FPG/Yc="
         }
       },
       "is_incremental": true,
@@ -321,7 +321,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Scoresheet.NotationType.html",
-          "hash": "J9+njyUYYNjgwEBe+Neq4y1djTs0UhczBjmyDjbO+b8="
+          "hash": "ySBlRqqbnnbygr/kgZ9SNQ2w+bVsHxMmGPsDKm2Yhog="
         }
       },
       "is_incremental": true,
@@ -333,7 +333,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Scoresheet.html",
-          "hash": "fwIsZIq2lUYxDQZnb4OdPy4fyWAkk8j2xvjrB1R27Gc="
+          "hash": "iqqJYOTB6nlo4o6r58Fw0NODIVSvseWv0Spb5y5ouYM="
         }
       },
       "is_incremental": true,
@@ -423,7 +423,7 @@
           "hash": "k1bLgvCmWNFW9/NAHNx5J8gJ3YnNRBBu1RT0H8qSBwE="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -452,7 +452,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 3,
-          "skipped_file_count": 2
+          "skipped_file_count": 3
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,

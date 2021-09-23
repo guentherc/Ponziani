@@ -165,6 +165,8 @@
 		{
 			case NotationType.SAN:
 				return g.Position.ToSAN(Game.Moves[moveIndex], chessPieceStringProvider);
+			case NotationType.FIGURINE:
+				return g.Position.ToSAN(Game.Moves[moveIndex], FigurinePieceStringProvider.Instance);
 			case NotationType.UCI:
 				return Game.Moves[moveIndex].ToUCIString();
 			default:
