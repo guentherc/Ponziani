@@ -3069,6 +3069,18 @@ references:
   commentId: F:PonzianiComponents.Scoresheet.NotationType.FIGURINE
   fullName: PonzianiComponents.Scoresheet.NotationType.FIGURINE
   nameWithType: Scoresheet.NotationType.FIGURINE
+- uid: PonzianiComponents.Scoresheet.NotationType.ICCF
+  name: ICCF
+  href: api/PonzianiComponents.Scoresheet.NotationType.html#PonzianiComponents_Scoresheet_NotationType_ICCF
+  commentId: F:PonzianiComponents.Scoresheet.NotationType.ICCF
+  fullName: PonzianiComponents.Scoresheet.NotationType.ICCF
+  nameWithType: Scoresheet.NotationType.ICCF
+- uid: PonzianiComponents.Scoresheet.NotationType.LAN
+  name: LAN
+  href: api/PonzianiComponents.Scoresheet.NotationType.html#PonzianiComponents_Scoresheet_NotationType_LAN
+  commentId: F:PonzianiComponents.Scoresheet.NotationType.LAN
+  fullName: PonzianiComponents.Scoresheet.NotationType.LAN
+  nameWithType: Scoresheet.NotationType.LAN
 - uid: PonzianiComponents.Scoresheet.NotationType.SAN
   name: SAN
   href: api/PonzianiComponents.Scoresheet.NotationType.html#PonzianiComponents_Scoresheet_NotationType_SAN

@@ -549,6 +549,43 @@ namespace PonzianiComponents.Chesslib
             return sb.ToString();
         }
 
+        internal string ToLAN(Move move, IChessPieceStringProvider icp)
+        {
+            StringBuilder sb = new StringBuilder();
+            PieceType pt = Chess.GetPieceType(x88board[x88.x88Index((int)move.From)]);
+            if (pt == PieceType.KING && !Chess960 && Math.Abs((int)move.From - (int)move.To) == 2)
+            {
+                if (move.To > move.From) sb.Append("O-O"); else sb.Append("O-O-O");
+            }
+            else if (pt == PieceType.KING && castlings != 0 && Chess960 && GetPiece(move.To) != Piece.BLANK && ((int)GetPiece(move.To) & 1) == (int)SideToMove)
+            {
+                if (SideToMove == Side.WHITE)
+                {
+                    if (((Move)move).Equals(CastleMove(CastleFlag.W0_0))) sb.Append("O-O");
+                    else if (((Move)move).Equals(CastleMove(CastleFlag.W0_0_0))) sb.Append("O-O-O");
+                }
+                else
+                {
+                    if (((Move)move).Equals(CastleMove(CastleFlag.B0_0))) sb.Append("O-O");
+                    else if (((Move)move).Equals(CastleMove(CastleFlag.B0_0_0))) sb.Append("O-O-O");
+                }
+            }
+            else
+            {
+                bool capture = x88board[x88.x88Index((int)move.To)] != Piece.BLANK
+                    || (pt == PieceType.PAWN && move.To == EPSquare);
+                if (pt != PieceType.PAWN) sb.Append(icp.Get(pt));
+                sb.Append(Chess.SquareToString(move.From));
+                if (capture) sb.Append("x"); else sb.Append("-");
+                sb.Append(Chess.SquareToString(move.To));
+                if (move.PromoteTo != PieceType.NONE) sb.Append("=").Append(icp.Get(move.PromoteTo));
+            }
+            Position next = (Position)Clone();
+            next.ApplyMove(move);
+            if (next.IsMate) sb.Append("#"); else if (next.IsCheck) sb.Append("+");
+            return sb.ToString();
+        }
+
         internal string ToSAN(Move move, IChessPieceStringProvider icp)
         {
             StringBuilder sb = new StringBuilder();
@@ -560,13 +597,15 @@ namespace PonzianiComponents.Chesslib
             if (pt == PieceType.KING && !Chess960 && Math.Abs((int)move.From - (int)move.To) == 2)
             {
                 if (move.To > move.From) sb.Append("O-O"); else sb.Append("O-O-O");
-            } else if (pt == PieceType.KING && castlings != 0 && Chess960 && GetPiece(move.To) != Piece.BLANK && ((int)GetPiece(move.To) & 1) == (int)SideToMove)
+            }
+            else if (pt == PieceType.KING && castlings != 0 && Chess960 && GetPiece(move.To) != Piece.BLANK && ((int)GetPiece(move.To) & 1) == (int)SideToMove)
             {
                 if (SideToMove == Side.WHITE)
                 {
                     if (((Move)move).Equals(CastleMove(CastleFlag.W0_0))) sb.Append("O-O");
                     else if (((Move)move).Equals(CastleMove(CastleFlag.W0_0_0))) sb.Append("O-O-O");
-                } else
+                }
+                else
                 {
                     if (((Move)move).Equals(CastleMove(CastleFlag.B0_0))) sb.Append("O-O");
                     else if (((Move)move).Equals(CastleMove(CastleFlag.B0_0_0))) sb.Append("O-O-O");
@@ -596,6 +635,14 @@ namespace PonzianiComponents.Chesslib
             Position next = (Position)Clone();
             next.ApplyMove(move);
             if (next.IsMate) sb.Append("#"); else if (next.IsCheck) sb.Append("+");
+            return sb.ToString();
+        }
+
+        internal string ToICCF(Move move)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(10 * (1 + ((int)move.From & 7)) + (1 + (int)move.From / 8)).Append(10 * (1 + ((int)move.To & 7)) + (1 + (int)move.To / 8));
+            if (move.PromoteTo != PieceType.NONE) sb.Append((int)move.PromoteTo + 1);
             return sb.ToString();
         }
 
@@ -926,7 +973,7 @@ namespace PonzianiComponents.Chesslib
             if (castlings == 0) sb.Append("-");
             else if (sFen && Chess960)
             {
-                if (CastlingAllowed(CastleFlag.W0_0)) sb.Append("ABCDEFGH"[(int)castleableRooks[0]&7]);
+                if (CastlingAllowed(CastleFlag.W0_0)) sb.Append("ABCDEFGH"[(int)castleableRooks[0] & 7]);
                 if (CastlingAllowed(CastleFlag.W0_0_0)) sb.Append("ABCDEFGH"[(int)castleableRooks[1] & 7]);
                 if (CastlingAllowed(CastleFlag.B0_0)) sb.Append("abcdefgh"[(int)castleableRooks[2] & 7]);
                 if (CastlingAllowed(CastleFlag.B0_0_0)) sb.Append("abcdefgh"[(int)castleableRooks[3] & 7]);

@@ -47,13 +47,21 @@ namespace PonzianiComponents
             /// </summary>
             SAN,
             /// <summary>
+            /// Long algebraic notatio <example>Nf1-f3, e2-e3, O-O</example>
+            /// </summary>
+            LAN,
+            /// <summary>
             /// Standard algebraic notation using figurines <example>♘f3, e3, O-O</example>
             /// </summary>
             FIGURINE,
             /// <summary>
             /// Notation as used in UCI protocol <see href="http://wbec-ridderkerk.nl/html/UCIProtocol.html"/> <example>g1f3, e2e3, e8g8</example>
             /// </summary>
-            UCI
+            UCI,
+            /// <summary>
+            /// ICCF (correspondence chess) notation <example>7163, 5253, 5171</example>
+            /// </summary>
+            ICCF
         };
         /// <summary>
         /// Id of the rendered HTML element
@@ -221,11 +229,16 @@ namespace PonzianiComponents
                 case NotationType.SAN:
                     sb = new StringBuilder(g.Position.ToSAN(Game.Moves[moveIndex], chessPieceStringProvider));
                     break;
+                case NotationType.LAN:
+                    sb = new StringBuilder(g.Position.ToLAN(Game.Moves[moveIndex], chessPieceStringProvider));
+                    break;
                 case NotationType.FIGURINE:
                     sb = new StringBuilder(g.Position.ToSAN(Game.Moves[moveIndex], FigurinePieceStringProvider.Instance));
                     break;
                 case NotationType.UCI:
                     return Game.Moves[moveIndex].ToUCIString();
+                case NotationType.ICCF:
+                    return g.Position.ToICCF(Game.Moves[moveIndex]);
                 default:
                     return g.Position.ToSAN(Game.Moves[moveIndex]);
             }
