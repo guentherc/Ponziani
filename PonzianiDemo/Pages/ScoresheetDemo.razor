@@ -2,11 +2,11 @@
 @using System.Globalization
 <h3>Scoresheet Demo</h3>
 
-<EditForm Model="@model" OnValidSubmit="@HandleValidSubmit">
+<EditForm Model="@Model" OnValidSubmit="@HandleValidSubmit">
 	<div class="form-group row">
 		<label class="col-sm-3 col-form-label" for="inpType">Select Sample PGN</label>
 		<div class="input-group col-sm-9">
-		<InputSelect class="form-control" Name="pgnkey" @bind-Value="model.PGNKey" id="inpPgnKey">
+		<InputSelect class="form-control" Name="pgnkey" @bind-Value="Model.PGNKey" id="inpPgnKey">
 			@foreach (var t in SampleData.PGNSamples.Keys)
 			{
 	   <option Name="pgnkey" Value="@t">@t</option>
@@ -25,31 +25,31 @@
 	</div>
 	@if (game.Moves.Count > 0) {
 		<div class="form-group">
-		<Scoresheet Game="@game" OnMoveSelected="@OnMoveSelected" Mode="@DisplayMode" Type="@model.NotationType" OtherAttributes="@OtherAttributes" Comments="@model.Comments" 
-			Variations ="@model.Variations" HierarchicalDisplay="@model.HierarchicalDisplay" ColorCommentText="@model.ColorCommentText"
-			ColorCommentBackground="@model.ColorCommentBackground" ColorVariationBackground="@model.ColorVariationBackground" Language="@model.Language"/>
+		<Scoresheet Game="@game" OnMoveSelected="@OnMoveSelected" Mode="@DisplayMode" Type="@Model.NotationType" OtherAttributes="@OtherAttributes" Comments="@Model.Comments" 
+			Variations ="@Model.Variations" HierarchicalDisplay="@Model.HierarchicalDisplay" ColorCommentText="@Model.ColorCommentText"
+			ColorCommentBackground="@Model.ColorCommentBackground" ColorVariationBackground="@Model.ColorVariationBackground" Language="@Model.Language"/>
 		</div>
 	<div class="form-group">
 	<div class="form-check">
-		<InputCheckbox class="form-check-input" @bind-Value="model.InlineMode" />
+		<InputCheckbox class="form-check-input" @bind-Value="Model.InlineMode" />
 		<label>
 			Inline Mode:
 		</label>
 	</div>
 	<div class="form-check">
-		<InputCheckbox class="form-check-input" @bind-Value="model.Comments" />
+		<InputCheckbox class="form-check-input" @bind-Value="Model.Comments" />
 		<label>
 			Show Comments:
 		</label>
 	</div>
 	<div class="form-check">
-		<InputCheckbox class="form-check-input" @bind-Value="model.Variations" />
+		<InputCheckbox class="form-check-input" @bind-Value="Model.Variations" />
 		<label>
 			Show Variations:
 		</label>
 	</div>
 		<div class="form-check">
-		<InputCheckbox class="form-check-input" @bind-Value="model.HierarchicalDisplay" />
+		<InputCheckbox class="form-check-input" @bind-Value="Model.HierarchicalDisplay" />
 		<label>
 			Hierarchical Display:
 		</label>
@@ -58,7 +58,7 @@
 	<div class="row form-group">
 		<label class="col-sm-3 col-form-label" for="inpType">Select Type</label>
 		<div class="input-group col-sm-9">
-		<InputSelect class="form-control" Name="type" @bind-Value="model.NotationType" id="inpType">
+		<InputSelect class="form-control" Name="type" @bind-Value="Model.NotationType" id="inpType">
 			@foreach (var t in Enum.GetNames(typeof(Scoresheet.NotationType)))
 			{
 	   <option Name="type" Value="@t">@t</option>
@@ -69,7 +69,7 @@
  	<div class="row form-group">
 		<label class="col-sm-3 col-form-label" for="inpLang">Language</label>
 		<div class="input-group col-sm-9">
-		<InputSelect class="form-control"  Name="langu" @bind-Value="model.Language" id="inpLang">
+		<InputSelect class="form-control"  Name="langu" @bind-Value="Model.Language" id="inpLang">
 			@foreach (var t in Chess.SupportedLanguages)
 			{
 	   <option Name="langu" Value="@t">@($"{t} ({CultureInfo.GetCultureInfo(t).ThreeLetterISOLanguageName})")</option>
@@ -77,36 +77,36 @@
 		</InputSelect>
 		</div>
 	</div>
-	@if (model.Comments && (model.InlineMode || model.Variations))
+	@if (Model.Comments && (Model.InlineMode || Model.Variations))
 	{
 		<div class="row form-group">
 		<label class="col-sm-3 col-form-label">
 			Color Comment Text (in inline mode or within Variations):
 		</label>
 		<div class="input-group col-sm-9">
-		<input class="form-control" type="color" @bind-value="model.ColorCommentText"/>
+		<input class="form-control" type="color" @bind-value="Model.ColorCommentText"/>
 	</div>
 	</div>
 	}
- 	@if (model.Comments && (!model.InlineMode))
+ 	@if (Model.Comments && (!Model.InlineMode))
 	{
 	<div class="row form-group">
 		<label class="col-sm-3 col-form-label">
 			Color Comment Background:
 		</label>
 		<div class="input-group col-sm-9">
-		<input class="form-control" type="color" @bind-value="model.ColorCommentBackground"/>
+		<input class="form-control" type="color" @bind-value="Model.ColorCommentBackground"/>
 	</div>
 	</div>
 	}
-	@if (model.Variations && (!model.InlineMode || model.HierarchicalDisplay))
+	@if (Model.Variations && (!Model.InlineMode || Model.HierarchicalDisplay))
 	{
 	<div class="row form-group">
 		<label class="col-sm-3 col-form-label">
 			Color Variation Background:
 		</label>
 		<div class="input-group col-sm-9">
-		<input class="form-control" type="color" @bind-value="model.ColorVariationBackground"/>
+		<input class="form-control" type="color" @bind-value="Model.ColorVariationBackground"/>
 	</div>
 	</div>
 	}
@@ -116,7 +116,7 @@
    Other Attributes:
   </label>
   <div class="input-group col-sm-9">
-  <InputText class="form-control" @bind-Value="model.OtherAttributes" />
+  <InputText class="form-control" @bind-Value="Model.OtherAttributes" />
   </div>
  </div>
 </EditForm>

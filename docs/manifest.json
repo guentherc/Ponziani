@@ -9,10 +9,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chessboard.html",
-          "hash": "C2S0ys2FIsCEtTuVFSf8/vH+uBI8Ue0ket0IvZoaHcU="
+          "hash": "5yPRMg0LYlivaQA62+2xqb2ihTcfkmJCKCqR44Zm3bc="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -21,10 +21,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.CastleFlag.html",
-          "hash": "1Hv33PylCiYdJZ+lpJgxz5vrUNOdhiIadjfg9kA/Do0="
+          "hash": "g1NeFKXVKwjUhZWHJj6gEA1lLBKEhEUKNbhStpqDucA="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -36,7 +36,7 @@
           "hash": "2gfY0aYgGfgeXYNXH/1GI8EJoGb4W55QW97M4cH+EKw="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -48,7 +48,7 @@
           "hash": "CYDoodtedbXd2ms3k5pX7fbJLXmUoKSIvFrXDEHGkKs="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -60,7 +60,7 @@
           "hash": "z4aGQ4VP6Z83mP1mahvaQ69WyaHsVqA4RP2XYxEnq6g="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -72,7 +72,7 @@
           "hash": "AqAwut8+9MN8guYXyNtndXOXfUZwhtJLnQ9syaOl2DI="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -81,10 +81,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.Eco.html",
-          "hash": "y328hDd3rc7NP92JOfa63JNcjpzNj1yKFIrZa59+T1E="
+          "hash": "/lFbcSDGN6+hbSFxx3Rau3T9d0sEYA72koKK41yaObs="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -93,10 +93,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.ExtendedMove.html",
-          "hash": "jh9IS6ZyOZEx13WgSEEjYiYYgdleXH5scO/qlTiPngk="
+          "hash": "LTeafMhlCIu1GE5DnqKz4CdpjFMdGxcc644m5sbu0YI="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -105,10 +105,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.Fen.html",
-          "hash": "oM53+qQJCTp/krtA1cvUpDajvPoy+EPX5Yc+FzaraK8="
+          "hash": "JtiEP+sCrAyhFRdBfF7WJm0JtpDJ9qy6ajzp6Sq8NIA="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -117,10 +117,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.Game.html",
-          "hash": "yLbemBHSNOAohYay+FJf8KXEsqcyszPuVWt1g3LCZSM="
+          "hash": "l/oZp+Xcvg8UaCe4f5PYc8BQz/AW3Bsi8fjHnqw85KA="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -132,7 +132,7 @@
           "hash": "uKZlBzFD+1e3kbEb6WBs+MBpIj0FzxPg/eYuDWVRNQU="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -141,10 +141,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.Move.html",
-          "hash": "O7PF5Pxi5vRVl6E4ZVqPdh0+BrVlqnsLJZaehI8xtA0="
+          "hash": "SYuFjnwOUTa6Y84iwRPpnstgNL+tp33A0/BWNbN5Vv4="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -153,10 +153,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.PGN.html",
-          "hash": "eLDLfaSDXZh/GsBWFj12G4B97iBcxtXnfcgo6LSbTQY="
+          "hash": "ZHXrb8R8XCw89FajiX9uPQ6tnTepaGvk170QieGQBSg="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -165,10 +165,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.Piece.html",
-          "hash": "CZbNUJMZjOAJvI6hFHEuXHvylH4o8rzQ8YST9RiUIIA="
+          "hash": "kFTS3HOAMyc95mKJWoomaI5X9ol6cR2zQSvrOZ+OfOk="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -177,10 +177,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.PieceType.html",
-          "hash": "6pmYNWOuBM7nyJUpmtKJc0ESG0poyZnCngX5eUBduF0="
+          "hash": "CNBLrCs/LUWD9hei5SmJluDvvyOmbx0FKUuJhEHu1/4="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -189,10 +189,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.Position.html",
-          "hash": "vTJ6OHNy6FBuOCx/8l3JjWc2bVloysQ1fGQRcuyztoU="
+          "hash": "Gj5d+jy2FAVfawqXm2Sl72xgx0r7xoOFM3//UtGjQZQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -201,10 +201,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.Result.html",
-          "hash": "jhLglXCPnwA52TyQy4StRMUHVZ1xmaRKqXPGBFibLdo="
+          "hash": "KuCjHnJqc4rOoIY+YTYEhG7E6TpNLjMdc9MzOn6lado="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -216,7 +216,7 @@
           "hash": "bsqVVQw+t47bJQBrqbRyiv1KddquQSaTk/W8R7E42Mk="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -225,10 +225,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.Side.html",
-          "hash": "b/SnGcDF+Nb7uoqbyh0Av/dpvg7cUfOSrJ/f7Im18gk="
+          "hash": "4pd7Ne8qmb7EKILSCrhruyF/LOc855Q+g7CrTkYOhOU="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -237,10 +237,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.Square.html",
-          "hash": "arub3aPqeK03BRR2hXBetKyW90Ettro13grh2A04wOI="
+          "hash": "h2qblYpl37DOP6+H11W1EK5z7Wk6VLfZ+kTog5waSOk="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -249,10 +249,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.TimeControl.Entry.html",
-          "hash": "uxXbhXmsHxFJ87FNuUhO75Y5+IeELiuJJNPp/6sEhUk="
+          "hash": "xI50/fmJX6SwIvopq7mFUtAp0RRjmG1a63BnDfUxGBo="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -261,10 +261,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.TimeControl.html",
-          "hash": "rvUaGp/Yzd/AcQ+u4IBR04QClV9Q/r4kuKU6o9PD9dk="
+          "hash": "2rUslyzHuWwHeOvclJDnhlSlBBP7kRfVtM81F5VKfi0="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -276,7 +276,7 @@
           "hash": "uvCL6xylIUJx4OlYtUraMGSuZCrC4aBvlThe4OaehAU="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -285,10 +285,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.MovePlayedInfo.html",
-          "hash": "VBIJ5O/TD3LmD8oax/nBFM801Al7uJ9VV+bJ3eN0ucQ="
+          "hash": "xTsPaqZLS7rbwueeGOisNq2kcToVrLU7u1POGdj7/uU="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -297,10 +297,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.MoveSelectInfo.html",
-          "hash": "sKESJRuk5+mWb8bktXCG5H2bdMRQ6GdQVmu14+x4+HE="
+          "hash": "1yCbFbhsy22fCtdMfrwL31jSCUr010jFOvZVQAxf/Ck="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -309,10 +309,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Scoresheet.DisplayMode.html",
-          "hash": "UuGkiRKtKavEzIrQwIzVDYqaSLSQZ4GKK6H7+Wh98mg="
+          "hash": "nzIkSXlkQdKqCDN8PQlH4/P7c7CbePVNd+DaZxeVZNo="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -321,10 +321,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Scoresheet.NotationType.html",
-          "hash": "LJnPam8qsGJ50uplOBbh5DHC6qBODX6CQptKs8kOKmc="
+          "hash": "vwjrOVfBUH+jAb2YIEFHMbpvqDt06adNgvAdyS1cnu4="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -333,10 +333,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Scoresheet.html",
-          "hash": "IrFFB57X9N6RKpmAwyVhAYPOAc8YHhSk2ZbiwUVQ9Vw="
+          "hash": "TXRzoQcGzZEeFBTggaqLIzqSg3u10uh6M1qtjmTaEto="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -345,10 +345,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.SetupChangedInfo.html",
-          "hash": "eOIPeS8wAEEJm+pzcvu42tbV66BEa13dI0cwamSMrAE="
+          "hash": "B6QK6HII2L7beYA8S58nfRvIR+ALUntwzrrRxjku7N8="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -360,7 +360,7 @@
           "hash": "og3Z92uvoMKv4jv1HryzzAI8qPJXNLHwVVol0F3aKvI="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -372,7 +372,7 @@
           "hash": "AbWrxyflZ+rfyika6Es4/vBtIKs5FXykMDeho+40uiQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -396,7 +396,7 @@
           "hash": "2NOog9dk/9pip9PRzxdof22VKq+bW+PUtrW+yYeYYfQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -423,7 +423,7 @@
           "hash": "wrI3pbBtCcUylKFUyNu1j+MAsn8kPqWptxt5Zxth3JU="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -442,25 +442,23 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Disable incremental build by force rebuild option.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "ForceRebuild"
+        "skipped_file_count": 0
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 3,
-          "skipped_file_count": 0
+          "skipped_file_count": 3
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 30,
-          "skipped_file_count": 0
+          "skipped_file_count": 30
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
@@ -473,8 +471,8 @@
     },
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0

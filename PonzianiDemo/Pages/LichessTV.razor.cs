@@ -11,24 +11,27 @@ namespace PonzianiDemo.Pages
 {
     public partial class LichessTV
     {
-        private Game Game = new Game();
-        private Dictionary<string, string> games = new Dictionary<string, string>();
+        private Game Game = new();
+        private Dictionary<string, string> games = new();
         private string gameid = null;
         private Chessboard chessboard;
-        Dictionary<string, CancellationTokenSource> cts = new Dictionary<string, CancellationTokenSource>();
+        readonly Dictionary<string, CancellationTokenSource> cts = new();
         private string selectedChannel = null;
 
-        private string Clock { get
+        private string Clock
+        {
+            get
             {
                 TimeSpan c0 = Game.Moves.Count > 0 ? Game.Moves.Last().Clock : TimeSpan.Zero;
-                TimeSpan c1 = Game.Moves.Count > 1 ? Game.Moves[Game.Moves.Count - 2].Clock : TimeSpan.Zero;
+                TimeSpan c1 = Game.Moves.Count > 1 ? Game.Moves[^2].Clock : TimeSpan.Zero;
                 string format = "";
                 if (c0 < new TimeSpan(0, 1, 0) && c1 < new TimeSpan(0, 1, 0)) format = @"s\.f";
                 else if (c0 < new TimeSpan(1, 0, 0) && c1 < new TimeSpan(1, 0, 0)) format = @"m\:ss";
                 string clock0 = c0.ToString(format);
                 string clock1 = c1.ToString(format);
                 if (Game.SideToMove == Side.BLACK) return $"{clock0} - {clock1}"; else return $"{clock1} - {clock0}";
-            } }
+            }
+        }
 
         protected override async Task OnInitializedAsync()
         {
@@ -56,19 +59,12 @@ namespace PonzianiDemo.Pages
                 return;
             }
             selectedChannel = channel;
-            Get(channel);
+            await Get(channel);
         }
 
-        private async Task Update()
+        private async Task<Dictionary<string, string>> GetGameIdsAsync()
         {
-            Console.WriteLine("Update!");
-            string pgn = await HttpClient.GetStringAsync($"https://lichess.org/game/export/{gameid}");
-            Game = PGN.Parse(pgn)[0];
-            StateHasChanged();
-        }
-
-        private async Task<Dictionary<string, string>> GetGameIdsAsync() {
-            Dictionary<string, string> gameids = new Dictionary<string, string>();
+            Dictionary<string, string> gameids = new();
             string json = await HttpClient.GetStringAsync("https://lichess.org/api/tv/channels");
             var doc = JsonDocument.Parse(json);
             foreach (var property in doc.RootElement.EnumerateObject().Where(it => supported.Contains(it.Name)))
@@ -115,7 +111,7 @@ namespace PonzianiDemo.Pages
 
         void Stop() => cts[selectedChannel].Cancel();
 
-        private static HashSet<string> supported = new HashSet<string>() { "Bot", "UltraBullet", "Bullet", "Computer", "Rapid", "Top Rated", "Blitz", "Classical", "Chess960" };
+        private static readonly HashSet<string> supported = new() { "Bot", "UltraBullet", "Bullet", "Computer", "Rapid", "Top Rated", "Blitz", "Classical", "Chess960" };
 
         private string PairingString => Game.Tags.ContainsKey("WhiteElo") && Game.Tags.ContainsKey("BlackElo") ? $"{Game.White} ({Game.Tags["WhiteElo"]}) - {Game.Black} ({Game.Tags["BlackElo"]})" : $"{Game.White} - {Game.Black}";
     }

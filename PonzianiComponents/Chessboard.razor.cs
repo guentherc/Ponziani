@@ -141,13 +141,12 @@ namespace PonzianiComponents
         {
             if (_setupMode)
             {
-                addSI = new AdditionalSetupInfo(_fen);
+                AddSI = new AdditionalSetupInfo(_fen);
                 Position pos = new(_fen);
-                string message;
-                if (pos.CheckLegal(out message))
+                if (pos.CheckLegal(out string message))
                 {
                     SetupErrorMessage = null;
-                    clsShowModalSetup = " show-modal";
+                    ClsShowModalSetup = " show-modal";
                 }
                 else
                     SetupErrorMessage = message;
@@ -186,17 +185,18 @@ namespace PonzianiComponents
 
         private async Task CloseSetupDialogAsync()
         {
-            clsShowModalSetup = "";
-            Position pos = new(addSI.Fen);
-            string message;
-            if (!pos.CheckLegal(out message))
+            ClsShowModalSetup = "";
+            Position pos = new(AddSI.Fen);
+            if (!pos.CheckLegal(out string message))
             {
                 SetupErrorMessage = message;
                 return;
             }
-            SetupChangedInfo sci = new SetupChangedInfo();
-            sci.OldFen = Fen;
-            Fen = addSI.Fen;
+            SetupChangedInfo sci = new()
+            {
+                OldFen = Fen
+            };
+            Fen = AddSI.Fen;
             sci.NewFen = Fen;
             position = pos;
             await OnSetupChanged.InvokeAsync(sci);
@@ -205,7 +205,7 @@ namespace PonzianiComponents
 
         private IJSObjectReference module = null;
         private bool _setupMode = false;
-        private AdditionalSetupInfo addSI { set; get; } = new AdditionalSetupInfo(Chesslib.Fen.INITIAL_POSITION);
+        private AdditionalSetupInfo AddSI { set; get; } = new AdditionalSetupInfo(Chesslib.Fen.INITIAL_POSITION);
         private string SquareStyle => SetupMode ? $"width: 12.5%; height: 100%;" : $"width: 12.5%; height: 100%;";
         private string BoardStyle => SetupMode ? $"width: 100%; height: 80%" : $"width: 100%; height: 100%";
         private int RankStart => Rotate ? 0 : 7;
@@ -214,19 +214,19 @@ namespace PonzianiComponents
         private int FileStart => Rotate ? 7 : 0;
         private int FileStep => Rotate ? -1 : 1;
 
-        private Position position = new Position();
+        private Position position = new();
         private Piece draggedPiece = Piece.BLANK;
         private Square draggedPieceSquare = Square.OUTSIDE;
         private Square draggedEnterPieceSquare = Square.OUTSIDE;
         private PieceType promoPiece = PieceType.NONE;
         private string _fen = Chesslib.Fen.INITIAL_POSITION;
-        private string clsShowModalPromo { set; get; }
-        private string clsShowModalSetup { set; get; } = "";
+        private string ClsShowModalPromo { set; get; }
+        private string ClsShowModalSetup { set; get; } = "";
         private UInt64 highlightedSquares = 0ul;
         private ElementReference _div;
         private double factor = 0;
 
-        private string[] pieceImages = new string[] { "wQ", "bQ", "wR", "bR", "wB", "bB", "wN", "bN", "wP", "bP", "wK", "bK", "" };
+        private readonly string[] pieceImages = new string[] { "wQ", "bQ", "wR", "bR", "wB", "bB", "wN", "bN", "wP", "bP", "wK", "bK", "" };
         private string GetPieceImage(char pieceChar)
         {
             Piece p = Chesslib.Fen.ParsePieceChar(pieceChar);
@@ -235,7 +235,7 @@ namespace PonzianiComponents
 
         private string GetPieceImageSource(char pieceChar) => $"{PathPieceImages}{GetPieceImage(pieceChar)}.png";
 
-        private string SquareId(Square square) => $"square-{Chesslib.Chess.SquareToString(square)}";
+        private static string SquareId(Square square) => $"square-{Chesslib.Chess.SquareToString(square)}";
         private string PromoDialogId => $"{Id}-promodialog";
 
         private string IsDraggable(Square square)
@@ -243,7 +243,7 @@ namespace PonzianiComponents
             return SetupMode || (Side)((int)position.GetPiece(square) & 1) == position.SideToMove ? "true" : "false";
         }
 
-        private List<Move> legalMoves = new List<Move>();
+        private List<Move> legalMoves = new();
 
         private async Task HandleSetupSubmitAsync()
         {
@@ -274,7 +274,8 @@ namespace PonzianiComponents
 
         private async Task StyleAsync()
         {
-            if (Size != 0) {
+            if (Size != 0)
+            {
                 await module.InvokeVoidAsync("setCSSProperty", new object[] { _div, ".pzChessboard", "--size", $"{Size}px" });
                 int nfs = ((int)Math.Ceiling(Size / 30.0));
                 await module.InvokeVoidAsync("setCSSProperty", new object[] { _div, ".pzNotation", "--notation_font_size", $"{nfs}px" });
@@ -344,10 +345,12 @@ namespace PonzianiComponents
                 if (index >= 0)
                 {
                     highlightedSquares = 0;
-                    MovePlayedInfo mpi = new MovePlayedInfo();
-                    mpi.BoardId = Id;
-                    mpi.Move = moves[index];
-                    mpi.OldFen = position.FEN;
+                    MovePlayedInfo mpi = new()
+                    {
+                        BoardId = Id,
+                        Move = moves[index],
+                        OldFen = position.FEN
+                    };
                     mpi.San = position.ToSAN(mpi.Move);
                     position.ApplyMove(moves[index]);
                     mpi.NewFen = position.FEN;
@@ -361,14 +364,14 @@ namespace PonzianiComponents
                     draggedEnterPieceSquare = Square.OUTSIDE;
                     draggedPieceSquare = Square.OUTSIDE;
                     promoPiece = PieceType.NONE;
-                    clsShowModalPromo = "";
+                    ClsShowModalPromo = "";
                 }
                 else
                 {
                     index = moves.FindIndex(m => m.From == draggedPieceSquare && m.To == draggedEnterPieceSquare);
                     if (index >= 0) //Maybe promotion?
                     {
-                        clsShowModalPromo = " show-modal";
+                        ClsShowModalPromo = " show-modal";
                     }
                 }
             }
@@ -398,7 +401,7 @@ namespace PonzianiComponents
             legalMoves.Clear();
         }
 
-        private async Task SetPromoPieceAsync(EventArgs eventArgs, PieceType pt)
+        private async Task SetPromoPieceAsync(PieceType pt)
         {
             promoPiece = pt;
             await HandleDropAsync();
@@ -423,7 +426,7 @@ namespace PonzianiComponents
         {
             return ((rank & 1) == 0) == ((file & 1) == 0);
         }
-        private static string FileChars = "abcdefgh";
+        private static readonly string FileChars = "abcdefgh";
     }
     /// <summary>
     /// Callback information provided by <see cref="Chessboard.OnSetupChanged"/>
@@ -492,19 +495,22 @@ namespace PonzianiComponents
 
         }
 
-        public string Fen { get
+        public string Fen
+        {
+            get
             {
-                StringBuilder fen = new StringBuilder();
+                StringBuilder fen = new();
                 string[] token = _fen.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                 fen.Append(token[0]).Append(' ').Append(Side);
-                fen.Append(' ').Append(castlingString()).Append(' ');
+                fen.Append(' ').Append(CastlingString()).Append(' ');
                 fen.Append(EnPassantSquare);
                 fen.Append(' ').Append(DrawPlyCount).Append(' ').Append(MoveNumber);
                 return fen.ToString();
-            } }
+            }
+        }
 
-        private string _fen;
-        private char[] pboard;
+        private readonly string _fen;
+        private readonly char[] pboard;
 
         public string Side { set; get; } = "w";
         public bool CastlingWhiteKingside { set; get; } = false;
@@ -519,7 +525,7 @@ namespace PonzianiComponents
         public int DrawPlyCount { get; set; } = 0;
         public int MoveNumber { get; set; } = 1;
 
-        private string castlingString()
+        private string CastlingString()
         {
             string cs = "";
             if (CastlingWhiteKingside) cs += 'K';
@@ -532,12 +538,14 @@ namespace PonzianiComponents
 
         public List<string> EnPassantSquares()
         {
-            List<string> result = new List<string>();
-            result.Add("-");
+            List<string> result = new()
+            {
+                "-"
+            };
             for (int s = (int)Square.A4; s <= (int)Square.H4; ++s)
             {
-                if (pboard[s] != Chesslib.Fen.PIECE_CHAR_BPAWN || pboard[s-8] != Chesslib.Fen.PIECE_CHAR_NONE) continue;
-                if (s > (int)Square.A4 && pboard[s-1] == Chesslib.Fen.PIECE_CHAR_WPAWN)
+                if (pboard[s] != Chesslib.Fen.PIECE_CHAR_BPAWN || pboard[s - 8] != Chesslib.Fen.PIECE_CHAR_NONE) continue;
+                if (s > (int)Square.A4 && pboard[s - 1] == Chesslib.Fen.PIECE_CHAR_WPAWN)
                 {
                     result.Add(Chess.SquareToString((Square)(s - 8)));
                     continue;
@@ -554,13 +562,13 @@ namespace PonzianiComponents
                 if (pboard[s] != Chesslib.Fen.PIECE_CHAR_WPAWN || pboard[s + 8] != Chesslib.Fen.PIECE_CHAR_NONE) continue;
                 if (s > (int)Square.A5 && pboard[s - 1] == Chesslib.Fen.PIECE_CHAR_BPAWN)
                 {
-                    result.Add(Chess.SquareToString((Square)(s+8)));
+                    result.Add(Chess.SquareToString((Square)(s + 8)));
                     continue;
                 }
                 if (pboard[s] != Chesslib.Fen.PIECE_CHAR_WPAWN) continue;
                 if (s < (int)Square.H5 && pboard[s + 1] == Chesslib.Fen.PIECE_CHAR_BPAWN)
                 {
-                    result.Add(Chess.SquareToString((Square)(s+8)));
+                    result.Add(Chess.SquareToString((Square)(s + 8)));
                     continue;
                 }
             }
@@ -572,7 +580,7 @@ namespace PonzianiComponents
     {
         public static Color Darken(this Color color, int percentage)
         {
-            HSLColor hsl = new HSLColor(color);
+            HSLColor hsl = new(color);
             return hsl.Darker(percentage / 100.0f);
         }
 

@@ -3,10 +3,8 @@ using PonzianiComponents;
 using PonzianiComponents.Chesslib;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace PonzianiDemo.Pages
 {
@@ -25,20 +23,21 @@ namespace PonzianiDemo.Pages
 
     public partial class Index
     {
-        private Model model = new Model();
+        private readonly Model model = new();
         private string EventInfoText { set; get; } = "";
         private Chessboard chessboard;
-        private bool SetupMode { 
+        private bool SetupMode
+        {
             set { if (value && value != chessboard.SetupMode) chessboard.SwitchToSetupMode(); else chessboard.ExitSetupMode(); }
-            get { return chessboard != null && chessboard.SetupMode; } 
+            get { return chessboard != null && chessboard.SetupMode; }
         }
 
-        private static Regex regexOtherAttributes = new Regex(@"(\w+)=\""([^\""]+)\""");
+        private static readonly Regex regexOtherAttributes = new(@"(\w+)=\""([^\""]+)\""");
         private Dictionary<string, object> OtherAttributes
         {
             get
             {
-                Dictionary<string, object> oo = new Dictionary<string, object>();
+                Dictionary<string, object> oo = new();
                 if (model.OtherAttributes != null)
                 {
                     MatchCollection mc = regexOtherAttributes.Matches(model.OtherAttributes);
@@ -67,11 +66,6 @@ namespace PonzianiDemo.Pages
         {
             chessboard.ApplyMove(new Move(e.Value.ToString()));
             model.Fen = chessboard.Fen;
-        }
-
-        private void HandleSetupModeChanged(bool isChecked)
-        {
-            Console.WriteLine(isChecked);
         }
     }
 }

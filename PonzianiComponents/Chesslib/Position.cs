@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace PonzianiComponents.Chesslib
 {
@@ -92,11 +90,10 @@ namespace PonzianiComponents.Chesslib
         public void ApplyMove(Move move)
         {
             //Console.WriteLine(move.ToUCIString());
-            _chessGivingSquare = x88Square.OUTSIDE;
             _moves = null;
             _checkstate = Checkstate.UNDEFINED;
-            x88Square from = (x88Square)x88.x88Index((int)move.From);
-            x88Square to = (x88Square)x88.x88Index((int)move.To);
+            X88Square from = (X88Square)X88.X88Index((int)move.From);
+            X88Square to = (X88Square)X88.X88Index((int)move.To);
             Piece movingPiece = x88board[(int)from];
             DrawPlyCount++;
             //special cases:
@@ -171,11 +168,11 @@ namespace PonzianiComponents.Chesslib
                 //Check if there is an opposite colored pawn next to to field
                 if (SideToMove == Side.WHITE)
                 {
-                    if (x88board[(int)to - 1] == Piece.BPAWN || x88board[(int)to + 1] == Piece.BPAWN) EPSquare = (Square)x88.Index((int)to - 16);
+                    if (x88board[(int)to - 1] == Piece.BPAWN || x88board[(int)to + 1] == Piece.BPAWN) EPSquare = (Square)X88.Index((int)to - 16);
                 }
                 else
                 {
-                    if (x88board[(int)to - 1] == Piece.WPAWN || x88board[(int)to + 1] == Piece.WPAWN) EPSquare = (Square)x88.Index((int)to + 16);
+                    if (x88board[(int)to - 1] == Piece.WPAWN || x88board[(int)to + 1] == Piece.WPAWN) EPSquare = (Square)X88.Index((int)to + 16);
                 }
             }
             if (EPSquare != Square.OUTSIDE) PolyglotKey ^= PolyglotKeys[772 + (((int)EPSquare) & 7)];
@@ -188,17 +185,17 @@ namespace PonzianiComponents.Chesslib
                 {
                     if (Chess960)
                     {
-                        if ((int)from == x88.x88Index((int)castleableRooks[0]) || (int)to == x88.x88Index((int)castleableRooks[0])) castlings &= ~(int)CastleFlag.W0_0;
-                        else if ((int)from == x88.x88Index((int)castleableRooks[1]) || (int)to == x88.x88Index((int)castleableRooks[1])) castlings &= ~(int)CastleFlag.W0_0_0;
-                        if ((int)from == x88.x88Index((int)castleableRooks[2]) || (int)to == x88.x88Index((int)castleableRooks[2])) castlings &= ~(int)CastleFlag.B0_0;
-                        else if ((int)from == x88.x88Index((int)castleableRooks[3]) || (int)to == x88.x88Index((int)castleableRooks[3])) castlings &= ~(int)CastleFlag.B0_0_0;
+                        if ((int)from == X88.X88Index((int)castleableRooks[0]) || (int)to == X88.X88Index((int)castleableRooks[0])) castlings &= ~(int)CastleFlag.W0_0;
+                        else if ((int)from == X88.X88Index((int)castleableRooks[1]) || (int)to == X88.X88Index((int)castleableRooks[1])) castlings &= ~(int)CastleFlag.W0_0_0;
+                        if ((int)from == X88.X88Index((int)castleableRooks[2]) || (int)to == X88.X88Index((int)castleableRooks[2])) castlings &= ~(int)CastleFlag.B0_0;
+                        else if ((int)from == X88.X88Index((int)castleableRooks[3]) || (int)to == X88.X88Index((int)castleableRooks[3])) castlings &= ~(int)CastleFlag.B0_0_0;
                     }
                     else
                     {
-                        if (from == x88Square.A1 || to == x88Square.A1) castlings &= ~(int)CastleFlag.W0_0_0;
-                        else if (from == x88Square.H1 || to == x88Square.H1) castlings &= ~(int)CastleFlag.W0_0;
-                        if (from == x88Square.A8 || to == x88Square.A8) castlings &= ~(int)CastleFlag.B0_0_0;
-                        else if (from == x88Square.H8 || to == x88Square.H8) castlings &= ~(int)CastleFlag.B0_0;
+                        if (from == X88Square.A1 || to == X88Square.A1) castlings &= ~(int)CastleFlag.W0_0_0;
+                        else if (from == X88Square.H1 || to == X88Square.H1) castlings &= ~(int)CastleFlag.W0_0;
+                        if (from == X88Square.A8 || to == X88Square.A8) castlings &= ~(int)CastleFlag.B0_0_0;
+                        else if (from == X88Square.H8 || to == X88Square.H8) castlings &= ~(int)CastleFlag.B0_0;
                     }
                 }
                 PolyglotKey ^= PolyglotCastlingKey(castlings);
@@ -214,50 +211,50 @@ namespace PonzianiComponents.Chesslib
             Debug.Assert(Chess960 || CheckCastlings(), $"Invalid castle flags: {FEN}");
         }
 
-        private void Apply960Castling(x88Square to)
+        private void Apply960Castling(X88Square to)
         {
-            x88Square from = kingSquares[(int)SideToMove];
+            X88Square from = kingSquares[(int)SideToMove];
             int index = from < to ? 0 : 1;
             index += 2 * (int)SideToMove;
             Piece king = Chess.GetPiece(PieceType.KING, SideToMove);
             Piece rook = Chess.GetPiece(PieceType.ROOK, SideToMove);
             x88board[(int)from] = x88board[(int)to] = Piece.BLANK;
-            PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[king] + x88.Index(from)];
-            PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[rook] + x88.Index(to)];
+            PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[king] + X88.Index(from)];
+            PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[rook] + X88.Index(to)];
             PolyglotKey ^= PolyglotCastlingKey(castlings);
             switch (index)
             {
                 case 0:
-                    x88board[(int)x88Square.G1] = Piece.WKING;
-                    x88board[(int)x88Square.F1] = Piece.WROOK;
+                    x88board[(int)X88Square.G1] = Piece.WKING;
+                    x88board[(int)X88Square.F1] = Piece.WROOK;
                     PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[Piece.WKING] + (int)Square.G1];
                     PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[Piece.WROOK] + (int)Square.F1];
                     castlings &= (int)CastleFlag.B0_0 | (int)CastleFlag.B0_0_0;
-                    kingSquares[0] = x88Square.G1;
+                    kingSquares[0] = X88Square.G1;
                     break;
                 case 1:
-                    x88board[(int)x88Square.C1] = Piece.WKING;
-                    x88board[(int)x88Square.D1] = Piece.WROOK;
+                    x88board[(int)X88Square.C1] = Piece.WKING;
+                    x88board[(int)X88Square.D1] = Piece.WROOK;
                     PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[Piece.WKING] + (int)Square.C1];
                     PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[Piece.WROOK] + (int)Square.D1];
                     castlings &= (int)CastleFlag.B0_0 | (int)CastleFlag.B0_0_0;
-                    kingSquares[0] = x88Square.C1;
+                    kingSquares[0] = X88Square.C1;
                     break;
                 case 2:
-                    x88board[(int)x88Square.G8] = Piece.BKING;
-                    x88board[(int)x88Square.F8] = Piece.BROOK;
+                    x88board[(int)X88Square.G8] = Piece.BKING;
+                    x88board[(int)X88Square.F8] = Piece.BROOK;
                     PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[Piece.BKING] + (int)Square.G8];
                     PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[Piece.BROOK] + (int)Square.F8];
                     castlings &= (int)CastleFlag.W0_0 | (int)CastleFlag.W0_0_0;
-                    kingSquares[1] = x88Square.G8;
+                    kingSquares[1] = X88Square.G8;
                     break;
                 case 3:
-                    x88board[(int)x88Square.C8] = Piece.BKING;
-                    x88board[(int)x88Square.D8] = Piece.BROOK;
+                    x88board[(int)X88Square.C8] = Piece.BKING;
+                    x88board[(int)X88Square.D8] = Piece.BROOK;
                     PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[Piece.BKING] + (int)Square.C8];
                     PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[Piece.BROOK] + (int)Square.D8];
                     castlings &= (int)CastleFlag.W0_0 | (int)CastleFlag.W0_0_0;
-                    kingSquares[1] = x88Square.C8;
+                    kingSquares[1] = X88Square.C8;
                     break;
                 default:
                     Debug.Fail("Something is wrong!");
@@ -266,13 +263,13 @@ namespace PonzianiComponents.Chesslib
             PolyglotKey ^= PolyglotCastlingKey(castlings);
         }
 
-        private void ApplyStandardCastling(x88Square to)
+        private void ApplyStandardCastling(X88Square to)
         {
-            if (SideToMove == Side.WHITE && to == x88Square.G1)
+            if (SideToMove == Side.WHITE && to == X88Square.G1)
             {
-                x88board[(int)x88Square.E1] = x88board[(int)x88Square.H1] = Piece.BLANK;
-                x88board[(int)x88Square.G1] = Piece.WKING;
-                x88board[(int)x88Square.F1] = Piece.WROOK;
+                x88board[(int)X88Square.E1] = x88board[(int)X88Square.H1] = Piece.BLANK;
+                x88board[(int)X88Square.G1] = Piece.WKING;
+                x88board[(int)X88Square.F1] = Piece.WROOK;
                 PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[Piece.WKING] + (int)Square.E1];
                 PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[Piece.WKING] + (int)Square.G1];
                 PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[Piece.WROOK] + (int)Square.H1];
@@ -280,13 +277,13 @@ namespace PonzianiComponents.Chesslib
                 PolyglotKey ^= PolyglotCastlingKey(castlings);
                 castlings &= (int)CastleFlag.B0_0 | (int)CastleFlag.B0_0_0;
                 PolyglotKey ^= PolyglotCastlingKey(castlings);
-                kingSquares[0] = x88Square.G1;
+                kingSquares[0] = X88Square.G1;
             }
-            else if (SideToMove == Side.WHITE && to == x88Square.C1)
+            else if (SideToMove == Side.WHITE && to == X88Square.C1)
             {
-                x88board[(int)x88Square.E1] = x88board[(int)x88Square.A1] = Piece.BLANK;
-                x88board[(int)x88Square.C1] = Piece.WKING;
-                x88board[(int)x88Square.D1] = Piece.WROOK;
+                x88board[(int)X88Square.E1] = x88board[(int)X88Square.A1] = Piece.BLANK;
+                x88board[(int)X88Square.C1] = Piece.WKING;
+                x88board[(int)X88Square.D1] = Piece.WROOK;
                 PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[Piece.WKING] + (int)Square.E1];
                 PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[Piece.WKING] + (int)Square.C1];
                 PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[Piece.WROOK] + (int)Square.A1];
@@ -294,13 +291,13 @@ namespace PonzianiComponents.Chesslib
                 PolyglotKey ^= PolyglotCastlingKey(castlings);
                 castlings &= (int)CastleFlag.B0_0 | (int)CastleFlag.B0_0_0;
                 PolyglotKey ^= PolyglotCastlingKey(castlings);
-                kingSquares[0] = x88Square.C1;
+                kingSquares[0] = X88Square.C1;
             }
-            else if (SideToMove == Side.BLACK && to == x88Square.G8)
+            else if (SideToMove == Side.BLACK && to == X88Square.G8)
             {
-                x88board[(int)x88Square.E8] = x88board[(int)x88Square.H8] = Piece.BLANK;
-                x88board[(int)x88Square.G8] = Piece.BKING;
-                x88board[(int)x88Square.F8] = Piece.BROOK;
+                x88board[(int)X88Square.E8] = x88board[(int)X88Square.H8] = Piece.BLANK;
+                x88board[(int)X88Square.G8] = Piece.BKING;
+                x88board[(int)X88Square.F8] = Piece.BROOK;
                 PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[Piece.BKING] + (int)Square.E8];
                 PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[Piece.BKING] + (int)Square.G8];
                 PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[Piece.BROOK] + (int)Square.H8];
@@ -308,13 +305,13 @@ namespace PonzianiComponents.Chesslib
                 PolyglotKey ^= PolyglotCastlingKey(castlings);
                 castlings &= (int)CastleFlag.W0_0 | (int)CastleFlag.W0_0_0;
                 PolyglotKey ^= PolyglotCastlingKey(castlings);
-                kingSquares[1] = x88Square.G8;
+                kingSquares[1] = X88Square.G8;
             }
-            else if (SideToMove == Side.BLACK && to == x88Square.C8)
+            else if (SideToMove == Side.BLACK && to == X88Square.C8)
             {
-                x88board[(int)x88Square.E8] = x88board[(int)x88Square.A8] = Piece.BLANK;
-                x88board[(int)x88Square.C8] = Piece.BKING;
-                x88board[(int)x88Square.D8] = Piece.BROOK;
+                x88board[(int)X88Square.E8] = x88board[(int)X88Square.A8] = Piece.BLANK;
+                x88board[(int)X88Square.C8] = Piece.BKING;
+                x88board[(int)X88Square.D8] = Piece.BROOK;
                 PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[Piece.BKING] + (int)Square.E8];
                 PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[Piece.BKING] + (int)Square.C8];
                 PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[Piece.BROOK] + (int)Square.A8];
@@ -322,7 +319,7 @@ namespace PonzianiComponents.Chesslib
                 PolyglotKey ^= PolyglotCastlingKey(castlings);
                 castlings &= (int)CastleFlag.W0_0 | (int)CastleFlag.W0_0_0;
                 PolyglotKey ^= PolyglotCastlingKey(castlings);
-                kingSquares[1] = x88Square.C8;
+                kingSquares[1] = X88Square.C8;
             }
         }
 
@@ -331,15 +328,14 @@ namespace PonzianiComponents.Chesslib
             DrawPlyCount = move.UndoInfo.DrawPlyCount;
             castlings = move.UndoInfo.Castles;
             EPSquare = move.UndoInfo.EPSquare;
-            _chessGivingSquare = x88Square.OUTSIDE;
             _moves = null;
             _checkstate = Checkstate.UNDEFINED;
             Piece p = move.UndoInfo.IsPromotion ? (Piece)(9 - (int)SideToMove) : GetPiece(move.To);
             Debug.Assert(p != Piece.BLANK);
             if (p == Piece.BLANK) return false;
             PieceType pt = Chess.GetPieceType(p);
-            x88Square from = (x88Square)x88.x88Index((int)move.From);
-            x88Square to = (x88Square)x88.x88Index((int)move.To);
+            X88Square from = (X88Square)X88.X88Index((int)move.From);
+            X88Square to = (X88Square)X88.X88Index((int)move.To);
             if (pt == PieceType.PAWN && move.To == EPSquare)
             {
                 //EP Capture
@@ -358,20 +354,20 @@ namespace PonzianiComponents.Chesslib
                     switch (move.To)
                     {
                         case Square.G1:
-                            x88board[(int)x88Square.H1] = Piece.WROOK;
-                            x88board[(int)x88Square.F1] = Piece.BLANK;
+                            x88board[(int)X88Square.H1] = Piece.WROOK;
+                            x88board[(int)X88Square.F1] = Piece.BLANK;
                             break;
                         case Square.C1:
-                            x88board[(int)x88Square.A1] = Piece.WROOK;
-                            x88board[(int)x88Square.D1] = Piece.BLANK;
+                            x88board[(int)X88Square.A1] = Piece.WROOK;
+                            x88board[(int)X88Square.D1] = Piece.BLANK;
                             break;
                         case Square.G8:
-                            x88board[(int)x88Square.H8] = Piece.BROOK;
-                            x88board[(int)x88Square.F8] = Piece.BLANK;
+                            x88board[(int)X88Square.H8] = Piece.BROOK;
+                            x88board[(int)X88Square.F8] = Piece.BLANK;
                             break;
                         case Square.C8:
-                            x88board[(int)x88Square.A8] = Piece.BROOK;
-                            x88board[(int)x88Square.D8] = Piece.BLANK;
+                            x88board[(int)X88Square.A8] = Piece.BROOK;
+                            x88board[(int)X88Square.D8] = Piece.BLANK;
                             break;
                         default:
                             Debug.Assert(false);
@@ -416,7 +412,7 @@ namespace PonzianiComponents.Chesslib
         /// <returns>Dictionary with list of <see cref="Square">squares</see> for each <see cref="Piece">Piece</see></returns>
         public Dictionary<Piece, List<Square>> GetPieceSquareList()
         {
-            Dictionary<Piece, List<Square>> psqList = new Dictionary<Piece, List<Square>>();
+            Dictionary<Piece, List<Square>> psqList = new();
             for (Piece p = Piece.WQUEEN; p <= Piece.BKING; ++p) psqList.Add(p, new List<Square>());
             for (Square s = Square.A1; s <= Square.H8; s++)
             {
@@ -441,7 +437,7 @@ namespace PonzianiComponents.Chesslib
             return material[(int)Piece.WKNIGHT] + material[(int)Piece.BKNIGHT] + material[(int)Piece.WBISHOP] + material[(int)Piece.BBISHOP] <= 1;
         }
 
-        private static int[] phase_factors = new int[12] { 4, 4, 2, 2, 1, 1, 1, 1, 0, 0, 0, 0 };
+        private static readonly int[] phase_factors = new int[12] { 4, 4, 2, 2, 1, 1, 1, 1, 0, 0, 0, 0 };
         /// <summary>
         /// Calculates the game phase starting by 0 at startposition and ending at 256 (Pawn ending)
         /// </summary>
@@ -459,15 +455,17 @@ namespace PonzianiComponents.Chesslib
         /// <inheritdoc />
         public object Clone()
         {
-            Position clone = new Position();
+            Position clone = new()
+            {
+                castlings = castlings,
+                DrawPlyCount = DrawPlyCount,
+                EPSquare = EPSquare,
+                MoveNumber = MoveNumber,
+                SideToMove = SideToMove,
+                PolyglotKey = PolyglotKey,
+                Chess960 = Chess960
+            };
             Array.Copy(x88board, clone.x88board, 120);
-            clone.castlings = castlings;
-            clone.DrawPlyCount = DrawPlyCount;
-            clone.EPSquare = EPSquare;
-            clone.MoveNumber = MoveNumber;
-            clone.SideToMove = SideToMove;
-            clone.PolyglotKey = PolyglotKey;
-            clone.Chess960 = Chess960;
             Array.Copy(material, clone.material, 12);
             Array.Copy(kingSquares, clone.kingSquares, 2);
             Array.Copy(castleableRooks, clone.castleableRooks, 4);
@@ -481,7 +479,7 @@ namespace PonzianiComponents.Chesslib
         /// </summary>
         /// <param name="square">A square</param>
         /// <returns>The piece on the square</returns>
-        public Piece GetPiece(Square square) { return x88board[x88.x88Index((int)square)]; }
+        public Piece GetPiece(Square square) { return x88board[X88.X88Index((int)square)]; }
 
         /// <summary>
         /// Generates a list of all legal Moves
@@ -499,7 +497,7 @@ namespace PonzianiComponents.Chesslib
         public string ASCII()
         {
             string pc = "QqRrBbNnPpKk ";
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             sb.AppendLine("  a   b   c   d   e   f   g   h  ");
             sb.AppendLine("---------------------------------");
             for (int rank = 7; rank >= 0; --rank)
@@ -522,7 +520,7 @@ namespace PonzianiComponents.Chesslib
         public string AsHTML()
         {
             char[] upiece = { '\u2655', '\u265b', '\u2656', '\u265c', '\u2657', '\u265d', '\u2658', '\u265e', '\u2659', '\u265f', '\u2654', '\u265a', '\u0020' };
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             sb.Append("<table style = \"text-align:center;border-spacing:0pt;font-family:'Arial Unicode MS'; border-collapse:collapse; border-color: black; border-style: solid; border-width: 0pt 0pt 0pt 0pt\">");
             sb.Append("<tbody>");
             for (int row = 7; row >= 0; --row)
@@ -551,8 +549,8 @@ namespace PonzianiComponents.Chesslib
 
         internal string ToLAN(Move move, IChessPieceStringProvider icp)
         {
-            StringBuilder sb = new StringBuilder();
-            PieceType pt = Chess.GetPieceType(x88board[x88.x88Index((int)move.From)]);
+            StringBuilder sb = new();
+            PieceType pt = Chess.GetPieceType(x88board[X88.X88Index((int)move.From)]);
             if (pt == PieceType.KING && !Chess960 && Math.Abs((int)move.From - (int)move.To) == 2)
             {
                 if (move.To > move.From) sb.Append("O-O"); else sb.Append("O-O-O");
@@ -572,24 +570,24 @@ namespace PonzianiComponents.Chesslib
             }
             else
             {
-                bool capture = x88board[x88.x88Index((int)move.To)] != Piece.BLANK
+                bool capture = x88board[X88.X88Index((int)move.To)] != Piece.BLANK
                     || (pt == PieceType.PAWN && move.To == EPSquare);
                 if (pt != PieceType.PAWN) sb.Append(icp.Get(pt));
                 sb.Append(Chess.SquareToString(move.From));
-                if (capture) sb.Append("x"); else sb.Append("-");
+                if (capture) sb.Append('x'); else sb.Append('-');
                 sb.Append(Chess.SquareToString(move.To));
-                if (move.PromoteTo != PieceType.NONE) sb.Append("=").Append(icp.Get(move.PromoteTo));
+                if (move.PromoteTo != PieceType.NONE) sb.Append('=').Append(icp.Get(move.PromoteTo));
             }
             Position next = (Position)Clone();
             next.ApplyMove(move);
-            if (next.IsMate) sb.Append("#"); else if (next.IsCheck) sb.Append("+");
+            if (next.IsMate) sb.Append('#'); else if (next.IsCheck) sb.Append('+');
             return sb.ToString();
         }
 
         internal string ToSAN(Move move, IChessPieceStringProvider icp)
         {
-            StringBuilder sb = new StringBuilder();
-            PieceType pt = Chess.GetPieceType(x88board[x88.x88Index((int)move.From)]);
+            StringBuilder sb = new();
+            PieceType pt = Chess.GetPieceType(x88board[X88.X88Index((int)move.From)]);
             Side side = Side.WHITE;
             if (icp == FigurinePieceStringProvider.Instance) side = SideToMove;
             Debug.Assert(pt != PieceType.NONE);
@@ -617,30 +615,30 @@ namespace PonzianiComponents.Chesslib
                 string disambiguation = String.Empty;
                 foreach (Move m in GetMoves())
                 {
-                    if (m.To == move.To && m.From != move.From && pt == Chess.GetPieceType(x88board[x88.x88Index((int)m.From)]))
+                    if (m.To == move.To && m.From != move.From && pt == Chess.GetPieceType(x88board[X88.X88Index((int)m.From)]))
                     {
                         if ((((int)m.From) & 7) != (((int)move.From) & 7)) disambiguation = "abcdefgh".Substring(((int)move.From) & 7, 1);
                         else disambiguation = $"{((int)move.From >> 3) + 1}";
                         break;
                     }
                 }
-                bool capture = x88board[x88.x88Index((int)move.To)] != Piece.BLANK
+                bool capture = x88board[X88.X88Index((int)move.To)] != Piece.BLANK
                     || (pt == PieceType.PAWN && move.To == EPSquare);
                 if (pt != PieceType.PAWN) sb.Append(icp.Get(pt, side)).Append(disambiguation);
                 else if (capture) sb.Append("abcdefgh"[((int)move.From) & 7]);
                 if (capture) sb.Append('x');
                 sb.Append(Chess.SquareToString(move.To));
-                if (move.PromoteTo != PieceType.NONE) sb.Append("=").Append(icp.Get(move.PromoteTo, side));
+                if (move.PromoteTo != PieceType.NONE) sb.Append('=').Append(icp.Get(move.PromoteTo, side));
             }
             Position next = (Position)Clone();
             next.ApplyMove(move);
-            if (next.IsMate) sb.Append("#"); else if (next.IsCheck) sb.Append("+");
+            if (next.IsMate) sb.Append('#'); else if (next.IsCheck) sb.Append('+');
             return sb.ToString();
         }
 
-        internal string ToICCF(Move move)
+        internal static string ToICCF(Move move)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             sb.Append(10 * (1 + ((int)move.From & 7)) + (1 + (int)move.From / 8)).Append(10 * (1 + ((int)move.To & 7)) + (1 + (int)move.To / 8));
             if (move.PromoteTo != PieceType.NONE) sb.Append((int)move.PromoteTo + 1);
             return sb.ToString();
@@ -740,7 +738,7 @@ namespace PonzianiComponents.Chesslib
         /// <returns>A Dictionary which contains for any legal move in the positions a perft result</returns>
         public Dictionary<Move, long> Divide(int depth)
         {
-            Dictionary<Move, long> result = new Dictionary<Move, long>();
+            Dictionary<Move, long> result = new();
             foreach (Move move in GetMoves())
             {
                 Position next = (Position)Clone();
@@ -752,15 +750,13 @@ namespace PonzianiComponents.Chesslib
 
         private enum Checkstate { UNDEFINED, NO_CHECK, CHECKED, DOUBLE_CHECKED };
 
-        private Piece[] x88board = new Piece[120];
+        private readonly Piece[] x88board = new Piece[120];
         internal int castlings = 0;
         private List<Move> _moves = null;
-        private bool _generatePseudoLegalMoves = false;
         private Checkstate _checkstate = Checkstate.UNDEFINED;
-        private int[] material = new int[12] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-        private x88Square[] kingSquares = new x88Square[2];
-        private x88Square _chessGivingSquare = x88Square.OUTSIDE;
-        private Square[] castleableRooks = new Square[4];
+        private readonly int[] material = new int[12] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        private readonly X88Square[] kingSquares = new X88Square[2];
+        private readonly Square[] castleableRooks = new Square[4];
 
         /// <summary>
         /// Sets the position from it's FEN representation
@@ -780,11 +776,11 @@ namespace PonzianiComponents.Chesslib
                     else
                     {
                         Piece p = Fen.PieceMapping[c];
-                        x88board[x88.x88Index(rank, file)] = Fen.PieceMapping[c];
+                        x88board[X88.X88Index(rank, file)] = Fen.PieceMapping[c];
                         PolyglotKey ^= PolyglotKeys[64 * PolyglotPieceIndex[p] + 8 * rank + file];
                         material[(int)p]++;
-                        if (p == Piece.WKING) kingSquares[0] = (x88Square)x88.x88Index(rank, file);
-                        else if (p == Piece.BKING) kingSquares[1] = (x88Square)x88.x88Index(rank, file);
+                        if (p == Piece.WKING) kingSquares[0] = (X88Square)X88.X88Index(rank, file);
+                        else if (p == Piece.BKING) kingSquares[1] = (X88Square)X88.X88Index(rank, file);
                         file++;
                     }
                 }
@@ -809,25 +805,25 @@ namespace PonzianiComponents.Chesslib
             {
                 Square tempEPSquare = Fen.ParseSquare(token[3]);
                 //Check if there is a pawn available for capturing
-                int x88Square = x88.x88Index((int)tempEPSquare);
+                int x88Square = X88.X88Index((int)tempEPSquare);
                 if (SideToMove == Side.WHITE)
                 {
-                    if (x88.IsOnBoard(x88Square - 17) && x88board[x88Square - 17] == Piece.WPAWN)
+                    if (X88.IsOnBoard(x88Square - 17) && x88board[x88Square - 17] == Piece.WPAWN)
                     {
                         EPSquare = tempEPSquare;
                     }
-                    else if (x88.IsOnBoard(x88Square - 15) && x88board[x88Square - 15] == Piece.WPAWN)
+                    else if (X88.IsOnBoard(x88Square - 15) && x88board[x88Square - 15] == Piece.WPAWN)
                     {
                         EPSquare = tempEPSquare;
                     }
                 }
                 else
                 {
-                    if (x88.IsOnBoard(x88Square + 17) && x88board[x88Square + 17] == Piece.BPAWN)
+                    if (X88.IsOnBoard(x88Square + 17) && x88board[x88Square + 17] == Piece.BPAWN)
                     {
                         EPSquare = tempEPSquare;
                     }
-                    else if (x88.IsOnBoard(x88Square + 15) && x88board[x88Square + 15] == Piece.BPAWN)
+                    else if (X88.IsOnBoard(x88Square + 15) && x88board[x88Square + 15] == Piece.BPAWN)
                     {
                         EPSquare = tempEPSquare;
                     }
@@ -846,10 +842,10 @@ namespace PonzianiComponents.Chesslib
             {
                 is960 = is960 || "KQkq".IndexOf(c) < 0;
             }
-            is960 = is960 || (v.IndexOf("K") >= 0 && (GetPiece(Square.H1) != Piece.WROOK || GetPiece(Square.E1) != Piece.WKING));
-            is960 = is960 || (v.IndexOf("k") >= 0 && (GetPiece(Square.H8) != Piece.BROOK || GetPiece(Square.E8) != Piece.BKING));
-            is960 = is960 || (v.IndexOf("Q") >= 0 && (GetPiece(Square.A1) != Piece.WROOK || GetPiece(Square.E1) != Piece.WKING));
-            is960 = is960 || (v.IndexOf("q") >= 0 && (GetPiece(Square.A8) != Piece.BROOK || GetPiece(Square.E8) != Piece.BKING));
+            is960 = is960 || (v.Contains("K", StringComparison.CurrentCulture) && (GetPiece(Square.H1) != Piece.WROOK || GetPiece(Square.E1) != Piece.WKING));
+            is960 = is960 || (v.Contains("k", StringComparison.CurrentCulture) && (GetPiece(Square.H8) != Piece.BROOK || GetPiece(Square.E8) != Piece.BKING));
+            is960 = is960 || (v.Contains("Q", StringComparison.CurrentCulture) && (GetPiece(Square.A1) != Piece.WROOK || GetPiece(Square.E1) != Piece.WKING));
+            is960 = is960 || (v.Contains("q", StringComparison.CurrentCulture) && (GetPiece(Square.A8) != Piece.BROOK || GetPiece(Square.E8) != Piece.BKING));
             Array.Fill(castleableRooks, Square.OUTSIDE);
             if (is960)
             {
@@ -863,7 +859,7 @@ namespace PonzianiComponents.Chesslib
                             castlings |= (int)CastleFlag.W0_0;
                             foreach (Square sq in psql[Piece.WROOK])
                             {
-                                if (sq <= Square.H1 && (int)sq > x88.Index(kingSquares[0]))
+                                if (sq <= Square.H1 && (int)sq > X88.Index(kingSquares[0]))
                                 {
                                     castleableRooks[0] = sq;
                                 }
@@ -873,7 +869,7 @@ namespace PonzianiComponents.Chesslib
                             castlings |= (int)CastleFlag.W0_0_0;
                             foreach (Square sq in psql[Piece.WROOK])
                             {
-                                if ((int)sq < x88.Index(kingSquares[0]))
+                                if ((int)sq < X88.Index(kingSquares[0]))
                                 {
                                     castleableRooks[1] = sq;
                                 }
@@ -884,7 +880,7 @@ namespace PonzianiComponents.Chesslib
                             castlings |= (int)CastleFlag.B0_0;
                             foreach (Square sq in psql[Piece.BROOK])
                             {
-                                if (sq <= Square.H8 && (int)sq > x88.Index(kingSquares[1]))
+                                if (sq <= Square.H8 && (int)sq > X88.Index(kingSquares[1]))
                                 {
                                     castleableRooks[2] = sq;
                                 }
@@ -894,7 +890,7 @@ namespace PonzianiComponents.Chesslib
                             castlings |= (int)CastleFlag.B0_0_0;
                             foreach (Square sq in psql[Piece.BROOK])
                             {
-                                if (sq >= Square.A8 && (int)sq < x88.Index(kingSquares[1]))
+                                if (sq >= Square.A8 && (int)sq < X88.Index(kingSquares[1]))
                                 {
                                     castleableRooks[3] = sq;
                                     break;
@@ -906,7 +902,7 @@ namespace PonzianiComponents.Chesslib
                             {
                                 int file = (int)(c) - (int)'A';
                                 int s = file;
-                                if (s > x88.Index(kingSquares[0]))
+                                if (s > X88.Index(kingSquares[0]))
                                 {
                                     castleableRooks[0] = (Square)s;
                                     castlings |= (int)CastleFlag.W0_0;
@@ -921,7 +917,7 @@ namespace PonzianiComponents.Chesslib
                             {
                                 int file = (int)(c) - (int)'a';
                                 int s = file + 56;
-                                if (s > x88.Index(kingSquares[1]))
+                                if (s > X88.Index(kingSquares[1]))
                                 {
                                     castleableRooks[2] = (Square)s;
                                     castlings |= (int)CastleFlag.B0_0;
@@ -946,14 +942,14 @@ namespace PonzianiComponents.Chesslib
         /// <returns>The position's FEN string</returns>
         private string ToFen(bool fullFEN = true, bool sFen = false)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             for (int rank = 7; rank >= 0; --rank)
             {
                 int count = 0;
                 int file = 0;
                 while (file < 8)
                 {
-                    Piece p = x88board[x88.x88Index(rank, file)];
+                    Piece p = x88board[X88.X88Index(rank, file)];
                     if (p == Piece.BLANK)
                     {
                         ++count;
@@ -967,10 +963,10 @@ namespace PonzianiComponents.Chesslib
                     }
                     ++file;
                 }
-                if (rank > 0) sb.Append("/");
+                if (rank > 0) sb.Append('/');
             }
             if (SideToMove == Side.WHITE) sb.Append(" w "); else sb.Append(" b ");
-            if (castlings == 0) sb.Append("-");
+            if (castlings == 0) sb.Append('-');
             else if (sFen && Chess960)
             {
                 if (CastlingAllowed(CastleFlag.W0_0)) sb.Append("ABCDEFGH"[(int)castleableRooks[0] & 7]);
@@ -989,12 +985,12 @@ namespace PonzianiComponents.Chesslib
                     if (CastlingAllowed(CastleFlag.W0_0))
                     {
                         wNeedsX = wNeedsX && (psl[Piece.WROOK][0] > castleableRooks[0] || psl[Piece.WROOK][1] > castleableRooks[0]);
-                        if (wNeedsX) sb.Append("ABCDEFGH"[(int)castleableRooks[0] & 7]); else sb.Append("K");
+                        if (wNeedsX) sb.Append("ABCDEFGH"[(int)castleableRooks[0] & 7]); else sb.Append('K');
                     }
                     if (CastlingAllowed(CastleFlag.W0_0_0))
                     {
                         wNeedsX = wNeedsX && (psl[Piece.WROOK][0] > castleableRooks[1] || psl[Piece.WROOK][1] > castleableRooks[1]);
-                        if (wNeedsX) sb.Append("ABCDEFGH"[(int)castleableRooks[1] & 7]); else sb.Append("Q");
+                        if (wNeedsX) sb.Append("ABCDEFGH"[(int)castleableRooks[1] & 7]); else sb.Append('Q');
                     }
                     bool bNeedsX = psl[Piece.BROOK].Count >= 2;
                     bNeedsX = bNeedsX && psl[Piece.BROOK][0] > Square.H7 && psl[Piece.BROOK][1] < Square.H7; //Rooks are on 1st rank
@@ -1002,28 +998,28 @@ namespace PonzianiComponents.Chesslib
                     if (CastlingAllowed(CastleFlag.B0_0))
                     {
                         bNeedsX = bNeedsX && (psl[Piece.BROOK][0] > castleableRooks[2] || psl[Piece.BROOK][1] > castleableRooks[2]);
-                        if (bNeedsX) sb.Append("ABCDEFGH"[(int)castleableRooks[2] & 7]); else sb.Append("k");
+                        if (bNeedsX) sb.Append("ABCDEFGH"[(int)castleableRooks[2] & 7]); else sb.Append('k');
                     }
                     if (CastlingAllowed(CastleFlag.B0_0_0))
                     {
                         bNeedsX = bNeedsX && (psl[Piece.BROOK][0] > castleableRooks[3] || psl[Piece.BROOK][1] > castleableRooks[3]);
-                        if (bNeedsX) sb.Append("ABCDEFGH"[(int)castleableRooks[3] & 7]); else sb.Append("q");
+                        if (bNeedsX) sb.Append("ABCDEFGH"[(int)castleableRooks[3] & 7]); else sb.Append('q');
                     }
                 }
                 else
                 {
-                    if (CastlingAllowed(CastleFlag.W0_0)) sb.Append("K");
-                    if (CastlingAllowed(CastleFlag.W0_0_0)) sb.Append("Q");
-                    if (CastlingAllowed(CastleFlag.B0_0)) sb.Append("k");
-                    if (CastlingAllowed(CastleFlag.B0_0_0)) sb.Append("q");
+                    if (CastlingAllowed(CastleFlag.W0_0)) sb.Append('K');
+                    if (CastlingAllowed(CastleFlag.W0_0_0)) sb.Append('Q');
+                    if (CastlingAllowed(CastleFlag.B0_0)) sb.Append('k');
+                    if (CastlingAllowed(CastleFlag.B0_0_0)) sb.Append('q');
                 }
             }
-            sb.Append(" ");
-            if (EPSquare == Square.OUTSIDE) sb.Append("-");
+            sb.Append(' ');
+            if (EPSquare == Square.OUTSIDE) sb.Append('-');
             else
             {
                 sb.Append((char)(((int)EPSquare & 7) + (int)'a'));
-                if (EPSquare > Square.H4) sb.Append("6"); else sb.Append("3");
+                if (EPSquare > Square.H4) sb.Append('6'); else sb.Append('3');
             }
             if (fullFEN) sb.Append($" {DrawPlyCount} {MoveNumber}");
             return sb.ToString();
@@ -1042,7 +1038,7 @@ namespace PonzianiComponents.Chesslib
                 {
                     for (int square = 0; square < 120; ++square)
                     {
-                        if (x88board[square] == Piece.BLANK || Chess.GetColor(x88board[square]) != SideToMove || !x88.IsOnBoard(square)) continue;
+                        if (x88board[square] == Piece.BLANK || Chess.GetColor(x88board[square]) != SideToMove || !X88.IsOnBoard(square)) continue;
                         PieceType movingPT = Chess.GetPieceType(x88board[square]);
                         switch (movingPT)
                         {
@@ -1073,25 +1069,25 @@ namespace PonzianiComponents.Chesslib
 
         private void GenerateMovesRook(int square)
         {
-            int from = x88.Index(square);
-            sbyte pinDirection = IsPinned((x88Square)square);
-            foreach (sbyte step in x88.rookDirections)
+            int from = X88.Index(square);
+            sbyte pinDirection = IsPinned((X88Square)square);
+            foreach (sbyte step in X88.rookDirections)
             {
                 for (int i = 1; i < 8; ++i)
                 {
                     int to = square + i * step;
-                    if (!x88.IsOnBoard(to)) break;
+                    if (!X88.IsOnBoard(to)) break;
                     if (x88board[to] == Piece.BLANK)
                     {
-                        if (pinDirection == 0 && !IsCheck) _moves.Add(new Move(from, x88.Index(to)));
-                        else AddIfLegal(new Move(from, x88.Index(to)));
+                        if (pinDirection == 0 && !IsCheck) _moves.Add(new Move(from, X88.Index(to)));
+                        else AddIfLegal(new Move(from, X88.Index(to)));
                     }
                     else
                     {
                         if (Chess.GetColor(x88board[(int)to]) != SideToMove)
                         {
-                            if (pinDirection == 0 && !IsCheck) _moves.Add(new Move(from, x88.Index(to)));
-                            else AddIfLegal(new Move(from, x88.Index(to)));
+                            if (pinDirection == 0 && !IsCheck) _moves.Add(new Move(from, X88.Index(to)));
+                            else AddIfLegal(new Move(from, X88.Index(to)));
                         }
                         break;
                     }
@@ -1101,25 +1097,25 @@ namespace PonzianiComponents.Chesslib
 
         private void GenerateMovesBishop(int square)
         {
-            int from = x88.Index(square);
-            sbyte pinDirection = IsPinned((x88Square)square);
-            foreach (sbyte step in x88.bishopDirections)
+            int from = X88.Index(square);
+            sbyte pinDirection = IsPinned((X88Square)square);
+            foreach (sbyte step in X88.bishopDirections)
             {
                 for (int i = 1; i < 8; ++i)
                 {
                     int to = square + i * step;
-                    if (!x88.IsOnBoard((int)to)) break;
+                    if (!X88.IsOnBoard((int)to)) break;
                     if (x88board[to] == Piece.BLANK)
                     {
-                        if (pinDirection == 0 && !IsCheck) _moves.Add(new Move(from, x88.Index(to)));
-                        else AddIfLegal(new Move(from, x88.Index(to)));
+                        if (pinDirection == 0 && !IsCheck) _moves.Add(new Move(from, X88.Index(to)));
+                        else AddIfLegal(new Move(from, X88.Index(to)));
                     }
                     else
                     {
                         if (Chess.GetColor(x88board[(int)to]) != SideToMove)
                         {
-                            if (pinDirection == 0 && !IsCheck) _moves.Add(new Move(from, x88.Index(to)));
-                            else AddIfLegal(new Move(from, x88.Index(to)));
+                            if (pinDirection == 0 && !IsCheck) _moves.Add(new Move(from, X88.Index(to)));
+                            else AddIfLegal(new Move(from, X88.Index(to)));
                         }
                         break;
                     }
@@ -1129,14 +1125,14 @@ namespace PonzianiComponents.Chesslib
 
         private void GenerateMovesPawn(int square)
         {
-            int from = x88.Index(square);
-            sbyte pinDirection = IsPinned((x88Square)square);
+            int from = X88.Index(square);
+            sbyte pinDirection = IsPinned((X88Square)square);
             if (SideToMove == Side.WHITE)
             {
                 if (x88board[square + 16] == Piece.BLANK)
                 {
-                    int to = x88.Index(square + 16);
-                    if (square >= (int)x88Square.A7)
+                    int to = X88.Index(square + 16);
+                    if (square >= (int)X88Square.A7)
                     {
                         if (pinDirection == 0 && !IsCheck)
                         {
@@ -1158,26 +1154,26 @@ namespace PonzianiComponents.Chesslib
                         if (pinDirection == 0 && !IsCheck)
                         {
                             _moves.Add(new Move(from, to));
-                            if (square <= (int)x88Square.H2 && x88board[square + 32] == Piece.BLANK)
-                                _moves.Add(new Move(from, x88.Index(square + 32)));
+                            if (square <= (int)X88Square.H2 && x88board[square + 32] == Piece.BLANK)
+                                _moves.Add(new Move(from, X88.Index(square + 32)));
                         }
                         else
                         {
                             AddIfLegal(new Move(from, to));
-                            if (square <= (int)x88Square.H2 && x88board[square + 32] == Piece.BLANK)
-                                AddIfLegal(new Move(from, x88.Index(square + 32)));
+                            if (square <= (int)X88Square.H2 && x88board[square + 32] == Piece.BLANK)
+                                AddIfLegal(new Move(from, X88.Index(square + 32)));
                         }
                     }
                 }
                 int[] steps = { 15, 17 };
                 foreach (int step in steps)
                 {
-                    x88Square toSquare = (x88Square)square + step;
-                    if (!x88.IsOnBoard((int)toSquare)) continue;
-                    int to = x88.Index(square + step);
+                    X88Square toSquare = (X88Square)square + step;
+                    if (!X88.IsOnBoard((int)toSquare)) continue;
+                    int to = X88.Index(square + step);
                     if (x88board[(int)toSquare] != Piece.BLANK && Chess.GetColor(x88board[(int)toSquare]) == Side.BLACK)
                     {
-                        if (square >= (int)x88Square.A7)
+                        if (square >= (int)X88Square.A7)
                         {
                             if (pinDirection == 0 && !IsCheck)
                             {
@@ -1210,8 +1206,8 @@ namespace PonzianiComponents.Chesslib
             {
                 if (x88board[square - 16] == Piece.BLANK)
                 {
-                    int to = x88.Index(square - 16);
-                    if (square <= (int)x88Square.H2)
+                    int to = X88.Index(square - 16);
+                    if (square <= (int)X88Square.H2)
                     {
                         if (pinDirection == 0 && !IsCheck)
                         {
@@ -1233,26 +1229,26 @@ namespace PonzianiComponents.Chesslib
                         if (pinDirection == 0 && !IsCheck)
                         {
                             _moves.Add(new Move(from, to));
-                            if (square >= (int)x88Square.A7 && x88board[square - 32] == Piece.BLANK)
-                                _moves.Add(new Move(from, x88.Index(square - 32)));
+                            if (square >= (int)X88Square.A7 && x88board[square - 32] == Piece.BLANK)
+                                _moves.Add(new Move(from, X88.Index(square - 32)));
                         }
                         else
                         {
                             AddIfLegal(new Move(from, to));
-                            if (square >= (int)x88Square.A7 && x88board[square - 32] == Piece.BLANK)
-                                AddIfLegal(new Move(from, x88.Index(square - 32)));
+                            if (square >= (int)X88Square.A7 && x88board[square - 32] == Piece.BLANK)
+                                AddIfLegal(new Move(from, X88.Index(square - 32)));
                         }
                     }
                 }
                 int[] steps = { -15, -17 };
                 foreach (int step in steps)
                 {
-                    x88Square toSquare = (x88Square)square + step;
-                    if (!x88.IsOnBoard((int)toSquare)) continue;
-                    int to = x88.Index(square + step);
+                    X88Square toSquare = (X88Square)square + step;
+                    if (!X88.IsOnBoard((int)toSquare)) continue;
+                    int to = X88.Index(square + step);
                     if (x88board[(int)toSquare] != Piece.BLANK && Chess.GetColor(x88board[(int)toSquare]) == Side.WHITE)
                     {
-                        if (square <= (int)x88Square.H2)
+                        if (square <= (int)X88Square.H2)
                         {
                             if (pinDirection == 0 && !IsCheck)
                             {
@@ -1286,14 +1282,13 @@ namespace PonzianiComponents.Chesslib
 
         private void GenerateMovesKing(int square)
         {
-            int from = x88.Index(square);
-            Side other = (Side)((int)SideToMove ^ 1);
-            foreach (sbyte step in x88.kingDirections)
+            int from = X88.Index(square);
+            foreach (sbyte step in X88.kingDirections)
             {
                 int toSquare = square + step;
-                if (x88.IsOnBoard(toSquare) && (x88board[toSquare] == Piece.BLANK || Chess.GetColor(x88board[toSquare]) != SideToMove))
+                if (X88.IsOnBoard(toSquare) && (x88board[toSquare] == Piece.BLANK || Chess.GetColor(x88board[toSquare]) != SideToMove))
                 {
-                    AddIfLegal(new Move(from, x88.Index(toSquare)));
+                    AddIfLegal(new Move(from, X88.Index(toSquare)));
                 }
             }
             if (Checked()) return;
@@ -1330,7 +1325,7 @@ namespace PonzianiComponents.Chesslib
 
         private void Generate960Castles(int x88square)
         {
-            Square square = (Square)x88.Index(x88square);
+            Square square = (Square)X88.Index(x88square);
             if (SideToMove == Side.WHITE && (castlings & 3) != 0)
             {
                 if ((castlings & (int)CastleFlag.W0_0) != 0 && CheckEmptyInBetween(square, Square.G1, castleableRooks[0]) && CheckEmptyInBetween(castleableRooks[0], Square.F1, square) &&
@@ -1372,22 +1367,22 @@ namespace PonzianiComponents.Chesslib
 
         private void GenerateMovesKnight(int square)
         {
-            int from = x88.Index(square);
-            sbyte pinDirection = IsPinned((x88Square)square);
-            foreach (sbyte step in x88.knightMoves)
+            int from = X88.Index(square);
+            sbyte pinDirection = IsPinned((X88Square)square);
+            foreach (sbyte step in X88.knightMoves)
             {
                 int toSquare = square + step;
-                if (x88.IsOnBoard(toSquare) && (x88board[toSquare] == Piece.BLANK || Chess.GetColor(x88board[toSquare]) != SideToMove))
+                if (X88.IsOnBoard(toSquare) && (x88board[toSquare] == Piece.BLANK || Chess.GetColor(x88board[toSquare]) != SideToMove))
                 {
-                    if (pinDirection == 0 && !IsCheck) _moves.Add(new Move(from, x88.Index(toSquare)));
-                    else AddIfLegal(new Move(from, x88.Index(toSquare)));
+                    if (pinDirection == 0 && !IsCheck) _moves.Add(new Move(from, X88.Index(toSquare)));
+                    else AddIfLegal(new Move(from, X88.Index(toSquare)));
                 }
             }
         }
 
         private bool AddIfLegal(Move move, bool isCastling = false)
         {
-            if (!_generatePseudoLegalMoves && !CheckLegal(move, isCastling)) return false;
+            if (!CheckLegal(move, isCastling)) return false;
             _moves.Add(move);
             return true;
         }
@@ -1401,41 +1396,41 @@ namespace PonzianiComponents.Chesslib
                 return !next.IsAttacked(next.kingSquares[(int)SideToMove], next.SideToMove);
             }
             if (Chess960) return CheckLegal960(move);
-            HashSet<x88Square> targets = null;
+            HashSet<X88Square> targets = null;
             if (move == Move.W0_0)
             {
-                for (int i = (int)x88Square.D2; i <= (int)x88Square.H2; ++i)
+                for (int i = (int)X88Square.D2; i <= (int)X88Square.H2; ++i)
                 {
                     if (x88board[i] == Piece.BPAWN) return false;
                 }
-                targets = new HashSet<x88Square>() { x88Square.E1, x88Square.F1, x88Square.G1 };
+                targets = new HashSet<X88Square>() { X88Square.E1, X88Square.F1, X88Square.G1 };
             }
             else if (move == Move.W0_0_0)
             {
-                for (int i = (int)x88Square.B2; i <= (int)x88Square.F2; ++i)
+                for (int i = (int)X88Square.B2; i <= (int)X88Square.F2; ++i)
                 {
                     if (x88board[i] == Piece.BPAWN) return false;
                 }
-                targets = new HashSet<x88Square>() { x88Square.E1, x88Square.D1, x88Square.C1 };
+                targets = new HashSet<X88Square>() { X88Square.E1, X88Square.D1, X88Square.C1 };
             }
             else if (move == Move.B0_0)
             {
-                for (int i = (int)x88Square.D7; i <= (int)x88Square.H7; ++i)
+                for (int i = (int)X88Square.D7; i <= (int)X88Square.H7; ++i)
                 {
                     if (x88board[i] == Piece.WPAWN) return false;
                 }
-                targets = new HashSet<x88Square>() { x88Square.E8, x88Square.F8, x88Square.G8 };
+                targets = new HashSet<X88Square>() { X88Square.E8, X88Square.F8, X88Square.G8 };
             }
             else if (move == Move.B0_0_0)
             {
-                for (int i = (int)x88Square.B7; i <= (int)x88Square.F7; ++i)
+                for (int i = (int)X88Square.B7; i <= (int)X88Square.F7; ++i)
                 {
                     if (x88board[i] == Piece.WPAWN) return false;
                 }
-                targets = new HashSet<x88Square>() { x88Square.E8, x88Square.D8, x88Square.C8 };
+                targets = new HashSet<X88Square>() { X88Square.E8, X88Square.D8, X88Square.C8 };
             }
             Side other = (Side)((int)SideToMove ^ 1);
-            foreach (x88Square square in targets)
+            foreach (X88Square square in targets)
             {
                 if (IsAttacked(square, other)) return false;
             }
@@ -1449,27 +1444,27 @@ namespace PonzianiComponents.Chesslib
             Square target = shortCastle ? Square.G1 : Square.C1;
             target = (Square)((int)target + offset);
             //get squares of king path
-            HashSet<x88Square> targets = new HashSet<x88Square>();
+            HashSet<X88Square> targets = new();
             if (target > move.From)
             {
-                for (int i = (int)move.From; i <= (int)target; ++i) targets.Add((x88Square)x88.x88Index(i));
+                for (int i = (int)move.From; i <= (int)target; ++i) targets.Add((X88Square)X88.X88Index(i));
             }
             else
             {
-                for (int i = (int)target; i <= (int)move.From; ++i) targets.Add((x88Square)x88.x88Index(i));
+                for (int i = (int)target; i <= (int)move.From; ++i) targets.Add((X88Square)X88.X88Index(i));
             }
             Side other = (Side)((int)SideToMove ^ 1);
-            foreach (x88Square square in targets)
+            foreach (X88Square square in targets)
             {
                 if (IsAttacked(square, other)) return false;
             }
             int poffset = SideToMove == Side.BLACK ? -16 : 16;
             Piece pawn = SideToMove == Side.BLACK ? Piece.WPAWN : Piece.BPAWN;
-            foreach (x88Square sq in targets)
+            foreach (X88Square sq in targets)
             {
                 if (x88board[(int)sq + poffset] == pawn) return false;
             }
-            int index = shortCastle ? (int)x88Square.G1 : (int)x88Square.C1;
+            int index = shortCastle ? (int)X88Square.G1 : (int)X88Square.C1;
             index += 2 * offset + poffset;
             if (x88board[index + 1] == pawn || x88board[index - 1] == pawn) return false;
             //Unfortuately there are situations where the castling rook "blocks" a slider attack (e.g.
@@ -1477,33 +1472,20 @@ namespace PonzianiComponents.Chesslib
             //In such cases king might be in check after castling
             Position next = (Position)Clone();
             next.ApplyMove(move);
-            if (next.IsAttacked((x88Square)x88.x88Index((int)target), other)) return false;
+            if (next.IsAttacked((X88Square)X88.X88Index((int)target), other)) return false;
             return true;
         }
 
         internal Move CastleMove(CastleFlag cf)
         {
-            switch (cf)
+            return cf switch
             {
-                case CastleFlag.W0_0:
-                    return Chess960 ? new Move((Square)x88.Index(kingSquares[0]), castleableRooks[0]) : Move.W0_0;
-                case CastleFlag.W0_0_0:
-                    return Chess960 ? new Move((Square)x88.Index(kingSquares[0]), castleableRooks[1]) : Move.W0_0_0;
-                case CastleFlag.B0_0:
-                    return Chess960 ? new Move((Square)x88.Index(kingSquares[1]), castleableRooks[2]) : Move.B0_0;
-                case CastleFlag.B0_0_0:
-                    return Chess960 ? new Move((Square)x88.Index(kingSquares[1]), castleableRooks[3]) : Move.B0_0_0;
-                default:
-                    return Move.NULL;
-            }
-        }
-
-        private void NullMove()
-        {
-            SideToMove = (Side)((int)SideToMove ^ 1);
-            EPSquare = Square.OUTSIDE;
-            _checkstate = Checkstate.UNDEFINED;
-            PolyglotKey ^= PolyglotKeys[780];
+                CastleFlag.W0_0 => Chess960 ? new Move((Square)X88.Index(kingSquares[0]), castleableRooks[0]) : Move.W0_0,
+                CastleFlag.W0_0_0 => Chess960 ? new Move((Square)X88.Index(kingSquares[0]), castleableRooks[1]) : Move.W0_0_0,
+                CastleFlag.B0_0 => Chess960 ? new Move((Square)X88.Index(kingSquares[1]), castleableRooks[2]) : Move.B0_0,
+                CastleFlag.B0_0_0 => Chess960 ? new Move((Square)X88.Index(kingSquares[1]), castleableRooks[3]) : Move.B0_0_0,
+                _ => Move.NULL,
+            };
         }
 
         private bool Checked()
@@ -1513,10 +1495,10 @@ namespace PonzianiComponents.Chesslib
                 _checkstate = Checkstate.NO_CHECK;
                 for (int i = 0; i < 64; ++i)
                 {
-                    x88Square square = (x88Square)x88.x88Index(i);
+                    X88Square square = (X88Square)X88.X88Index(i);
                     Piece p = x88board[(int)square];
                     if (p >= Piece.WKING || Chess.GetColor(p) == SideToMove) continue;
-                    if (x88.IsAttacking(p, square, kingSquares[(int)SideToMove]))
+                    if (X88.IsAttacking(p, square, kingSquares[(int)SideToMove]))
                     {
                         PieceType pt = Chess.GetPieceType(p);
                         if (pt == PieceType.KNIGHT || pt == PieceType.PAWN)
@@ -1524,12 +1506,11 @@ namespace PonzianiComponents.Chesslib
                             ++_checkstate;
                             if (_checkstate == Checkstate.DOUBLE_CHECKED)
                                 return true;
-                            _chessGivingSquare = square;
                         }
                         else
                         {
                             //slider
-                            sbyte direction = x88.GetDirection(square, kingSquares[(int)SideToMove]);
+                            sbyte direction = X88.GetDirection(square, kingSquares[(int)SideToMove]);
                             bool blocked = false;
                             int checkSquare = (int)square + direction;
                             while (checkSquare != (int)kingSquares[(int)SideToMove])
@@ -1546,7 +1527,6 @@ namespace PonzianiComponents.Chesslib
                                 ++_checkstate;
                                 if (_checkstate == Checkstate.DOUBLE_CHECKED)
                                     return true;
-                                _chessGivingSquare = square;
                             }
                         }
                     }
@@ -1555,14 +1535,14 @@ namespace PonzianiComponents.Chesslib
             return _checkstate >= Checkstate.CHECKED;
         }
 
-        private bool IsAttacked(x88Square targetSquare, Side attacking)
+        private bool IsAttacked(X88Square targetSquare, Side attacking)
         {
             for (int i = 0; i < 64; ++i)
             {
-                x88Square square = (x88Square)x88.x88Index(i);
+                X88Square square = (X88Square)X88.X88Index(i);
                 Piece p = x88board[(int)square];
                 if (p == Piece.BLANK || Chess.GetColor(p) != attacking || square == targetSquare) continue;
-                if (x88.IsAttacking(p, square, targetSquare))
+                if (X88.IsAttacking(p, square, targetSquare))
                 {
                     PieceType pt = Chess.GetPieceType(p);
                     if (pt == PieceType.KNIGHT || pt == PieceType.PAWN || pt == PieceType.KING)
@@ -1572,7 +1552,7 @@ namespace PonzianiComponents.Chesslib
                     else
                     {
                         //slider
-                        sbyte direction = x88.GetDirection(square, targetSquare);
+                        sbyte direction = X88.GetDirection(square, targetSquare);
                         bool blocked = false;
                         int checkSquare = (int)square + direction;
                         while (checkSquare != (int)targetSquare)
@@ -1599,13 +1579,13 @@ namespace PonzianiComponents.Chesslib
         /// </summary>
         /// <param name="square">The square of the piece</param>
         /// <returns>the direction to the pinning piece if pinned, else 0</returns>
-        private sbyte IsPinned(x88Square square)
+        private sbyte IsPinned(X88Square square)
         {
-            sbyte dir = x88.GetDirection(kingSquares[(int)SideToMove], square);
+            sbyte dir = X88.GetDirection(kingSquares[(int)SideToMove], square);
             if (dir != 0)
             {
                 int s = (int)square + dir;
-                while (x88.IsOnBoard(s))
+                while (X88.IsOnBoard(s))
                 {
                     Piece piece = x88board[s];
                     if (piece == Piece.BLANK) s += dir;
@@ -1614,7 +1594,7 @@ namespace PonzianiComponents.Chesslib
                         if (Chess.GetColor(piece) == SideToMove) return 0;
                         else
                         {
-                            if (x88.IsAttacking(piece, (x88Square)s, kingSquares[(int)SideToMove])) return dir; else return 0;
+                            if (X88.IsAttacking(piece, (X88Square)s, kingSquares[(int)SideToMove])) return dir; else return 0;
                         }
                     }
                 }
@@ -1633,7 +1613,7 @@ namespace PonzianiComponents.Chesslib
             return key;
         }
 
-        private static Dictionary<Piece, int> PolyglotPieceIndex = new Dictionary<Piece, int>() {
+        private static readonly Dictionary<Piece, int> PolyglotPieceIndex = new() {
             { Piece.BPAWN, 0 }, { Piece.WPAWN, 1},
             { Piece.BKNIGHT, 2 }, { Piece.WKNIGHT, 3},
             { Piece.BBISHOP, 4 }, { Piece.WBISHOP, 5},
@@ -1642,7 +1622,7 @@ namespace PonzianiComponents.Chesslib
             { Piece.BKING, 10 }, { Piece.WKING, 11},
         };
 
-        private static UInt64[] PolyglotKeys = new UInt64[781] {
+        private static readonly ulong[] PolyglotKeys = new ulong[781] {
                0x9D39247E33776D41, 0x2AF7398005AAA5C7, 0x44DB015024623547, 0x9C15F73E62A76AE2,
                0x75834465489C0C89, 0x3290AC3A203001BF, 0x0FBBAD1F61042279, 0xE83A908FF2FB60CA,
                0x0D7E765D58755C10, 0x1A083822CEAFE02D, 0x9605D5F0E25EC3B0, 0xD021FF5CD13A2ED5,

@@ -3,8 +3,6 @@ using PonzianiComponents.Chesslib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PonzianiComponentsTest
 {
@@ -14,7 +12,7 @@ namespace PonzianiComponentsTest
         [TestMethod]
         public void TestConstructor()
         {
-            Game game = new Game();
+            Game game = new();
             Assert.IsNull(game.White);
             Assert.IsNull(game.Black);
             Assert.IsNull(game.Event);
@@ -50,7 +48,7 @@ namespace PonzianiComponentsTest
         [TestMethod]
         public void PlayLegalTrap()
         {
-            Game game = new Game();
+            Game game = new();
             string[] moves = "e2e4 e7e5 g1f3 b8c6 f1c4 d7d6 b1c3 c8g4 h2h3 g4h5 f3e5 h5d1 c4f7 e8e7 c3d5".Split(' ');
             foreach (string m in moves) game.Add(new ExtendedMove(m));
             Assert.AreEqual(Result.WHITE_WINS, game.Result);
@@ -64,14 +62,16 @@ namespace PonzianiComponentsTest
         public void TestToPGN()
         {
             List<Game> games = PGN.Parse(Data.PGN_TWIC);
-            List<Game> copiedGames = new List<Game>();
+            List<Game> copiedGames = new();
             foreach (var game in games)
             {
-                Game ngame = new Game(game.StartPosition);
-                ngame.White = game.White;
-                ngame.Black = game.Black;
-                ngame.Event = game.Event;
-                ngame.Site = game.Site;
+                Game ngame = new(game.StartPosition)
+                {
+                    White = game.White,
+                    Black = game.Black,
+                    Event = game.Event,
+                    Site = game.Site
+                };
                 foreach (var key in game.Tags.Keys) ngame.Tags.Add(key, game.Tags[key]);
                 ngame.Date = game.Date;
                 ngame.Result = game.Result;
@@ -102,11 +102,11 @@ namespace PonzianiComponentsTest
         [TestMethod]
         public void TestGetPosition()
         {
-            Game game = new Game();
+            Game game = new();
             string[] moves = "e2e4 e7e5 g1f3 b8c6 f1c4 d7d6 b1c3 c8g4 h2h3 g4h5 f3e5 h5d1 c4f7 e8e7 c3d5".Split(' ');
             foreach (string m in moves) game.Add(new ExtendedMove(m));
             Position pos1 = game.GetPosition(4, Side.BLACK);
-            Position pos2 = new Position("r1bqkbnr/ppp2ppp/2np4/4p3/2B1P3/2N2N2/PPPP1PPP/R1BQK2R b KQkq - 1 4");
+            Position pos2 = new("r1bqkbnr/ppp2ppp/2np4/4p3/2B1P3/2N2N2/PPPP1PPP/R1BQK2R b KQkq - 1 4");
             Assert.AreEqual(pos2.PolyglotKey, pos1.PolyglotKey);
             pos1 = game.GetPosition(5, Side.WHITE);
             pos2 = new Position("r2qkbnr/ppp2ppp/2np4/4p3/2B1P1b1/2N2N2/PPPP1PPP/R1BQK2R w KQkq - 2 5");
@@ -116,7 +116,7 @@ namespace PonzianiComponentsTest
         [TestMethod]
         public void TestGetMove()
         {
-            Game game = new Game();
+            Game game = new();
             string[] moves = "e2e4 e7e5 g1f3 b8c6 f1c4 d7d6 b1c3 c8g4 h2h3 g4h5 f3e5 h5d1 c4f7 e8e7 c3d5".Split(' ');
             foreach (string m in moves) game.Add(new ExtendedMove(m));
             Assert.AreEqual("c8g4", game.GetMove(4, Side.BLACK).ToUCIString());
@@ -126,7 +126,7 @@ namespace PonzianiComponentsTest
         [TestMethod]
         public void TestUndoMove()
         {
-            List<string> pgns = new List<string>()
+            List<string> pgns = new()
             {
                 Data.PGN_CCRL_CHESSGUI_GAME,
                 Data.PGN_CHESS24,
@@ -195,7 +195,7 @@ namespace PonzianiComponentsTest
         [TestMethod]
         public void TestConstructor()
         {
-            TimeControl tc = new TimeControl("300");
+            TimeControl tc = new("300");
             Assert.AreEqual(1, tc.Controls[0].From);
             Assert.AreEqual(int.MaxValue, tc.Controls[0].To);
             Assert.AreEqual(TimeSpan.FromMinutes(5), tc.Controls[0].Time);
@@ -234,7 +234,7 @@ namespace PonzianiComponentsTest
         [TestMethod]
         public void TestTotalAvailableTime()
         {
-            TimeControl tc = new TimeControl("300");
+            TimeControl tc = new("300");
             Assert.AreEqual(TimeSpan.FromMinutes(5), tc.TotalAvailableTime(10));
             Assert.AreEqual(TimeSpan.FromMinutes(5), tc.TotalAvailableTime(100));
             Assert.AreEqual(TimeSpan.FromMinutes(5), tc.TotalAvailableTime(1000));

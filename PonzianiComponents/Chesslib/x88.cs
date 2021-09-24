@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 
 namespace PonzianiComponents.Chesslib
 {
-    internal enum x88Square
+    internal enum X88Square
     {
         A1, B1, C1, D1, E1, F1, G1, H1,
         A2 = 16, B2, C2, D2, E2, F2, G2, H2,
@@ -19,7 +14,7 @@ namespace PonzianiComponents.Chesslib
         A8 = 112, B8, C8, D8, E8, F8, G8, H8, OUTSIDE = 128
     };
 
-    internal class x88
+    internal class X88
     {
         internal static sbyte[] knightMoves = new sbyte[8] { -33, -31, -18, -14, +14, +18, +31, +33 };
         internal static sbyte[] kingDirections = new sbyte[8] { 17, 16, 15, 1, -1, -15, -16, -17 };
@@ -31,13 +26,13 @@ namespace PonzianiComponents.Chesslib
         /// <param name="rank">The rank of the squareTo</param>
         /// <param name="file">The file of the squareTo</param>
         /// <returns>The Index of the square defined by rank and file on the 0x88 Board</returns>
-        internal static byte x88Index(int rank, int file) { return (byte)(16 * rank + file); }
+        internal static byte X88Index(int rank, int file) { return (byte)(16 * rank + file); }
         /// <summary>
         /// Returns the 0x88-Board Index for a chess board square defined by a 0..63 based index
         /// </summary>
         /// <param name="index">The square index (A1 = 0, H1 = 7, H8 = 63)</param>
         /// <returns>The 0x88 Index</returns>
-        public static byte x88Index(int index) { return (byte)(index + (index & ~7)); }
+        public static byte X88Index(int index) { return (byte)(index + (index & ~7)); }
         /// <summary>
         /// Returns the (Standard-)square Index (defined by numbers 0..63)
         /// </summary>
@@ -49,7 +44,7 @@ namespace PonzianiComponents.Chesslib
         /// </summary>
         /// <param name="x88Square">Square in x88 representation</param>
         /// <returns>0-63 based square Index</returns>
-        public static byte Index(x88Square x88Square) { return (byte)(((int)x88Square + (((int)x88Square) & 7)) >> 1); }
+        public static byte Index(X88Square x88Square) { return (byte)(((int)x88Square + (((int)x88Square) & 7)) >> 1); }
         /// <summary>
         /// Returns the File Index (0 = A-File, 7 = H-File) for a given squareTo in 0x88-Notation
         /// </summary>
@@ -75,7 +70,7 @@ namespace PonzianiComponents.Chesslib
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <returns></returns>
-        internal static sbyte GetDirection(x88Square from, x88Square to) { return direction[0x77 + (int)from - (int)to]; }
+        internal static sbyte GetDirection(X88Square from, X88Square to) { return direction[0x77 + (int)from - (int)to]; }
         internal static sbyte GetDirection(int from, int to) { return direction[0x77 + from - to]; }
         /// <summary>
         /// Checks if a given piece on a square is attacking a target square (if board is empty)
@@ -84,7 +79,7 @@ namespace PonzianiComponents.Chesslib
         /// <param name="from">The piece's location</param>
         /// <param name="target">The target square</param>
         /// <returns>true, of the piece is attacking the target square</returns>
-        internal static bool IsAttacking(Piece piece, x88Square from, x88Square target)
+        internal static bool IsAttacking(Piece piece, X88Square from, X88Square target)
         {
             return (attacks[0x77 + (int)from - (int)target] & (1 << (int)piece)) != 0;
         }
@@ -94,17 +89,17 @@ namespace PonzianiComponents.Chesslib
         /// H8 has index 17
         /// The directions are stored so that the index is 0x77 + FromSquare - ToSquare
         /// </summary>
-        private static sbyte[] direction = new sbyte[240];
+        private static readonly sbyte[] direction = new sbyte[240];
         /// <summary>
         /// Helper Array containing the pieces which might attack a square if they are located on a from square
         /// The atack types are stored as bit sets where 1st bit is set if White Queen may attack, 2nd bit if Black Queen may attack,
         /// ... Thes bitsets are stored under the index 0x77 + FromSquare - TargetSquare
         /// </summary>
-        private static ushort[] attacks = new ushort[240];
+        private static readonly ushort[] attacks = new ushort[240];
         /// <summary>
         /// Initializes helper arrays
         /// </summary>
-        static x88()
+        static X88()
         {
             for (int i = 0; i < 240; ++i)
             {
@@ -114,7 +109,7 @@ namespace PonzianiComponents.Chesslib
             sbyte[] dir = new sbyte[8] { 16, -16, 1, -1, 17, -17, 15, -15 };
             for (Square from = Square.A1; from <= Square.H8; ++from)
             {
-                x88Square xfrom = (x88Square)x88Index((int)from);
+                X88Square xfrom = (X88Square)X88Index((int)from);
                 foreach (sbyte d in dir)
                 {
                     for (int xto = (int)xfrom + d; xto < 120; xto += d)
@@ -131,7 +126,7 @@ namespace PonzianiComponents.Chesslib
             int[] bpattacks = new int[] { -15, -17 };
             for (Square from = Square.A1; from <= Square.H8; ++from)
             {
-                x88Square xfrom = (x88Square)x88Index((int)from);
+                X88Square xfrom = (X88Square)X88Index((int)from);
                 //King attacks
                 foreach (sbyte d in kingDirections)
                 {
@@ -154,7 +149,7 @@ namespace PonzianiComponents.Chesslib
                         attacks[indx] |= 1 << ((int)Piece.BKNIGHT);
                     }
                 }
-                if (xfrom >= x88Square.A2 && xfrom < x88Square.A8)
+                if (xfrom >= X88Square.A2 && xfrom < X88Square.A8)
                 {
                     //WPawn attacks
                     foreach (int d in wpattacks)

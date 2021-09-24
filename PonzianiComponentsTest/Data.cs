@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PonzianiComponentsTest
 {
@@ -574,7 +572,7 @@ exd3 {[%clk 1:15:33]} 12. Bxc5 {[%clk 1:20:26]} *";
 [Annotator ""https://lichess.org/@/EricRosen""]
 
 1.e4 e5 2.Nf3 Nf6 3.Nxe5 Nc6 4.Nxc6 dxc6 5.d3 Bc5 6.Bg5? Nxe4!! { Oh no! My queen! } 7. Bxd8 (7. dxe4 Bxf2+! {[% cal Gd8d1,Re1d1] } 8. Kxf2(8. Ke2 Bg4+ $19) 8... Qxd1 $19)  (7. Qe2 Qxg5 8. Qxe4+ Kd8! 9. Be2 Qc1+ { Yuuki_is_here - IM EricRosen, 0-1, -, https://lichess.org/f2yOCAVe }) 7... Bxf2+ 8. Ke2 Bg4# *
-"; 
+";
 
         public static string PGN_SCID = @"[Event ""Wch11""]
 [Site ""Berlin GER""]
@@ -698,7 +696,7 @@ g5 28. Qh5 d2 29. f6 Qxf6 30. Bxd4 Qxd4+ 31. Kg2 dxe1=N+ 0-1";
             };
         }
 
-        public static List<string> SFEN_FRC_WCC_STARTPOS = new List<string>() { 
+        public static List<string> SFEN_FRC_WCC_STARTPOS = new() {
                         "qrnnbkrb/pppppppp/8/8/8/8/PPPPPPPP/QRNNBKRB w GBgb - 0 1",
                         "qrnnbkrb/pppppppp/8/8/8/8/PPPPPPPP/QRNNBKRB w GBgb - 0 1",
                         "bbqrnkrn/pppppppp/8/8/8/8/PPPPPPPP/BBQRNKRN w GDgd - 0 1",
@@ -779,12 +777,12 @@ g5 28. Qh5 d2 29. f6 Qxf6 30. Bxd4 Qxd4+ 31. Kg2 dxe1=N+ 0-1";
                         "nrkbrnbq/pppppppp/8/8/8/8/PPPPPPPP/NRKBRNBQ w EBeb - 0 1"
         };
 
-        public static List<string> XFEN_ARENA_STARTPOS = new List<string>() { "rnqbnkbr/pppppppp/8/8/8/8/PPPPPPPP/RNQBNKBR w KQkq - 0 1", "rnqbnkbr/pppppppp/8/8/8/8/PPPPPPPP/RNQBNKBR w KQkq - 0 1" };
+        public static List<string> XFEN_ARENA_STARTPOS = new() { "rnqbnkbr/pppppppp/8/8/8/8/PPPPPPPP/RNQBNKBR w KQkq - 0 1", "rnqbnkbr/pppppppp/8/8/8/8/PPPPPPPP/RNQBNKBR w KQkq - 0 1" };
 
         /// <summary>
         /// Test data copied from Ethereal https://github.com/AndyGrant/Ethereal/blob/master/src/perft/fischer.epd (License GPL)
         /// </summary>
-        public static Dictionary<string, int> Chess960Perft2 = new Dictionary<string, int>() {{"bqnb1rkr/pp3ppp/3ppn2/2p5/5P2/P2P4/NPP1P1PP/BQ1BNRKR w HFhf - 2 9", 12189},
+        public static Dictionary<string, int> Chess960Perft2 = new() {{"bqnb1rkr/pp3ppp/3ppn2/2p5/5P2/P2P4/NPP1P1PP/BQ1BNRKR w HFhf - 2 9", 12189},
                 {"2nnrbkr/p1qppppp/8/1ppb4/6PP/3PP3/PPP2P2/BQNNRBKR w HEhe - 1 9", 18002},
                 {"b1q1rrkb/pppppppp/3nn3/8/P7/1PPP4/4PPPP/BQNNRKRB w GE - 1 9", 10471},
                 {"qbbnnrkr/2pp2pp/p7/1p2pp2/8/P3PP2/1PPP1KPP/QBBNNR1R w hf - 0 9", 13440},
@@ -10833,4 +10831,3 @@ Qe2 { 1k1r4/1p1r4/2p2pR1/b3pP2/4P3/2P5/qPK1Q3/2B1R3 b - - 1 32 } 32... Rd6
 ";
     }
 }
- 

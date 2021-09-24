@@ -1,10 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PonzianiComponents.Chesslib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PonzianiComponentsTest
 {
@@ -33,7 +28,7 @@ namespace PonzianiComponentsTest
         {
             foreach (string fen in fens)
             {
-                Position pos = new Position(fen);
+                Position pos = new(fen);
                 Assert.AreEqual(fen, pos.FEN);
             }
         }
@@ -43,7 +38,7 @@ namespace PonzianiComponentsTest
         {
             foreach (string fen in fens)
             {
-                Position pos = new Position(fen);
+                Position pos = new(fen);
                 Assert.IsTrue(fen.StartsWith(pos.EPD));
             }
         }
@@ -53,7 +48,7 @@ namespace PonzianiComponentsTest
         {
             foreach (string fen in fens)
             {
-                Position pos = new Position(fen);
+                Position pos = new(fen);
                 Assert.AreEqual(Square.OUTSIDE, pos.EPSquare);
             }
             Assert.AreEqual(Square.D6, (new Position("rnbqkbnr/ppp1p2p/6p1/3pPp2/3P4/8/PPP2PPP/RNBQKBNR w KQkq d6 0 4")).EPSquare);
@@ -70,7 +65,7 @@ namespace PonzianiComponentsTest
             string[] s = new string[] { " w ", " b " };
             foreach (string fen in fens)
             {
-                Position pos = new Position(fen);
+                Position pos = new(fen);
                 Assert.IsTrue(fen.IndexOf(s[(int)pos.SideToMove]) > 0);
             }
             {
@@ -97,9 +92,9 @@ namespace PonzianiComponentsTest
                 //make null move
                 string sfen = fen.Replace(s[0], s[1]);
                 if (sfen == fen) sfen = fen.Replace(s[1], s[0]);
-                Position pos = new Position(sfen);
+                Position pos = new(sfen);
                 //if null move results in legal position, position must no be in check
-                if (pos.CheckLegal(out string message))
+                if (pos.CheckLegal(out _))
                 {
                     Assert.IsFalse((new Position(fen)).IsCheck);
                 }
@@ -139,7 +134,7 @@ namespace PonzianiComponentsTest
             foreach (string fen in fenStalemate) Assert.IsTrue((new Position(fen)).IsStalemate, $"{fen} isn't Stalemate!");
         }
 
-        private static string[] fenStalemate = new string[10]
+        private static readonly string[] fenStalemate = new string[10]
         {
             "8/p7/P7/8/8/2k5/2p5/2K5 w - - 2 60",
             "8/8/2KN4/7p/1P1k3P/6Q1/8/8 b - - 4 65",
@@ -152,7 +147,7 @@ namespace PonzianiComponentsTest
             "8/1p6/6p1/p5P1/P6K/5q2/1b3k2/8 w - - 10 65",
             "r3k3/p7/Pb5p/1P6/5p2/2p3p1/6P1/7K w - - 0 43" };
 
-        private static string[] fenMate = new string[10]
+        private static readonly string[] fenMate = new string[10]
         {
             "8/7k/1r1p1p1P/p1p1p1p1/2P1P1P1/q2PQP2/R1n5/K2R4 w - - 2 37",
             "r3k2r/pb2bppp/1p2p3/8/3N1B2/3B4/PP2QPqP/R4RK1 w kq - 0 14",
@@ -166,7 +161,7 @@ namespace PonzianiComponentsTest
             "k1RQ1b1r/pp1N2p1/5p2/4r2p/4b3/8/PP3PPP/5RK1 b - - 0 24" };
 
 
-        private static string[] fenDoubleChecked = new string[6]
+        private static readonly string[] fenDoubleChecked = new string[6]
         {
             "k1q5/1pp5/1N6/8/8/8/8/R5K1 b - - 1 1",
             "r3k2r/ppp2pp1/2np4/2B1p3/2B1P1N1/3P2n1/PPP2PP1/RN1Q1R1K w kq - 1 13",
@@ -175,7 +170,7 @@ namespace PonzianiComponentsTest
             "3r2k1/pp5p/6p1/2Ppq3/4N3/4B2b/PP2Pr1K/R1Q1R2B w - - 1 27",
             "r6r/2qknP1p/p5p1/1p2pB2/8/2P1B3/P1PR2PP/5RK1 b - - 2 22" };
 
-        private static string[] fenChecked = new string[10]
+        private static readonly string[] fenChecked = new string[10]
         {
             "r1b1k1nr/pp3ppp/1qn1p3/3pP3/1b1P4/N4N2/PP3PPP/R1BQKB1R w KQkq - 1 8",
             "r2q1rk1/pppbNppp/3p1n2/1P3P2/3N4/8/1PP3PP/R1BQ1RK1 b - - 0 15",
@@ -189,7 +184,7 @@ namespace PonzianiComponentsTest
             "3RK3/5p1k/2q1bQpp/1p6/3B4/6P1/5P2/8 w - - 18 63"
         };
 
-        private static string[] fens = new string[100] { "rn5Q/pp3kp1/2p5/2bpr2p/7q/2P2PN1/PPB2P2/R3R1K1 b - - 0 1",
+        private static readonly string[] fens = new string[100] { "rn5Q/pp3kp1/2p5/2bpr2p/7q/2P2PN1/PPB2P2/R3R1K1 b - - 0 1",
             "8/6kp/6p1/8/4pp2/5P1P/2r1q1P1/5RK1 w - - 0 1",
             "3r2k1/5pp1/4pn1p/2b1N3/Q7/2P3NP/Bq3PP1/5K2 w - - 0 1",
             "6k1/pp6/3p1p2/8/2KPp3/1P2P3/P7/7q b - - 1 1",

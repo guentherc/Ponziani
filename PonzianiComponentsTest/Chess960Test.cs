@@ -1,10 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PonzianiComponents.Chesslib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PonzianiComponentsTest
 {
@@ -40,7 +35,7 @@ namespace PonzianiComponentsTest
         public void TestXFen()
         {
             string xfen = "rn2k1r1/ppp1pp1p/3p2p1/5bn1/P7/2N2B2/1PPPPP2/2BNK1RR w Gkq - 4 11";
-            Position pos = new Position(xfen);
+            Position pos = new(xfen);
             Assert.AreEqual(xfen, pos.FEN);
         }
 
@@ -51,11 +46,11 @@ namespace PonzianiComponentsTest
             Assert.AreEqual(78, games.Count);
             foreach (var game in games)
             {
-                Position pos = new Position(game.StartPosition);
+                Position pos = new(game.StartPosition);
                 foreach (ExtendedMove m in game.Moves)
                 {
                     pos.ApplyMove(m);
-                    Position cpos = new Position(m.Comment.Trim());
+                    Position cpos = new(m.Comment.Trim());
                     Assert.AreEqual(cpos.FEN, pos.FEN, $"{game.Round} {game.White} - {game.Black}");
                     Assert.AreEqual(cpos.SFEN, pos.SFEN, $"{game.Round} {game.White} - {game.Black}");
                 }

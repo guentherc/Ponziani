@@ -172,7 +172,7 @@
 			case NotationType.UCI:
 				return Game.Moves[moveIndex].ToUCIString();
 			case NotationType.ICCF:
-			    return g.Position.ToICCF(Game.Moves[moveIndex]);
+			    return Position.ToICCF(Game.Moves[moveIndex]);
 			default:
 				return g.Position.ToSAN(Game.Moves[moveIndex]);
 		}

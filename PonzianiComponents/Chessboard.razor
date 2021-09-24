@@ -1,68 +1,68 @@
 ﻿@inject IJSRuntime js
 
-<div class="modal @clsShowModalPromo" id="@PromoDialogId">
+<div class="modal @ClsShowModalPromo" id="@PromoDialogId">
 	<div class="modal-content">
 		@if (position.SideToMove == Chesslib.Side.WHITE)
 		{
-	  <input type="image" id="qPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/wQ.png" style="width: 60px;" @onclick="@(e => SetPromoPieceAsync(e, Chesslib.PieceType.QUEEN))" />
-	  <input type="image" id="rPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/wR.png" style="width: 60px;" @onclick="@(e => SetPromoPieceAsync(e, Chesslib.PieceType.ROOK))" />
-	  <input type="image" id="bPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/wB.png" style="width: 60px;" @onclick="@(e => SetPromoPieceAsync(e, Chesslib.PieceType.BISHOP))" />
-	  <input type="image" id="nPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/wN.png" style="width: 60px;" @onclick="@(e => SetPromoPieceAsync(e, Chesslib.PieceType.KNIGHT))" />
+	  <input type="image" id="qPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/wQ.png" style="width: 60px;" @onclick="@(() => SetPromoPieceAsync(Chesslib.PieceType.QUEEN))" />
+	  <input type="image" id="rPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/wR.png" style="width: 60px;" @onclick="@(() => SetPromoPieceAsync(Chesslib.PieceType.ROOK))" />
+	  <input type="image" id="bPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/wB.png" style="width: 60px;" @onclick="@(() => SetPromoPieceAsync(Chesslib.PieceType.BISHOP))" />
+	  <input type="image" id="nPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/wN.png" style="width: 60px;" @onclick="@(() => SetPromoPieceAsync(Chesslib.PieceType.KNIGHT))" />
 		}
 		else
 		{
-	  <input type="image" id="qPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/bQ.png" style="width: 60px;" @onclick="@(e => SetPromoPieceAsync(e, Chesslib.PieceType.QUEEN))" />
-	  <input type="image" id="rPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/bR.png" style="width: 60px;" @onclick="@(e => SetPromoPieceAsync(e, Chesslib.PieceType.ROOK))" />
-	  <input type="image" id="bPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/bB.png" style="width: 60px;" @onclick="@(e => SetPromoPieceAsync(e, Chesslib.PieceType.BISHOP))" />
-	  <input type="image" id="nPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/bN.png" style="width: 60px;" @onclick="@(e => SetPromoPieceAsync(e, Chesslib.PieceType.KNIGHT))" />
+	  <input type="image" id="qPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/bQ.png" style="width: 60px;" @onclick="@(() => SetPromoPieceAsync(Chesslib.PieceType.QUEEN))" />
+	  <input type="image" id="rPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/bR.png" style="width: 60px;" @onclick="@(() => SetPromoPieceAsync(Chesslib.PieceType.ROOK))" />
+	  <input type="image" id="bPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/bB.png" style="width: 60px;" @onclick="@(() => SetPromoPieceAsync(Chesslib.PieceType.BISHOP))" />
+	  <input type="image" id="nPP" src="_content/PonzianiComponents/img/chesspieces/wikipedia/bN.png" style="width: 60px;" @onclick="@(() => SetPromoPieceAsync(Chesslib.PieceType.KNIGHT))" />
 		}
  </div>
 </div>
 
-<div class="modal @clsShowModalSetup">
+<div class="modal @ClsShowModalSetup">
 	<div class="modal-content" style="width: 500px;">
-		<EditForm Model="addSI" OnValidSubmit="@HandleSetupSubmitAsync" id="SetupDialog">
+		<EditForm Model="AddSI" OnValidSubmit="@HandleSetupSubmitAsync" id="SetupDialog">
 		<div class="form-group row">
 			 <label for="setupSide"  class="col-sm-6 col-form-label">Side to Move</label>
 			 <div class="col-sm-6">
-			<InputSelect @bind-Value="addSI.Side" id="setupSide">
+			<InputSelect @bind-Value="AddSI.Side" id="setupSide">
 				<option value="w">White</option>
 				<option value="b">Black</option>
 			</InputSelect>
 			</div>
 		</div>
-		@if (addSI.CastlingWhiteKingsidePossible) {
+		@if (AddSI.CastlingWhiteKingsidePossible) {
 		<div class="form-check">
-			<InputCheckbox class="form-check-input" @bind-Value="addSI.CastlingWhiteKingside" id="setupCastlesWK"/>
+			<InputCheckbox class="form-check-input" @bind-Value="AddSI.CastlingWhiteKingside" id="setupCastlesWK"/>
 			<label class="form-check-label" for="setupCastlesWK"> White Kingside </label>
 		</div>
 		}
-		@if (addSI.CastlingWhiteQueensidePossible) {
+		@if (AddSI.CastlingWhiteQueensidePossible) {
 		<div class="form-check">
-			<InputCheckbox class="form-check-input" @bind-Value="addSI.CastlingWhiteQueenside" id="setupCastlesWQ"/>
+			<InputCheckbox class="form-check-input" @bind-Value="AddSI.CastlingWhiteQueenside" id="setupCastlesWQ"/>
 			<label class="form-check-label" for="setupCastlesWQ"> White Queenside </label>
 		</div>
 		}
-		@if (addSI.CastlingBlackKingsidePossible) {
+		@if (AddSI.CastlingBlackKingsidePossible) {
 		<div class="form-check">
-			<InputCheckbox class="form-check-input" @bind-Value="addSI.CastlingBlackKingside" id="setupCastlesBK"/>
+			<InputCheckbox class="form-check-input" @bind-Value="AddSI.CastlingBlackKingside" id="setupCastlesBK"/>
 			<label class="form-check-label" for="setupCastlesBK"> Black Kingside </label>
 		</div>
 		}
-		@if (addSI.CastlingBlackQueensidePossible)
+		@if (AddSI.CastlingBlackQueensidePossible)
 		{
 		<div class="form-check">
-			<InputCheckbox class="form-check-input" @bind-Value="addSI.CastlingBlackQueenside" id="setupCastlesBQ"/>
+			<InputCheckbox class="form-check-input" @bind-Value="AddSI.CastlingBlackQueenside" id="setupCastlesBQ"/>
 			<label class="form-check-label" for="setupCastlesWQ"> Black Queenside </label>
 		</div>
 		}
-	    @if (addSI.EnPassantSquares().Count > 1)
+	    @if (AddSI.EnPassantSquares().Count > 1)
 			{
 				<div class="form-group row">
 					<label for="setupEP" class="col-sm-6 col-form-label">En Passant</label>
 				<div class="col-sm-6">
-					<InputSelect @bind-Value="addSI.EnPassantSquare" id="setupSide">
-						@foreach (var v in addSI.EnPassantSquares())
+					<InputSelect @bind-Value="AddSI.EnPassantSquare" id="setupSide">
+						@foreach (var v in AddSI.EnPassantSquares())
 						{
 						<option value="@v">@v</option>
 						}
@@ -73,13 +73,13 @@
 		<div class="form-group row">
 			 <label for="setupDrawplaycount" class="col-sm-6 col-form-label">Half-move Counter</label>
 			 <div class="col-sm-6">
-			<InputNumber @bind-Value="addSI.DrawPlyCount" id="setupDrawplaycount" max="999" min="0" size="3" style="width: 3em;"/>
+			<InputNumber @bind-Value="AddSI.DrawPlyCount" id="setupDrawplaycount" max="999" min="0" size="3" style="width: 3em;"/>
 			</div>
 		</div>
 		<div class="form-group row">
 			 <label for="setupMovenumber" class="col-sm-6 col-form-label">Move Number</label>
 			 <div class="col-sm-6">
-			<InputNumber @bind-Value="addSI.MoveNumber" id="setupMovenumber" max="999" min="1" size="3" style="width: 3em;"/>
+			<InputNumber @bind-Value="AddSI.MoveNumber" id="setupMovenumber" max="999" min="1" size="3" style="width: 3em;"/>
 			</div>
 		</div>
 		 <div class="form-group row">

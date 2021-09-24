@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
 using PonzianiComponents;
 using PonzianiComponents.Chesslib;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -41,19 +39,19 @@ namespace PonzianiDemo.Pages
             get { return game.ToPGN(); }
         }
 
-        public Scoresheet.DisplayMode DisplayMode => model.InlineMode ? Scoresheet.DisplayMode.INLINE : Scoresheet.DisplayMode.TABULAR;
+        public Scoresheet.DisplayMode DisplayMode => Model.InlineMode ? Scoresheet.DisplayMode.INLINE : Scoresheet.DisplayMode.TABULAR;
 
         private string EventInfoText { set; get; } = "";
 
-        private static Regex regexOtherAttributes = new Regex(@"(\w+)=\""([^\""]+)\""");
-        private SDModel model { set; get; } = new SDModel();
-        private Game game = new Game();
+        private static readonly Regex regexOtherAttributes = new(@"(\w+)=\""([^\""]+)\""");
+        private SDModel Model { set; get; } = new SDModel();
+        private Game game = new();
         private Dictionary<string, object> OtherAttributes
         {
             get
             {
-                Dictionary<string, object> oo = new Dictionary<string, object>();
-                MatchCollection mc = regexOtherAttributes.Matches(model.OtherAttributes);
+                Dictionary<string, object> oo = new();
+                MatchCollection mc = regexOtherAttributes.Matches(Model.OtherAttributes);
                 foreach (Match m in mc)
                 {
                     oo.Add(m.Groups[1].Value, m.Groups[2].Value);
@@ -64,15 +62,15 @@ namespace PonzianiDemo.Pages
 
         private async Task LoadFile(InputFileChangeEventArgs e)
         {
-            model.PGNText = await new StreamReader(e.File.OpenReadStream()).ReadToEndAsync();
-            PGN = model.PGNText;
+            Model.PGNText = await new StreamReader(e.File.OpenReadStream()).ReadToEndAsync();
+            PGN = Model.PGNText;
         }
 
         private void HandleValidSubmit()
         {
-            if (SampleData.PGNSamples.ContainsKey(model.PGNKey))
-                PGN = SampleData.PGNSamples[model.PGNKey];
-            else PGN = model.PGNText;
+            if (SampleData.PGNSamples.ContainsKey(Model.PGNKey))
+                PGN = SampleData.PGNSamples[Model.PGNKey];
+            else PGN = Model.PGNText;
         }
 
         private void OnMoveSelected(MoveSelectInfo msi)
@@ -83,7 +81,7 @@ namespace PonzianiDemo.Pages
 
     public static class SampleData
     {
-        public static Dictionary<string, string> PGNSamples = new Dictionary<string, string>()
+        public static readonly Dictionary<string, string> PGNSamples = new()
         {
             { "Lichess Study" , @"[Event ""🏆 Nimzo/Bogo Indian Repertoire 🏆: London System""]
 [Site ""https://lichess.org/study/DeAekads/TzNlHqMZ""]

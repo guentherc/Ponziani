@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using PonzianiComponents.Chesslib;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Microsoft.JSInterop;
-using System.Globalization;
 
 namespace PonzianiComponents
 {
@@ -140,7 +139,7 @@ namespace PonzianiComponents
         /// </summary>
         /// <param name="move">Move to be added</param>
         /// <returns>true, if move was added successful, false if not</returns>
-        public async Task<bool> AddMoveAsync(ExtendedMove move)
+        public bool AddMove(ExtendedMove move)
         {
             bool result = Game.Add(move);
             //await resultElement.FocusAsync();
@@ -152,7 +151,7 @@ namespace PonzianiComponents
         /// </summary>
         /// <param name="move">Move to be added</param>
         /// <returns>true, if move was added successful, false if not</returns>
-        public async Task<bool> AddMoveAsync(Move move)
+        public bool AddMove(Move move)
         {
             bool result = Game.Add(new ExtendedMove(move));
             //await resultElement.FocusAsync();
@@ -160,9 +159,9 @@ namespace PonzianiComponents
             return result;
         }
 
-        protected override async Task OnParametersSetAsync()
+        protected override void OnParametersSet()
         {
-            CultureInfo ci = null;
+            CultureInfo ci;
             try
             {
                 ci = Language == null ? CultureInfo.InvariantCulture : CultureInfo.GetCultureInfo(Language);
@@ -205,7 +204,7 @@ namespace PonzianiComponents
         private bool DepthAvailable => Game.Moves.FindIndex(m => m.Depth > 0) >= 0;
         private IChessPieceStringProvider chessPieceStringProvider = null;
 
-        private async Task SelectMoveAsync(EventArgs eventArgs, int moveNumber, Side side)
+        private async Task SelectMoveAsync(int moveNumber, Side side)
         {
             MoveSelectInfo msi = new(Id, Game.GetPosition(moveNumber, side), Game.GetMove(moveNumber, side));
             await OnMoveSelected.InvokeAsync(msi);
@@ -238,28 +237,28 @@ namespace PonzianiComponents
                 case NotationType.UCI:
                     return Game.Moves[moveIndex].ToUCIString();
                 case NotationType.ICCF:
-                    return g.Position.ToICCF(Game.Moves[moveIndex]);
+                    return Position.ToICCF(Game.Moves[moveIndex]);
                 default:
                     return g.Position.ToSAN(Game.Moves[moveIndex]);
             }
             if (Mode == DisplayMode.TABULAR && ExtendedMoveInfo)
             {
-                List<string> sbs = new List<string>();
+                List<string> sbs = new();
                 sb.Append(" (");
                 if (ThinkTimeAvailable) sbs.Add(Game.Moves[moveIndex].UsedThinkTime.ToString(@"m\:ss"));
                 if (DepthAvailable) sbs.Add(Game.Moves[moveIndex].Depth.ToString());
                 if (EvaluationAvailable) sbs.Add(Game.Moves[moveIndex].Evaluation.ToString());
                 for (int i = 0; i < sbs.Count; ++i)
                 {
-                    if (i > 0) sb.Append(" ");
+                    if (i > 0) sb.Append(' ');
                     sb.Append(sbs[i]);
                 }
-                sb.Append(")");
+                sb.Append(')');
             }
             return sb.ToString();
         }
 
-        private Regex regexHeight = new Regex(@"height\:\s*([^;]+)");
+        private static readonly Regex regexHeight = new(@"height\:\s*([^;]+)");
         private IJSObjectReference module = null;
         private int scrolledMoveNumber = 0;
         private ElementReference _tbody;

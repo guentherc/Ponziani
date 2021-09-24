@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PonzianiComponents
 {
@@ -32,9 +28,9 @@ namespace PonzianiComponents
             int r = color.R;
             int g = color.G;
             int b = color.B;
-            int max, min;       
+            int max, min;
             int sum, dif;
-            int Rdelta, Gdelta, Bdelta; 
+            int Rdelta, Gdelta, Bdelta;
 
             max = Math.Max(Math.Max(r, g), b);
             min = Math.Min(Math.Min(r, g), b);
@@ -44,12 +40,12 @@ namespace PonzianiComponents
 
             dif = max - min;
             if (dif == 0)
-            {      
-                saturation = 0;                 
-                hue = Undefined;               
+            {
+                saturation = 0;
+                hue = Undefined;
             }
             else
-            {                           
+            {
                 if (luminosity <= (HLSMax / 2))
                     saturation = (int)(((dif * (int)HLSMax) + (sum / 2)) / sum);
                 else
@@ -64,7 +60,7 @@ namespace PonzianiComponents
                     hue = Bdelta - Gdelta;
                 else if ((int)g == max)
                     hue = (HLSMax / 3) + Rdelta - Bdelta;
-                else 
+                else
                     hue = ((2 * HLSMax) / 3) + Gdelta - Rdelta;
 
                 if (hue < 0)
@@ -178,19 +174,19 @@ namespace PonzianiComponents
 
         private Color ColorFromHLS(int hue, int luminosity, int saturation)
         {
-            byte r, g, b;            
-            int magic1, magic2;     
+            byte r, g, b;
+            int magic1, magic2;
 
             if (saturation == 0)
-            {               
+            {
                 r = g = b = (byte)((luminosity * RGBMax) / HLSMax);
                 if (hue != Undefined)
                 {
-                  
+
                 }
             }
             else
-            {                         
+            {
                 if (luminosity <= (HLSMax / 2))
                     magic2 = (int)((luminosity * ((int)HLSMax + saturation) + (HLSMax / 2)) / HLSMax);
                 else

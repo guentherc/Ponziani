@@ -43,11 +43,11 @@ namespace PonzianiComponents.Chesslib
         /// <inheritdoc/>
         public string Comment(ExtendedMove move)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             if (!move.IsBookMove)
             {
-                if (move.UsedThinkTime > TimeSpan.Zero) sb.Append($"[%emt {move.UsedThinkTime.ToString(@"h\:mm\:ss")}]");
-                if (move.Clock > TimeSpan.Zero) sb.Append($"[%clk {move.Clock.ToString(@"h\:mm\:ss")}]");
+                if (move.UsedThinkTime > TimeSpan.Zero) sb.Append($"[%emt {move.UsedThinkTime:h\\:mm\\:ss}]");
+                if (move.Clock > TimeSpan.Zero) sb.Append($"[%clk {move.Clock:h\\:mm\\:ss}]");
                 if (move.SideToMove == Side.WHITE) sb.Append($"[%eval {move.Evaluation}]"); else sb.Append($"[%eval {-move.Evaluation}]");
             }
             return sb.ToString();
@@ -113,17 +113,15 @@ namespace PonzianiComponents.Chesslib
         /// <returns>The number of games</returns>
         public async Task<int> LoadAsync(bool comments = false)
         {
-            Stopwatch sw = new Stopwatch();
+            Stopwatch sw = new();
             sw.Start();
             Games.Clear();
             if (Filename == null || !File.Exists(Filename)) return 0;
             string content = null;
             try
             {
-                using (var reader = new StreamReader(new FileStream(Filename, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
-                {
-                    content = await reader.ReadToEndAsync();
-                }
+                using var reader = new StreamReader(new FileStream(Filename, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
+                content = await reader.ReadToEndAsync();
             }
             catch (Exception)
             {
@@ -141,45 +139,43 @@ namespace PonzianiComponents.Chesslib
         /// <returns>Enumerable with parsed Games</returns>
         public IEnumerable<Game> GetGames(bool comments = false)
         {
-            using (var reader = new StreamReader(new FileStream(Filename, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
+            using var reader = new StreamReader(new FileStream(Filename, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
+            string line;
+            bool inMoveText = false;
+            StringBuilder sb = new();
+            while ((line = reader.ReadLine()) != null)
             {
-                string line;
-                bool inMoveText = false;
-                StringBuilder sb = new StringBuilder();
-                while ((line = reader.ReadLine()) != null)
+                if (line.StartsWith("["))
                 {
-                    if (line.StartsWith("["))
+                    if (inMoveText)
                     {
-                        if (inMoveText)
+                        Match m = regexPGNGame.Match(sb.ToString());
+                        if (m.Success)
                         {
-                            Match m = regexPGNGame.Match(sb.ToString());
-                            if (m.Success)
-                            {
-                                Game game = ParseGame(m, comments);
-                                yield return game;
-                                sb.Clear();
-                            }
+                            Game game = ParseGame(m, comments);
+                            yield return game;
+                            sb.Clear();
                         }
-                        inMoveText = false;
                     }
-                    else if (line.Trim().Length == 0)
-                    {
-                        //do nothing
-                    }
-                    else
-                    {
-                        inMoveText = true;
-                    }
-                    sb.Append(line).Append(Environment.NewLine);
+                    inMoveText = false;
                 }
-                if (inMoveText)
+                else if (line.Trim().Length == 0)
                 {
-                    Match m = regexPGNGame.Match(sb.ToString());
-                    if (m.Success)
-                    {
-                        Game game = ParseGame(m, comments);
-                        yield return game;
-                    }
+                    //do nothing
+                }
+                else
+                {
+                    inMoveText = true;
+                }
+                sb.Append(line).Append(Environment.NewLine);
+            }
+            if (inMoveText)
+            {
+                Match m = regexPGNGame.Match(sb.ToString());
+                if (m.Success)
+                {
+                    Game game = ParseGame(m, comments);
+                    yield return game;
                 }
             }
         }
@@ -192,7 +188,7 @@ namespace PonzianiComponents.Chesslib
         {
             if (IndexFile() && index < indices.Count)
             {
-                StringBuilder sb = new StringBuilder();
+                StringBuilder sb = new();
                 using (var reader = new StreamReader(new FileStream(Filename, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
                 {
                     reader.BaseStream.Seek(indices[index], SeekOrigin.Begin);
@@ -229,7 +225,7 @@ namespace PonzianiComponents.Chesslib
             else if (Games.Count == 0) return null;
             else
             {
-                HashSet<string> players = new HashSet<string>();
+                HashSet<string> players = new();
                 foreach (Game game in Games)
                 {
                     players.Add(game.White);
@@ -307,7 +303,7 @@ namespace PonzianiComponents.Chesslib
         public static List<Game> Parse(string pgn, bool comments = false, bool variations = false, int count = Int32.MaxValue, int offset = 0)
         {
             MatchCollection mcGames = regexPGNGame.Matches(pgn);
-            List<Game> games = new List<Game>(mcGames.Count);
+            List<Game> games = new(mcGames.Count);
             int indx = 0;
             foreach (Match mGame in mcGames)
             {
@@ -324,7 +320,7 @@ namespace PonzianiComponents.Chesslib
         {
             string tags = mGame.Groups[1].Value;
             string moveText = mGame.Groups[2].Value;
-            Game game = new Game();
+            Game game = new();
             MatchCollection mcTags = regexPGNTag.Matches(tags);
             foreach (Match mTag in mcTags)
             {
@@ -349,7 +345,7 @@ namespace PonzianiComponents.Chesslib
             }
             else moveText = regexPGNVariations.Replace(moveText, string.Empty);
             //Replace Black move numbering
-            moveText = moveText[0] + regexPGNBlackMovenumber.Replace(moveText.Substring(1), string.Empty);
+            moveText = moveText[0] + regexPGNBlackMovenumber.Replace(moveText[1..], string.Empty);
             //Add missing spaces after move number
             moveText = regexPGNMovenumberWithoutSpace.Replace(moveText, InsertSpaceAfterMoveNumber);
             //Normalize movetext
@@ -381,7 +377,7 @@ namespace PonzianiComponents.Chesslib
                         int indx = Int32.Parse(m.Groups[1].Value);
                         if (game.Moves.Count > 0)
                         {
-                            game.Moves.Last().Comment =  RemoveLineBreaks(commentBuffer[indx]);
+                            game.Moves.Last().Comment = RemoveLineBreaks(commentBuffer[indx]);
                             game.Moves.Last().ParseComment();
                         }
                     }
@@ -389,7 +385,9 @@ namespace PonzianiComponents.Chesslib
                     {
                         Debug.Fail(ex.Message);
                     }
-                } else if (variations && (m = regexPGNVariationPlaceholder.Match(token)).Success) {
+                }
+                else if (variations && (m = regexPGNVariationPlaceholder.Match(token)).Success)
+                {
                     try
                     {
                         int indx = Int32.Parse(m.Groups[1].Value);
@@ -399,7 +397,8 @@ namespace PonzianiComponents.Chesslib
                     {
                         Debug.Fail(ex.Message);
                     }
-                } else if (token == "1-0")
+                }
+                else if (token == "1-0")
                 {
                     game.Result = Result.WHITE_WINS;
                 }
@@ -422,7 +421,7 @@ namespace PonzianiComponents.Chesslib
 
         private static void AddVariation(Game game, Position pos, string variation)
         {
-            Game vGame = new Game(pos.FEN);
+            Game vGame = new(pos.FEN);
             Position beforePos = null;
             variation = variation.Replace("\r\n", "\n");
             string[] tokens = variation.Split(new char[] { ' ', '\n' }, StringSplitOptions.RemoveEmptyEntries);
@@ -509,14 +508,13 @@ namespace PonzianiComponents.Chesslib
             else
             {
                 Square to = Fen.ParseSquare(m.Groups[4].Value);
-                string ptString = m.Groups[1].Value;
                 char pchar = m.Groups[1].Value.Length > 0 ? m.Groups[1].Value[0] : 'P';
                 if (pos.SideToMove == Side.BLACK) pchar = Char.ToLower(pchar);
                 Piece movingPiece = Fen.ParsePieceChar(pchar);
                 PieceType promoType = PieceType.NONE;
                 if (m.Groups[5].Value.Length > 0) promoType = Chess.ParsePieceTypeChar(m.Groups[5].Value[0]);
                 List<Move> moves = pos.GetMoves();
-                List<Move> potMoves = new List<Move>();
+                List<Move> potMoves = new();
                 foreach (Move potMove in moves)
                 {
                     if (potMove.To == to && potMove.PromoteTo == promoType
@@ -542,20 +540,20 @@ namespace PonzianiComponents.Chesslib
             return move;
         }
 
-        private static readonly Regex regexPGNGame = new Regex(@"((?:^\[[^\]]+\]\s*$?){2,})(?:^\s*)(?:^\{[^\}]+\}\r?\n)?(^[^\[\{].*(?:\r?\n^\S.*$)*)", RegexOptions.Multiline | RegexOptions.Compiled);
-        private static readonly Regex regexPGNTag = new Regex(@"\[([^\s]*)\s+""(.*)""\]", RegexOptions.Multiline | RegexOptions.Compiled);
-        private static readonly Regex regexPGNComment = new Regex(@"\{(?>\{(?<c>)|[^{}]+|\}(?<-c>))*(?(c)(?!))\}", RegexOptions.Singleline | RegexOptions.Compiled);
-        private static readonly Regex regexPGNVariations = new Regex(@"\((?>\((?<c>)|[^()]+|\)(?<-c>))*(?(c)(?!))\)", RegexOptions.Singleline | RegexOptions.Compiled);
-        private static readonly Regex regexPGNNag = new Regex(@"\$\d+", RegexOptions.Compiled);
-        private static readonly Regex regexPGNCommentPlaceholder = new Regex(@"@(\d+)@", RegexOptions.Compiled);
-        private static readonly Regex regexPGNVariationPlaceholder = new Regex(@"@V(\d+)@", RegexOptions.Compiled);
-        private static readonly Regex regexPGNBlackMovenumber = new Regex(@"(\d+\.)\.+", RegexOptions.Compiled);
-        private static readonly Regex regexPGNWhitespace = new Regex(@"\s{2,}", RegexOptions.Singleline | RegexOptions.Compiled);
-        private static readonly Regex regexPGNMovenumberWithoutSpace = new Regex(@"\d+\.[OQRBNKa-h]", RegexOptions.Compiled);
-        private static readonly Regex regexPGNMovenumber = new Regex(@"(\d+)\.", RegexOptions.Compiled);
-        internal static readonly Regex regexPGNMove = new Regex(@"(?:([QRBNK])?([1-8a-h])?(x?)([a-h][1-8])(?:=([QRBN]))?[\+#!\?]*)|(?:O-O-O[\+#!\?]*)|(?:O-O[\+#!\?]*)");
-        private static readonly Regex regexReplaceLineBreakTimeSpan = new Regex(@"\:\r?\n^(\d)", RegexOptions.Multiline | RegexOptions.Compiled);
-        private static readonly Regex regexReplaceLineBreak = new Regex(@"\r?\n^", RegexOptions.Multiline | RegexOptions.Compiled);
+        private static readonly Regex regexPGNGame = new(@"((?:^\[[^\]]+\]\s*$?){2,})(?:^\s*)(?:^\{[^\}]+\}\r?\n)?(^[^\[\{].*(?:\r?\n^\S.*$)*)", RegexOptions.Multiline | RegexOptions.Compiled);
+        private static readonly Regex regexPGNTag = new(@"\[([^\s]*)\s+""(.*)""\]", RegexOptions.Multiline | RegexOptions.Compiled);
+        private static readonly Regex regexPGNComment = new(@"\{(?>\{(?<c>)|[^{}]+|\}(?<-c>))*(?(c)(?!))\}", RegexOptions.Singleline | RegexOptions.Compiled);
+        private static readonly Regex regexPGNVariations = new(@"\((?>\((?<c>)|[^()]+|\)(?<-c>))*(?(c)(?!))\)", RegexOptions.Singleline | RegexOptions.Compiled);
+        private static readonly Regex regexPGNNag = new (@"\$\d+", RegexOptions.Compiled);
+        private static readonly Regex regexPGNCommentPlaceholder = new(@"@(\d+)@", RegexOptions.Compiled);
+        private static readonly Regex regexPGNVariationPlaceholder = new (@"@V(\d+)@", RegexOptions.Compiled);
+        private static readonly Regex regexPGNBlackMovenumber = new (@"(\d+\.)\.+", RegexOptions.Compiled);
+        private static readonly Regex regexPGNWhitespace = new (@"\s{2,}", RegexOptions.Singleline | RegexOptions.Compiled);
+        private static readonly Regex regexPGNMovenumberWithoutSpace = new (@"\d+\.[OQRBNKa-h]", RegexOptions.Compiled);
+        private static readonly Regex regexPGNMovenumber = new (@"(\d+)\.", RegexOptions.Compiled);
+        internal static readonly Regex regexPGNMove = new (@"(?:([QRBNK])?([1-8a-h])?(x?)([a-h][1-8])(?:=([QRBN]))?[\+#!\?]*)|(?:O-O-O[\+#!\?]*)|(?:O-O[\+#!\?]*)");
+        private static readonly Regex regexReplaceLineBreakTimeSpan = new (@"\:\r?\n^(\d)", RegexOptions.Multiline | RegexOptions.Compiled);
+        private static readonly Regex regexReplaceLineBreak = new (@"\r?\n^", RegexOptions.Multiline | RegexOptions.Compiled);
 
         private static List<string> commentBuffer = null;
         private static List<string> variationBuffer = null;
@@ -564,7 +562,7 @@ namespace PonzianiComponents.Chesslib
         {
             try
             {
-                commentBuffer.Add(m.Value.Substring(1, m.Value.Length - 2));
+                commentBuffer.Add(m.Value[1..^1]);
                 return $"@{commentBuffer.Count - 1}@";
             }
             catch (NullReferenceException)
@@ -577,7 +575,7 @@ namespace PonzianiComponents.Chesslib
         {
             try
             {
-                string v = m.Value.Substring(1, m.Value.Length - 2);
+                string v = m.Value[1..^1];
                 if (commentBuffer != null) v = regexPGNComment.Replace(v, ReplaceComment);
                 v = regexPGNVariations.Replace(v, ReplaceVariation);
                 variationBuffer.Add(v);

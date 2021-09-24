@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace PonzianiComponents.Chesslib
 {
@@ -32,7 +26,7 @@ namespace PonzianiComponents.Chesslib
         public static Eco Get(string fen)
         {
             Initialize();
-            Position pos = new Position(fen);
+            Position pos = new(fen);
             if (EcoList.ContainsKey(pos.PolyglotKey)) return EcoList[pos.PolyglotKey]; else return null;
         }
         /// <summary>
@@ -44,7 +38,7 @@ namespace PonzianiComponents.Chesslib
         {
             Initialize();
             Eco eco = null;
-            Position pos = new Position();
+            Position pos = new();
             int moveCount = 0;
             foreach (Move m in game.Moves)
             {
@@ -65,19 +59,19 @@ namespace PonzianiComponents.Chesslib
             try
             {
                 EcoList = new Dictionary<ulong, Eco>();
-                Regex regexEcoLine = new Regex(@"(\w+)\s\""([^\""]+)\""\s+([^\*]*\*)");
+                Regex regexEcoLine = new(@"(\w+)\s\""([^\""]+)\""\s+([^\*]*\*)");
                 string[] ecolines = ecoraw.Split('\n');
                 foreach (string ecoline in ecolines)
                 {
                     Match m = regexEcoLine.Match(ecoline.Trim());
                     if (m.Success)
                     {
-                        Eco eco = new Eco
+                        Eco eco = new()
                         {
                             Text = m.Groups[2].Value,
                             Key = m.Groups[1].Value
                         };
-                        Position pos = new Position();
+                        Position pos = new();
                         MatchCollection mc = PGN.regexPGNMove.Matches(m.Groups[3].Value);
                         foreach (Match mm in mc)
                         {
@@ -95,7 +89,7 @@ namespace PonzianiComponents.Chesslib
 
         }
 
-        private static string ecoraw = @"A00a ""Start position""  *
+        private static readonly string ecoraw = @"A00a ""Start position""  *
 A00b ""Barnes Opening""  1.f3 *
 A00b ""Fried fox""  1.f3 e5 2.Kf2 *
 A00c ""Kadas Opening""  1.h4 *

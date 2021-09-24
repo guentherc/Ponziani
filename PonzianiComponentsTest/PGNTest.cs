@@ -1,10 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PonzianiComponents.Chesslib;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PonzianiComponentsTest
 {
@@ -127,7 +123,6 @@ namespace PonzianiComponentsTest
             Assert.AreEqual(3, games[0].Moves[10].Variations[0].Count);
             Assert.AreEqual(2, games[0].Moves[31].Variations.Count);
             string pgn = games[0].ToPGN(null, true);
-            games = null;
             games = PGN.Parse(pgn, true, true);
             Assert.AreEqual(1, games.Count);
             Assert.AreEqual(57, games[0].Moves.Count);

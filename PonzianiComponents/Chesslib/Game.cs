@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace PonzianiComponents.Chesslib
 {
@@ -23,8 +21,8 @@ namespace PonzianiComponents.Chesslib
         {
             StartPosition = startposition;
             int count = StartPosition.Split(new char[] { ' ' }).Length;
-            if (count == 4) StartPosition = StartPosition + " 0 1";
-            else if (count == 5) StartPosition = StartPosition + " 1";
+            if (count == 4) StartPosition += " 0 1";
+            else if (count == 5) StartPosition += " 1";
             position = new Position(StartPosition);
             hashes.Add(position.PolyglotKey);
         }
@@ -90,7 +88,7 @@ namespace PonzianiComponents.Chesslib
         /// <returns>A string containing the notation</returns>
         public string SANNotation(bool withComments = true, bool withVariations = false)
         {
-            Position pos = new Position(StartPosition);
+            Position pos = new(StartPosition);
             StringBuilder sb = GetMoveText(pos, moves, withComments, withVariations);
             sb.Append(PGN.ResultToString(Result));
             return sb.ToString().Trim();
@@ -102,15 +100,15 @@ namespace PonzianiComponents.Chesslib
 
         private StringBuilder GetMoveText(Position pos, List<ExtendedMove> _moves, bool withComments, bool withVariations)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             if (pos.SideToMove == Side.BLACK) sb.Append($"{pos.MoveNumber}... ");
             foreach (ExtendedMove m in _moves)
             {
                 if (pos.SideToMove == Side.WHITE) sb.Append($"{pos.MoveNumber}. ");
-                sb.Append(pos.ToSAN(m)).Append(" ");
+                sb.Append(pos.ToSAN(m)).Append(' ');
                 if (withComments && m.Comment != null && m.Comment.Length > 0)
                 {
-                    sb.Append("{").Append(m.Comment).Append("} ");
+                    sb.Append('{').Append(m.Comment).Append("} ");
                 }
                 if (withVariations && m.Variations != null)
                 {
@@ -132,7 +130,7 @@ namespace PonzianiComponents.Chesslib
         public string ToPGN(IPGNOutputFormatter formatter = null, bool withVariations = false)
         {
             if (formatter != null) foreach (ExtendedMove m in moves) m.Comment = formatter.Comment(m);
-            StringBuilder sb = new StringBuilder(PGNTagSection());
+            StringBuilder sb = new(PGNTagSection());
             sb.AppendLine();
             //split movetext to lines with max 80 characters
             string movetext = SANNotation(true, withVariations);
@@ -141,7 +139,7 @@ namespace PonzianiComponents.Chesslib
                 string m80 = movetext.Substring(0, 81);
                 int indx = m80.LastIndexOf(' ');
                 sb.AppendLine(movetext.Substring(0, indx));
-                movetext = movetext.Substring(indx + 1);
+                movetext = movetext[(indx + 1)..];
             }
             sb.AppendLine(movetext);
             sb.AppendLine();
@@ -155,7 +153,7 @@ namespace PonzianiComponents.Chesslib
         /// <returns>The position at that point within the game</returns>
         public Position GetPosition(int moveNumber, Side side)
         {
-            Position pos = new Position(StartPosition);
+            Position pos = new(StartPosition);
             int i = 0;
             while (i < Moves.Count && (pos.MoveNumber < moveNumber || pos.SideToMove != side))
             {
@@ -185,7 +183,7 @@ namespace PonzianiComponents.Chesslib
 
         private string PGNTagSection()
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             sb.AppendLine($"[Event \"{Event}\"]");
             sb.AppendLine($"[Site \"{Site}\"]");
             sb.AppendLine($"[Date \"{Date}\"]");
@@ -326,7 +324,7 @@ namespace PonzianiComponents.Chesslib
         /// <returns>true if successful</returns>
         public bool UndoLastMove()
         {
-            if (position.UndoMove(Moves.Last(), hashes[hashes.Count - 2]))
+            if (position.UndoMove(Moves.Last(), hashes[^2]))
             {
                 Result = Result.OPEN;
                 hashes.RemoveAt(hashes.Count - 1);
@@ -357,7 +355,7 @@ namespace PonzianiComponents.Chesslib
         /// <inheritdoc/>
         public object Clone()
         {
-            Game game = new Game(StartPosition)
+            Game game = new(StartPosition)
             {
                 position = (Position)position.Clone(),
                 hashes = new List<ulong>(hashes),
@@ -377,7 +375,7 @@ namespace PonzianiComponents.Chesslib
 
         internal List<Game> VariationGames()
         {
-            List<Game> vgames = new List<Game>();
+            List<Game> vgames = new();
             if (Moves.Last().Variations != null)
             {
                 foreach (var variation in Moves.Last().Variations)
@@ -394,9 +392,9 @@ namespace PonzianiComponents.Chesslib
             return vgames;
         }
 
-        private List<ExtendedMove> moves = new List<ExtendedMove>();
+        private List<ExtendedMove> moves = new();
         private Position position = null;
-        private List<UInt64> hashes = new List<ulong>();
+        private List<UInt64> hashes = new();
 
         public override string ToString()
         {
@@ -412,7 +410,7 @@ namespace PonzianiComponents.Chesslib
         /// <summary>
         /// List of Time Controls
         /// </summary>
-        public List<Entry> Controls = new List<Entry>();
+        public List<Entry> Controls = new();
 
         /// <summary>
         /// Creates a time control object
@@ -472,7 +470,7 @@ namespace PonzianiComponents.Chesslib
             string[] token = tc.Split(':');
             foreach (var t in token)
             {
-                int time = 0;
+                int time;
                 int to = int.MaxValue;
                 double inc = 0;
                 int from = Controls.Count == 0 ? 1 : Controls.Last().To + 1;
@@ -490,9 +488,9 @@ namespace PonzianiComponents.Chesslib
                 else
                 {
                     if (indx1 > 0) to = int.Parse(t.Substring(0, indx1)) + from - 1;
-                    if (indx2 > 0) inc = double.Parse(t.Substring(indx2 + 1), CultureInfo.InvariantCulture);
+                    if (indx2 > 0) inc = double.Parse(t[(indx2 + 1)..], CultureInfo.InvariantCulture);
                     string t1 = indx2 > 0 ? t.Substring(0, indx2) : t;
-                    if (indx1 > 0) t1 = t1.Substring(indx1 + 1);
+                    if (indx1 > 0) t1 = t1[(indx1 + 1)..];
                     time = int.Parse(t1);
                     Controls.Add(new Entry(from, to, TimeSpan.FromSeconds(time), TimeSpan.FromSeconds(inc)));
                 }

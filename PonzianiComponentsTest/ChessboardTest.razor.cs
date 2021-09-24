@@ -4,14 +4,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PonzianiComponents;
 using PonzianiComponents.Chesslib;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PonzianiComponentsTest
 {
-    public partial class ChessboardTest: BunitTestContext
+    public partial class ChessboardTest : BunitTestContext
     {
         public string GetId(IRenderedComponent<Chessboard> cb)
         {
@@ -20,7 +17,7 @@ namespace PonzianiComponentsTest
             if (cboard.Count() == 1) return ((IElement)cboard.First()).Id; else return null;
         }
 
-        public IRefreshableElementCollection<IElement>  GetSquareDivs(IRenderedComponent<Chessboard> cb) => cb.FindAll("div.pzSquare");
+        public IRefreshableElementCollection<IElement> GetSquareDivs(IRenderedComponent<Chessboard> cb) => cb.FindAll("div.pzSquare");
 
         public string GetBoardPartFromComponent(IRenderedComponent<Chessboard> cb)
         {

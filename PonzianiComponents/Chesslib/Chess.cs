@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace PonzianiComponents.Chesslib
 {
-#pragma warning disable CS1591
     /// <summary>
     /// Square of a standard chess board. Ponziani uses "Little-Endian Rank-File Mapping"
     /// (see https://chessprogramming.wikispaces.com/Square+Mapping+Considerations).
@@ -73,16 +71,18 @@ namespace PonzianiComponents.Chesslib
     /// <summary>
     /// Possible outcomes of a chess game
     /// </summary>
-    public enum Result { 
+    public enum Result
+    {
         /// <summary>
         /// Game is still ongoing, resp. result is unknown
         /// </summary>
-        OPEN, 
-        WHITE_WINS, BLACK_WINS, DRAW, 
+        OPEN,
+        WHITE_WINS, BLACK_WINS, DRAW,
         /// <summary>
         /// Game has been abandoned (for example in engine matches by a crash
         /// </summary>
-        ABANDONED }
+        ABANDONED
+    }
     /// <summary>
     /// More detailed info about game result
     /// </summary>
@@ -122,7 +122,7 @@ namespace PonzianiComponents.Chesslib
         /// <returns>the string representation</returns>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             sb.Append(PGN.ResultToString(Result));
             if (Result != Result.OPEN && Detail != ResultDetail.UNKNOWN)
             {
@@ -157,7 +157,7 @@ namespace PonzianiComponents.Chesslib
         private static readonly string[] ResultPhrase = new string[11] { "", " {<winner> mates}", " {<looser> resigns}", " {<looser> loses on time}", " {<looser> makes an illegal move: <info>}",
                                                                   " {Draw by 3-fold repetition}", " {Draw by fifty moves rule}", " {Draw by insufficient mating material}",
                                                                   " {<winner> wins by adjudication}", " {Draw by adjudication}", " {Draw by stalemate}"};
-        private static readonly Dictionary<ResultDetail, string> PGNTerminationTerms = new Dictionary<ResultDetail, string>() { { ResultDetail.ABANDONED, "abandoned" },
+        private static readonly Dictionary<ResultDetail, string> PGNTerminationTerms = new() { { ResultDetail.ABANDONED, "abandoned" },
                 { ResultDetail.ADJUDICATION_DRAW, "adjudication" }, { ResultDetail.ADJUDICATION_WIN, "adjudication" }, { ResultDetail.TIME_FORFEIT, "time forfeit" },
                 { ResultDetail.ILLEGAL_MOVE, "rules infraction" }, { ResultDetail.MATE, "normal" }, { ResultDetail.STALEMATE, "normal" }, { ResultDetail.FIFTY_MOVES, "normal" },
                 { ResultDetail.NO_MATING_MATERIAL, "normal" }, { ResultDetail.THREE_FOLD_REPETITION, "normal" }, { ResultDetail.UNKNOWN, null }};
@@ -196,7 +196,7 @@ namespace PonzianiComponents.Chesslib
         /// <returns>The square's string representation</returns>
         public static string SquareToString(Square square)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             sb.Append("abcdefgh"[(int)square & 7]).Append(((int)square >> 3) + 1);
             return sb.ToString();
         }
@@ -208,19 +208,19 @@ namespace PonzianiComponents.Chesslib
         /// <returns>Piece</returns>
         public static Piece GetPiece(PieceType pt, Side side)
         {
-            return (Piece)(2*(int)pt + (int)side);
+            return (Piece)(2 * (int)pt + (int)side);
         }
         /// <summary>
         /// List of supported languages 
         /// </summary>
         public static List<string> SupportedLanguages => PieceChars.Keys.Select(ci => ci.TwoLetterISOLanguageName).Distinct().ToList();
 
-        private static readonly Dictionary<char, PieceType> PieceTypeMapping = new Dictionary<char, PieceType>() {
+        private static readonly Dictionary<char, PieceType> PieceTypeMapping = new() {
             { 'Q', PieceType.QUEEN}, { 'R', PieceType.ROOK},  { 'B', PieceType.BISHOP},
             { 'N', PieceType.KNIGHT},{ 'K', PieceType.KING},{ 'P', PieceType.PAWN}
         };
 
-        internal static readonly Dictionary<CultureInfo, IChessPieceStringProvider> PieceChars = new Dictionary<CultureInfo, IChessPieceStringProvider>()
+        internal static readonly Dictionary<CultureInfo, IChessPieceStringProvider> PieceChars = new()
         {
             { CultureInfo.InvariantCulture, new CharPieceStringProvider("QRBNPK") },
             { new CultureInfo("en"), new CharPieceStringProvider("QRBNPK") },
@@ -238,9 +238,9 @@ namespace PonzianiComponents.Chesslib
         public string Get(Piece p);
     }
 
-    internal class CharPieceStringProvider: IChessPieceStringProvider
+    internal class CharPieceStringProvider : IChessPieceStringProvider
     {
-        string piecechars;
+        readonly string piecechars;
 
         public CharPieceStringProvider(string piecechars)
         {
@@ -249,7 +249,7 @@ namespace PonzianiComponents.Chesslib
 
         public string Get(PieceType pt, Side side = Side.WHITE)
         {
-            return side == Side.WHITE ? piecechars[(int)pt].ToString() : Get(Chess.GetPiece(pt, side)); 
+            return side == Side.WHITE ? piecechars[(int)pt].ToString() : Get(Chess.GetPiece(pt, side));
         }
 
         public string Get(Piece p)
@@ -260,7 +260,7 @@ namespace PonzianiComponents.Chesslib
 
     internal class StringArrayPieceStringProvider : IChessPieceStringProvider
     {
-        string[] piecestrings;
+        readonly string[] piecestrings;
         public StringArrayPieceStringProvider(string[] piecestrings)
         {
             this.piecestrings = piecestrings;
@@ -279,7 +279,7 @@ namespace PonzianiComponents.Chesslib
 
     internal class FigurinePieceStringProvider : IChessPieceStringProvider
     {
-        char[] upiece = { '\u2655', '\u265b', '\u2656', '\u265c', '\u2657', '\u265d', '\u2658', '\u265e', '\u2659', '\u265f', '\u2654', '\u265a', '\u0020' };
+        readonly char[] upiece = { '\u2655', '\u265b', '\u2656', '\u265c', '\u2657', '\u265d', '\u2658', '\u265e', '\u2659', '\u265f', '\u2654', '\u265a', '\u0020' };
 
         public string Get(PieceType pt, Side side = Side.WHITE)
         {

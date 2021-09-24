@@ -2890,25 +2890,25 @@ references:
   commentId: T:PonzianiComponents.Scoresheet
   fullName: PonzianiComponents.Scoresheet
   nameWithType: Scoresheet
-- uid: PonzianiComponents.Scoresheet.AddMoveAsync(PonzianiComponents.Chesslib.ExtendedMove)
-  name: AddMoveAsync(ExtendedMove)
-  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_AddMoveAsync_PonzianiComponents_Chesslib_ExtendedMove_
-  commentId: M:PonzianiComponents.Scoresheet.AddMoveAsync(PonzianiComponents.Chesslib.ExtendedMove)
-  fullName: PonzianiComponents.Scoresheet.AddMoveAsync(PonzianiComponents.Chesslib.ExtendedMove)
-  nameWithType: Scoresheet.AddMoveAsync(ExtendedMove)
-- uid: PonzianiComponents.Scoresheet.AddMoveAsync(PonzianiComponents.Chesslib.Move)
-  name: AddMoveAsync(Move)
-  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_AddMoveAsync_PonzianiComponents_Chesslib_Move_
-  commentId: M:PonzianiComponents.Scoresheet.AddMoveAsync(PonzianiComponents.Chesslib.Move)
-  fullName: PonzianiComponents.Scoresheet.AddMoveAsync(PonzianiComponents.Chesslib.Move)
-  nameWithType: Scoresheet.AddMoveAsync(Move)
-- uid: PonzianiComponents.Scoresheet.AddMoveAsync*
-  name: AddMoveAsync
-  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_AddMoveAsync_
-  commentId: Overload:PonzianiComponents.Scoresheet.AddMoveAsync
+- uid: PonzianiComponents.Scoresheet.AddMove(PonzianiComponents.Chesslib.ExtendedMove)
+  name: AddMove(ExtendedMove)
+  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_AddMove_PonzianiComponents_Chesslib_ExtendedMove_
+  commentId: M:PonzianiComponents.Scoresheet.AddMove(PonzianiComponents.Chesslib.ExtendedMove)
+  fullName: PonzianiComponents.Scoresheet.AddMove(PonzianiComponents.Chesslib.ExtendedMove)
+  nameWithType: Scoresheet.AddMove(ExtendedMove)
+- uid: PonzianiComponents.Scoresheet.AddMove(PonzianiComponents.Chesslib.Move)
+  name: AddMove(Move)
+  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_AddMove_PonzianiComponents_Chesslib_Move_
+  commentId: M:PonzianiComponents.Scoresheet.AddMove(PonzianiComponents.Chesslib.Move)
+  fullName: PonzianiComponents.Scoresheet.AddMove(PonzianiComponents.Chesslib.Move)
+  nameWithType: Scoresheet.AddMove(Move)
+- uid: PonzianiComponents.Scoresheet.AddMove*
+  name: AddMove
+  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_AddMove_
+  commentId: Overload:PonzianiComponents.Scoresheet.AddMove
   isSpec: "True"
-  fullName: PonzianiComponents.Scoresheet.AddMoveAsync
-  nameWithType: Scoresheet.AddMoveAsync
+  fullName: PonzianiComponents.Scoresheet.AddMove
+  nameWithType: Scoresheet.AddMove
 - uid: PonzianiComponents.Scoresheet.ColorCommentBackground
   name: ColorCommentBackground
   href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_ColorCommentBackground
@@ -3119,19 +3119,19 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Scoresheet.OnMoveSelected
   nameWithType: Scoresheet.OnMoveSelected
-- uid: PonzianiComponents.Scoresheet.OnParametersSetAsync
-  name: OnParametersSetAsync()
-  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_OnParametersSetAsync
-  commentId: M:PonzianiComponents.Scoresheet.OnParametersSetAsync
-  fullName: PonzianiComponents.Scoresheet.OnParametersSetAsync()
-  nameWithType: Scoresheet.OnParametersSetAsync()
-- uid: PonzianiComponents.Scoresheet.OnParametersSetAsync*
-  name: OnParametersSetAsync
-  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_OnParametersSetAsync_
-  commentId: Overload:PonzianiComponents.Scoresheet.OnParametersSetAsync
+- uid: PonzianiComponents.Scoresheet.OnParametersSet
+  name: OnParametersSet()
+  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_OnParametersSet
+  commentId: M:PonzianiComponents.Scoresheet.OnParametersSet
+  fullName: PonzianiComponents.Scoresheet.OnParametersSet()
+  nameWithType: Scoresheet.OnParametersSet()
+- uid: PonzianiComponents.Scoresheet.OnParametersSet*
+  name: OnParametersSet
+  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_OnParametersSet_
+  commentId: Overload:PonzianiComponents.Scoresheet.OnParametersSet
   isSpec: "True"
-  fullName: PonzianiComponents.Scoresheet.OnParametersSetAsync
-  nameWithType: Scoresheet.OnParametersSetAsync
+  fullName: PonzianiComponents.Scoresheet.OnParametersSet
+  nameWithType: Scoresheet.OnParametersSet
 - uid: PonzianiComponents.Scoresheet.OtherAttributes
   name: OtherAttributes
   href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_OtherAttributes

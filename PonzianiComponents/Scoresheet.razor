@@ -16,7 +16,7 @@
 			  <tr>
 			   <td class="pzNotColMovenumber">@g.Position.MoveNumber</td>
 			   <td class="pzNotColWhite">...</td>
-			   <td class="pzNotColBlack" @onclick="@(e => SelectMoveAsync(e, moveNumber, Side.BLACK))">@Print(g, 0)</td>
+			   <td class="pzNotColBlack" @onclick="@(() => SelectMoveAsync(moveNumber, Side.BLACK))">@Print(g, 0)</td>
 			  </tr>
 					g.Add(Game.Moves[0]);
 				}
@@ -30,7 +30,7 @@
 						<tr>
 							<td class="pzNotColMovenumber">@g.Position.MoveNumber</td>
 
-							<td class="pzNotColWhite" @onclick="@(e => SelectMoveAsync(e, moveNumber, Side.WHITE))">@Print(g, i)</td><td  class="pzNotColBlack"></td>
+							<td class="pzNotColWhite" @onclick="@(() => SelectMoveAsync(moveNumber, Side.WHITE))">@Print(g, i)</td><td  class="pzNotColBlack"></td>
 						</tr>
 						@if (variations)
 						{
@@ -72,7 +72,7 @@
 							}
 							@if (g.Moves.Count < Game.Moves.Count)
 							{
-								<td class="pzNotColBlack" @onclick="@(e => SelectMoveAsync(e, moveNumber, Side.BLACK))">@Print(g, i + 1)</td>
+								<td class="pzNotColBlack" @onclick="@(() => SelectMoveAsync(moveNumber, Side.BLACK))">@Print(g, i + 1)</td>
 								g.Add(Game.Moves[i + 1]);
 							}
 							else
@@ -86,13 +86,13 @@
 						<tr>
 							<td class="pzNotColMovenumber">@g.Position.MoveNumber</td>
 
-							<td class="pzNotColWhite" @onclick="@(e => SelectMoveAsync(e, moveNumber, Side.WHITE))">@Print(g, i)</td>
+							<td class="pzNotColWhite" @onclick="@(()=> SelectMoveAsync(moveNumber, Side.WHITE))">@Print(g, i)</td>
 							@{
 								g.Add(Game.Moves[i]);
 							}
 							@if (g.Moves.Count < Game.Moves.Count)
 							{
-								<td class="pzNotColBlack" @onclick="@(e => SelectMoveAsync(e, moveNumber, Side.BLACK))">@Print(g, i + 1)</td>
+								<td class="pzNotColBlack" @onclick="@(() => SelectMoveAsync(moveNumber, Side.BLACK))">@Print(g, i + 1)</td>
 								g.Add(Game.Moves[i + 1]);
 							}
 							else
