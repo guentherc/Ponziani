@@ -180,7 +180,7 @@
 
 	private async Task SelectMoveAsync(EventArgs eventArgs, int moveNumber, Side side)
 	{
-		MoveSelectInfo msi = new(Id, Game.GetPosition(moveNumber, side), Game.GetMove(moveNumber, side));
+		MoveSelectInfo msi = new(Id, Game.GetPosition(moveNumber, side), Game.GetMove(moveNumber, side), Game);
 		await OnMoveSelected.InvokeAsync(msi);
 	}
 }

@@ -81,6 +81,10 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">Eco</span></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IComparable</span>&lt;<a class="xref" href="PonzianiComponents.Chesslib.Eco.html">Eco</a>&gt;</div>
+  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
@@ -110,16 +114,47 @@
   <h5 id="PonzianiComponents_Chesslib_Eco_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Serializable]
-public class Eco</code></pre>
+public class Eco : IComparable&lt;Eco&gt;</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Eco_Chapter.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Eco.Chapter%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L173">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chesslib_Eco_Chapter_" data-uid="PonzianiComponents.Chesslib.Eco.Chapter*"></a>
+  <h4 id="PonzianiComponents_Chesslib_Eco_Chapter" data-uid="PonzianiComponents.Chesslib.Eco.Chapter">Chapter</h4>
+  <div class="markdown level1 summary"><p>Chapter (Subgroups) grouping related openings</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static SortedDictionary&lt;Tuple&lt;string, string&gt;, string&gt; Chapter { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.SortedDictionary</span>&lt;<span class="xref">System.Tuple</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;, <span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Eco_Key.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Eco.Key%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L20">View Source</a>
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L24">View Source</a>
   </span>
   <a id="PonzianiComponents_Chesslib_Eco_Key_" data-uid="PonzianiComponents.Chesslib.Eco.Key*"></a>
   <h4 id="PonzianiComponents_Chesslib_Eco_Key" data-uid="PonzianiComponents.Chesslib.Eco.Key">Key</h4>
@@ -128,7 +163,38 @@ public class Eco</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Key { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string Key { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Eco_MoveString.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Eco.MoveString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L28">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chesslib_Eco_MoveString_" data-uid="PonzianiComponents.Chesslib.Eco.MoveString*"></a>
+  <h4 id="PonzianiComponents_Chesslib_Eco_MoveString" data-uid="PonzianiComponents.Chesslib.Eco.MoveString">MoveString</h4>
+  <div class="markdown level1 summary"><p>Series of moves defining the opening</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string MoveString { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -150,7 +216,7 @@ public class Eco</code></pre>
     <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Eco_Text.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Eco.Text%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L16">View Source</a>
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L20">View Source</a>
   </span>
   <a id="PonzianiComponents_Chesslib_Eco_Text_" data-uid="PonzianiComponents.Chesslib.Eco.Text*"></a>
   <h4 id="PonzianiComponents_Chesslib_Eco_Text" data-uid="PonzianiComponents.Chesslib.Eco.Text">Text</h4>
@@ -159,7 +225,7 @@ public class Eco</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Text { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string Text { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -176,14 +242,92 @@ public class Eco</code></pre>
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Eco_Volumes.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Eco.Volumes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L162">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chesslib_Eco_Volumes_" data-uid="PonzianiComponents.Chesslib.Eco.Volumes*"></a>
+  <h4 id="PonzianiComponents_Chesslib_Eco_Volumes" data-uid="PonzianiComponents.Chesslib.Eco.Volumes">Volumes</h4>
+  <div class="markdown level1 summary"><p>ECO Volume Titles</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static SortedDictionary&lt;char, string&gt; Volumes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.SortedDictionary</span>&lt;<span class="xref">System.Char</span>, <span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Eco_CompareTo_PonzianiComponents_Chesslib_Eco_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Eco.CompareTo(PonzianiComponents.Chesslib.Eco)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L208">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chesslib_Eco_CompareTo_" data-uid="PonzianiComponents.Chesslib.Eco.CompareTo*"></a>
+  <h4 id="PonzianiComponents_Chesslib_Eco_CompareTo_PonzianiComponents_Chesslib_Eco_" data-uid="PonzianiComponents.Chesslib.Eco.CompareTo(PonzianiComponents.Chesslib.Eco)">CompareTo(Eco)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CompareTo(Eco other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PonzianiComponents.Chesslib.Eco.html">Eco</a></td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Eco_Get_PonzianiComponents_Chesslib_Game_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Eco.Get(PonzianiComponents.Chesslib.Game)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L37">View Source</a>
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L45">View Source</a>
   </span>
   <a id="PonzianiComponents_Chesslib_Eco_Get_" data-uid="PonzianiComponents.Chesslib.Eco.Get*"></a>
   <h4 id="PonzianiComponents_Chesslib_Eco_Get_PonzianiComponents_Chesslib_Game_" data-uid="PonzianiComponents.Chesslib.Eco.Get(PonzianiComponents.Chesslib.Game)">Get(Game)</h4>
@@ -233,7 +377,7 @@ public class Eco</code></pre>
     <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Eco_Get_System_String_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Eco.Get(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L26">View Source</a>
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L34">View Source</a>
   </span>
   <a id="PonzianiComponents_Chesslib_Eco_Get_" data-uid="PonzianiComponents.Chesslib.Eco.Get*"></a>
   <h4 id="PonzianiComponents_Chesslib_Eco_Get_System_String_" data-uid="PonzianiComponents.Chesslib.Eco.Get(System.String)">Get(String)</h4>
@@ -278,6 +422,406 @@ public class Eco</code></pre>
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Eco_Get_System_String_System_String_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Eco.Get(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L154">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chesslib_Eco_Get_" data-uid="PonzianiComponents.Chesslib.Eco.Get*"></a>
+  <h4 id="PonzianiComponents_Chesslib_Eco_Get_System_String_System_String_" data-uid="PonzianiComponents.Chesslib.Eco.Get(System.String,System.String)">Get(String, String)</h4>
+  <div class="markdown level1 summary"><p>Get Ecos from key interval</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static SortedSet&lt;Eco&gt; Get(string fromKey, string toKey)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fromKey</span></td>
+        <td><p>From key (e.g. &quot;B20&quot;)</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">toKey</span></td>
+        <td><p>To key (e.g. &quot;B39&quot;)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.SortedSet</span>&lt;<a class="xref" href="PonzianiComponents.Chesslib.Eco.html">Eco</a>&gt;</td>
+        <td><p>Set of Ecos matching the key interval</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Eco_Get_System_UInt64_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Eco.Get(System.UInt64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L93">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chesslib_Eco_Get_" data-uid="PonzianiComponents.Chesslib.Eco.Get*"></a>
+  <h4 id="PonzianiComponents_Chesslib_Eco_Get_System_UInt64_" data-uid="PonzianiComponents.Chesslib.Eco.Get(System.UInt64)">Get(UInt64)</h4>
+  <div class="markdown level1 summary"><p>Returns Eco object for a polyglot key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Eco Get(ulong polyglotkey)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><span class="parametername">polyglotkey</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PonzianiComponents.Chesslib.Eco.html">Eco</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Eco_GetGame_PonzianiComponents_Chesslib_Eco_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Eco.GetGame(PonzianiComponents.Chesslib.Eco)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L65">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chesslib_Eco_GetGame_" data-uid="PonzianiComponents.Chesslib.Eco.GetGame*"></a>
+  <h4 id="PonzianiComponents_Chesslib_Eco_GetGame_PonzianiComponents_Chesslib_Eco_" data-uid="PonzianiComponents.Chesslib.Eco.GetGame(PonzianiComponents.Chesslib.Eco)">GetGame(Eco)</h4>
+  <div class="markdown level1 summary"><p>Returns a short game, which results in a position matching the provided ECO object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Game GetGame(Eco eco)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PonzianiComponents.Chesslib.Eco.html">Eco</a></td>
+        <td><span class="parametername">eco</span></td>
+        <td><p>ECO object for which the Game, shall be provided</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PonzianiComponents.Chesslib.Game.html">Game</a></td>
+        <td><p>A game, with moves leading to the position defined by the passed ECO object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Eco_GetID_PonzianiComponents_Chesslib_Eco_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Eco.GetID(PonzianiComponents.Chesslib.Eco)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L83">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chesslib_Eco_GetID_" data-uid="PonzianiComponents.Chesslib.Eco.GetID*"></a>
+  <h4 id="PonzianiComponents_Chesslib_Eco_GetID_PonzianiComponents_Chesslib_Eco_" data-uid="PonzianiComponents.Chesslib.Eco.GetID(PonzianiComponents.Chesslib.Eco)">GetID(Eco)</h4>
+  <div class="markdown level1 summary"><p>Determines the polyglot key of the position defined by the Eco object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ulong GetID(Eco eco)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PonzianiComponents.Chesslib.Eco.html">Eco</a></td>
+        <td><span class="parametername">eco</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><p>Polyglot Key</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Eco_Keyvariant_PonzianiComponents_Chesslib_Eco_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Eco.Keyvariant(PonzianiComponents.Chesslib.Eco)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L195">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chesslib_Eco_Keyvariant_" data-uid="PonzianiComponents.Chesslib.Eco.Keyvariant*"></a>
+  <h4 id="PonzianiComponents_Chesslib_Eco_Keyvariant_PonzianiComponents_Chesslib_Eco_" data-uid="PonzianiComponents.Chesslib.Eco.Keyvariant(PonzianiComponents.Chesslib.Eco)">Keyvariant(Eco)</h4>
+  <div class="markdown level1 summary"><p>Determines the base variant (the shortest variant having the same key) for
+a given variant</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Eco Keyvariant(Eco eco)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PonzianiComponents.Chesslib.Eco.html">Eco</a></td>
+        <td><span class="parametername">eco</span></td>
+        <td><p>Eco for which the base variant shall be determined</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PonzianiComponents.Chesslib.Eco.html">Eco</a></td>
+        <td><p>The base variant</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Eco_Keyvariants.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Eco.Keyvariants%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L123">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chesslib_Eco_Keyvariants_" data-uid="PonzianiComponents.Chesslib.Eco.Keyvariants*"></a>
+  <h4 id="PonzianiComponents_Chesslib_Eco_Keyvariants" data-uid="PonzianiComponents.Chesslib.Eco.Keyvariants">Keyvariants()</h4>
+  <div class="markdown level1 summary"><p>Returns for each ECO-key the basic variant</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static SortedSet&lt;Eco&gt; Keyvariants()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.SortedSet</span>&lt;<a class="xref" href="PonzianiComponents.Chesslib.Eco.html">Eco</a>&gt;</td>
+        <td><p>List of basic variants</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Eco_Keyvariants_System_Char_System_String_System_String_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Eco.Keyvariants(System.Char%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L132">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chesslib_Eco_Keyvariants_" data-uid="PonzianiComponents.Chesslib.Eco.Keyvariants*"></a>
+  <h4 id="PonzianiComponents_Chesslib_Eco_Keyvariants_System_Char_System_String_System_String_" data-uid="PonzianiComponents.Chesslib.Eco.Keyvariants(System.Char,System.String,System.String)">Keyvariants(Char, String, String)</h4>
+  <div class="markdown level1 summary"><p>Returns for each ECO-key the basic variant</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static SortedSet&lt;Eco&gt; Keyvariants(char volume, string fromKey = &quot;A00&quot;, string toKey = &quot;E99&quot;)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span></td>
+        <td><span class="parametername">volume</span></td>
+        <td><p>Volume to which result set shall be restricted</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fromKey</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">toKey</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.SortedSet</span>&lt;<a class="xref" href="PonzianiComponents.Chesslib.Eco.html">Eco</a>&gt;</td>
+        <td><p>List of basic variants</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Eco_Subvariants_PonzianiComponents_Chesslib_Eco_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Eco.Subvariants(PonzianiComponents.Chesslib.Eco)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L103">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Chesslib_Eco_Subvariants_" data-uid="PonzianiComponents.Chesslib.Eco.Subvariants*"></a>
+  <h4 id="PonzianiComponents_Chesslib_Eco_Subvariants_PonzianiComponents_Chesslib_Eco_" data-uid="PonzianiComponents.Chesslib.Eco.Subvariants(PonzianiComponents.Chesslib.Eco)">Subvariants(Eco)</h4>
+  <div class="markdown level1 summary"><p>Returns a list of Eco objects for subvariants based on a given Eco</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;Eco&gt; Subvariants(Eco eco)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="PonzianiComponents.Chesslib.Eco.html">Eco</a></td>
+        <td><span class="parametername">eco</span></td>
+        <td><p>Variant for which subvariants shall be provided</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="PonzianiComponents.Chesslib.Eco.html">Eco</a>&gt;</td>
+        <td><p>List of all Eco objects defining subvariants of eco</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IComparable&lt;T&gt;</span>
+  </div>
 </article>
           </div>
           
@@ -289,7 +833,7 @@ public class Eco</code></pre>
                     <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Chesslib_Eco.md&amp;value=---%0Auid%3A%20PonzianiComponents.Chesslib.Eco%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L10" class="contribution-link">View Source</a>
+                    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Chesslib/Eco.cs/#L14" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

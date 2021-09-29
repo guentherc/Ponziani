@@ -14,7 +14,6 @@ namespace PonzianiComponents.Chesslib
         /// </summary>
         public const string INITIAL_POSITION = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 
-#pragma warning disable CS1591
         /// <summary>
         /// Character representing the white king in <see href="https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">Forsyth-Edwards-Notation (FEN)</see> 
         /// </summary>
@@ -67,7 +66,6 @@ namespace PonzianiComponents.Chesslib
         /// Character representing no piece (empty square)
         /// </summary>
         public const char PIECE_CHAR_NONE = ' ';
-#pragma warning restore CS1591
 
         /// <summary>
         /// Get's the char used for the piece (Example 'q' for black queen or 'P' for White pawn)
@@ -117,7 +115,7 @@ namespace PonzianiComponents.Chesslib
         /// <returns></returns>
         public static string FenPartFromBoard(char[] board)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             for (int row = 7; row >= 0; --row)
             {
                 int count_space = 0;
@@ -135,7 +133,7 @@ namespace PonzianiComponents.Chesslib
                         sb.Append(board[s]);
                     }
                     if (file == 7 && count_space > 0) sb.Append(count_space);
-                    if (file == 7 && row > 0) sb.Append("/");
+                    if (file == 7 && row > 0) sb.Append('/');
                 }
             }
             return sb.ToString();
@@ -164,7 +162,7 @@ namespace PonzianiComponents.Chesslib
         {
             string[] token = fen.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             string[] rows = token[0].Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             for (int i = 7; i >= 0; --i)
             {
                 foreach (char c in rows[i])
@@ -172,11 +170,11 @@ namespace PonzianiComponents.Chesslib
                     if (Char.IsLetter(c)) sb.Append(Char.IsUpper(c) ? Char.ToLower(c) : Char.ToUpper(c));
                     else sb.Append(c);
                 }
-                if (i > 0) sb.Append("/");
+                if (i > 0) sb.Append('/');
             }
-            sb.Append(" ");
+            sb.Append(' ');
             sb.Append(token[1][0] == 'w' ? 'b' : 'w');
-            sb.Append(" ");
+            sb.Append(' ');
             if (token[2][0] == '-') sb.Append("- ");
             else
             {
@@ -184,11 +182,11 @@ namespace PonzianiComponents.Chesslib
                 string s2 = "KQkq";
                 for (int i = 0; i < 4; ++i)
                 {
-                    if (token[2].IndexOf(s1[i]) >= 0) sb.Append(s2[i]);
+                    if (token[2].Contains(s1[i])) sb.Append(s2[i]);
                 }
-                sb.Append(" ");
+                sb.Append(' ');
             }
-            if (token[3][0] == '-') sb.Append("-");
+            if (token[3][0] == '-') sb.Append('-');
             else
             {
                 if (token[1][0] == 'w')
@@ -196,12 +194,12 @@ namespace PonzianiComponents.Chesslib
                 else
                     sb.Append(token[3].Replace('3', '6'));
             }
-            for (int i = 4; i < token.Length; ++i) sb.Append(" ").Append(token[i]);
+            for (int i = 4; i < token.Length; ++i) sb.Append(' ').Append(token[i]);
             return sb.ToString();
         }
 
-        internal static Dictionary<char, CastleFlag> CastleFlagMapping = new Dictionary<char, CastleFlag> { { 'K', CastleFlag.W0_0 }, { 'Q', CastleFlag.W0_0_0 }, { 'k', CastleFlag.B0_0 }, { 'q', CastleFlag.B0_0_0 }, { '-', CastleFlag.NONE } };
-        internal static Dictionary<char, Piece> PieceMapping = new Dictionary<char, Piece>() {
+        internal static Dictionary<char, CastleFlag> CastleFlagMapping = new() { { 'K', CastleFlag.W0_0 }, { 'Q', CastleFlag.W0_0_0 }, { 'k', CastleFlag.B0_0 }, { 'q', CastleFlag.B0_0_0 }, { '-', CastleFlag.NONE } };
+        internal static Dictionary<char, Piece> PieceMapping = new() {
             { 'Q', Piece.WQUEEN }, { 'R', Piece.WROOK }, { 'B', Piece.WBISHOP }, { 'N', Piece.WKNIGHT }, { 'P', Piece.WPAWN }, { 'K', Piece.WKING },
             { 'q', Piece.BQUEEN }, { 'r', Piece.BROOK }, { 'b', Piece.BBISHOP }, { 'n', Piece.BKNIGHT }, { 'p', Piece.BPAWN }, { 'k', Piece.BKING }};
     }

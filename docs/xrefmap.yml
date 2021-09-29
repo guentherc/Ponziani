@@ -553,6 +553,32 @@ references:
   commentId: T:PonzianiComponents.Chesslib.Eco
   fullName: PonzianiComponents.Chesslib.Eco
   nameWithType: Eco
+- uid: PonzianiComponents.Chesslib.Eco.Chapter
+  name: Chapter
+  href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_Chapter
+  commentId: P:PonzianiComponents.Chesslib.Eco.Chapter
+  fullName: PonzianiComponents.Chesslib.Eco.Chapter
+  nameWithType: Eco.Chapter
+- uid: PonzianiComponents.Chesslib.Eco.Chapter*
+  name: Chapter
+  href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_Chapter_
+  commentId: Overload:PonzianiComponents.Chesslib.Eco.Chapter
+  isSpec: "True"
+  fullName: PonzianiComponents.Chesslib.Eco.Chapter
+  nameWithType: Eco.Chapter
+- uid: PonzianiComponents.Chesslib.Eco.CompareTo(PonzianiComponents.Chesslib.Eco)
+  name: CompareTo(Eco)
+  href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_CompareTo_PonzianiComponents_Chesslib_Eco_
+  commentId: M:PonzianiComponents.Chesslib.Eco.CompareTo(PonzianiComponents.Chesslib.Eco)
+  fullName: PonzianiComponents.Chesslib.Eco.CompareTo(PonzianiComponents.Chesslib.Eco)
+  nameWithType: Eco.CompareTo(Eco)
+- uid: PonzianiComponents.Chesslib.Eco.CompareTo*
+  name: CompareTo
+  href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_CompareTo_
+  commentId: Overload:PonzianiComponents.Chesslib.Eco.CompareTo
+  isSpec: "True"
+  fullName: PonzianiComponents.Chesslib.Eco.CompareTo
+  nameWithType: Eco.CompareTo
 - uid: PonzianiComponents.Chesslib.Eco.Get(PonzianiComponents.Chesslib.Game)
   name: Get(Game)
   href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_Get_PonzianiComponents_Chesslib_Game_
@@ -565,6 +591,18 @@ references:
   commentId: M:PonzianiComponents.Chesslib.Eco.Get(System.String)
   fullName: PonzianiComponents.Chesslib.Eco.Get(System.String)
   nameWithType: Eco.Get(String)
+- uid: PonzianiComponents.Chesslib.Eco.Get(System.String,System.String)
+  name: Get(String, String)
+  href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_Get_System_String_System_String_
+  commentId: M:PonzianiComponents.Chesslib.Eco.Get(System.String,System.String)
+  fullName: PonzianiComponents.Chesslib.Eco.Get(System.String, System.String)
+  nameWithType: Eco.Get(String, String)
+- uid: PonzianiComponents.Chesslib.Eco.Get(System.UInt64)
+  name: Get(UInt64)
+  href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_Get_System_UInt64_
+  commentId: M:PonzianiComponents.Chesslib.Eco.Get(System.UInt64)
+  fullName: PonzianiComponents.Chesslib.Eco.Get(System.UInt64)
+  nameWithType: Eco.Get(UInt64)
 - uid: PonzianiComponents.Chesslib.Eco.Get*
   name: Get
   href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_Get_
@@ -572,6 +610,32 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Chesslib.Eco.Get
   nameWithType: Eco.Get
+- uid: PonzianiComponents.Chesslib.Eco.GetGame(PonzianiComponents.Chesslib.Eco)
+  name: GetGame(Eco)
+  href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_GetGame_PonzianiComponents_Chesslib_Eco_
+  commentId: M:PonzianiComponents.Chesslib.Eco.GetGame(PonzianiComponents.Chesslib.Eco)
+  fullName: PonzianiComponents.Chesslib.Eco.GetGame(PonzianiComponents.Chesslib.Eco)
+  nameWithType: Eco.GetGame(Eco)
+- uid: PonzianiComponents.Chesslib.Eco.GetGame*
+  name: GetGame
+  href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_GetGame_
+  commentId: Overload:PonzianiComponents.Chesslib.Eco.GetGame
+  isSpec: "True"
+  fullName: PonzianiComponents.Chesslib.Eco.GetGame
+  nameWithType: Eco.GetGame
+- uid: PonzianiComponents.Chesslib.Eco.GetID(PonzianiComponents.Chesslib.Eco)
+  name: GetID(Eco)
+  href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_GetID_PonzianiComponents_Chesslib_Eco_
+  commentId: M:PonzianiComponents.Chesslib.Eco.GetID(PonzianiComponents.Chesslib.Eco)
+  fullName: PonzianiComponents.Chesslib.Eco.GetID(PonzianiComponents.Chesslib.Eco)
+  nameWithType: Eco.GetID(Eco)
+- uid: PonzianiComponents.Chesslib.Eco.GetID*
+  name: GetID
+  href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_GetID_
+  commentId: Overload:PonzianiComponents.Chesslib.Eco.GetID
+  isSpec: "True"
+  fullName: PonzianiComponents.Chesslib.Eco.GetID
+  nameWithType: Eco.GetID
 - uid: PonzianiComponents.Chesslib.Eco.Key
   name: Key
   href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_Key
@@ -585,6 +649,64 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Chesslib.Eco.Key
   nameWithType: Eco.Key
+- uid: PonzianiComponents.Chesslib.Eco.Keyvariant(PonzianiComponents.Chesslib.Eco)
+  name: Keyvariant(Eco)
+  href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_Keyvariant_PonzianiComponents_Chesslib_Eco_
+  commentId: M:PonzianiComponents.Chesslib.Eco.Keyvariant(PonzianiComponents.Chesslib.Eco)
+  fullName: PonzianiComponents.Chesslib.Eco.Keyvariant(PonzianiComponents.Chesslib.Eco)
+  nameWithType: Eco.Keyvariant(Eco)
+- uid: PonzianiComponents.Chesslib.Eco.Keyvariant*
+  name: Keyvariant
+  href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_Keyvariant_
+  commentId: Overload:PonzianiComponents.Chesslib.Eco.Keyvariant
+  isSpec: "True"
+  fullName: PonzianiComponents.Chesslib.Eco.Keyvariant
+  nameWithType: Eco.Keyvariant
+- uid: PonzianiComponents.Chesslib.Eco.Keyvariants
+  name: Keyvariants()
+  href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_Keyvariants
+  commentId: M:PonzianiComponents.Chesslib.Eco.Keyvariants
+  fullName: PonzianiComponents.Chesslib.Eco.Keyvariants()
+  nameWithType: Eco.Keyvariants()
+- uid: PonzianiComponents.Chesslib.Eco.Keyvariants(System.Char,System.String,System.String)
+  name: Keyvariants(Char, String, String)
+  href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_Keyvariants_System_Char_System_String_System_String_
+  commentId: M:PonzianiComponents.Chesslib.Eco.Keyvariants(System.Char,System.String,System.String)
+  fullName: PonzianiComponents.Chesslib.Eco.Keyvariants(System.Char, System.String, System.String)
+  nameWithType: Eco.Keyvariants(Char, String, String)
+- uid: PonzianiComponents.Chesslib.Eco.Keyvariants*
+  name: Keyvariants
+  href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_Keyvariants_
+  commentId: Overload:PonzianiComponents.Chesslib.Eco.Keyvariants
+  isSpec: "True"
+  fullName: PonzianiComponents.Chesslib.Eco.Keyvariants
+  nameWithType: Eco.Keyvariants
+- uid: PonzianiComponents.Chesslib.Eco.MoveString
+  name: MoveString
+  href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_MoveString
+  commentId: P:PonzianiComponents.Chesslib.Eco.MoveString
+  fullName: PonzianiComponents.Chesslib.Eco.MoveString
+  nameWithType: Eco.MoveString
+- uid: PonzianiComponents.Chesslib.Eco.MoveString*
+  name: MoveString
+  href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_MoveString_
+  commentId: Overload:PonzianiComponents.Chesslib.Eco.MoveString
+  isSpec: "True"
+  fullName: PonzianiComponents.Chesslib.Eco.MoveString
+  nameWithType: Eco.MoveString
+- uid: PonzianiComponents.Chesslib.Eco.Subvariants(PonzianiComponents.Chesslib.Eco)
+  name: Subvariants(Eco)
+  href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_Subvariants_PonzianiComponents_Chesslib_Eco_
+  commentId: M:PonzianiComponents.Chesslib.Eco.Subvariants(PonzianiComponents.Chesslib.Eco)
+  fullName: PonzianiComponents.Chesslib.Eco.Subvariants(PonzianiComponents.Chesslib.Eco)
+  nameWithType: Eco.Subvariants(Eco)
+- uid: PonzianiComponents.Chesslib.Eco.Subvariants*
+  name: Subvariants
+  href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_Subvariants_
+  commentId: Overload:PonzianiComponents.Chesslib.Eco.Subvariants
+  isSpec: "True"
+  fullName: PonzianiComponents.Chesslib.Eco.Subvariants
+  nameWithType: Eco.Subvariants
 - uid: PonzianiComponents.Chesslib.Eco.Text
   name: Text
   href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_Text
@@ -598,6 +720,19 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Chesslib.Eco.Text
   nameWithType: Eco.Text
+- uid: PonzianiComponents.Chesslib.Eco.Volumes
+  name: Volumes
+  href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_Volumes
+  commentId: P:PonzianiComponents.Chesslib.Eco.Volumes
+  fullName: PonzianiComponents.Chesslib.Eco.Volumes
+  nameWithType: Eco.Volumes
+- uid: PonzianiComponents.Chesslib.Eco.Volumes*
+  name: Volumes
+  href: api/PonzianiComponents.Chesslib.Eco.html#PonzianiComponents_Chesslib_Eco_Volumes_
+  commentId: Overload:PonzianiComponents.Chesslib.Eco.Volumes
+  isSpec: "True"
+  fullName: PonzianiComponents.Chesslib.Eco.Volumes
+  nameWithType: Eco.Volumes
 - uid: PonzianiComponents.Chesslib.ExtendedMove
   name: ExtendedMove
   href: api/PonzianiComponents.Chesslib.ExtendedMove.html
@@ -2832,12 +2967,12 @@ references:
   commentId: T:PonzianiComponents.MoveSelectInfo
   fullName: PonzianiComponents.MoveSelectInfo
   nameWithType: MoveSelectInfo
-- uid: PonzianiComponents.MoveSelectInfo.#ctor(System.String,PonzianiComponents.Chesslib.Position,PonzianiComponents.Chesslib.ExtendedMove)
-  name: MoveSelectInfo(String, Position, ExtendedMove)
-  href: api/PonzianiComponents.MoveSelectInfo.html#PonzianiComponents_MoveSelectInfo__ctor_System_String_PonzianiComponents_Chesslib_Position_PonzianiComponents_Chesslib_ExtendedMove_
-  commentId: M:PonzianiComponents.MoveSelectInfo.#ctor(System.String,PonzianiComponents.Chesslib.Position,PonzianiComponents.Chesslib.ExtendedMove)
-  fullName: PonzianiComponents.MoveSelectInfo.MoveSelectInfo(System.String, PonzianiComponents.Chesslib.Position, PonzianiComponents.Chesslib.ExtendedMove)
-  nameWithType: MoveSelectInfo.MoveSelectInfo(String, Position, ExtendedMove)
+- uid: PonzianiComponents.MoveSelectInfo.#ctor(System.String,PonzianiComponents.Chesslib.Position,PonzianiComponents.Chesslib.ExtendedMove,PonzianiComponents.Chesslib.Game)
+  name: MoveSelectInfo(String, Position, ExtendedMove, Game)
+  href: api/PonzianiComponents.MoveSelectInfo.html#PonzianiComponents_MoveSelectInfo__ctor_System_String_PonzianiComponents_Chesslib_Position_PonzianiComponents_Chesslib_ExtendedMove_PonzianiComponents_Chesslib_Game_
+  commentId: M:PonzianiComponents.MoveSelectInfo.#ctor(System.String,PonzianiComponents.Chesslib.Position,PonzianiComponents.Chesslib.ExtendedMove,PonzianiComponents.Chesslib.Game)
+  fullName: PonzianiComponents.MoveSelectInfo.MoveSelectInfo(System.String, PonzianiComponents.Chesslib.Position, PonzianiComponents.Chesslib.ExtendedMove, PonzianiComponents.Chesslib.Game)
+  nameWithType: MoveSelectInfo.MoveSelectInfo(String, Position, ExtendedMove, Game)
 - uid: PonzianiComponents.MoveSelectInfo.#ctor*
   name: MoveSelectInfo
   href: api/PonzianiComponents.MoveSelectInfo.html#PonzianiComponents_MoveSelectInfo__ctor_
@@ -2845,6 +2980,19 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.MoveSelectInfo.MoveSelectInfo
   nameWithType: MoveSelectInfo.MoveSelectInfo
+- uid: PonzianiComponents.MoveSelectInfo.Game
+  name: Game
+  href: api/PonzianiComponents.MoveSelectInfo.html#PonzianiComponents_MoveSelectInfo_Game
+  commentId: P:PonzianiComponents.MoveSelectInfo.Game
+  fullName: PonzianiComponents.MoveSelectInfo.Game
+  nameWithType: MoveSelectInfo.Game
+- uid: PonzianiComponents.MoveSelectInfo.Game*
+  name: Game
+  href: api/PonzianiComponents.MoveSelectInfo.html#PonzianiComponents_MoveSelectInfo_Game_
+  commentId: Overload:PonzianiComponents.MoveSelectInfo.Game
+  isSpec: "True"
+  fullName: PonzianiComponents.MoveSelectInfo.Game
+  nameWithType: MoveSelectInfo.Game
 - uid: PonzianiComponents.MoveSelectInfo.Move
   name: Move
   href: api/PonzianiComponents.MoveSelectInfo.html#PonzianiComponents_MoveSelectInfo_Move

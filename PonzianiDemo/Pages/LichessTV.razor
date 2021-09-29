@@ -8,7 +8,7 @@
 		<EditForm Model="@this">
 			  <div class="form-group">
 				  <label for="inpChannel">Select channel</label>
-			<InputSelect Name="channels" ValueExpression="@(()=>selectedChannel)" ValueChanged="@((string value) => OnChannelSelected(value))" id="inpChannel">
+			<InputSelect Name="channels" ValueExpression="(()=>selectedChannel)" ValueChanged="((string value) => OnChannelSelected(value))" id="inpChannel">
 			@if (selectedChannel == null)
 				{
 				<option Name="channels" Value="off">Off</option>			

@@ -51,3 +51,8 @@ Game game = PGN.Parse(pgn, true, true, 1);
 <Scoresheet Game="game" Comments="true" Variations="true"></Game>
 
 ```
+
+## Acknowledgements ##
+- Chris Oakman: The rendering and default colors were inspired by resp. copied from [https://chessboardjs.com/](chessboard.js) (MIT License)
+- SCID: The ECO codes were taken from [http://scid.sourceforge.net/](SCID) (GPL v2)
+- .NET Foundation: HSL Color determination and manipulation was copied and adjusted from .Net Core source code (MIT License)

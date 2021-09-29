@@ -206,7 +206,7 @@ namespace PonzianiComponents
 
         private async Task SelectMoveAsync(int moveNumber, Side side)
         {
-            MoveSelectInfo msi = new(Id, Game.GetPosition(moveNumber, side), Game.GetMove(moveNumber, side));
+            MoveSelectInfo msi = new(Id, Game.GetPosition(moveNumber, side), Game.GetMove(moveNumber, side), Game);
             await OnMoveSelected.InvokeAsync(msi);
         }
 
@@ -268,11 +268,12 @@ namespace PonzianiComponents
 
     public class MoveSelectInfo
     {
-        public MoveSelectInfo(string scoresheetId, Position position, ExtendedMove move)
+        public MoveSelectInfo(string scoresheetId, Position position, ExtendedMove move, Game game)
         {
             ScoresheetId = scoresheetId;
             Position = position;
             Move = move;
+            Game = (Game)game.Clone();
         }
 
         /// <summary>
@@ -287,6 +288,10 @@ namespace PonzianiComponents
         /// The selected Move
         /// </summary>
         public ExtendedMove Move { set; get; }
+        /// <summary>
+        /// A game, created out of the variation, where the selected move belongs to
+        /// </summary>
+        public Game Game { set; get; }
     }
 
     internal static class StringExtensions

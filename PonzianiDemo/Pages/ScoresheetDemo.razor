@@ -2,7 +2,7 @@
 @using System.Globalization
 <h3>Scoresheet Demo</h3>
 
-<EditForm Model="@Model" OnValidSubmit="@HandleValidSubmit">
+<EditForm Model="@Model" OnValidSubmit="HandleValidSubmit">
 	<div class="form-group row">
 		<label class="col-sm-3 col-form-label" for="inpType">Select Sample PGN</label>
 		<div class="input-group col-sm-9">
@@ -20,12 +20,12 @@
 	<div class="row form-group">
 	<label class="col-sm-3 col-form-label">Or Upload PGN (only first game will be loaded)</label>
 	<div class="input-group col-sm-9">
-		<InputFile class="form-control-file" OnChange="@LoadFile" />
+		<InputFile class="form-control-file" OnChange="LoadFile" />
 	</div>
 	</div>
 	@if (game.Moves.Count > 0) {
 		<div class="form-group">
-		<Scoresheet Game="@game" OnMoveSelected="@OnMoveSelected" Mode="@DisplayMode" Type="@Model.NotationType" OtherAttributes="@OtherAttributes" Comments="@Model.Comments" 
+		<Scoresheet Game="@game" OnMoveSelected="OnMoveSelected" Mode="@DisplayMode" Type="@Model.NotationType" OtherAttributes="@OtherAttributes" Comments="@Model.Comments" 
 			Variations ="@Model.Variations" HierarchicalDisplay="@Model.HierarchicalDisplay" ColorCommentText="@Model.ColorCommentText"
 			ColorCommentBackground="@Model.ColorCommentBackground" ColorVariationBackground="@Model.ColorVariationBackground" Language="@Model.Language"/>
 		</div>

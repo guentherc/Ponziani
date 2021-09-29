@@ -551,7 +551,7 @@ namespace PonzianiComponents.Chesslib
         private static readonly Regex regexPGNWhitespace = new (@"\s{2,}", RegexOptions.Singleline | RegexOptions.Compiled);
         private static readonly Regex regexPGNMovenumberWithoutSpace = new (@"\d+\.[OQRBNKa-h]", RegexOptions.Compiled);
         private static readonly Regex regexPGNMovenumber = new (@"(\d+)\.", RegexOptions.Compiled);
-        internal static readonly Regex regexPGNMove = new (@"(?:([QRBNK])?([1-8a-h])?(x?)([a-h][1-8])(?:=([QRBN]))?[\+#!\?]*)|(?:O-O-O[\+#!\?]*)|(?:O-O[\+#!\?]*)");
+        internal static readonly Regex regexPGNMove = new (@"(?:([QRBNK])?([1-8a-h])?(x?)([a-h][1-8])(?:=([QRBN]))?[\+#!\?]*)|(?:O-O-O[\+#!\?]*)|(?:O-O[\+#!\?]*)", RegexOptions.Compiled);
         private static readonly Regex regexReplaceLineBreakTimeSpan = new (@"\:\r?\n^(\d)", RegexOptions.Multiline | RegexOptions.Compiled);
         private static readonly Regex regexReplaceLineBreak = new (@"\r?\n^", RegexOptions.Multiline | RegexOptions.Compiled);
 
