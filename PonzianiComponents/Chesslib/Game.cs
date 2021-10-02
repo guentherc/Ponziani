@@ -346,7 +346,7 @@ namespace PonzianiComponents.Chesslib
             if (Position.DrawPlyCount < 8) return false;
             ulong checkHash = hashes.Last();
             int repetitions = 0;
-            for (int i = hashes.Count - Position.DrawPlyCount; i < hashes.Count; ++i)
+            for (int i = Math.Max(0, hashes.Count - Position.DrawPlyCount); i < hashes.Count; ++i)
             {
                 if (hashes[i] == checkHash) ++repetitions;
             }

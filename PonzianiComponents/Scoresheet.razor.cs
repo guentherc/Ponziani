@@ -128,6 +128,11 @@ namespace PonzianiComponents
         [Parameter]
         public string Language { set; get; } = "en";
         /// <summary>
+        /// Minimal number of rows shown in tabular display even independent of number of existing moves
+        /// </summary>
+        [Parameter]
+        public int MinimalRowCount { set; get; } = 0;
+        /// <summary>
         /// <para>Other HTML Attributes, which are applied to the root element of the rendered scoresheet. Depending
         /// on <see cref="Mode"/> this is either a &lt;table&gt; or a &lt;div&gt; </para>
         /// <para>With this mechanism it's possible e.g. to set the width of the scoresheet (in inline mode)</para>
@@ -181,7 +186,7 @@ namespace PonzianiComponents
                 module = await js.InvokeAsync<IJSObjectReference>("import", "./_content/PonzianiComponents/ponziani.js");
             }
             await StyleAsync();
-            if (!firstRender && module != null && _tbody.Context != null && Mode == DisplayMode.TABULAR && scrolledMoveNumber != Game.Position.MoveNumber)
+            if (!firstRender && module != null && _tbody.Context != null && Mode == DisplayMode.TABULAR && scrolledMoveNumber != Game.Position.MoveNumber && (Game.Moves.Count / 2) > MinimalRowCount)
             {
                 await module.InvokeVoidAsync("scrollToBottom", new object[] { _tbody });
                 scrolledMoveNumber = Game.Position.MoveNumber;

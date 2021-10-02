@@ -25,6 +25,7 @@ namespace PonzianiDemo.Pages
         public string ColorCommentBackground { set; get; }
         public string ColorVariationBackground { set; get; }
         public string Language { set; get; }
+        public int MinimumRowCount { set; get; } = 20;
     }
 
     public partial class ScoresheetDemo

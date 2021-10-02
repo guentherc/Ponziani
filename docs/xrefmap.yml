@@ -3192,6 +3192,19 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Scoresheet.Language
   nameWithType: Scoresheet.Language
+- uid: PonzianiComponents.Scoresheet.MinimalRowCount
+  name: MinimalRowCount
+  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_MinimalRowCount
+  commentId: P:PonzianiComponents.Scoresheet.MinimalRowCount
+  fullName: PonzianiComponents.Scoresheet.MinimalRowCount
+  nameWithType: Scoresheet.MinimalRowCount
+- uid: PonzianiComponents.Scoresheet.MinimalRowCount*
+  name: MinimalRowCount
+  href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_MinimalRowCount_
+  commentId: Overload:PonzianiComponents.Scoresheet.MinimalRowCount
+  isSpec: "True"
+  fullName: PonzianiComponents.Scoresheet.MinimalRowCount
+  nameWithType: Scoresheet.MinimalRowCount
 - uid: PonzianiComponents.Scoresheet.Mode
   name: Mode
   href: api/PonzianiComponents.Scoresheet.html#PonzianiComponents_Scoresheet_Mode

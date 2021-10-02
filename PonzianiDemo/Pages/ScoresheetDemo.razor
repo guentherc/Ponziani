@@ -23,10 +23,10 @@
 		<InputFile class="form-control-file" OnChange="LoadFile" />
 	</div>
 	</div>
-	@if (game.Moves.Count > 0) {
+	@if (game.Moves.Count > 0 || Model.MinimumRowCount > 0) {
 		<div class="form-group">
 		<Scoresheet Game="@game" OnMoveSelected="OnMoveSelected" Mode="@DisplayMode" Type="@Model.NotationType" OtherAttributes="@OtherAttributes" Comments="@Model.Comments" 
-			Variations ="@Model.Variations" HierarchicalDisplay="@Model.HierarchicalDisplay" ColorCommentText="@Model.ColorCommentText"
+			Variations ="@Model.Variations" HierarchicalDisplay="@Model.HierarchicalDisplay" ColorCommentText="@Model.ColorCommentText" MinimalRowCount="@Model.MinimumRowCount"
 			ColorCommentBackground="@Model.ColorCommentBackground" ColorVariationBackground="@Model.ColorVariationBackground" Language="@Model.Language"/>
 		</div>
 	<div class="form-group">
@@ -111,6 +111,14 @@
 	</div>
 	}
 }
+ <div class="row form-group">
+  <label class="col-sm-3 col-form-label">
+   Minimum Row Count:
+  </label>
+  <div class="input-group col-sm-9">
+  <InputNumber class="form-control" @bind-Value="Model.MinimumRowCount" />
+  </div>
+ </div>
  <div class="row form-group">
   <label class="col-sm-3 col-form-label">
    Other Attributes:
