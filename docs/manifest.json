@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chessboard.html",
-          "hash": "5yPRMg0LYlivaQA62+2xqb2ihTcfkmJCKCqR44Zm3bc="
+          "hash": "DDFBrr4AIy6adbf2vZ9kqLR1ReuNBLFsaFg6I1m9uoY="
         }
       },
       "is_incremental": true,
@@ -420,10 +420,10 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "hyU5uAdDjOtIxhrcI5RNQ2hO00Dj3uWck1p4/ifn4zI="
+          "hash": "06q8nv2E/HireGF3MeX/+gqhv1F7xkA9orHaGvk8cD4="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -452,7 +452,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 3,
-          "skipped_file_count": 2
+          "skipped_file_count": 3
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,

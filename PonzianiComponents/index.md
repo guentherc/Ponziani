@@ -21,7 +21,7 @@ PGN parsing and ECO classification
 [GPL-3.0](../LICENSE)
 
 ## Demos ##
-[https://ponziani.ddns.net/](https://ponziani.ddns.net/)
+[https://ponziani.de/](https://ponziani.de/)
 
 ## Usage ##
 Add a using reference in your **_Imports.razor**.
