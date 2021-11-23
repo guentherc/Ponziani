@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <Version>0.2.4</Version>
+    <TargetFramework>net6.0</TargetFramework>
+    <Version>0.3.0</Version>
     <Copyright>Copyright (c) Christian Günther 2021</Copyright>
     <Authors>Christian Günther</Authors>
     <Company />
@@ -11,17 +11,15 @@
     <PackageLicenseFile></PackageLicenseFile>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageTags>blazor blazor-component chess</PackageTags>
-    <Description>.Net 5 based library offering chess-related blazor components and functions for chess programming.</Description>
+    <Description>.Net 6 based library offering chess-related blazor components and functions for chess programming.</Description>
     <PackageProjectUrl>https://guentherc.github.io/Ponziani/</PackageProjectUrl>
     <PackageId>PonzianiComponents</PackageId>
     <Product>Ponziani</Product>
     <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.2.4.0</AssemblyVersion>
-    <FileVersion>0.2.4.0</FileVersion>
-    <PackageReleaseNotes>Code cleanup
-Enhanced ECO classification
-Empty rows in tabular display</PackageReleaseNotes>
+    <AssemblyVersion>0.3.0.0</AssemblyVersion>
+    <FileVersion>0.3.0.0</FileVersion>
+    <PackageReleaseNotes>Upgrade to .Net 6</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -34,11 +32,11 @@ Empty rows in tabular display</PackageReleaseNotes>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="docfx.console" Version="2.58.0">
+    <PackageReference Include="docfx.console" Version="2.58.9">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
