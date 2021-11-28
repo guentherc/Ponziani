@@ -1,0 +1,33 @@
+﻿@page "/engine"
+<h3>Engine</h3>
+
+<EditForm Model="@Model">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="UCI Command" aria-label="UCI Command" aria-describedby="btn_send" @bind="Model.Cmd">
+        <button class="btn btn-outline-secondary" type="button" id="btn_send" @onclick="SendToEngineAsync">Send</button>
+    </div>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Analyze" aria-label="Analyze" aria-describedby="btn_analyze" @bind="Model.Fen">
+        <button class="btn btn-outline-secondary" type="button" id="btn_analyze" @onclick="AnalyzeAsync">Analyze</button>
+    </div>
+    <div class="row form-group">
+        <label class="col-sm-3 col-form-label">
+            Number of Lines:
+        </label>
+        <div class="input-group col-sm-9">
+            <InputNumber class="form-control" @bind-Value="Model.NumberOfLines" />
+        </div>
+    </div>
+    	<div class="form-check">
+		<InputCheckbox class="form-check-input" @bind-Value="Model.ShowLog" />
+		<label>
+			Show Engine Log:
+		</label>
+	</div>
+</EditForm>
+
+<Engine ShowLog="Model.ShowLog" @ref="engine" NumberOfLines="Model.NumberOfLines"></Engine>
+
+@code {
+
+}

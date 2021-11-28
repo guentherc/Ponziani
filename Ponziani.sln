@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31515.178
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PonzianiComponents", "PonzianiComponents\PonzianiComponents.csproj", "{9F07A870-54FC-4CCA-860B-582D150620E9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PonzianiDemo", "PonzianiDemo\PonzianiDemo.csproj", "{372C704D-6622-4B62-BE16-E97D9DD3AE80}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PonzianiComponentsTest", "PonzianiComponentsTest\PonzianiComponentsTest.csproj", "{2B304448-FFFE-43C3-866F-23E3563399B9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PonzianiComponentsDemo.Server", "PonzianiComponentsDemo\Server\PonzianiComponentsDemo.Server.csproj", "{E2D16E32-8192-4088-96D8-CB87FE86CCE3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PonzianiComponentsDemo.Client", "PonzianiComponentsDemo\Client\PonzianiComponentsDemo.Client.csproj", "{A7B26FA3-EC6D-476C-BE48-F4090569B4E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +21,18 @@ Global
 		{9F07A870-54FC-4CCA-860B-582D150620E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F07A870-54FC-4CCA-860B-582D150620E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F07A870-54FC-4CCA-860B-582D150620E9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{372C704D-6622-4B62-BE16-E97D9DD3AE80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{372C704D-6622-4B62-BE16-E97D9DD3AE80}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{372C704D-6622-4B62-BE16-E97D9DD3AE80}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{372C704D-6622-4B62-BE16-E97D9DD3AE80}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2B304448-FFFE-43C3-866F-23E3563399B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2B304448-FFFE-43C3-866F-23E3563399B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B304448-FFFE-43C3-866F-23E3563399B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B304448-FFFE-43C3-866F-23E3563399B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2D16E32-8192-4088-96D8-CB87FE86CCE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2D16E32-8192-4088-96D8-CB87FE86CCE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2D16E32-8192-4088-96D8-CB87FE86CCE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2D16E32-8192-4088-96D8-CB87FE86CCE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7B26FA3-EC6D-476C-BE48-F4090569B4E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7B26FA3-EC6D-476C-BE48-F4090569B4E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7B26FA3-EC6D-476C-BE48-F4090569B4E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7B26FA3-EC6D-476C-BE48-F4090569B4E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

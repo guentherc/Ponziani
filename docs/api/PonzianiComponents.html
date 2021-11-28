@@ -86,6 +86,18 @@ and allows to use this functionality without the need to interop with javascript
 <li>It has chess knowledge and therefore provides legal move check out of the box</li>
 </ul>
 </section>
+      <h4><a class="xref" href="PonzianiComponents.Engine.html">Engine</a></h4>
+      <section><p>Blazor component wrapping an UCI compliant WebAssembly Chess Engine</p>
+<p>The component uses the WebAssembly port of Nathan Rugg ((<a href="https://github.com/nmrugg/stockfish.js">https://github.com/nmrugg/stockfish.js</a>) Stockfish 14.1 </p>
+<p>NOTE: Stockfish.js 14.1 reqiures some of the latest features and does not work in every browser.<br>
+As it uses the latest WebAssembly threading proposal. Requires these HTTP headers on the top level response:
+<pre><code>Cross-Origin-Embedder-Policy: require-corp
+Cross-Origin-Opener-Policy: same-origin</code></pre>
+And the following header on the included files:
+<pre><code> 
+Cross-Origin-Embedder-Policy: require-corp</code></pre>
+</p>
+</section>
       <h4><a class="xref" href="PonzianiComponents.MovePlayedInfo.html">MovePlayedInfo</a></h4>
       <section><p>Callback information provided by <a class="xref" href="PonzianiComponents.Chessboard.html#PonzianiComponents_Chessboard_OnMovePlayed">OnMovePlayed</a></p>
 </section>
@@ -101,8 +113,16 @@ and allows to use this functionality without the need to interop with javascript
       <h4><a class="xref" href="PonzianiComponents.SetupChangedInfo.html">SetupChangedInfo</a></h4>
       <section><p>Callback information provided by <a class="xref" href="PonzianiComponents.Chessboard.html#PonzianiComponents_Chessboard_OnSetupChanged">OnSetupChanged</a></p>
 </section>
+    <h3 id="structs">Structs
+  </h3>
+      <h4><a class="xref" href="PonzianiComponents.Info.html">Info</a></h4>
+      <section></section>
     <h3 id="enums">Enums
   </h3>
+      <h4><a class="xref" href="PonzianiComponents.Info.EvaluationType.html">Info.EvaluationType</a></h4>
+      <section><p>Evaluation Type</p>
+<p><a class="xref" href="PonzianiComponents.Info.html#PonzianiComponents_Info_Evaluation">Evaluation</a> might not always be exact. Sometimes engines output a lower or a upper bound only</p>
+</section>
       <h4><a class="xref" href="PonzianiComponents.Scoresheet.DisplayMode.html">Scoresheet.DisplayMode</a></h4>
       <section><p>Display Mode for Move List</p>
 </section>

@@ -281,6 +281,42 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Engine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Engine.html",
+          "hash": "GCSoyvEisNsx4vA+3jMY6JT5LZzycL+3kwD/urf7YLc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Info.EvaluationType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Info.EvaluationType.html",
+          "hash": "1044rplb6jq+JgWk37LSgCQvEHNtHim4mHriMLCfNbE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Info.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Info.html",
+          "hash": "kkaVp1RnBZnPW+Hafq/P0lY3ANwpXuViwGjFMJ+jhbs="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/PonzianiComponents.MovePlayedInfo.yml",
       "output": {
         ".html": {
@@ -357,7 +393,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.html",
-          "hash": "d53E7g9RdxL9q/Rg3W+z7HsulAsq9h3DUyhpM2cHpW8="
+          "hash": "IxgztfXhphxWal0p4qTPk6pxAzAWbHucENXexZ2+Io8="
         }
       },
       "is_incremental": true,
@@ -381,7 +417,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "WmiMfDvyWcedeI7d48o38ElncFnD0N0sYO3vPNyfSVk="
+          "hash": "CJOwtE2AMrKhibNFGKAH7yyBZwqLBkFNLy1fBr9p6BQ="
         }
       },
       "is_incremental": false,
@@ -420,10 +456,10 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "aEREDnwLJDTRmqVhXB62vMDhUN0wrMXY/9EsmVw/7YA="
+          "hash": "Zu6Mto2r9daanQ0TUAD8WxDB43JEY5oWXBfDrSrfRLQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -452,13 +488,13 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 3,
-          "skipped_file_count": 2
+          "skipped_file_count": 3
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 30,
-          "skipped_file_count": 30
+          "total_file_count": 33,
+          "skipped_file_count": 33
         },
         "TocDocumentProcessor": {
           "can_incremental": false,

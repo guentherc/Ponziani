@@ -842,10 +842,10 @@ namespace PonzianiComponents.Chesslib
             {
                 is960 = is960 || "KQkq".IndexOf(c) < 0;
             }
-            is960 = is960 || (v.Contains("K", StringComparison.CurrentCulture) && (GetPiece(Square.H1) != Piece.WROOK || GetPiece(Square.E1) != Piece.WKING));
-            is960 = is960 || (v.Contains("k", StringComparison.CurrentCulture) && (GetPiece(Square.H8) != Piece.BROOK || GetPiece(Square.E8) != Piece.BKING));
-            is960 = is960 || (v.Contains("Q", StringComparison.CurrentCulture) && (GetPiece(Square.A1) != Piece.WROOK || GetPiece(Square.E1) != Piece.WKING));
-            is960 = is960 || (v.Contains("q", StringComparison.CurrentCulture) && (GetPiece(Square.A8) != Piece.BROOK || GetPiece(Square.E8) != Piece.BKING));
+            is960 = is960 || (v.Contains('K', StringComparison.CurrentCulture) && (GetPiece(Square.H1) != Piece.WROOK || GetPiece(Square.E1) != Piece.WKING));
+            is960 = is960 || (v.Contains('k', StringComparison.CurrentCulture) && (GetPiece(Square.H8) != Piece.BROOK || GetPiece(Square.E8) != Piece.BKING));
+            is960 = is960 || (v.Contains('Q', StringComparison.CurrentCulture) && (GetPiece(Square.A1) != Piece.WROOK || GetPiece(Square.E1) != Piece.WKING));
+            is960 = is960 || (v.Contains('q', StringComparison.CurrentCulture) && (GetPiece(Square.A8) != Piece.BROOK || GetPiece(Square.E8) != Piece.BKING));
             Array.Fill(castleableRooks, Square.OUTSIDE);
             if (is960)
             {

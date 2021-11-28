@@ -17,3 +17,16 @@ export function setCSSProperty(el, selector, prop, value) {
     }
     el.style.setProperty(prop, value);
 }
+
+export function initEngine(cb) {
+    console.log("initEngine");
+    window.engine = new Worker("./_content/PonzianiComponents/stockfish.js");
+    window.engine.onmessage = function (e) {
+        cb.invokeMethodAsync('EngineMessageAsync', e.data);
+    };
+}
+
+export function send(message) {
+    console.log("send " + message);
+    window.engine.postMessage(message);
+}

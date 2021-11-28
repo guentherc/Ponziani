@@ -1,0 +1,140 @@
+﻿@page "/scoresheet"
+@using System.Globalization
+<h3>Scoresheet Demo</h3>
+
+<EditForm Model="@Model" OnValidSubmit="HandleValidSubmit">
+	<div class="form-group row">
+		<label class="col-sm-3 col-form-label" for="inpType">Select Sample PGN</label>
+		<div class="input-group col-sm-9">
+		<InputSelect class="form-control" Name="pgnkey" @bind-Value="Model.PGNKey" id="inpPgnKey">
+			@foreach (var t in SampleData.PGNSamples.Keys)
+			{
+	   <option Name="pgnkey" Value="@t">@t</option>
+			}
+		</InputSelect>
+		<div class="input-group-append">
+  		<button type="submit">Load</button>
+		</div>
+		</div>
+	</div>
+	<div class="row form-group">
+	<label class="col-sm-3 col-form-label">Or Upload PGN (only first game will be loaded)</label>
+	<div class="input-group col-sm-9">
+		<InputFile class="form-control-file" OnChange="LoadFile" />
+	</div>
+	</div>
+	@if (game.Moves.Count > 0 || Model.MinimumRowCount > 0) {
+		<div class="form-group">
+		<Scoresheet Game="@game" OnMoveSelected="OnMoveSelected" Mode="@DisplayMode" Type="@Model.NotationType" OtherAttributes="@OtherAttributes" Comments="@Model.Comments" 
+			Variations ="@Model.Variations" HierarchicalDisplay="@Model.HierarchicalDisplay" ColorCommentText="@Model.ColorCommentText" MinimalRowCount="@Model.MinimumRowCount"
+			ColorCommentBackground="@Model.ColorCommentBackground" ColorVariationBackground="@Model.ColorVariationBackground" Language="@Model.Language"/>
+		</div>
+	<div class="form-group">
+	<div class="form-check">
+		<InputCheckbox class="form-check-input" @bind-Value="Model.InlineMode" />
+		<label>
+			Inline Mode:
+		</label>
+	</div>
+	<div class="form-check">
+		<InputCheckbox class="form-check-input" @bind-Value="Model.Comments" />
+		<label>
+			Show Comments:
+		</label>
+	</div>
+	<div class="form-check">
+		<InputCheckbox class="form-check-input" @bind-Value="Model.Variations" />
+		<label>
+			Show Variations:
+		</label>
+	</div>
+		<div class="form-check">
+		<InputCheckbox class="form-check-input" @bind-Value="Model.HierarchicalDisplay" />
+		<label>
+			Hierarchical Display:
+		</label>
+	</div>
+	</div>
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label" for="inpType">Select Type</label>
+		<div class="input-group col-sm-9">
+		<InputSelect class="form-control" Name="type" @bind-Value="Model.NotationType" id="inpType">
+			@foreach (var t in Enum.GetNames(typeof(Scoresheet.NotationType)))
+			{
+	   <option Name="type" Value="@t">@t</option>
+			}
+  </InputSelect>
+  </div>
+ </div>
+ 	<div class="row form-group">
+		<label class="col-sm-3 col-form-label" for="inpLang">Language</label>
+		<div class="input-group col-sm-9">
+		<InputSelect class="form-control"  Name="langu" @bind-Value="Model.Language" id="inpLang">
+			@foreach (var t in Chess.SupportedLanguages)
+			{
+	   <option Name="langu" Value="@t">@($"{t} ({CultureInfo.GetCultureInfo(t).ThreeLetterISOLanguageName})")</option>
+			}
+		</InputSelect>
+		</div>
+	</div>
+	@if (Model.Comments && (Model.InlineMode || Model.Variations))
+	{
+		<div class="row form-group">
+		<label class="col-sm-3 col-form-label">
+			Color Comment Text (in inline mode or within Variations):
+		</label>
+		<div class="input-group col-sm-9">
+		<input class="form-control" type="color" @bind-value="Model.ColorCommentText"/>
+	</div>
+	</div>
+	}
+ 	@if (Model.Comments && (!Model.InlineMode))
+	{
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label">
+			Color Comment Background:
+		</label>
+		<div class="input-group col-sm-9">
+		<input class="form-control" type="color" @bind-value="Model.ColorCommentBackground"/>
+	</div>
+	</div>
+	}
+	@if (Model.Variations && (!Model.InlineMode || Model.HierarchicalDisplay))
+	{
+	<div class="row form-group">
+		<label class="col-sm-3 col-form-label">
+			Color Variation Background:
+		</label>
+		<div class="input-group col-sm-9">
+		<input class="form-control" type="color" @bind-value="Model.ColorVariationBackground"/>
+	</div>
+	</div>
+	}
+}
+ <div class="row form-group">
+  <label class="col-sm-3 col-form-label">
+   Minimum Row Count:
+  </label>
+  <div class="input-group col-sm-9">
+  <InputNumber class="form-control" @bind-Value="Model.MinimumRowCount" />
+  </div>
+ </div>
+ <div class="row form-group">
+  <label class="col-sm-3 col-form-label">
+   Other Attributes:
+  </label>
+  <div class="input-group col-sm-9">
+  <InputText class="form-control" @bind-Value="Model.OtherAttributes" />
+  </div>
+ </div>
+</EditForm>
+
+<div class="alert alert-success" role="alert">
+	@EventInfoText
+</div>
+
+
+@code {
+
+}
+
