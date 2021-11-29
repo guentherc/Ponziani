@@ -16,9 +16,16 @@ namespace PonzianiComponents
         public LogEntryType Type { get; init; }
         public string Message { get; init; }
     }
-
+    /// <summary>
+    /// Information, sent by the engine during analyzing
+    /// </summary>
     public struct Info
     {
+        /// <summary>
+        /// Determines the MultiPV (resp. line) Index from an engine's info message
+        /// </summary>
+        /// <param name="message">The info message issued by the engine</param>
+        /// <returns>the 0-based line index (multipv 1 will give 0)</returns>
         public static int Index(string message)
         {
             int index = message.IndexOf("multipv");
@@ -26,6 +33,11 @@ namespace PonzianiComponents
             string[] token = message.Substring(index + 8).Split();
             return int.Parse(token[0]) - 1;
         }
+        /// <summary>
+        /// Updates an existing Info objekt from a new info message
+        /// </summary>
+        /// <param name="message">The info message issued by the engine</param>
+        /// <returns>true, if new evaluation information was part of the info message</returns>
         public bool Update(string message)
         {
             bool result = false;
@@ -217,9 +229,15 @@ namespace PonzianiComponents
 #pragma warning restore CS4014
             }
         }
-
+        /// <summary>
+        /// Engine name (only available after engine has been initialized)
+        /// </summary>
         public string Name { get; private set; } = string.Empty;
-
+        /// <summary>
+        /// Start analysing a position
+        /// </summary>
+        /// <param name="fen">Position to be analyzed in FEN representation</param>
+        /// <returns></returns>
         public async Task<bool> StartAnalysisAsync(string fen)
         {
             if (State == EngineState.READY)
@@ -249,10 +267,11 @@ namespace PonzianiComponents
 
         private string ScoreText(int index)
         {
-            if (Infos[index].Type == Info.EvaluationType.Exact) return $"{Infos[index].Evaluation / 100.0}";
-            else if (Infos[index].Type == Info.EvaluationType.Mate) return $"#{Infos[index].MateDistance }";
-            else if (Infos[index].Type == Info.EvaluationType.Upperbound) return $"<= {Infos[index].Evaluation / 100.0}";
-            else if (Infos[index].Type == Info.EvaluationType.Lowerbound) return $">= {Infos[index].Evaluation / 100.0}";
+            int factor = position == null || position.SideToMove == Side.WHITE ? 1 : -1;
+            if (Infos[index].Type == Info.EvaluationType.Exact) return $"{factor * Infos[index].Evaluation / 100.0}";
+            else if (Infos[index].Type == Info.EvaluationType.Mate) return $"#{factor * Infos[index].MateDistance }";
+            else if (Infos[index].Type == Info.EvaluationType.Upperbound) return factor > 1 ? $"<= {Infos[index].Evaluation / 100.0}" : $">= {-Infos[index].Evaluation / 100.0}";
+            else if (Infos[index].Type == Info.EvaluationType.Lowerbound) return factor > 1 ? $">= {Infos[index].Evaluation / 100.0}" : $"<= {-Infos[index].Evaluation / 100.0}";
             else return String.Empty;
         }
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -299,7 +318,12 @@ namespace PonzianiComponents
             }
             if (ShowLog) StateHasChanged();
         }
-
+        /// <summary>
+        /// Send UCI message to the engine process
+        /// <para>Attention: Sending an incorrect or invalid UCI message might break the engine process</para>
+        /// </summary>
+        /// <param name="command">UCI message</param>
+        /// <returns></returns>
         public async Task SendAsync(string command)
         {
             Log.Add(new LogEntry { Type = LogEntryType.EngineInput, Message = command });
