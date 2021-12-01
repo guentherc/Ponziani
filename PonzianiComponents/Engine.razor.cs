@@ -9,13 +9,6 @@ using System.Threading.Tasks;
 
 namespace PonzianiComponents
 {
-    internal enum LogEntryType { EngineOutput, EngineInput };
-
-    internal record LogEntry
-    {
-        public LogEntryType Type { get; init; }
-        public string Message { get; init; }
-    }
     /// <summary>
     /// Information, sent by the engine during analyzing
     /// </summary>
@@ -223,6 +216,7 @@ namespace PonzianiComponents
                         SendAsync($"stop");
                         SendAsync($"setoption name MultiPV value {_numberOfLines}");
                         SendAsync($"go");
+                        State = EngineState.THINKING;
                     }
 
                 }
@@ -252,15 +246,19 @@ namespace PonzianiComponents
             else return false;
         }
 
+        /// <summary>
+        /// Other HTML Attributes, which are applied to the root element of the rendered scoresheet.
+        /// </summary>
+        [Parameter(CaptureUnmatchedValues = true)]
+        public Dictionary<string, object> OtherAttributes { get; set; }
 
         private IJSObjectReference module;
         private DotNetObjectReference<Engine> objRef;
 
-        private readonly List<LogEntry> Log = new();
-        private string LogText => String.Join(Environment.NewLine, Log.Select((e) => e.Type == LogEntryType.EngineOutput ? "<= " + e.Message : "=> " + e.Message).Reverse());
-
         private enum EngineState { OFF, INITIALIZING, READY, THINKING }
         private EngineState State = EngineState.OFF;
+
+        private EngineLog Log;
 
         private int _numberOfLines = 1;
         private List<Info> Infos = new List<Info>() { new Info() };
@@ -298,7 +296,6 @@ namespace PonzianiComponents
                     objRef = DotNetObjectReference.Create(this);
                     State = EngineState.INITIALIZING;
                     await module.InvokeVoidAsync("initEngine", new object[] { objRef });
-                    await SendAsync("uci");
                 }
             }
         }
@@ -306,7 +303,6 @@ namespace PonzianiComponents
         [JSInvokable]
         public async Task EngineMessageAsync(string msg)
         {
-            Log.Add(new LogEntry { Type = LogEntryType.EngineOutput, Message = msg });
             if (State == EngineState.INITIALIZING && msg == "uciok")
             {
                 await SendAsync($"setoption name MultiPV value {_numberOfLines}");
@@ -321,20 +317,19 @@ namespace PonzianiComponents
                 Name = msg.Substring(8);
                 StateHasChanged();
             }
-            else if (State == EngineState.THINKING && msg.StartsWith("info ") && !msg.StartsWith("info string"))
+            else if (msg.StartsWith("info ") && !msg.StartsWith("info string"))
             {
                 int index = Info.Index(msg);
                 Info info = Infos[index];
                 bool evaluationUpdate = info.Update(msg);
                 Infos[index] = info;
                 await OnEngineInfo.InvokeAsync(info);
-                if (evaluationUpdate && !ShowLog) StateHasChanged();
+                if (evaluationUpdate) StateHasChanged();
             }
             else if (State == EngineState.THINKING && msg.StartsWith("bestmove"))
             {
                 State = EngineState.READY;
             }
-            if (ShowLog) StateHasChanged();
         }
         /// <summary>
         /// Send UCI message to the engine process
@@ -344,7 +339,7 @@ namespace PonzianiComponents
         /// <returns></returns>
         public async Task SendAsync(string command)
         {
-            Log.Add(new LogEntry { Type = LogEntryType.EngineInput, Message = command });
+            if (Log != null) Log.AddEngineInputMessage(command);
             await module.InvokeVoidAsync("send", new object[] { command });
         }
 

@@ -28,6 +28,7 @@ export function initEngine(cb) {
                 cb.invokeMethodAsync('EngineMessageAsync', e.data);
             }
         };
+        send("uci");
     }
     window.engine.callbacks.push(cb);
 }

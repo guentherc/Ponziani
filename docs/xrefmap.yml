@@ -2961,6 +2961,19 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Engine.OnEngineInfo
   nameWithType: Engine.OnEngineInfo
+- uid: PonzianiComponents.Engine.OtherAttributes
+  name: OtherAttributes
+  href: api/PonzianiComponents.Engine.html#PonzianiComponents_Engine_OtherAttributes
+  commentId: P:PonzianiComponents.Engine.OtherAttributes
+  fullName: PonzianiComponents.Engine.OtherAttributes
+  nameWithType: Engine.OtherAttributes
+- uid: PonzianiComponents.Engine.OtherAttributes*
+  name: OtherAttributes
+  href: api/PonzianiComponents.Engine.html#PonzianiComponents_Engine_OtherAttributes_
+  commentId: Overload:PonzianiComponents.Engine.OtherAttributes
+  isSpec: "True"
+  fullName: PonzianiComponents.Engine.OtherAttributes
+  nameWithType: Engine.OtherAttributes
 - uid: PonzianiComponents.Engine.SendAsync(System.String)
   name: SendAsync(String)
   href: api/PonzianiComponents.Engine.html#PonzianiComponents_Engine_SendAsync_System_String_
@@ -3000,6 +3013,38 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Engine.StartAnalysisAsync
   nameWithType: Engine.StartAnalysisAsync
+- uid: PonzianiComponents.EngineLog
+  name: EngineLog
+  href: api/PonzianiComponents.EngineLog.html
+  commentId: T:PonzianiComponents.EngineLog
+  fullName: PonzianiComponents.EngineLog
+  nameWithType: EngineLog
+- uid: PonzianiComponents.EngineLog.EngineMessageAsync(System.String)
+  name: EngineMessageAsync(String)
+  href: api/PonzianiComponents.EngineLog.html#PonzianiComponents_EngineLog_EngineMessageAsync_System_String_
+  commentId: M:PonzianiComponents.EngineLog.EngineMessageAsync(System.String)
+  fullName: PonzianiComponents.EngineLog.EngineMessageAsync(System.String)
+  nameWithType: EngineLog.EngineMessageAsync(String)
+- uid: PonzianiComponents.EngineLog.EngineMessageAsync*
+  name: EngineMessageAsync
+  href: api/PonzianiComponents.EngineLog.html#PonzianiComponents_EngineLog_EngineMessageAsync_
+  commentId: Overload:PonzianiComponents.EngineLog.EngineMessageAsync
+  isSpec: "True"
+  fullName: PonzianiComponents.EngineLog.EngineMessageAsync
+  nameWithType: EngineLog.EngineMessageAsync
+- uid: PonzianiComponents.EngineLog.OnAfterRenderAsync(System.Boolean)
+  name: OnAfterRenderAsync(Boolean)
+  href: api/PonzianiComponents.EngineLog.html#PonzianiComponents_EngineLog_OnAfterRenderAsync_System_Boolean_
+  commentId: M:PonzianiComponents.EngineLog.OnAfterRenderAsync(System.Boolean)
+  fullName: PonzianiComponents.EngineLog.OnAfterRenderAsync(System.Boolean)
+  nameWithType: EngineLog.OnAfterRenderAsync(Boolean)
+- uid: PonzianiComponents.EngineLog.OnAfterRenderAsync*
+  name: OnAfterRenderAsync
+  href: api/PonzianiComponents.EngineLog.html#PonzianiComponents_EngineLog_OnAfterRenderAsync_
+  commentId: Overload:PonzianiComponents.EngineLog.OnAfterRenderAsync
+  isSpec: "True"
+  fullName: PonzianiComponents.EngineLog.OnAfterRenderAsync
+  nameWithType: EngineLog.OnAfterRenderAsync
 - uid: PonzianiComponents.EvaluationGauge
   name: EvaluationGauge
   href: api/PonzianiComponents.EvaluationGauge.html

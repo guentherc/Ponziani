@@ -1,6 +1,6 @@
 ﻿@inject IJSRuntime js
 
-<div class="engineStatus">
+<div class="engineStatus" @attributes=OtherAttributes>
     <div>
         <span>Depth: @Infos[0].Depth </span>&nbsp;<span>Nps: @Infos[0].NodesPerSecond </span>&nbsp;<span>@Name</span>
         <div>Score: <span style="font-weight:bold">@ScoreText(0)</span></div>
@@ -20,11 +20,7 @@
 
 @if (ShowLog)
 {
-    <div style="width: 100%; height: 400px; overflow-y: auto">
-        <pre style="white-space: pre-wrap;">
-            @LogText
-        </pre>
-    </div>
+    <EngineLog @ref="Log"/>
 }
 
 @code {
