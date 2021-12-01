@@ -3000,6 +3000,38 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Engine.StartAnalysisAsync
   nameWithType: Engine.StartAnalysisAsync
+- uid: PonzianiComponents.EvaluationGauge
+  name: EvaluationGauge
+  href: api/PonzianiComponents.EvaluationGauge.html
+  commentId: T:PonzianiComponents.EvaluationGauge
+  fullName: PonzianiComponents.EvaluationGauge
+  nameWithType: EvaluationGauge
+- uid: PonzianiComponents.EvaluationGauge.Score
+  name: Score
+  href: api/PonzianiComponents.EvaluationGauge.html#PonzianiComponents_EvaluationGauge_Score
+  commentId: P:PonzianiComponents.EvaluationGauge.Score
+  fullName: PonzianiComponents.EvaluationGauge.Score
+  nameWithType: EvaluationGauge.Score
+- uid: PonzianiComponents.EvaluationGauge.Score*
+  name: Score
+  href: api/PonzianiComponents.EvaluationGauge.html#PonzianiComponents_EvaluationGauge_Score_
+  commentId: Overload:PonzianiComponents.EvaluationGauge.Score
+  isSpec: "True"
+  fullName: PonzianiComponents.EvaluationGauge.Score
+  nameWithType: EvaluationGauge.Score
+- uid: PonzianiComponents.EvaluationGauge.ScoreText
+  name: ScoreText
+  href: api/PonzianiComponents.EvaluationGauge.html#PonzianiComponents_EvaluationGauge_ScoreText
+  commentId: P:PonzianiComponents.EvaluationGauge.ScoreText
+  fullName: PonzianiComponents.EvaluationGauge.ScoreText
+  nameWithType: EvaluationGauge.ScoreText
+- uid: PonzianiComponents.EvaluationGauge.ScoreText*
+  name: ScoreText
+  href: api/PonzianiComponents.EvaluationGauge.html#PonzianiComponents_EvaluationGauge_ScoreText_
+  commentId: Overload:PonzianiComponents.EvaluationGauge.ScoreText
+  isSpec: "True"
+  fullName: PonzianiComponents.EvaluationGauge.ScoreText
+  nameWithType: EvaluationGauge.ScoreText
 - uid: PonzianiComponents.Info
   name: Info
   href: api/PonzianiComponents.Info.html

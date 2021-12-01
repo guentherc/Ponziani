@@ -240,7 +240,8 @@ namespace PonzianiComponents
         /// <returns></returns>
         public async Task<bool> StartAnalysisAsync(string fen)
         {
-            if (State == EngineState.READY)
+            if (State == EngineState.THINKING) await SendAsync("stop");
+            if (State >= EngineState.READY)
             {
                 position = new Chesslib.Position(fen);
                 await SendAsync("position fen " + fen);
@@ -264,6 +265,19 @@ namespace PonzianiComponents
         private int _numberOfLines = 1;
         private List<Info> Infos = new List<Info>() { new Info() };
         private Chesslib.Position position;
+
+        private int Score
+        {
+            get
+            {
+                int factor = position == null || position.SideToMove == Side.WHITE ? 1 : -1;
+                if (Infos[0].Type != Info.EvaluationType.Mate) return factor * Infos[0].Evaluation;
+                else
+                {
+                    return factor * (int.MaxValue - 2 * Infos[0].MateDistance);
+                }
+            }
+        }
 
         private string ScoreText(int index)
         {
@@ -315,6 +329,10 @@ namespace PonzianiComponents
                 Infos[index] = info;
                 await OnEngineInfo.InvokeAsync(info);
                 if (evaluationUpdate && !ShowLog) StateHasChanged();
+            }
+            else if (State == EngineState.THINKING && msg.StartsWith("bestmove"))
+            {
+                State = EngineState.READY;
             }
             if (ShowLog) StateHasChanged();
         }

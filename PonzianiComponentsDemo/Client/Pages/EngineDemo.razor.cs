@@ -22,6 +22,7 @@ namespace PonzianiComponentsDemo.Client.Pages
 
         private async Task AnalyzeAsync()
         {
+            Console.WriteLine("AnalyzeAsync(" + Model.Fen + ")");
             await engine?.StartAnalysisAsync(Model.Fen);
         }
     }

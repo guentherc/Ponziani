@@ -1,0 +1,31 @@
+.pzEvaluationGauge {
+    margin: 5px auto;
+    margin-bottom: 0px;
+    padding: 2px;
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid black;
+    height: 30px;
+    background-color: black;
+}
+
+.pzEvaluationGauge .pzEvaluationBar {
+    height: 100%;
+    background-color: white;
+}
+
+.pzEvaluationGaugeScore {
+    text-align: center;
+    font-weight: bold;
+}
+
+.pzTickbar {
+    margin: 5px auto;
+    margin-top: 0px;
+    padding: 2px;
+    padding-top: 0px;
+    width: 100%;
+    max-width: 500px;
+    height: 20px;
+}
+

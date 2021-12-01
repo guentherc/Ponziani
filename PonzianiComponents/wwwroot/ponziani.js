@@ -20,10 +20,16 @@ export function setCSSProperty(el, selector, prop, value) {
 
 export function initEngine(cb) {
     console.log("initEngine");
-    window.engine = new Worker("./_content/PonzianiComponents/stockfish.js");
-    window.engine.onmessage = function (e) {
-        cb.invokeMethodAsync('EngineMessageAsync', e.data);
-    };
+    if (!window.engine) {
+        window.engine = new Worker("./_content/PonzianiComponents/stockfish.js");
+        window.engine.callbacks = [];
+        window.engine.onmessage = function (e) {
+            for (let cb of window.engine.callbacks) {
+                cb.invokeMethodAsync('EngineMessageAsync', e.data);
+            }
+        };
+    }
+    window.engine.callbacks.push(cb);
 }
 
 export function send(message) {

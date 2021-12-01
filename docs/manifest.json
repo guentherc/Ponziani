@@ -9,10 +9,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chessboard.html",
-          "hash": "k8ImZtXUgN5070AL0yAOaLakwGOU8zQi2vPWK9fP6FE="
+          "hash": "C+6XQGqMlvMBatqzFEaRh33UX615qqjNof/3zCELTkg="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -285,7 +285,19 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Engine.html",
-          "hash": "I5ANw8e6xe6/JcBVEacvUHxjEXYkPQ3kUyD+hL+XSvk="
+          "hash": "OCwnvUcsw676+gpIvHgpxtKLWyodWfAKYcrvK7e2JV0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.EvaluationGauge.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.EvaluationGauge.html",
+          "hash": "bhCxaic3ddrAjF06apkdJq7y0aAPC4KIm7+WDtiOSPE="
         }
       },
       "is_incremental": false,
@@ -324,7 +336,7 @@
           "hash": "in5btgv7lVvcX+F+AgfafV7/O0VJUZdvIXbzZ9z3mys="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -384,7 +396,7 @@
           "hash": "2cnsHwfUL0grHx80EKyiqpfHJ1OBn6dkFGjjD9D+qzE="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -393,7 +405,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.html",
-          "hash": "dqRjgG+4S3HPGy1jFL7qpPqMtRVVirUftTwblLjuuX4="
+          "hash": "dLSIjVSQxcTBnRHfqMtz+GwjOs6ZGeJs1Kt+CpLMphc="
         }
       },
       "is_incremental": false,
@@ -417,7 +429,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "CJOwtE2AMrKhibNFGKAH7yyBZwqLBkFNLy1fBr9p6BQ="
+          "hash": "qPLPXCnJw0zia6qO84gB7ilCRKbwL0THvt3oaoxuquM="
         }
       },
       "is_incremental": false,
@@ -493,8 +505,8 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 33,
-          "skipped_file_count": 31
+          "total_file_count": 34,
+          "skipped_file_count": 33
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
