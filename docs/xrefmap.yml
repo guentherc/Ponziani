@@ -3045,12 +3045,38 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.EngineLog.OnAfterRenderAsync
   nameWithType: EngineLog.OnAfterRenderAsync
+- uid: PonzianiComponents.EngineLog.OtherAttributes
+  name: OtherAttributes
+  href: api/PonzianiComponents.EngineLog.html#PonzianiComponents_EngineLog_OtherAttributes
+  commentId: P:PonzianiComponents.EngineLog.OtherAttributes
+  fullName: PonzianiComponents.EngineLog.OtherAttributes
+  nameWithType: EngineLog.OtherAttributes
+- uid: PonzianiComponents.EngineLog.OtherAttributes*
+  name: OtherAttributes
+  href: api/PonzianiComponents.EngineLog.html#PonzianiComponents_EngineLog_OtherAttributes_
+  commentId: Overload:PonzianiComponents.EngineLog.OtherAttributes
+  isSpec: "True"
+  fullName: PonzianiComponents.EngineLog.OtherAttributes
+  nameWithType: EngineLog.OtherAttributes
 - uid: PonzianiComponents.EvaluationGauge
   name: EvaluationGauge
   href: api/PonzianiComponents.EvaluationGauge.html
   commentId: T:PonzianiComponents.EvaluationGauge
   fullName: PonzianiComponents.EvaluationGauge
   nameWithType: EvaluationGauge
+- uid: PonzianiComponents.EvaluationGauge.OtherAttributes
+  name: OtherAttributes
+  href: api/PonzianiComponents.EvaluationGauge.html#PonzianiComponents_EvaluationGauge_OtherAttributes
+  commentId: P:PonzianiComponents.EvaluationGauge.OtherAttributes
+  fullName: PonzianiComponents.EvaluationGauge.OtherAttributes
+  nameWithType: EvaluationGauge.OtherAttributes
+- uid: PonzianiComponents.EvaluationGauge.OtherAttributes*
+  name: OtherAttributes
+  href: api/PonzianiComponents.EvaluationGauge.html#PonzianiComponents_EvaluationGauge_OtherAttributes_
+  commentId: Overload:PonzianiComponents.EvaluationGauge.OtherAttributes
+  isSpec: "True"
+  fullName: PonzianiComponents.EvaluationGauge.OtherAttributes
+  nameWithType: EvaluationGauge.OtherAttributes
 - uid: PonzianiComponents.EvaluationGauge.Score
   name: Score
   href: api/PonzianiComponents.EvaluationGauge.html#PonzianiComponents_EvaluationGauge_Score

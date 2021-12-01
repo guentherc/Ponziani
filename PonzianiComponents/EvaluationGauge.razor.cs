@@ -23,6 +23,12 @@ namespace PonzianiComponents
         [Parameter]
         public string ScoreText { get; set; } = string.Empty;
 
+        /// <summary>
+        /// Other HTML Attributes, which are applied to the root element of the rendered scoresheet.
+        /// </summary>
+        [Parameter(CaptureUnmatchedValues = true)]
+        public Dictionary<string, object> OtherAttributes { get; set; }
+
         private string Width => FormattableString.Invariant($"{100 * WinExpectation():F1}%");
 
         private double WinExpectation() => 1 / (1 + Math.Pow(10, -1.305 / 400 * Score));

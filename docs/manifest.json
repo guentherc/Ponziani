@@ -288,7 +288,7 @@
           "hash": "BPvDpfPd6bOLvoYbEXWNFmzcswgU8QnZEIsMkdraSXg="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -297,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.EngineLog.html",
-          "hash": "gvimkWxzfZm1MqAh1WYTxno62DZ4imeQjpXpHHfnhxU="
+          "hash": "SVc+CBXbAdqXn3pFioQXcsgv22gzEz4p3OSOwZ2T+Fs="
         }
       },
       "is_incremental": true,
@@ -309,7 +309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.EvaluationGauge.html",
-          "hash": "bhCxaic3ddrAjF06apkdJq7y0aAPC4KIm7+WDtiOSPE="
+          "hash": "GzhP4Z/N91fQtQnrhk1t9+xcY6FLUCZlrp5/Vu0RfoE="
         }
       },
       "is_incremental": true,
@@ -324,7 +324,7 @@
           "hash": "8y4dSfjmgZo7ZY/NKWG/vFOGutNEBfVb6AoSDSINwAw="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -336,7 +336,7 @@
           "hash": "2PDqFoWRbgsQEpNLohO5X53qJjL7gtWg4QVHNKBtFUc="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -420,7 +420,7 @@
           "hash": "YK30tSFLfLdlEgPzIl/HqISjWjVvxxf0B4NAy5Dx6DA="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -518,7 +518,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 35,
-          "skipped_file_count": 32
+          "skipped_file_count": 35
         },
         "TocDocumentProcessor": {
           "can_incremental": false,

@@ -1,4 +1,5 @@
-﻿using Microsoft.JSInterop;
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,12 @@ namespace PonzianiComponents
 
     public partial class EngineLog
     {
+        /// <summary>
+        /// Other HTML Attributes, which are applied to the root element of the rendered scoresheet.
+        /// </summary>
+        [Parameter(CaptureUnmatchedValues = true)]
+        public Dictionary<string, object> OtherAttributes { get; set; }
+
         private IJSObjectReference module;
         private DotNetObjectReference<EngineLog> objRef;
         private readonly List<LogEntry> Log = new();
