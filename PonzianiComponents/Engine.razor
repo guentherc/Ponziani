@@ -1,5 +1,6 @@
 ﻿@inject IJSRuntime js
 
+
 <div class="engineStatus" @attributes=OtherAttributes>
     <div>
         <span>Depth: @Infos[0].Depth </span>&nbsp;<span>Nps: @Infos[0].NodesPerSecond </span>&nbsp;<span>@Name</span>
@@ -16,11 +17,14 @@
     </div>
 </div>
 
-<EvaluationGauge Score=@Score ScoreText=@ScoreText(0)/>
+@if (ShowEvaluationbar)
+{
+    <EvaluationGauge Score=@Score ScoreText=@ScoreText(0) />
+}
 
 @if (ShowLog)
 {
-    <EngineLog @ref="Log"/>
+    <EngineLog @ref="Log" />
 }
 
 @code {

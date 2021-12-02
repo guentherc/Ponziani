@@ -189,6 +189,11 @@ namespace PonzianiComponents
         [Parameter]
         public bool ShowLog { set; get; } = false;
         /// <summary>
+        /// Shows engine evaluation Bar
+        /// </summary>
+        [Parameter]
+        public bool ShowEvaluationbar { set; get; } = false;
+        /// <summary>
         /// Engine reports new, updatet analysis info
         /// </summary>
         [Parameter]
@@ -264,7 +269,10 @@ namespace PonzianiComponents
         private List<Info> Infos = new List<Info>() { new Info() };
         private Chesslib.Position position;
 
-        private int Score
+        /// <summary>
+        /// Score from white's point of view in centipawns. Mate scores are converted to very high scores
+        /// </summary>
+        public int Score
         {
             get
             {
@@ -276,8 +284,12 @@ namespace PonzianiComponents
                 }
             }
         }
-
-        private string ScoreText(int index)
+        /// <summary>
+        /// Textual representation of Score (with representations for mate scores and upper-/lowerbound scores)
+        /// </summary>
+        /// <param name="index">zero-based index of line</param>
+        /// <returns>Score as text</returns>
+        public string ScoreText(int index)
         {
             int factor = position == null || position.SideToMove == Side.WHITE ? 1 : -1;
             if (Infos[index].Type == Info.EvaluationType.Exact) return $"{factor * Infos[index].Evaluation / 100.0}";

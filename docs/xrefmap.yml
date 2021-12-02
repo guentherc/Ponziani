@@ -2974,6 +2974,32 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Engine.OtherAttributes
   nameWithType: Engine.OtherAttributes
+- uid: PonzianiComponents.Engine.Score
+  name: Score
+  href: api/PonzianiComponents.Engine.html#PonzianiComponents_Engine_Score
+  commentId: P:PonzianiComponents.Engine.Score
+  fullName: PonzianiComponents.Engine.Score
+  nameWithType: Engine.Score
+- uid: PonzianiComponents.Engine.Score*
+  name: Score
+  href: api/PonzianiComponents.Engine.html#PonzianiComponents_Engine_Score_
+  commentId: Overload:PonzianiComponents.Engine.Score
+  isSpec: "True"
+  fullName: PonzianiComponents.Engine.Score
+  nameWithType: Engine.Score
+- uid: PonzianiComponents.Engine.ScoreText(System.Int32)
+  name: ScoreText(Int32)
+  href: api/PonzianiComponents.Engine.html#PonzianiComponents_Engine_ScoreText_System_Int32_
+  commentId: M:PonzianiComponents.Engine.ScoreText(System.Int32)
+  fullName: PonzianiComponents.Engine.ScoreText(System.Int32)
+  nameWithType: Engine.ScoreText(Int32)
+- uid: PonzianiComponents.Engine.ScoreText*
+  name: ScoreText
+  href: api/PonzianiComponents.Engine.html#PonzianiComponents_Engine_ScoreText_
+  commentId: Overload:PonzianiComponents.Engine.ScoreText
+  isSpec: "True"
+  fullName: PonzianiComponents.Engine.ScoreText
+  nameWithType: Engine.ScoreText
 - uid: PonzianiComponents.Engine.SendAsync(System.String)
   name: SendAsync(String)
   href: api/PonzianiComponents.Engine.html#PonzianiComponents_Engine_SendAsync_System_String_
@@ -2987,6 +3013,19 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Engine.SendAsync
   nameWithType: Engine.SendAsync
+- uid: PonzianiComponents.Engine.ShowEvaluationbar
+  name: ShowEvaluationbar
+  href: api/PonzianiComponents.Engine.html#PonzianiComponents_Engine_ShowEvaluationbar
+  commentId: P:PonzianiComponents.Engine.ShowEvaluationbar
+  fullName: PonzianiComponents.Engine.ShowEvaluationbar
+  nameWithType: Engine.ShowEvaluationbar
+- uid: PonzianiComponents.Engine.ShowEvaluationbar*
+  name: ShowEvaluationbar
+  href: api/PonzianiComponents.Engine.html#PonzianiComponents_Engine_ShowEvaluationbar_
+  commentId: Overload:PonzianiComponents.Engine.ShowEvaluationbar
+  isSpec: "True"
+  fullName: PonzianiComponents.Engine.ShowEvaluationbar
+  nameWithType: Engine.ShowEvaluationbar
 - uid: PonzianiComponents.Engine.ShowLog
   name: ShowLog
   href: api/PonzianiComponents.Engine.html#PonzianiComponents_Engine_ShowLog
@@ -3064,6 +3103,19 @@ references:
   commentId: T:PonzianiComponents.EvaluationGauge
   fullName: PonzianiComponents.EvaluationGauge
   nameWithType: EvaluationGauge
+- uid: PonzianiComponents.EvaluationGauge.Orientation
+  name: Orientation
+  href: api/PonzianiComponents.EvaluationGauge.html#PonzianiComponents_EvaluationGauge_Orientation
+  commentId: P:PonzianiComponents.EvaluationGauge.Orientation
+  fullName: PonzianiComponents.EvaluationGauge.Orientation
+  nameWithType: EvaluationGauge.Orientation
+- uid: PonzianiComponents.EvaluationGauge.Orientation*
+  name: Orientation
+  href: api/PonzianiComponents.EvaluationGauge.html#PonzianiComponents_EvaluationGauge_Orientation_
+  commentId: Overload:PonzianiComponents.EvaluationGauge.Orientation
+  isSpec: "True"
+  fullName: PonzianiComponents.EvaluationGauge.Orientation
+  nameWithType: EvaluationGauge.Orientation
 - uid: PonzianiComponents.EvaluationGauge.OtherAttributes
   name: OtherAttributes
   href: api/PonzianiComponents.EvaluationGauge.html#PonzianiComponents_EvaluationGauge_OtherAttributes
@@ -3476,6 +3528,24 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.MoveSelectInfo.ScoresheetId
   nameWithType: MoveSelectInfo.ScoresheetId
+- uid: PonzianiComponents.Orientation
+  name: Orientation
+  href: api/PonzianiComponents.Orientation.html
+  commentId: T:PonzianiComponents.Orientation
+  fullName: PonzianiComponents.Orientation
+  nameWithType: Orientation
+- uid: PonzianiComponents.Orientation.Horizontal
+  name: Horizontal
+  href: api/PonzianiComponents.Orientation.html#PonzianiComponents_Orientation_Horizontal
+  commentId: F:PonzianiComponents.Orientation.Horizontal
+  fullName: PonzianiComponents.Orientation.Horizontal
+  nameWithType: Orientation.Horizontal
+- uid: PonzianiComponents.Orientation.Vertical
+  name: Vertical
+  href: api/PonzianiComponents.Orientation.html#PonzianiComponents_Orientation_Vertical
+  commentId: F:PonzianiComponents.Orientation.Vertical
+  fullName: PonzianiComponents.Orientation.Vertical
+  nameWithType: Orientation.Vertical
 - uid: PonzianiComponents.Scoresheet
   name: Scoresheet
   href: api/PonzianiComponents.Scoresheet.html

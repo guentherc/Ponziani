@@ -18,15 +18,39 @@
             <InputNumber class="form-control" @bind-Value="Model.NumberOfLines" />
         </div>
     </div>
-    	<div class="form-check">
-		<InputCheckbox class="form-check-input" @bind-Value="Model.ShowLog" />
-		<label>
-			Show Engine Log:
-		</label>
-	</div>
+    <div class="form-check">
+        <InputCheckbox class="form-check-input" @bind-Value="Model.ShowLog" />
+        <label>
+            Show Engine Log:
+        </label>
+    </div>
+    <div class="form-check">
+        <InputCheckbox class="form-check-input" @bind-Value="Model.ShowEvaluationBar" />
+        <label>
+            Show Evaluation Bar:
+        </label>
+    </div>
+    @if (Model.ShowEvaluationBar)
+    {
+        <div class="row form-group">
+            <label class="col-sm-3 col-form-label" for="inpType">Select Orientation</label>
+            <div class="input-group col-sm-9">
+                <InputSelect class="form-control" Name="orientation" @bind-Value="Model.Orientation" id="inpType">
+                    @foreach (var t in Enum.GetNames(typeof(Orientation)))
+                    {
+                    <option Name="orientation" Value="@t">@t</option>
+                    }
+            </InputSelect>
+        </div>
+    </div>
+    }
 </EditForm>
-
-<Engine ShowLog="Model.ShowLog" @ref="engine" NumberOfLines="Model.NumberOfLines" style="border: 1px solid green;"></Engine>
+<hr/>
+<Engine ShowLog="Model.ShowLog" @ref="engine" NumberOfLines="Model.NumberOfLines" style="border: 1px solid green;" OnEngineInfo="OnEngineInfo"></Engine>
+@if (Model.ShowEvaluationBar)
+{
+    <EvaluationGauge Orientation="Model.Orientation" style="border: 1px solid green; height: 500px;" @ref="evaluationBar" />
+}
 
 @code {
 

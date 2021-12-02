@@ -285,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Engine.html",
-          "hash": "BPvDpfPd6bOLvoYbEXWNFmzcswgU8QnZEIsMkdraSXg="
+          "hash": "o9NkpaiBrN3iae5Ke/3dNS36lPWPvNcdkkf4wSMAUaE="
         }
       },
       "is_incremental": true,
@@ -309,7 +309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.EvaluationGauge.html",
-          "hash": "GzhP4Z/N91fQtQnrhk1t9+xcY6FLUCZlrp5/Vu0RfoE="
+          "hash": "KiIY018Kve0+ewYLCqVurnY21NjrGVcWj7J3vITOmo0="
         }
       },
       "is_incremental": true,
@@ -358,6 +358,18 @@
         ".html": {
           "relative_path": "api/PonzianiComponents.MoveSelectInfo.html",
           "hash": "Pj0m3a774Q1jt0ZEO39YXCNQxxGCTffSnBZ7QrRgBCs="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Orientation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Orientation.html",
+          "hash": "RVL8QxJJu7y+LvZTl5szQBPtZNiaCSTrOTqBQ7A1ZoI="
         }
       },
       "is_incremental": true,
@@ -417,7 +429,7 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.html",
-          "hash": "YK30tSFLfLdlEgPzIl/HqISjWjVvxxf0B4NAy5Dx6DA="
+          "hash": "0vXaqzAM0cWZYbCmDPPV8d08u3Op3JP/fsiL8Ug/wPs="
         }
       },
       "is_incremental": true,
@@ -441,7 +453,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "LBzwcgEV46hx+Uyh1U0kTMqjKxR1nkuUzfZ/0CYl8qQ="
+          "hash": "DAWGLHmEXZ+xJ+fWhPaVNgmGjphfgH3uCmPWJkVSPNA="
         }
       },
       "is_incremental": false,
@@ -517,8 +529,8 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 35,
-          "skipped_file_count": 35
+          "total_file_count": 36,
+          "skipped_file_count": 36
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
