@@ -169,6 +169,70 @@ namespace PonzianiComponentsTest
             }
         }
 
+        [TestMethod]
+        public void TestAddVariation()
+        {
+            var games = PGN.Parse(Data.PGN_TWIC);
+            Game game = games[0];
+            //game is Italian Opening, add a Ruy Lopez variation
+            List<ExtendedMove> moves = new List<ExtendedMove>()
+            {
+                new ExtendedMove("f1b5"),
+                new ExtendedMove("a7a6"),
+                new ExtendedMove("b5a4")
+            };
+            game.AddVariation(moves, 3);
+            //Now check if variation has been added correctly
+            for (int i = 0; i < game.Moves.Count; ++i)
+            {
+                if (i != 4)
+                    Assert.IsTrue(game.Moves[i].Variations == null || game.Moves[i].Variations.Count == 0);
+                else
+                {
+                    Assert.AreEqual(1, game.Moves[i].Variations.Count);
+                    Assert.AreEqual(3, game.Moves[i].Variations[0].Count);
+                }
+            }
+            //Now add a new variation starting from start position
+            moves = new List<ExtendedMove>()
+            {
+                new ExtendedMove("e2e4"),
+                new ExtendedMove("e7e5"),
+                new ExtendedMove("g1f3"),
+                new ExtendedMove("b8c6"),
+                new ExtendedMove("d2d4"),
+                new ExtendedMove("e5d4")
+            };
+            game.AddVariation(moves);
+            //Now check if variation has been added correctly
+            for (int i = 0; i < game.Moves.Count; ++i)
+            {
+                if (i != 4)
+                    Assert.IsTrue(game.Moves[i].Variations == null || game.Moves[i].Variations.Count == 0);
+                else
+                {
+                    Assert.AreEqual(2, game.Moves[i].Variations.Count);
+                    Assert.AreEqual(3, game.Moves[i].Variations[0].Count);
+                    Assert.AreEqual(2, game.Moves[i].Variations[1].Count);
+                }
+            }
+            //Extend 
+            moves.Add(new ExtendedMove("f3d4"));
+            game.AddVariation(moves);
+            //Now check again if variations are correct
+            for (int i = 0; i < game.Moves.Count; ++i)
+            {
+                if (i != 4)
+                    Assert.IsTrue(game.Moves[i].Variations == null || game.Moves[i].Variations.Count == 0);
+                else
+                {
+                    Assert.AreEqual(2, game.Moves[i].Variations.Count);
+                    Assert.AreEqual(3, game.Moves[i].Variations[0].Count);
+                    Assert.AreEqual(3, game.Moves[i].Variations[1].Count);
+                }
+            }
+        }
+
         private void CheckMovesAreEqual(List<ExtendedMove> expectedMoves, List<ExtendedMove> testMoves)
         {
             Assert.AreEqual(expectedMoves.Count, testMoves.Count);

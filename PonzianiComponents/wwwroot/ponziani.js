@@ -37,3 +37,9 @@ export function send(message) {
     console.log("send " + message);
     window.engine.postMessage(message);
 }
+
+export function analyze(fen) {
+    send("stop");
+    send("position fen " + fen);
+    send("go");
+}

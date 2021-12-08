@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace PonzianiComponents
@@ -30,8 +31,9 @@ namespace PonzianiComponents
         /// Updates an existing Info objekt from a new info message
         /// </summary>
         /// <param name="message">The info message issued by the engine</param>
+        /// <param name="side">Side to Move</param>
         /// <returns>true, if new evaluation information was part of the info message</returns>
-        public bool Update(string message)
+        public bool Update(string message, Side side = Side.WHITE)
         {
             bool result = false;
             string[] token = message.Split();
@@ -168,9 +170,9 @@ namespace PonzianiComponents
 
     /// <summary>
     /// Blazor component wrapping an UCI compliant WebAssembly Chess Engine
-    /// <para>The component uses the WebAssembly port of Nathan Rugg ((<see href="https://github.com/nmrugg/stockfish.js"/>) Stockfish 14.1 </para>
+    /// <para>The component uses the WebAssembly port of Nathan Rugg of ((<see href="https://github.com/nmrugg/stockfish.js"/>) Stockfish 14.1 </para>
     /// <para>NOTE: Stockfish.js 14.1 reqiures some of the latest features and does not work in every browser.<br/>
-    /// As it uses the latest WebAssembly threading proposal. Requires these HTTP headers on the top level response:
+    /// As it uses the latest WebAssembly threading proposal it requires these HTTP headers on the top level response:
     /// <code>
     /// Cross-Origin-Embedder-Policy: require-corp
     /// Cross-Origin-Opener-Policy: same-origin
@@ -180,9 +182,33 @@ namespace PonzianiComponents
     /// Cross-Origin-Embedder-Policy: require-corp
     /// </code>
     /// </para>
+    /// <para>
+    /// The UI of the engine component consists of 3 parts:
+    /// <list type="bullet">
+    /// <item><description>Info Panel showing the engine's evaluation info (score, depth and principal variation)</description></item>
+    /// <item><description>Evaluation Bar showing the current evaluation graphically</description></item>
+    /// <item><description>Log Panel showing the uci communication</description></item>
+    /// </list>
+    /// Those 3 UI parts can be activated by the parameters <see cref="ShowEvaluationInfo"/>, <see cref="ShowEvaluationbar"/> and <see cref="ShowLog"/>. 
+    /// It's possible to set all 3 of those parameters to false. In that case the engine can be run completely faceless.<br/>
+    /// To have more flexibiliyt regarding the UI setup, the evaluation bar and the log panel are offered as independent components: <see cref="EvaluationGauge"/> 
+    /// and <see cref="EngineLog"/> 
+    /// </para>
+    /// <para>
+    /// There is only one Engine Process available per window. So by using 2 Engine components, you will not get 2 engine workers, but only one. All UCI commands you
+    /// to one of your engine commands will reach the same engine.
+    /// </para>
     /// </summary>
     public partial class Engine
     {
+        /// <summary>
+        /// Shows evaluation output (score, depth and principal variation)
+        /// </summary>
+        [Parameter]
+        public bool ShowEvaluationInfo { set; get; } = true;
+        /// <summary>
+        /// Shows engine evaluation Bar
+        /// </summary>
         /// <summary>
         /// Shows engine log
         /// </summary>
@@ -194,7 +220,7 @@ namespace PonzianiComponents
         [Parameter]
         public bool ShowEvaluationbar { set; get; } = false;
         /// <summary>
-        /// Engine reports new, updatet analysis info
+        /// Engine reports new, updated analysis info
         /// </summary>
         [Parameter]
         public EventCallback<Info> OnEngineInfo { get; set; }
@@ -239,12 +265,10 @@ namespace PonzianiComponents
         /// <returns></returns>
         public async Task<bool> StartAnalysisAsync(string fen)
         {
-            if (State == EngineState.THINKING) await SendAsync("stop");
             if (State >= EngineState.READY)
             {
+                await module.InvokeVoidAsync("analyze", new object[] { fen });
                 position = new Chesslib.Position(fen);
-                await SendAsync("position fen " + fen);
-                await SendAsync("go");
                 State = EngineState.THINKING;
                 return true;
             }
@@ -277,7 +301,11 @@ namespace PonzianiComponents
             get
             {
                 int factor = position == null || position.SideToMove == Side.WHITE ? 1 : -1;
-                if (Infos[0].Type != Info.EvaluationType.Mate) return factor * Infos[0].Evaluation;
+                if (Infos[0].Type != Info.EvaluationType.Mate)
+                {  
+                    int result = factor * Infos[0].Evaluation;
+                    return result;
+                }
                 else
                 {
                     return factor * (int.MaxValue - 2 * Infos[0].MateDistance);
@@ -333,10 +361,9 @@ namespace PonzianiComponents
             {
                 int index = Info.Index(msg);
                 Info info = Infos[index];
-                bool evaluationUpdate = info.Update(msg);
+                bool evaluationUpdate = info.Update(msg, position != null ? position.SideToMove : Side.WHITE);
                 Infos[index] = info;
-                await OnEngineInfo.InvokeAsync(info);
-                if (evaluationUpdate) StateHasChanged();
+                if (evaluationUpdate) await OnEngineInfo.InvokeAsync(info);
             }
             else if (State == EngineState.THINKING && msg.StartsWith("bestmove"))
             {
@@ -345,7 +372,7 @@ namespace PonzianiComponents
         }
         /// <summary>
         /// Send UCI message to the engine process
-        /// <para>Attention: Sending an incorrect or invalid UCI message might break the engine process</para>
+        /// <para>Attention: Sending an incorrect or invalid UCI message might break the engine process, there is no input validation!</para>
         /// </summary>
         /// <param name="command">UCI message</param>
         /// <returns></returns>

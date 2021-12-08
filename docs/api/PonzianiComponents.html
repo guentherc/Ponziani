@@ -88,14 +88,26 @@ and allows to use this functionality without the need to interop with javascript
 </section>
       <h4><a class="xref" href="PonzianiComponents.Engine.html">Engine</a></h4>
       <section><p>Blazor component wrapping an UCI compliant WebAssembly Chess Engine</p>
-<p>The component uses the WebAssembly port of Nathan Rugg ((<a href="https://github.com/nmrugg/stockfish.js">https://github.com/nmrugg/stockfish.js</a>) Stockfish 14.1 </p>
+<p>The component uses the WebAssembly port of Nathan Rugg of ((<a href="https://github.com/nmrugg/stockfish.js">https://github.com/nmrugg/stockfish.js</a>) Stockfish 14.1 </p>
 <p>NOTE: Stockfish.js 14.1 reqiures some of the latest features and does not work in every browser.<br>
-As it uses the latest WebAssembly threading proposal. Requires these HTTP headers on the top level response:
+As it uses the latest WebAssembly threading proposal it requires these HTTP headers on the top level response:
 <pre><code>Cross-Origin-Embedder-Policy: require-corp
 Cross-Origin-Opener-Policy: same-origin</code></pre>
 And the following header on the included files:
 <pre><code> 
 Cross-Origin-Embedder-Policy: require-corp</code></pre>
+</p>
+<p>
+The UI of the engine component consists of 3 parts:
+<ul><li>Info Panel showing the engine&apos;s evaluation info (score, depth and principal variation)</li><li>Evaluation Bar showing the current evaluation graphically</li><li>Log Panel showing the uci communication</li></ul>
+Those 3 UI parts can be activated by the parameters <a class="xref" href="PonzianiComponents.Engine.html#PonzianiComponents_Engine_ShowEvaluationInfo">ShowEvaluationInfo</a>, <a class="xref" href="PonzianiComponents.Engine.html#PonzianiComponents_Engine_ShowEvaluationbar">ShowEvaluationbar</a> and <a class="xref" href="PonzianiComponents.Engine.html#PonzianiComponents_Engine_ShowLog">ShowLog</a>. 
+It&apos;s possible to set all 3 of those parameters to false. In that case the engine can be run completely faceless.<br>
+To have more flexibiliyt regarding the UI setup, the evaluation bar and the log panel are offered as independent components: <a class="xref" href="PonzianiComponents.EvaluationGauge.html">EvaluationGauge</a> 
+and <a class="xref" href="PonzianiComponents.EngineLog.html">EngineLog</a> 
+</p>
+<p>
+There is only one Engine Process available per window. So by using 2 Engine components, you will not get 2 engine workers, but only one. All UCI commands you
+to one of your engine commands will reach the same engine.
 </p>
 </section>
       <h4><a class="xref" href="PonzianiComponents.EngineLog.html">EngineLog</a></h4>

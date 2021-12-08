@@ -1097,6 +1097,22 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Chesslib.Game.Add
   nameWithType: Game.Add
+- uid: PonzianiComponents.Chesslib.Game.AddVariation(System.Collections.Generic.List{PonzianiComponents.Chesslib.ExtendedMove},System.Int32,PonzianiComponents.Chesslib.Side)
+  name: AddVariation(List<ExtendedMove>, Int32, Side)
+  href: api/PonzianiComponents.Chesslib.Game.html#PonzianiComponents_Chesslib_Game_AddVariation_System_Collections_Generic_List_PonzianiComponents_Chesslib_ExtendedMove__System_Int32_PonzianiComponents_Chesslib_Side_
+  commentId: M:PonzianiComponents.Chesslib.Game.AddVariation(System.Collections.Generic.List{PonzianiComponents.Chesslib.ExtendedMove},System.Int32,PonzianiComponents.Chesslib.Side)
+  name.vb: AddVariation(List(Of ExtendedMove), Int32, Side)
+  fullName: PonzianiComponents.Chesslib.Game.AddVariation(System.Collections.Generic.List<PonzianiComponents.Chesslib.ExtendedMove>, System.Int32, PonzianiComponents.Chesslib.Side)
+  fullName.vb: PonzianiComponents.Chesslib.Game.AddVariation(System.Collections.Generic.List(Of PonzianiComponents.Chesslib.ExtendedMove), System.Int32, PonzianiComponents.Chesslib.Side)
+  nameWithType: Game.AddVariation(List<ExtendedMove>, Int32, Side)
+  nameWithType.vb: Game.AddVariation(List(Of ExtendedMove), Int32, Side)
+- uid: PonzianiComponents.Chesslib.Game.AddVariation*
+  name: AddVariation
+  href: api/PonzianiComponents.Chesslib.Game.html#PonzianiComponents_Chesslib_Game_AddVariation_
+  commentId: Overload:PonzianiComponents.Chesslib.Game.AddVariation
+  isSpec: "True"
+  fullName: PonzianiComponents.Chesslib.Game.AddVariation
+  nameWithType: Game.AddVariation
 - uid: PonzianiComponents.Chesslib.Game.Black
   name: Black
   href: api/PonzianiComponents.Chesslib.Game.html#PonzianiComponents_Chesslib_Game_Black
@@ -3026,6 +3042,19 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Engine.ShowEvaluationbar
   nameWithType: Engine.ShowEvaluationbar
+- uid: PonzianiComponents.Engine.ShowEvaluationInfo
+  name: ShowEvaluationInfo
+  href: api/PonzianiComponents.Engine.html#PonzianiComponents_Engine_ShowEvaluationInfo
+  commentId: P:PonzianiComponents.Engine.ShowEvaluationInfo
+  fullName: PonzianiComponents.Engine.ShowEvaluationInfo
+  nameWithType: Engine.ShowEvaluationInfo
+- uid: PonzianiComponents.Engine.ShowEvaluationInfo*
+  name: ShowEvaluationInfo
+  href: api/PonzianiComponents.Engine.html#PonzianiComponents_Engine_ShowEvaluationInfo_
+  commentId: Overload:PonzianiComponents.Engine.ShowEvaluationInfo
+  isSpec: "True"
+  fullName: PonzianiComponents.Engine.ShowEvaluationInfo
+  nameWithType: Engine.ShowEvaluationInfo
 - uid: PonzianiComponents.Engine.ShowLog
   name: ShowLog
   href: api/PonzianiComponents.Engine.html#PonzianiComponents_Engine_ShowLog
@@ -3373,12 +3402,12 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Info.Type
   nameWithType: Info.Type
-- uid: PonzianiComponents.Info.Update(System.String)
-  name: Update(String)
-  href: api/PonzianiComponents.Info.html#PonzianiComponents_Info_Update_System_String_
-  commentId: M:PonzianiComponents.Info.Update(System.String)
-  fullName: PonzianiComponents.Info.Update(System.String)
-  nameWithType: Info.Update(String)
+- uid: PonzianiComponents.Info.Update(System.String,PonzianiComponents.Chesslib.Side)
+  name: Update(String, Side)
+  href: api/PonzianiComponents.Info.html#PonzianiComponents_Info_Update_System_String_PonzianiComponents_Chesslib_Side_
+  commentId: M:PonzianiComponents.Info.Update(System.String,PonzianiComponents.Chesslib.Side)
+  fullName: PonzianiComponents.Info.Update(System.String, PonzianiComponents.Chesslib.Side)
+  nameWithType: Info.Update(String, Side)
 - uid: PonzianiComponents.Info.Update*
   name: Update
   href: api/PonzianiComponents.Info.html#PonzianiComponents_Info_Update_
@@ -3463,12 +3492,12 @@ references:
   commentId: T:PonzianiComponents.MoveSelectInfo
   fullName: PonzianiComponents.MoveSelectInfo
   nameWithType: MoveSelectInfo
-- uid: PonzianiComponents.MoveSelectInfo.#ctor(System.String,PonzianiComponents.Chesslib.Position,PonzianiComponents.Chesslib.ExtendedMove,PonzianiComponents.Chesslib.Game)
-  name: MoveSelectInfo(String, Position, ExtendedMove, Game)
-  href: api/PonzianiComponents.MoveSelectInfo.html#PonzianiComponents_MoveSelectInfo__ctor_System_String_PonzianiComponents_Chesslib_Position_PonzianiComponents_Chesslib_ExtendedMove_PonzianiComponents_Chesslib_Game_
-  commentId: M:PonzianiComponents.MoveSelectInfo.#ctor(System.String,PonzianiComponents.Chesslib.Position,PonzianiComponents.Chesslib.ExtendedMove,PonzianiComponents.Chesslib.Game)
-  fullName: PonzianiComponents.MoveSelectInfo.MoveSelectInfo(System.String, PonzianiComponents.Chesslib.Position, PonzianiComponents.Chesslib.ExtendedMove, PonzianiComponents.Chesslib.Game)
-  nameWithType: MoveSelectInfo.MoveSelectInfo(String, Position, ExtendedMove, Game)
+- uid: PonzianiComponents.MoveSelectInfo.#ctor(System.String,PonzianiComponents.Chesslib.Position,PonzianiComponents.Chesslib.ExtendedMove,PonzianiComponents.Chesslib.Game,System.Int32)
+  name: MoveSelectInfo(String, Position, ExtendedMove, Game, Int32)
+  href: api/PonzianiComponents.MoveSelectInfo.html#PonzianiComponents_MoveSelectInfo__ctor_System_String_PonzianiComponents_Chesslib_Position_PonzianiComponents_Chesslib_ExtendedMove_PonzianiComponents_Chesslib_Game_System_Int32_
+  commentId: M:PonzianiComponents.MoveSelectInfo.#ctor(System.String,PonzianiComponents.Chesslib.Position,PonzianiComponents.Chesslib.ExtendedMove,PonzianiComponents.Chesslib.Game,System.Int32)
+  fullName: PonzianiComponents.MoveSelectInfo.MoveSelectInfo(System.String, PonzianiComponents.Chesslib.Position, PonzianiComponents.Chesslib.ExtendedMove, PonzianiComponents.Chesslib.Game, System.Int32)
+  nameWithType: MoveSelectInfo.MoveSelectInfo(String, Position, ExtendedMove, Game, Int32)
 - uid: PonzianiComponents.MoveSelectInfo.#ctor*
   name: MoveSelectInfo
   href: api/PonzianiComponents.MoveSelectInfo.html#PonzianiComponents_MoveSelectInfo__ctor_
@@ -3502,6 +3531,19 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.MoveSelectInfo.Move
   nameWithType: MoveSelectInfo.Move
+- uid: PonzianiComponents.MoveSelectInfo.MoveIndex
+  name: MoveIndex
+  href: api/PonzianiComponents.MoveSelectInfo.html#PonzianiComponents_MoveSelectInfo_MoveIndex
+  commentId: P:PonzianiComponents.MoveSelectInfo.MoveIndex
+  fullName: PonzianiComponents.MoveSelectInfo.MoveIndex
+  nameWithType: MoveSelectInfo.MoveIndex
+- uid: PonzianiComponents.MoveSelectInfo.MoveIndex*
+  name: MoveIndex
+  href: api/PonzianiComponents.MoveSelectInfo.html#PonzianiComponents_MoveSelectInfo_MoveIndex_
+  commentId: Overload:PonzianiComponents.MoveSelectInfo.MoveIndex
+  isSpec: "True"
+  fullName: PonzianiComponents.MoveSelectInfo.MoveIndex
+  nameWithType: MoveSelectInfo.MoveIndex
 - uid: PonzianiComponents.MoveSelectInfo.Position
   name: Position
   href: api/PonzianiComponents.MoveSelectInfo.html#PonzianiComponents_MoveSelectInfo_Position

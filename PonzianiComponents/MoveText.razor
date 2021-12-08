@@ -3,185 +3,205 @@
 @using System.Globalization
 @using static PonzianiComponents.Scoresheet
 @{
-	Game g = new Game(Game.StartPosition);
-	bool first = true;
+    Game g = new Game(Game.StartPosition);
+    bool first = true;
 }
 @if (g.SideToMove == Side.BLACK)
 {
-	<span class="pzMoveText @($"pzMoveTextLevel{Level}")">@g.Position.MoveNumber. ...</span><text>&#32;</text>
+    <span class="pzMoveText @($"pzMoveTextLevel{Level}")">@g.Position.MoveNumber. ...</span>
+
+    <text>&#32;</text>
 }
 @for (int i = 0; i < Game.Moves.Count; ++i)
 {
-	int moveNumber = g.Position.MoveNumber;
-	Side side = g.SideToMove;
-	@if (moveNumber < MoveNumber || (moveNumber == MoveNumber && Side == Side.BLACK && side == Side.WHITE))
-	{
-		g.Add(Game.Moves[i]);
-		continue;
-	}
-	@if (side == Side.WHITE)
-	{
-		<span class="pzMoveText @($"pzMoveTextLevel{Level}")">@g.Position.MoveNumber.</span><text>&#32;</text>
-	}
-	else if (first)
-	{
-		<span class="pzMoveText @($"pzMoveTextLevel{Level}")">@g.Position.MoveNumber. ...</span><text>&#32;</text>
-	}
-	first = false;
-	<span class="pzMoveText @($"pzMoveTextLevel{Level}")" @onclick="@(e => SelectMoveAsync(e, moveNumber, side))">@Print(g, i)</span>
-	if (i < Game.Moves.Count - 1)
-	{
-		<text>&#32;</text>
-	}
-	@if (Comments && Game.Moves[i].Comment != null && Game.Moves[i].Comment.Length > 0)
-	{
-		<text>&#32;</text><span class="pzMoveTextComment">@Game.Moves[i].Comment</span>
-	}
-	g.Add(Game.Moves[i]);
-	@if (Variations)
-	{
-		List<Game> vgames = g.VariationGames();
-		foreach (var vgame in vgames)
-		{
-			@OV
-			<CascadingValue Value="@Id" Name="Id">
-			 <CascadingValue Value="@Variations" Name="Variations">
-			  <CascadingValue Value="@Comments" Name="Comments">
-			   <CascadingValue Value="@Type">
-				<CascadingValue Value="@HierarchicalDisplay" Name="HierarchicalDisplay">
-				 <CascadingValue Value="@OnMoveSelected">
-					@if (HierarchicalDisplay)
-					{
-						<p class="pzVariation">@("-".Repeat(Level))
-						@if (Level > 0)
-						{
-							@GT
-						}	
-						<MoveText Game="vgame" MoveNumber="moveNumber" Side="side" Level="@NextLevel"></MoveText></p>
-					} else {
-						<MoveText Game="vgame" MoveNumber="moveNumber" Side="side" Level="@NextLevel"></MoveText>
-					}
-				 </CascadingValue>
-				</CascadingValue>
-			   </CascadingValue>
-			  </CascadingValue>
-			 </CascadingValue>
-			</CascadingValue>
-			@CV
-		}
-		if (vgames.Count > 0 && g.SideToMove == Side.BLACK)
-		{
-			<span class="pzMoveText @($"pzMoveTextLevel{Level}")">@g.Position.MoveNumber. ...</span><text>&#32;</text>
-		}
-	}
+    int moveNumber = g.Position.MoveNumber;
+    Side side = g.SideToMove;
+    @if (moveNumber < MoveNumber || (moveNumber == MoveNumber && Side == Side.BLACK && side == Side.WHITE))
+    {
+        g.Add(Game.Moves[i]);
+        continue;
+    }
+    @if (side == Side.WHITE)
+    {
+        <span class="pzMoveText @($"pzMoveTextLevel{Level}")">@g.Position.MoveNumber.</span>
+
+        <text>&#32;</text>
+    }
+    else if (first)
+    {
+        <span class="pzMoveText @($"pzMoveTextLevel{Level}")">@g.Position.MoveNumber. ...</span>
+
+        <text>&#32;</text>
+    }
+    first = false;
+    <span class="pzMoveText @($"pzMoveTextLevel{Level}")" @onclick="@(e => SelectMoveAsync(e, moveNumber, side))">@Print(g, i)</span>
+    if (i < Game.Moves.Count - 1)
+    {
+        <text>&#32;</text>
+    }
+    @if (Comments && Game.Moves[i].Comment != null && Game.Moves[i].Comment.Length > 0)
+    {
+        <text>&#32;</text>
+
+        <span class="pzMoveTextComment">@Game.Moves[i].Comment</span>
+    }
+    g.Add(Game.Moves[i]);
+    @if (Variations)
+    {
+        List<Game> vgames = g.VariationGames();
+        foreach (var vgame in vgames)
+        {
+            @OV
+            <CascadingValue Value="@Id" Name="Id">
+                <CascadingValue Value="@Variations" Name="Variations">
+                    <CascadingValue Value="@Comments" Name="Comments">
+                        <CascadingValue Value="@Type">
+                            <CascadingValue Value="@HierarchicalDisplay" Name="HierarchicalDisplay">
+                                <CascadingValue Value="@OnMoveSelected">
+                                    @if (HierarchicalDisplay)
+                        {
+                            <p class="pzVariation">
+                                @("-".Repeat(Level))
+                                @if (Level > 0)
+                                {
+                                    @GT
+                                }
+                                <MoveText Game="vgame" MoveNumber="moveNumber" Side="side" Level="@NextLevel"></MoveText>
+                            </p>
+                        }
+                        else
+                        {
+                            <MoveText Game="vgame" MoveNumber="moveNumber" Side="side" Level="@NextLevel"></MoveText>
+                        }
+                    </CascadingValue>
+                </CascadingValue>
+            </CascadingValue>
+        </CascadingValue>
+    </CascadingValue>
+</CascadingValue>
+            @CV
+        }
+        if (vgames.Count > 0 && g.SideToMove == Side.BLACK)
+        {
+            <span class="pzMoveText @($"pzMoveTextLevel{Level}")">@g.Position.MoveNumber. ...</span>
+
+            <text>&#32;</text>
+        }
+    }
 }
 @if (Level == 0)
 {
-	<text>&#32;</text><span class="pzMoveText pzNotResult @($"pzMoveTextLevel{Level}")">@PGN.ResultToString(Game.Result)</span>
+    <text>&#32;</text>
+
+    <span class="pzMoveText pzNotResult @($"pzMoveTextLevel{Level}")">@PGN.ResultToString(Game.Result)</span>
 }
 
 @code {
-	/// <summary>
-	/// The game whose moves are listed
-	/// </summary>
-	[Parameter]
-	public Game Game { set; get; } = new Game();
-	/// <summary>
-	/// Is called whenever the user selects a move by clicking it
-	/// </summary>
-	[CascadingParameter]
-	public EventCallback<MoveSelectInfo> OnMoveSelected { get; set; }
-	/// <summary>
-	/// Movenumber from where movetext will start
-	/// </summary>
-	[Parameter]
-	public int MoveNumber { set; get; } = 1;
-	/// <summary>
-	/// Side to move from where movetext will start
-	/// </summary>
-	[Parameter]
-	public Side Side { set; get; } = Side.WHITE;
-	/// <summary>
-	/// Variation Level (Main line = 0)
-	/// </summary>
-	[Parameter]
-	public int Level { set; get; } = 0;
-	/// <summary>
-	/// If true, each variation starts on a new line, subvariations are indented
-	/// </summary>
-	[CascadingParameter(Name = "HierarchicalDisplay")]
-	public bool HierarchicalDisplay { set; get; } = false;
+    /// <summary>
+    /// The game whose moves are listed
+    /// </summary>
+    [Parameter]
+    public Game Game { set; get; } = new Game();
+    /// <summary>
+    /// Is called whenever the user selects a move by clicking it
+    /// </summary>
+    [CascadingParameter]
+    public EventCallback<MoveSelectInfo> OnMoveSelected { get; set; }
+    /// <summary>
+    /// Movenumber from where movetext will start
+    /// </summary>
+    [Parameter]
+    public int MoveNumber { set; get; } = 1;
+    /// <summary>
+    /// Side to move from where movetext will start
+    /// </summary>
+    [Parameter]
+    public Side Side { set; get; } = Side.WHITE;
+    /// <summary>
+    /// Variation Level (Main line = 0)
+    /// </summary>
+    [Parameter]
+    public int Level { set; get; } = 0;
+    /// <summary>
+    /// If true, each variation starts on a new line, subvariations are indented
+    /// </summary>
+    [CascadingParameter(Name = "HierarchicalDisplay")]
+    public bool HierarchicalDisplay { set; get; } = false;
 
-	[CascadingParameter(Name = "Id")]
-	protected string Id { get; set; }
+    [CascadingParameter(Name = "Id")]
+    protected string Id { get; set; }
 
-	[CascadingParameter(Name = "Comments")]
-	protected bool Comments { get; set; }
+    [CascadingParameter(Name = "Comments")]
+    protected bool Comments { get; set; }
 
-	[CascadingParameter(Name = "Variations")]
-	protected bool Variations { get; set; }
+    [CascadingParameter(Name = "Variations")]
+    protected bool Variations { get; set; }
 
-	[CascadingParameter]
-	protected NotationType Type { get; set; }
+    [CascadingParameter]
+    protected NotationType Type { get; set; }
 
-	[CascadingParameter(Name = "Language")]
-	protected string Language { get; set; }
+    [CascadingParameter(Name = "Language")]
+    protected string Language { get; set; }
 
-	private int NextLevel => Level + 1;
+    private int NextLevel => Level + 1;
 
-	private string OV = " (";
-	private string CV = ") ";
-	private string GT = ">";
-	private IChessPieceStringProvider chessPieceStringProvider = null;
+    private string OV = " (";
+    private string CV = ") ";
+    private string GT = ">";
+    private IChessPieceStringProvider chessPieceStringProvider = null;
 
-	protected override void OnParametersSet()
-	{
-		base.OnParametersSet();
-		if (HierarchicalDisplay)
-		{
-			OV = "";
-			CV = "";
-		}
-		else {
-			OV = " (";
-			CV = ") ";
-		}
-		CultureInfo ci = null;
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        if (HierarchicalDisplay)
+        {
+            OV = "";
+            CV = "";
+        }
+        else
+        {
+            OV = " (";
+            CV = ") ";
+        }
+        CultureInfo ci = null;
         try
         {
-           ci = Language == null ? CultureInfo.InvariantCulture : CultureInfo.GetCultureInfo(Language);
+            ci = Language == null ? CultureInfo.InvariantCulture : CultureInfo.GetCultureInfo(Language);
         }
         catch (CultureNotFoundException)
         {
-           ci = CultureInfo.InvariantCulture;
+            ci = CultureInfo.InvariantCulture;
         }
         if (!Chess.PieceChars.ContainsKey(ci)) ci = CultureInfo.InvariantCulture;
         chessPieceStringProvider = Chess.PieceChars[ci];
-	}
+    }
 
-	private string Print(Game g, int moveIndex)
-	{
-		switch (Type)
-		{
-			case NotationType.SAN:
-				return g.Position.ToSAN(Game.Moves[moveIndex], chessPieceStringProvider);
-			case NotationType.LAN:
-				return g.Position.ToLAN(Game.Moves[moveIndex], chessPieceStringProvider);
-			case NotationType.FIGURINE:
-				return g.Position.ToSAN(Game.Moves[moveIndex], FigurinePieceStringProvider.Instance);
-			case NotationType.UCI:
-				return Game.Moves[moveIndex].ToUCIString();
-			case NotationType.ICCF:
-			    return Position.ToICCF(Game.Moves[moveIndex]);
-			default:
-				return g.Position.ToSAN(Game.Moves[moveIndex]);
-		}
-	}
+    private string Print(Game g, int moveIndex)
+    {
+        switch (Type)
+        {
+            case NotationType.SAN:
+                return g.Position.ToSAN(Game.Moves[moveIndex], chessPieceStringProvider);
+            case NotationType.LAN:
+                return g.Position.ToLAN(Game.Moves[moveIndex], chessPieceStringProvider);
+            case NotationType.FIGURINE:
+                return g.Position.ToSAN(Game.Moves[moveIndex], FigurinePieceStringProvider.Instance);
+            case NotationType.UCI:
+                return Game.Moves[moveIndex].ToUCIString();
+            case NotationType.ICCF:
+                return Position.ToICCF(Game.Moves[moveIndex]);
+            default:
+                return g.Position.ToSAN(Game.Moves[moveIndex]);
+        }
+    }
 
-	private async Task SelectMoveAsync(EventArgs eventArgs, int moveNumber, Side side)
-	{
-		MoveSelectInfo msi = new(Id, Game.GetPosition(moveNumber, side), Game.GetMove(moveNumber, side), Game);
-		await OnMoveSelected.InvokeAsync(msi);
-	}
+    private async Task SelectMoveAsync(EventArgs eventArgs, int moveNumber, Side side)
+    {
+        Position startPos = new(Game.StartPosition);
+        int startPly = Game.PlyIndex(startPos.MoveNumber, startPos.SideToMove);
+        int moveIndex = Game.PlyIndex(moveNumber, side) - startPly;
+        MoveSelectInfo msi = new(Id, Game.GetPosition(moveNumber, side), Game.GetMove(moveNumber, side), Game, moveIndex);
+        await OnMoveSelected.InvokeAsync(msi);
+    }
 }
 

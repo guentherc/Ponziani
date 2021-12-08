@@ -5,11 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Enum Info.EvaluationType
-   </title>
+    <title>Tutorial - Simple Board with Automatic Egine Analysis </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Enum Info.EvaluationType
-   ">
+    <meta name="title" content="Tutorial - Simple Board with Automatic Egine Analysis ">
     <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -68,49 +66,44 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="PonzianiComponents.Info.EvaluationType">
-  
-  
-  <h1 id="PonzianiComponents_Info_EvaluationType" data-uid="PonzianiComponents.Info.EvaluationType" class="text-break">Enum Info.EvaluationType
-  </h1>
-  <div class="markdown level0 summary"><p>Evaluation Type</p>
-<p><a class="xref" href="PonzianiComponents.Info.html#PonzianiComponents_Info_Evaluation">Evaluation</a> might not always be exact. Sometimes engines output a lower or a upper bound only</p>
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="tutorial---simple-board-with-automatic-egine-analysis">Tutorial - Simple Board with Automatic Egine Analysis</h1>
+
+<p>We will use the generated Pages\Index.razor page in the PonzianiComponents.Client project as home of our analyisis board.
+To do this we have to replace it's content with</p>
+<pre><code>@page &quot;/&quot;
+
+&lt;Chessboard OnMovePlayed=&quot;OnMovePlayed&quot;/&gt;
+&lt;Engine @ref=&quot;engine&quot;/&gt;
+
+@code {
+    private Engine engine;
+
+    void OnMovePlayed(MovePlayedInfo mpi)
+    {
+        engine.StartAnalysisAsync(mpi.NewFen);
+    }
+}
+</code></pre>
+<p>Let us have a short look at the code. With</p>
+<p><code>&lt;Chessboard OnMovePlayed=&quot;OnMovePlayed&quot;/&gt;</code></p>
+<p>we are adding a chessboard component to our page. This will result in showing the interactive chessboard on your page. Whenever
+the user is applying a move (by drag &amp; drop) the event callback <code>OnMovePlayed</code> is triggered.
+The next line adds an Engine component to the page:</p>
+<p><code>&lt;Engine @ref=&quot;engine&quot;/&gt;</code></p>
+<p>This will set up the embedded engine. To interact with it we capture a component reference in variable <code>engine</code>.
+Finally we have to connect the event callback with the engine:</p>
+<pre><code>    void OnMovePlayed(MovePlayedInfo mpi)
+    {
+        engine.StartAnalysisAsync(mpi.NewFen);
+    }
+</code></pre>
+<p>After every move we will send the new position as <a href="https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation">FEN</a>-string to the engine. The engine
+will start to analyze the position and we will see the analysis output in the Engine Info Panel.</p>
+<p><img src="img%5Ctutorial_1_2.png" alt="Screenshot of application"></p>
+<div class="nextstepaction">
+<p><a href="tutorial_1_3.html">Next - Adding an Evaluation Bar</a></p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="PonzianiComponents.html">PonzianiComponents</a></h6>
-  <h6><strong>Assembly</strong>: PonzianiComponents.dll</h6>
-  <h5 id="PonzianiComponents_Info_EvaluationType_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public enum EvaluationType</code></pre>
-  </div>
-  <h3 id="fields">Fields
-  </h3>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    <thead>
-    <tbody>
-      <tr>
-        <td id="PonzianiComponents_Info_EvaluationType_Exact">Exact</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="PonzianiComponents_Info_EvaluationType_Lowerbound">Lowerbound</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="PonzianiComponents_Info_EvaluationType_Mate">Mate</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="PonzianiComponents_Info_EvaluationType_Upperbound">Upperbound</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </thead></thead></table>
 </article>
           </div>
           
@@ -119,10 +112,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Info_EvaluationType.md&amp;value=---%0Auid%3A%20PonzianiComponents.Info.EvaluationType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L115" class="contribution-link">View Source</a>
+                    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/articles/tutorial_1_2.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

@@ -59,7 +59,6 @@ namespace PonzianiComponents
                     sb.Append($"<text x=\"{label}\" y=\"15%\" text-anchor=\"middle\">{score / 100}</text>");
                 }
                 sb.Append("</svg>");
-                Console.WriteLine(sb.ToString());
                 _tickbarSVg = new MarkupString(sb.ToString());
             }
             return _tickbarSVg;
@@ -78,7 +77,6 @@ namespace PonzianiComponents
                     sb.Append($"<text x=\"50%\" y=\"{label}\" text-anchor=\"end\">{score / 100}</text>");
                 }
                 sb.Append("</svg>");
-                Console.WriteLine(sb.ToString());
                 _tickbarSVgV = new MarkupString(sb.ToString());
             }
             return _tickbarSVgV;

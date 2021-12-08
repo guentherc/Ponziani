@@ -3,7 +3,6 @@
     margin-bottom: 0px;
     padding: 2px;
     width: 100%;
-    max-width: 500px;
     border: 1px solid black;
     height: 30px;
     background-color: black;
@@ -25,7 +24,6 @@
     padding: 2px;
     padding-top: 0px;
     width: 100%;
-    max-width: 500px;
     height: 20px;
     vertical-align: middle;
 }
@@ -35,7 +33,6 @@
     margin: 5px auto;
     margin-right: 0px;
     width: 30px;
-    max-height: 500px;
     height: 100%;
 }
 
@@ -43,7 +40,6 @@
     float: left;
     margin: 5px auto;
     height: 100%;
-    max-height: 500px;
     border: 1px solid black;
     width: 30px;
     background-color: white;

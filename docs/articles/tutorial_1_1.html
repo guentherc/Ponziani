@@ -5,11 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Enum Info.EvaluationType
-   </title>
+    <title>Tutorial - Preparations </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Enum Info.EvaluationType
-   ">
+    <meta name="title" content="Tutorial - Preparations ">
     <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -68,49 +66,58 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="PonzianiComponents.Info.EvaluationType">
-  
-  
-  <h1 id="PonzianiComponents_Info_EvaluationType" data-uid="PonzianiComponents.Info.EvaluationType" class="text-break">Enum Info.EvaluationType
-  </h1>
-  <div class="markdown level0 summary"><p>Evaluation Type</p>
-<p><a class="xref" href="PonzianiComponents.Info.html#PonzianiComponents_Info_Evaluation">Evaluation</a> might not always be exact. Sometimes engines output a lower or a upper bound only</p>
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="tutorial---preparations">Tutorial - Preparations</h1>
+
+<p>First we need to have a running Blazor application. To do this create a Blazor application - both Blazor Server or Blazor WASM
+are ok. For this tutorial we will use Blazor WASM. You can do this either via Visual Studio or via the dotnet command line tools:</p>
+<p><code>dotnet new blazorwasm -f net6.0 --hosted --name PonzianiTutorial</code></p>
+<p>If you use Visual Studio to create the app, please make sure that you check the 'ASP.Net Core hosted' checkbox. We need this as the
+embedded Stockfish engine requires special security settings.</p>
+<p>Open the Program.cs file in the PonzianiTutorial.Server Project and add the bold lines</p>
+<pre>
+    ...
+
+    var app = builder.Build();
+
+    // Configure the HTTP request pipeline.
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseWebAssemblyDebugging();
+    }
+    else
+    {
+        app.UseExceptionHandler("/Error");
+        // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+        app.UseHsts();
+    }
+
+    <strong>
+    app.Use(async (context, next) =>
+    {
+        context.Response.Headers.Add("Cross-Origin-Embedder-Policy", "require-corp");
+        context.Response.Headers.Add("Cross-Origin-Opener-Policy", "same-origin");
+        context.Response.Headers.Add("Cross-Origin-Resource-Policy", "same-site");
+        await next();
+    });
+    </strong>
+    app.UseHttpsRedirection();
+
+    ...
+</pre>
+<p>Last preparation step is the installation of the PonzianiComponents Package:</p>
+<p><code>dotnet add package PonzianiComponents --version 0.3.0</code></p>
+<p>and to add the necessary imports to File _Imports.razor</p>
+<pre><code>@using PonzianiComponents
+@using PonzianiComponents.Chesslib
+</code></pre>
+<p>Now we are done and you can start your new application tocheck if it's running:
+Switch to the Directory /PonzianiTutorial/Server and enter</p>
+<p><code>dotnet run --urls=https://localhost:5001/</code></p>
+<p>on the command line and then direct your browser to https://localhost:5001/ and you should see the blazor template app in action.</p>
+<div class="nextstepaction">
+<p><a href="tutorial_1_2.html">Next: Chessboard with automatic engine analysis</a></p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="PonzianiComponents.html">PonzianiComponents</a></h6>
-  <h6><strong>Assembly</strong>: PonzianiComponents.dll</h6>
-  <h5 id="PonzianiComponents_Info_EvaluationType_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public enum EvaluationType</code></pre>
-  </div>
-  <h3 id="fields">Fields
-  </h3>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    <thead>
-    <tbody>
-      <tr>
-        <td id="PonzianiComponents_Info_EvaluationType_Exact">Exact</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="PonzianiComponents_Info_EvaluationType_Lowerbound">Lowerbound</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="PonzianiComponents_Info_EvaluationType_Mate">Mate</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="PonzianiComponents_Info_EvaluationType_Upperbound">Upperbound</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </thead></thead></table>
 </article>
           </div>
           
@@ -119,10 +126,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Info_EvaluationType.md&amp;value=---%0Auid%3A%20PonzianiComponents.Info.EvaluationType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L115" class="contribution-link">View Source</a>
+                    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/articles/tutorial_1_1.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

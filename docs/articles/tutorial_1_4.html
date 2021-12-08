@@ -5,11 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Enum Info.EvaluationType
-   </title>
+    <title>Tutorial - Adding a Scoresheet </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Enum Info.EvaluationType
-   ">
+    <meta name="title" content="Tutorial - Adding a Scoresheet ">
     <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -68,49 +66,64 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="PonzianiComponents.Info.EvaluationType">
-  
-  
-  <h1 id="PonzianiComponents_Info_EvaluationType" data-uid="PonzianiComponents.Info.EvaluationType" class="text-break">Enum Info.EvaluationType
-  </h1>
-  <div class="markdown level0 summary"><p>Evaluation Type</p>
-<p><a class="xref" href="PonzianiComponents.Info.html#PonzianiComponents_Info_Evaluation">Evaluation</a> might not always be exact. Sometimes engines output a lower or a upper bound only</p>
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="tutorial---adding-a-scoresheet">Tutorial - Adding a Scoresheet</h1>
+
+<p>In this chapter we will add a scoresheet, allowing us to track and note down our interactive analysis.</p>
+<p>This can be done by only adding a few lines (displayed in bold)</p>
+<pre>
+@page "/"
+&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-md-auto"&gt;
+            &lt;Chessboard OnMovePlayed="OnMovePlayed" Size=400 /&gt;
+        &lt;/div&gt;
+        &lt;div class="col" style="height:100%;vertical-align:middle;"&gt;
+            &lt;EvaluationGauge Score="@Score" ScoreText="@ScoreText" Orientation="Orientation.Vertical" style="height:350px;padding-top:25px;" /&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="row mt-2"&gt;
+        &lt;Engine @ref="engine" OnEngineInfo="OnEngineInfo" /&gt;
+    &lt;/div&gt;
+    <strong>&lt;div class="row mt-2"&gt;
+        &lt;div class="col-md-auto"&gt;
+            &lt;Scoresheet Game="game" style="width:400px" /&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;</strong>
+&lt;/div&gt;
+
+@code {
+    private Engine engine;
+
+    <strong>private Game game = new Game();</strong>
+
+    private int Score { set; get; } = 0;
+    private string ScoreText { set; get; } = String.Empty;
+
+
+
+    void OnMovePlayed(MovePlayedInfo mpi)
+    {
+        engine.StartAnalysisAsync(mpi.NewFen);
+        <strong>game.Add(new ExtendedMove(mpi.Move));</strong>
+    }
+
+    void OnEngineInfo(Info info)
+    {
+        if (info.MoveIndex == 1)
+        {
+            Score = engine.Score;
+            ScoreText = engine.ScoreText(0);
+        }
+    }
+}
+</pre>
+<p>We added a Scoresheet component and a Game object as attribute, which provides the content of the scoresheet.
+We update the Game object in the event callback <code>OnMovePlayed</code>, which is triggered when the user applies a move.</p>
+<p><img src="img%5Ctutorial_1_4a.png" alt="Screenshot of application with scoresheet"></p>
+<div class="nextstepaction">
+<p><a href="tutorial_1_5.html">Next</a></p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="PonzianiComponents.html">PonzianiComponents</a></h6>
-  <h6><strong>Assembly</strong>: PonzianiComponents.dll</h6>
-  <h5 id="PonzianiComponents_Info_EvaluationType_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public enum EvaluationType</code></pre>
-  </div>
-  <h3 id="fields">Fields
-  </h3>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    <thead>
-    <tbody>
-      <tr>
-        <td id="PonzianiComponents_Info_EvaluationType_Exact">Exact</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="PonzianiComponents_Info_EvaluationType_Lowerbound">Lowerbound</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="PonzianiComponents_Info_EvaluationType_Mate">Mate</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="PonzianiComponents_Info_EvaluationType_Upperbound">Upperbound</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </thead></thead></table>
 </article>
           </div>
           
@@ -119,10 +132,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Info_EvaluationType.md&amp;value=---%0Auid%3A%20PonzianiComponents.Info.EvaluationType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L115" class="contribution-link">View Source</a>
+                    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/articles/tutorial_1_4.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

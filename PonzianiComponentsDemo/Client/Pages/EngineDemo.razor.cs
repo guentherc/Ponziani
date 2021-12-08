@@ -10,6 +10,7 @@ namespace PonzianiComponentsDemo.Client.Pages
         public int NumberOfLines { get; set; } = 1;
         public bool ShowLog { get; set; } = false;
         public bool ShowEvaluationBar { get; set; } = false;
+        public bool ShowEvaluationInfo { get; set; } = false;
         public Orientation Orientation { get; set; } = Orientation.Horizontal;
     }
     public partial class EngineDemo
@@ -21,7 +22,7 @@ namespace PonzianiComponentsDemo.Client.Pages
 
         private void OnEngineInfo(Info info)
         {
-            if (info.MoveIndex == 1)
+            if (info.MoveIndex == 1 && evaluationBar != null)
             {
                 evaluationBar.Score = engine.Score;
                 evaluationBar.ScoreText = engine.ScoreText(0);

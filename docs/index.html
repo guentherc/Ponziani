@@ -70,6 +70,15 @@ So far these components are available:</p>
 a component allowing to show an interactive chessboard, where moves can be be played by drag&amp;drop</li>
 <li><a href="api/PonzianiComponents.Scoresheet.html">Scoresheet</a>
 a component which can be used to list the moves (including comments and variations) of a chess game either in tabular or inline mode</li>
+<li><a href="api/PonzianiComponents.Engine.html">Engine</a>
+a component which allows to integrate an engine (Stockfish 14.1 WASM) into your Blazor App
+<ul>
+<li><a href="api/PonzianiComponents.EngineLog.html">EngineLog</a>
+a component to output the engine's log</li>
+<li><a href="api/PonzianiComponents.EvaluationGauge.html">EvaluationGauge</a>
+a component rendering an evaluation bar</li>
+</ul>
+</li>
 </ol>
 <h3 id="chess-api">Chess API</h3>
 <p>There is also a <a href="api/PonzianiComponents.Chesslib.html">Chess API</a> included, offering chess and chess960 related functionality like legal move generation,
@@ -81,28 +90,13 @@ PGN parsing and ECO classification</p>
 <h2 id="demos">Demos</h2>
 <p><a href="https://ponziani.de/">https://ponziani.de/</a></p>
 <h2 id="usage">Usage</h2>
-<p>Add a using reference in your <strong>_Imports.razor</strong>.</p>
-<pre><code>@using PonzianiComponents
-@using PonzianiComponents.Chesslib
-</code></pre>
-<p>Then add a chessboard to your blazor application</p>
-<pre><code>&lt;Chessboard/&gt;
-</code></pre>
-<p>If you want to specify a position</p>
-<pre><code>&lt;Chessboard Fen=&quot;r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 3 3&quot;/&gt;
-</code></pre>
-<p>Adding a scoresheet requires to provide a <a href="api/PonzianiComponents.Chesslib.Game.html">Game</a> object, which can be created from <a href="api/PonzianiComponents.Chesslib.PGN.html">PGN</a>-Data</p>
-<pre><code>Game game = PGN.Parse(pgn, true, true, 1);
-
-&lt;Scoresheet Game=&quot;game&quot; Comments=&quot;true&quot; Variations=&quot;true&quot;&gt;&lt;/Game&gt;
-
-</code></pre>
+<p>Please have a look at the <a href="articles/tutorial_1_1.html">tutorial</a></p>
 <h2 id="acknowledgements">Acknowledgements</h2>
 <ul>
 <li>Chris Oakman: The rendering and default colors were inspired by resp. copied from <a href="chessboard.js">https://chessboardjs.com/</a> (MIT License)</li>
 <li>SCID: The ECO codes were taken from <a href="SCID">http://scid.sourceforge.net/</a> (GPL v2)</li>
 <li>.NET Foundation: HSL Color determination and manipulation was copied and adjusted from .Net Core source code (MIT License)</li>
-<li>[https://github.com/official-stockfish/Stockfish](Stockfish Team) for the great chess engine and [https://github.com/nmrugg/stockfish.js](Nathan Rugg) for the port to WebAssembly</li>
+<li>[https://github.com/official-stockfish/Stockfish](Stockfish Team) for the great chess engine and [https://github.com/nmrugg/stockfish.js](Nathan Rugg) for the port to WebAssembly (GPLv3)</li>
 </ul>
 </article>
           </div>

@@ -19,6 +19,12 @@
         </div>
     </div>
     <div class="form-check">
+        <InputCheckbox class="form-check-input" @bind-Value="Model.ShowEvaluationInfo" />
+        <label>
+            Show Engine Evaluation Info:
+        </label>
+    </div>
+    <div class="form-check">
         <InputCheckbox class="form-check-input" @bind-Value="Model.ShowLog" />
         <label>
             Show Engine Log:
@@ -45,12 +51,25 @@
     </div>
     }
 </EditForm>
-<hr/>
-<Engine ShowLog="Model.ShowLog" @ref="engine" NumberOfLines="Model.NumberOfLines" style="border: 1px solid green;" OnEngineInfo="OnEngineInfo"></Engine>
-@if (Model.ShowEvaluationBar)
-{
-    <EvaluationGauge Orientation="Model.Orientation" style="border: 1px solid green; height: 500px;" @ref="evaluationBar" />
-}
+<hr />
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-8">
+            <Engine ShowLog="Model.ShowLog" ShowEvaluationInfo="Model.ShowEvaluationInfo" @ref="engine" NumberOfLines="Model.NumberOfLines"
+                    style="border: 1px solid green;" OnEngineInfo="OnEngineInfo"></Engine>
+            @if (Model.ShowEvaluationBar)
+            {
+                @if (Model.Orientation == Orientation.Horizontal)
+                {
+                    <EvaluationGauge Orientation=Orientation.Horizontal style="padding:10px;" @ref="evaluationBar" />
+                } else
+                {
+                     <EvaluationGauge Orientation=Orientation.Vertical style="height:300px;padding:10px;" @ref="evaluationBar" />                   
+                }
+            }
+        </div>
+    </div>
+</div>
 
 @code {
 

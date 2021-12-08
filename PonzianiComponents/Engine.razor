@@ -1,21 +1,23 @@
 ﻿@inject IJSRuntime js
 
-
-<div class="engineStatus" @attributes=OtherAttributes>
-    <div>
-        <span>Depth: @Infos[0].Depth </span>&nbsp;<span>Nps: @Infos[0].NodesPerSecond </span>&nbsp;<span>@Name</span>
-        <div>Score: <span style="font-weight:bold">@ScoreText(0)</span></div>
+@if (ShowEvaluationInfo)
+{
+    <div class="engineStatus" @attributes=OtherAttributes>
+        <div>
+            <span>Depth: @Infos[0].Depth </span>&nbsp;<span>Nps: @Infos[0].NodesPerSecond </span>&nbsp;<span>@Name</span>
+            <div>Score: <span style="font-weight:bold">@ScoreText(0)</span></div>
+        </div>
+        <div>
+            @for (int i = 0; i < Infos.Count; ++i)
+            {
+                <div>
+                    <strong>@ScoreText(i)</strong>
+                    &nbsp;&nbsp;@PVToSAN(Infos[i].PrincipalVariation)
+                </div>
+            }
+        </div>
     </div>
-    <div>
-        @for (int i = 0; i < Infos.Count; ++i)
-        {
-            <div>
-                <strong>@ScoreText(i)</strong>
-                &nbsp;&nbsp;@PVToSAN(Infos[i].PrincipalVariation)
-            </div>
-        }
-    </div>
-</div>
+}
 
 @if (ShowEvaluationbar)
 {

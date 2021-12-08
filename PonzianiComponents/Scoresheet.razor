@@ -2,198 +2,222 @@
 
 @if (Mode == DisplayMode.TABULAR)
 {
-	Game g = new Game(Game.StartPosition);
-	<table class="pzNotTable" id="@Id" @attributes=OtherAttributes>
-	 <thead class="pzNotTableHead">
-	 </thead>
-	 	<tbody @ref="_tbody" class="pzNotTableBody" style="@($"overflow-y:scroll; display:block;{Height()}")">
-		@if (Game.Moves.Count > 0)
-		{
-				@if (g.Position.SideToMove == Side.BLACK)
-				{
-					int moveNumber = g.Position.MoveNumber;
-			  <tr>
-			   <td class="pzNotColMovenumber">@g.Position.MoveNumber</td>
-			   <td class="pzNotColWhite">...</td>
-			   <td class="pzNotColBlack" @onclick="@(() => SelectMoveAsync(moveNumber, Side.BLACK))">@Print(g, 0)</td>
-			  </tr>
-					g.Add(Game.Moves[0]);
-				}
-				@for (int i = g.Moves.Count; g.Moves.Count < Game.Moves.Count; i += 2)
-				{
-					int moveNumber = g.Position.MoveNumber;
-					bool comments = Comments && Game.Moves[i].Comment != null && Game.Moves[i].Comment.Length > 0;
-					bool variations = Variations && Game.Moves[i].Variations != null && Game.Moves[i].Variations.Count > 0;
-					@if (comments || variations)
-					{
-						<tr>
-							<td class="pzNotColMovenumber">@g.Position.MoveNumber</td>
+    Game g = new Game(Game.StartPosition);
+    <table class="pzNotTable" id="@Id" @attributes=OtherAttributes>
+        <thead class="pzNotTableHead">
+        </thead>
+        <tbody @ref="_tbody" class="pzNotTableBody" style="@($"overflow-y:scroll; display:block;{Height()}")">
+            @if (Game.Moves.Count > 0)
+            {
+                @if (g.Position.SideToMove == Side.BLACK)
+                {
+                    int moveNumber = g.Position.MoveNumber;
+                    <tr>
+                        <td class="pzNotColMovenumber">@g.Position.MoveNumber</td>
+                        <td class="pzNotColWhite">...</td>
+                        <td class="pzNotColBlack" @onclick="@(() => SelectMoveAsync(moveNumber, Side.BLACK))">@Print(g, 0)</td>
+                    </tr>
+                    g.Add(Game.Moves[0]);
+                }
+                @for (int i = g.Moves.Count; g.Moves.Count < Game.Moves.Count; i += 2)
+                {
+                    int moveNumber = g.Position.MoveNumber;
+                    bool comments = Comments && Game.Moves[i].Comment != null && Game.Moves[i].Comment.Length > 0;
+                    bool variations = Variations && Game.Moves[i].Variations != null && Game.Moves[i].Variations.Count > 0;
+                    @if (comments || variations)
+                    {
+                        <tr>
+                            <td class="pzNotColMovenumber">@g.Position.MoveNumber</td>
 
-							<td class="pzNotColWhite" @onclick="@(() => SelectMoveAsync(moveNumber, Side.WHITE))">@Print(g, i)</td><td  class="pzNotColBlack"></td>
-						</tr>
-						@if (variations)
-						{
-							<tr class="pzVariation"><td colspan="3">
-							@{
-								Game vg = (Game)g.Clone();
-								vg.Add(Game.Moves[i]);
-								List<Game> vgames = vg.VariationGames();
-								int index = 0;
-								foreach (var vgame in vgames)
-								{
-									<CascadingValue Value="@Id" Name="Id">
-										<CascadingValue Value="@Comments" Name="Comments">
-											<CascadingValue Value="@Variations" Name="Variations">
-												<CascadingValue Value="@Language" Name="Language">
-												<CascadingValue Value="@Type">
-												 <CascadingValue Value="@HierarchicalDisplay" Name="HierarchicalDisplay">
-													<CascadingValue Value="@OnMoveSelected">
-														@if (index > 0)
-														{
-															<text>&#32;</text>
-														}
-														<MoveText Game="vgame" MoveNumber="moveNumber" Side="Side.WHITE" Level="1"></MoveText>
-													</CascadingValue>
-													</CascadingValue>
-												</CascadingValue>
-												</CascadingValue>
-											</CascadingValue>
-										</CascadingValue>
-									</CascadingValue>
-									++index;
-								}
-							}
-							</td></tr>
-						}
-						@if (comments)
-						{
-							<tr class="pzComment"><td colspan="3">@Game.Moves[i].Comment</td></tr>
-						}
-						<tr>
-							<td class="pzNotColMovenumber">@g.Position.MoveNumber</td>
-							<td class="pzNotColWhite">...</td>
-							@{
-								g.Add(Game.Moves[i]);
-							}
-							@if (g.Moves.Count < Game.Moves.Count)
-							{
-								<td class="pzNotColBlack" @onclick="@(() => SelectMoveAsync(moveNumber, Side.BLACK))">@Print(g, i + 1)</td>
-								g.Add(Game.Moves[i + 1]);
-							}
-							else
-							{
-								<td class="pzNotColBlack  pzNotResult">@PGN.ResultToString(Game.Result)</td>
-							}
-						</tr>
-					} 
-					else
-					{
-						<tr>
-							<td class="pzNotColMovenumber">@g.Position.MoveNumber</td>
+                            <td class="pzNotColWhite" @onclick="@(() => SelectMoveAsync(moveNumber, Side.WHITE))">@Print(g, i)</td>
+                            <td class="pzNotColBlack"></td>
+                        </tr>
+                        @if (variations)
+                        {
+                            <tr class="pzVariation">
+                                <td colspan="3">
+                                    @{
+                                        Game vg = (Game)g.Clone();
+                                        vg.Add(Game.Moves[i]);
+                                        List<Game> vgames = vg.VariationGames();
+                                        int index = 0;
+                                        foreach (var vgame in vgames)
+                                        {
+                                            <CascadingValue Value="@Id" Name="Id">
+                                                <CascadingValue Value="@Comments" Name="Comments">
+                                                    <CascadingValue Value="@Variations" Name="Variations">
+                                                        <CascadingValue Value="@Language" Name="Language">
+                                                            <CascadingValue Value="@Type">
+                                                                <CascadingValue Value="@HierarchicalDisplay" Name="HierarchicalDisplay">
+                                                                    <CascadingValue Value="@OnMoveSelected">
+                                                                        @if (HierarchicalDisplay)
+                                                                            {
+                                                                                <p class="pzVariation">
+                                                                                    <MoveText Game="vgame" MoveNumber="moveNumber" Side="Side.WHITE" Level="1"></MoveText>
+                                                                                </p>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                @if (index > 0)
+                                                                                {
+                                                                                    <text>&#32;</text>
+                                                                                }
+                                                                                <MoveText Game="vgame" MoveNumber="moveNumber" Side="Side.WHITE" Level="1"></MoveText>
+                                                                            }
+                                                                        </CascadingValue>
+                                                                    </CascadingValue>
+                                                                </CascadingValue>
+                                                            </CascadingValue>
+                                                        </CascadingValue>
+                                                    </CascadingValue>
+                                                </CascadingValue>
+                                            ++index;
+                                        }
+                                    }
+                                </td>
+                            </tr>
+                        }
+                        @if (comments)
+                        {
+                            <tr class="pzComment"><td colspan="3">@Game.Moves[i].Comment</td></tr>
+                        }
+                        <tr>
+                            <td class="pzNotColMovenumber">@g.Position.MoveNumber</td>
+                            <td class="pzNotColWhite">...</td>
+                            @{
+                                g.Add(Game.Moves[i]);
+                            }
+                            @if (g.Moves.Count < Game.Moves.Count)
+                            {
+                                <td class="pzNotColBlack" @onclick="@(() => SelectMoveAsync(moveNumber, Side.BLACK))">@Print(g, i + 1)</td>
+                                g.Add(Game.Moves[i + 1]);
+                            }
+                            else
+                            {
+                                <td class="pzNotColBlack  pzNotResult">@PGN.ResultToString(Game.Result)</td>
+                            }
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td class="pzNotColMovenumber">@g.Position.MoveNumber</td>
 
-							<td class="pzNotColWhite" @onclick="@(()=> SelectMoveAsync(moveNumber, Side.WHITE))">@Print(g, i)</td>
-							@{
-								g.Add(Game.Moves[i]);
-							}
-							@if (g.Moves.Count < Game.Moves.Count)
-							{
-								<td class="pzNotColBlack" @onclick="@(() => SelectMoveAsync(moveNumber, Side.BLACK))">@Print(g, i + 1)</td>
-								g.Add(Game.Moves[i + 1]);
-							}
-							else
-							{
-								<td class="pzNotColBlack  pzNotResult">@PGN.ResultToString(Game.Result)</td>
-							}
-						</tr>
-					}
-					comments = Comments && Game.Moves.Count > i+1 && Game.Moves[i+1].Comment != null && Game.Moves[i+1].Comment.Length > 0;
-					variations = Variations && Game.Moves.Count > i+1 && Game.Moves[i+1].Variations != null && Game.Moves[i+1].Variations.Count > 0;
-					@if (comments || variations)
-					{
-						if (variations)
-						{
-							<tr class="pzVariation"><td colspan="3">
-							@{
-								List<Game> vgames = g.VariationGames();
-								int index = 0;
-								foreach (var vgame in vgames)
-								{
-									<CascadingValue Value="@Id" Name="Id">
-										<CascadingValue Value="@Comments" Name="Comments">
-											<CascadingValue Value="@Variations" Name="Variations">
-												<CascadingValue Value="@Language" Name="Language">
-												<CascadingValue Value="@Type">
-													<CascadingValue Value="@HierarchicalDisplay" Name="HierarchicalDisplay">
-													<CascadingValue Value="@OnMoveSelected">
-														@if (index > 0)
-														{
-															<text>&#32;</text>
-														}
-														<MoveText Game="vgame" MoveNumber="moveNumber" Side="Side.BLACK" Level="1"></MoveText>
-													</CascadingValue>
-													</CascadingValue>
-												</CascadingValue>
-												</CascadingValue>
-											</CascadingValue>
-										</CascadingValue>
-									</CascadingValue>
-								}
-							}
-							</td></tr>
-						}
-						if (comments)
-						{
-							<tr class="pzComment"><td colspan="3">@Game.Moves[i+1].Comment</td></tr>
-						}
-					}
-				}
-				@if (g.SideToMove == Side.WHITE)
-				{
-			  <tr> <td class="pzNotColMovenumber">@g.Position.MoveNumber</td><td class="pzNotColWhite pzNotResult">@PGN.ResultToString(Game.Result)</td><td class="pzNotColBlack"></td></tr>
-				}	 
-		}
-		@{
-			int startAddNumber = Game.Position.MoveNumber + (int)Game.Position.SideToMove;
-			int renderedRows = (Game.Moves.Count + 1) / 2;
-			if (Game.Moves.Count > 0 && Game.Position.SideToMove == Side.WHITE)
-			{
-				++renderedRows;
-				++startAddNumber;
-			}
-			int additionalRows = MinimalRowCount - renderedRows;
-					 
-			for(int i = 0; i<additionalRows; ++i)
-			{
-				<tr> 
-					<td class="pzNotColMovenumber">@(startAddNumber + i)</td>
-					<td class="pzNotColWhite"></td>
-					<td class="pzNotColBlack"></td>		
-				</tr>
-			}
-		}
-		</tbody>
-	</table>
+                            <td class="pzNotColWhite" @onclick="@(()=> SelectMoveAsync(moveNumber, Side.WHITE))">@Print(g, i)</td>
+                            @{
+                                g.Add(Game.Moves[i]);
+                            }
+                            @if (g.Moves.Count < Game.Moves.Count)
+                            {
+                                <td class="pzNotColBlack" @onclick="@(() => SelectMoveAsync(moveNumber, Side.BLACK))">@Print(g, i + 1)</td>
+                                g.Add(Game.Moves[i + 1]);
+                            }
+                            else
+                            {
+                                <td class="pzNotColBlack  pzNotResult">@PGN.ResultToString(Game.Result)</td>
+                            }
+                        </tr>
+                    }
+                    comments = Comments && Game.Moves.Count > i + 1 && Game.Moves[i + 1].Comment != null && Game.Moves[i + 1].Comment.Length > 0;
+                    variations = Variations && Game.Moves.Count > i + 1 && Game.Moves[i + 1].Variations != null && Game.Moves[i + 1].Variations.Count > 0;
+                    @if (comments || variations)
+                    {
+                        if (variations)
+                        {
+                            <tr class="pzVariation">
+                                <td colspan="3">
+                                    @{
+                                        List<Game> vgames = g.VariationGames();
+                                        int index = 0;
+                                        foreach (var vgame in vgames)
+                                        {
+                                            <CascadingValue Value="@Id" Name="Id">
+                                                <CascadingValue Value="@Comments" Name="Comments">
+                                                    <CascadingValue Value="@Variations" Name="Variations">
+                                                        <CascadingValue Value="@Language" Name="Language">
+                                                            <CascadingValue Value="@Type">
+                                                                <CascadingValue Value="@HierarchicalDisplay" Name="HierarchicalDisplay">
+                                                                    <CascadingValue Value="@OnMoveSelected">
+                                                                        @if (HierarchicalDisplay)
+                                                {
+                                                    <p class="pzVariation">
+                                                        <MoveText Game="vgame" MoveNumber="moveNumber" Side="Side.BLACK" Level="1"></MoveText>
+                                                    </p>
+                                                }
+                                                else
+                                                {
+                                                    @if (index > 0)
+                                                    {
+                                                        <text>&#32;</text>
+                                                    }
+                                                    <MoveText Game="vgame" MoveNumber="moveNumber" Side="Side.BLACK" Level="1"></MoveText>
+                                                }
+                                            </CascadingValue>
+                                        </CascadingValue>
+                                    </CascadingValue>
+                                </CascadingValue>
+                            </CascadingValue>
+                        </CascadingValue>
+                    </CascadingValue>
+                                            ++index;
+                                        }
+                                    }
+                                </td>
+                            </tr>
+                        }
+                        if (comments)
+                        {
+                            <tr class="pzComment"><td colspan="3">@Game.Moves[i+1].Comment</td></tr>
+                        }
+                    }
+                }
+                @if (g.SideToMove == Side.WHITE)
+                {
+                    <tr> <td class="pzNotColMovenumber">@g.Position.MoveNumber</td><td class="pzNotColWhite pzNotResult">@PGN.ResultToString(Game.Result)</td><td class="pzNotColBlack"></td></tr>
+                }
+            }
+            @{
+                int startAddNumber = Game.Position.MoveNumber + (int)Game.Position.SideToMove;
+                int renderedRows = (Game.Moves.Count + 1) / 2;
+                if (Game.Moves.Count > 0 && Game.Position.SideToMove == Side.WHITE)
+                {
+                    ++renderedRows;
+                    ++startAddNumber;
+                }
+                int additionalRows = MinimalRowCount - renderedRows;
+
+                for (int i = 0; i < additionalRows; ++i)
+                {
+                    <tr>
+                        <td class="pzNotColMovenumber">@(startAddNumber + i)</td>
+                        <td class="pzNotColWhite"></td>
+                        <td class="pzNotColBlack"></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
 }
 else if (Mode == DisplayMode.INLINE)
 {
-	Game g = new Game(Game.StartPosition);
-	<div id="@Id" @attributes=OtherAttributes @ref="_div">
-		<CascadingValue Value="@Id" Name="Id">
-			<CascadingValue Value="@Comments" Name="Comments">
-				<CascadingValue Value="@Variations" Name="Variations">
-					<CascadingValue Value="@Language" Name="Language">
-					<CascadingValue Value="@Type">
-						<CascadingValue Value="@HierarchicalDisplay" Name="HierarchicalDisplay">
-						<CascadingValue Value="@OnMoveSelected">
-							<MoveText Game="Game"></MoveText>
-						</CascadingValue>
-						</CascadingValue>
-					</CascadingValue>
-					</CascadingValue>
-				</CascadingValue>
-			</CascadingValue>
-		</CascadingValue>
-	</div>
+    Game g = new Game(Game.StartPosition);
+    <div id="@Id" @attributes=OtherAttributes @ref="_div">
+        <CascadingValue Value="@Id" Name="Id">
+            <CascadingValue Value="@Comments" Name="Comments">
+                <CascadingValue Value="@Variations" Name="Variations">
+                    <CascadingValue Value="@Language" Name="Language">
+                        <CascadingValue Value="@Type">
+                            <CascadingValue Value="@HierarchicalDisplay" Name="HierarchicalDisplay">
+                                <CascadingValue Value="@OnMoveSelected">
+                                    <MoveText Game="Game"></MoveText>
+                                </CascadingValue>
+                            </CascadingValue>
+                        </CascadingValue>
+                    </CascadingValue>
+                </CascadingValue>
+            </CascadingValue>
+        </CascadingValue>
+    </div>
 }
 
 @code {

@@ -319,6 +319,51 @@ namespace PonzianiComponents.Chesslib
             return true;
         }
         /// <summary>
+        /// Adds a variation to the current game
+        /// </summary>
+        /// <param name="variation">List of all moves, which form the variation</param>
+        /// <param name="moveNumber">Move number where variation starts</param>
+        /// <param name="side">Side to move where variation starts</param>
+        public void AddVariation(List<ExtendedMove> variation, int moveNumber = 1, Side side = Side.WHITE)
+        {
+            var moves = Moves;
+            int plyIndex = 2 * (moveNumber - 1) + (int)side;
+            int subIndex = plyIndex;
+            for (int i = 0; i < variation.Count; i++)
+            {
+                if (subIndex == moves.Count)
+                {
+                    moves.Add(variation[i]);
+                }
+                else if (variation[i].Equals(moves[subIndex]))
+                {
+                    subIndex++;
+                }
+                else
+                {
+                    if (moves[subIndex].Variations == null) moves[subIndex].Variations = new();
+                    List<ExtendedMove> sub = null;
+                    foreach (var subvariant in moves[subIndex].Variations)
+                    {
+                        if (subvariant[0].Equals(variation[i]))
+                        {
+                            subIndex = 1;
+                            sub = subvariant;
+                            moves = subvariant;
+                            break;
+                        }
+                    }
+                    if (sub == null)
+                    {
+                        moves[subIndex].Variations.Add(new List<ExtendedMove>(variation.GetRange(i, variation.Count - i)));
+                        return;
+                    }
+                }
+
+            }
+        }
+
+        /// <summary>
         /// Undos the last applied move from the game
         /// </summary>
         /// <returns>true if successful</returns>

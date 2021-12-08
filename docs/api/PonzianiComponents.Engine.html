@@ -74,14 +74,26 @@
   <h1 id="PonzianiComponents_Engine" data-uid="PonzianiComponents.Engine" class="text-break">Class Engine
   </h1>
   <div class="markdown level0 summary"><p>Blazor component wrapping an UCI compliant WebAssembly Chess Engine</p>
-<p>The component uses the WebAssembly port of Nathan Rugg ((<a href="https://github.com/nmrugg/stockfish.js">https://github.com/nmrugg/stockfish.js</a>) Stockfish 14.1 </p>
+<p>The component uses the WebAssembly port of Nathan Rugg of ((<a href="https://github.com/nmrugg/stockfish.js">https://github.com/nmrugg/stockfish.js</a>) Stockfish 14.1 </p>
 <p>NOTE: Stockfish.js 14.1 reqiures some of the latest features and does not work in every browser.<br>
-As it uses the latest WebAssembly threading proposal. Requires these HTTP headers on the top level response:
+As it uses the latest WebAssembly threading proposal it requires these HTTP headers on the top level response:
 <pre><code>Cross-Origin-Embedder-Policy: require-corp
 Cross-Origin-Opener-Policy: same-origin</code></pre>
 And the following header on the included files:
 <pre><code> 
 Cross-Origin-Embedder-Policy: require-corp</code></pre>
+</p>
+<p>
+The UI of the engine component consists of 3 parts:
+<ul><li>Info Panel showing the engine&apos;s evaluation info (score, depth and principal variation)</li><li>Evaluation Bar showing the current evaluation graphically</li><li>Log Panel showing the uci communication</li></ul>
+Those 3 UI parts can be activated by the parameters <a class="xref" href="PonzianiComponents.Engine.html#PonzianiComponents_Engine_ShowEvaluationInfo">ShowEvaluationInfo</a>, <a class="xref" href="PonzianiComponents.Engine.html#PonzianiComponents_Engine_ShowEvaluationbar">ShowEvaluationbar</a> and <a class="xref" href="PonzianiComponents.Engine.html#PonzianiComponents_Engine_ShowLog">ShowLog</a>. 
+It&apos;s possible to set all 3 of those parameters to false. In that case the engine can be run completely faceless.<br>
+To have more flexibiliyt regarding the UI setup, the evaluation bar and the log panel are offered as independent components: <a class="xref" href="PonzianiComponents.EvaluationGauge.html">EvaluationGauge</a> 
+and <a class="xref" href="PonzianiComponents.EngineLog.html">EngineLog</a> 
+</p>
+<p>
+There is only one Engine Process available per window. So by using 2 Engine components, you will not get 2 engine workers, but only one. All UCI commands you
+to one of your engine commands will reach the same engine.
 </p>
 </div>
   <div class="markdown level0 conceptual"></div>
@@ -127,7 +139,7 @@ Cross-Origin-Embedder-Policy: require-corp</code></pre>
     <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Engine_Name.md&amp;value=---%0Auid%3A%20PonzianiComponents.Engine.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L234">View Source</a>
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L260">View Source</a>
   </span>
   <a id="PonzianiComponents_Engine_Name_" data-uid="PonzianiComponents.Engine.Name*"></a>
   <h4 id="PonzianiComponents_Engine_Name" data-uid="PonzianiComponents.Engine.Name">Name</h4>
@@ -158,7 +170,7 @@ Cross-Origin-Embedder-Policy: require-corp</code></pre>
     <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Engine_NumberOfLines.md&amp;value=---%0Auid%3A%20PonzianiComponents.Engine.NumberOfLines%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L204">View Source</a>
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L230">View Source</a>
   </span>
   <a id="PonzianiComponents_Engine_NumberOfLines_" data-uid="PonzianiComponents.Engine.NumberOfLines*"></a>
   <h4 id="PonzianiComponents_Engine_NumberOfLines" data-uid="PonzianiComponents.Engine.NumberOfLines">NumberOfLines</h4>
@@ -190,11 +202,11 @@ public int NumberOfLines { get; set; }</code></pre>
     <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Engine_OnEngineInfo.md&amp;value=---%0Auid%3A%20PonzianiComponents.Engine.OnEngineInfo%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L199">View Source</a>
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L225">View Source</a>
   </span>
   <a id="PonzianiComponents_Engine_OnEngineInfo_" data-uid="PonzianiComponents.Engine.OnEngineInfo*"></a>
   <h4 id="PonzianiComponents_Engine_OnEngineInfo" data-uid="PonzianiComponents.Engine.OnEngineInfo">OnEngineInfo</h4>
-  <div class="markdown level1 summary"><p>Engine reports new, updatet analysis info</p>
+  <div class="markdown level1 summary"><p>Engine reports new, updated analysis info</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -222,7 +234,7 @@ public EventCallback&lt;Info&gt; OnEngineInfo { get; set; }</code></pre>
     <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Engine_OtherAttributes.md&amp;value=---%0Auid%3A%20PonzianiComponents.Engine.OtherAttributes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L257">View Source</a>
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L281">View Source</a>
   </span>
   <a id="PonzianiComponents_Engine_OtherAttributes_" data-uid="PonzianiComponents.Engine.OtherAttributes*"></a>
   <h4 id="PonzianiComponents_Engine_OtherAttributes" data-uid="PonzianiComponents.Engine.OtherAttributes">OtherAttributes</h4>
@@ -254,7 +266,7 @@ public Dictionary&lt;string, object&gt; OtherAttributes { get; set; }</code></pr
     <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Engine_Score.md&amp;value=---%0Auid%3A%20PonzianiComponents.Engine.Score%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L275">View Source</a>
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L299">View Source</a>
   </span>
   <a id="PonzianiComponents_Engine_Score_" data-uid="PonzianiComponents.Engine.Score*"></a>
   <h4 id="PonzianiComponents_Engine_Score" data-uid="PonzianiComponents.Engine.Score">Score</h4>
@@ -285,7 +297,7 @@ public Dictionary&lt;string, object&gt; OtherAttributes { get; set; }</code></pr
     <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Engine_ShowEvaluationbar.md&amp;value=---%0Auid%3A%20PonzianiComponents.Engine.ShowEvaluationbar%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L194">View Source</a>
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L220">View Source</a>
   </span>
   <a id="PonzianiComponents_Engine_ShowEvaluationbar_" data-uid="PonzianiComponents.Engine.ShowEvaluationbar*"></a>
   <h4 id="PonzianiComponents_Engine_ShowEvaluationbar" data-uid="PonzianiComponents.Engine.ShowEvaluationbar">ShowEvaluationbar</h4>
@@ -314,14 +326,46 @@ public bool ShowEvaluationbar { get; set; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Engine_ShowEvaluationInfo.md&amp;value=---%0Auid%3A%20PonzianiComponents.Engine.ShowEvaluationInfo%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L207">View Source</a>
+  </span>
+  <a id="PonzianiComponents_Engine_ShowEvaluationInfo_" data-uid="PonzianiComponents.Engine.ShowEvaluationInfo*"></a>
+  <h4 id="PonzianiComponents_Engine_ShowEvaluationInfo" data-uid="PonzianiComponents.Engine.ShowEvaluationInfo">ShowEvaluationInfo</h4>
+  <div class="markdown level1 summary"><p>Shows evaluation output (score, depth and principal variation)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Parameter]
+public bool ShowEvaluationInfo { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Engine_ShowLog.md&amp;value=---%0Auid%3A%20PonzianiComponents.Engine.ShowLog%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L189">View Source</a>
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L215">View Source</a>
   </span>
   <a id="PonzianiComponents_Engine_ShowLog_" data-uid="PonzianiComponents.Engine.ShowLog*"></a>
   <h4 id="PonzianiComponents_Engine_ShowLog" data-uid="PonzianiComponents.Engine.ShowLog">ShowLog</h4>
-  <div class="markdown level1 summary"><p>Shows engine log</p>
+  <div class="markdown level1 summary"><p>Shows engine evaluation Bar</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -351,7 +395,7 @@ public bool ShowLog { get; set; }</code></pre>
     <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Engine_EngineMessageAsync_System_String_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Engine.EngineMessageAsync(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L315">View Source</a>
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L343">View Source</a>
   </span>
   <a id="PonzianiComponents_Engine_EngineMessageAsync_" data-uid="PonzianiComponents.Engine.EngineMessageAsync*"></a>
   <h4 id="PonzianiComponents_Engine_EngineMessageAsync_System_String_" data-uid="PonzianiComponents.Engine.EngineMessageAsync(System.String)">EngineMessageAsync(String)</h4>
@@ -399,7 +443,7 @@ public async Task EngineMessageAsync(string msg)</code></pre>
     <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Engine_OnAfterRenderAsync_System_Boolean_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Engine.OnAfterRenderAsync(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L301">View Source</a>
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L329">View Source</a>
   </span>
   <a id="PonzianiComponents_Engine_OnAfterRenderAsync_" data-uid="PonzianiComponents.Engine.OnAfterRenderAsync*"></a>
   <h4 id="PonzianiComponents_Engine_OnAfterRenderAsync_System_Boolean_" data-uid="PonzianiComponents.Engine.OnAfterRenderAsync(System.Boolean)">OnAfterRenderAsync(Boolean)</h4>
@@ -446,7 +490,7 @@ public async Task EngineMessageAsync(string msg)</code></pre>
     <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Engine_ScoreText_System_Int32_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Engine.ScoreText(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L292">View Source</a>
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L320">View Source</a>
   </span>
   <a id="PonzianiComponents_Engine_ScoreText_" data-uid="PonzianiComponents.Engine.ScoreText*"></a>
   <h4 id="PonzianiComponents_Engine_ScoreText_System_Int32_" data-uid="PonzianiComponents.Engine.ScoreText(System.Int32)">ScoreText(Int32)</h4>
@@ -496,12 +540,12 @@ public async Task EngineMessageAsync(string msg)</code></pre>
     <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Engine_SendAsync_System_String_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Engine.SendAsync(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L352">View Source</a>
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L379">View Source</a>
   </span>
   <a id="PonzianiComponents_Engine_SendAsync_" data-uid="PonzianiComponents.Engine.SendAsync*"></a>
   <h4 id="PonzianiComponents_Engine_SendAsync_System_String_" data-uid="PonzianiComponents.Engine.SendAsync(System.String)">SendAsync(String)</h4>
   <div class="markdown level1 summary"><p>Send UCI message to the engine process</p>
-<p>Attention: Sending an incorrect or invalid UCI message might break the engine process</p>
+<p>Attention: Sending an incorrect or invalid UCI message might break the engine process, there is no input validation!</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -546,7 +590,7 @@ public async Task EngineMessageAsync(string msg)</code></pre>
     <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Engine_StartAnalysisAsync_System_String_.md&amp;value=---%0Auid%3A%20PonzianiComponents.Engine.StartAnalysisAsync(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L240">View Source</a>
+    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L266">View Source</a>
   </span>
   <a id="PonzianiComponents_Engine_StartAnalysisAsync_" data-uid="PonzianiComponents.Engine.StartAnalysisAsync*"></a>
   <h4 id="PonzianiComponents_Engine_StartAnalysisAsync_System_String_" data-uid="PonzianiComponents.Engine.StartAnalysisAsync(System.String)">StartAnalysisAsync(String)</h4>
@@ -601,7 +645,7 @@ public async Task EngineMessageAsync(string msg)</code></pre>
                     <a href="https://github.com/guentherc/Ponziani/new/master/apiSpec/new?filename=PonzianiComponents_Engine.md&amp;value=---%0Auid%3A%20PonzianiComponents.Engine%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L184" class="contribution-link">View Source</a>
+                    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/Engine.razor.cs/#L202" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
