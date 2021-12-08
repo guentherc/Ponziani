@@ -43,7 +43,7 @@ Open the Program.cs file in the PonzianiTutorial.Server Project and add the bold
 
 Last preparation step is the installation of the PonzianiComponents Package:
 
-`dotnet add package PonzianiComponents --version 0.3.0`
+`dotnet add package PonzianiComponents --version 0.4.0`
 
 and to add the necessary imports to File _Imports.razor
 
