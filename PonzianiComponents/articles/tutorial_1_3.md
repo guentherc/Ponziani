@@ -72,7 +72,7 @@ The code block manages the communication between the 3 components:
   set from the engine's info object
 * These properties are passsed to the EvaluationGauge component as parameters, which uses them for rendering
 
-![Screenshot of application with evaluation bar right of the chessboard](img\tutorial_1_3b.png) 
+![Screenshot of application with evaluation bar right of the chessboard](img/tutorial_1_3b.png) 
 
 > [!div class="nextstepaction"]
 > [Next](tutorial_1_4.md)

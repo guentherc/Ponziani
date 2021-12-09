@@ -81,6 +81,6 @@ the clicked move and pass it to the chessboard component.
 In `vmoves` we store the list of moves, which lead to this position. We need this list to add 
 variations, when based on the current position a new move is made.
 
-![Screenshot of application with scoresheet with variations](img\tutorial_1_5.png) 
+![Screenshot of application with scoresheet with variations](img/tutorial_1_5.png) 
 
 You can see the result of the tutorial live at [https://ponziani.de/analysisboard](https://ponziani.de/analysisboard)

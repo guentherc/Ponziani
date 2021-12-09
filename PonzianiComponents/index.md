@@ -34,7 +34,7 @@ PGN parsing and ECO classification
 Please have a look at the [tutorial](articles/tutorial_1_1.html)
 
 ## Acknowledgements ##
-- Chris Oakman: The rendering and default colors were inspired by resp. copied from [https://chessboardjs.com/](chessboard.js) (MIT License)
-- SCID: The ECO codes were taken from [http://scid.sourceforge.net/](SCID) (GPL v2)
+- Chris Oakman: The rendering and default colors were inspired by resp. copied from [chessboard.js](https://chessboardjs.com/) (MIT License)
+- SCID: The ECO codes were taken from [SCID](http://scid.sourceforge.net/) (GPL v2)
 - .NET Foundation: HSL Color determination and manipulation was copied and adjusted from .Net Core source code (MIT License)
-- [https://github.com/official-stockfish/Stockfish](Stockfish Team) for the great chess engine and [https://github.com/nmrugg/stockfish.js](Nathan Rugg) for the port to WebAssembly (GPLv3)
+- [Stockfish Team](https://github.com/official-stockfish/Stockfish) for the great chess engine and [Nathan Rugg](https://github.com/nmrugg/stockfish.js) for the port to WebAssembly (GPLv3)
