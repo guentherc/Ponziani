@@ -1,4 +1,5 @@
 ﻿using PonzianiComponents;
+using static PonzianiComponents.Chesslib.UCIEngine;
 
 namespace PonzianiComponentsDemo.Client.Pages
 {

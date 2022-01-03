@@ -43,12 +43,13 @@ Open the Program.cs file in the PonzianiTutorial.Server Project and add the bold
 
 Last preparation step is the installation of the PonzianiComponents Package:
 
-`dotnet add package PonzianiComponents --version 0.4.0`
+`dotnet add package PonzianiComponents --version 0.5.0`
 
 and to add the necessary imports to File _Imports.razor
 
     @using PonzianiComponents
     @using PonzianiComponents.Chesslib
+    @using PonzianiComponents.Chesslib.UCIEngine
 
 Now we are done and you can start your new application tocheck if it's running:
 Switch to the Directory /PonzianiTutorial/Server and enter

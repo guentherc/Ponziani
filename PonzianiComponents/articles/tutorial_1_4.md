@@ -54,7 +54,7 @@ This can be done by only adding a few lines (displayed in bold)
 We added a Scoresheet component and a Game object as attribute, which provides the content of the scoresheet.
 We update the Game object in the event callback `OnMovePlayed`, which is triggered when the user applies a move.
 
-![Screenshot of application with scoresheet](img/tutorial_1_4a.png) 
+![Screenshot of application with scoresheet](/articles/img/tutorial_1_4a.png) 
 
 > [!div class="nextstepaction"]
 > [Next](tutorial_1_5.md)

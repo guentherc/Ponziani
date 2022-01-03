@@ -9,10 +9,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chessboard.html",
-          "hash": "jKEriOnWjDrzSHHC78CBC50PG5nYwYfB12q947rct6s="
+          "hash": "C+6XQGqMlvMBatqzFEaRh33UX615qqjNof/3zCELTkg="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -24,7 +24,7 @@
           "hash": "8iunYQbi1kNzWleyrbNiO6G4QJcz89cQKQtudCpjtOo="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -36,7 +36,7 @@
           "hash": "nki+LG1a9AA96Yze/P/hpIfzysJlXTMmCcSPBhry/eY="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -48,7 +48,7 @@
           "hash": "hfbUuvebSbGo/3BcrKGskXN+uKRosb2TbwpIBzuanQc="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -60,7 +60,7 @@
           "hash": "ZIGxYgJNwrhKMB796EmqvtOEc1si9ltYkUYCmbq77c8="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -72,7 +72,7 @@
           "hash": "2SM8aE3s5qZ9HHXtJQrq3uAsUGTE5YbDHaJdqR/YRoc="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -84,7 +84,7 @@
           "hash": "EREqvFW40QZm6QkYet8keh9vij+xFMmY9xslEy3aqWk="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -96,7 +96,7 @@
           "hash": "/JRodguWgQ7Nitd/2vfSgZ4mIUtTJB7099YNCTsXFSw="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -108,7 +108,7 @@
           "hash": "XLm9/MZCbYjEImwXZSOTaeSkwKgThIU0dTVOPoI3SCE="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -120,7 +120,7 @@
           "hash": "N49SrwCS9sBnrtePN1ALuLa26o4YbazfJig5lPAZAes="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -132,7 +132,7 @@
           "hash": "Ck4NnIF+WyLc5XBzghjyFK6zVOiiUXyf5qCs0prm33w="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -144,7 +144,7 @@
           "hash": "1Kv+/E/31+Bjj629g9+kSY822CwPJuLwsdJu+eM8QyI="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -156,7 +156,7 @@
           "hash": "PiLNv2gKjuyipjqZNs/KaLiNdjaKp2RMciIYXroeTyU="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -168,7 +168,7 @@
           "hash": "gBM8ZLbT4AE4N9UEYCNvDgZCxaO43AeiXG6pi4WLYZ0="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -180,7 +180,7 @@
           "hash": "w0MN1UnVJZ8j8oaIbONv0FxGJ50Xp4fYbhn2XV0Rw2o="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -192,7 +192,7 @@
           "hash": "J3rjFvwI/DgH72ID2motcVb6VGB3+xKARk17NA9z23s="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -204,7 +204,7 @@
           "hash": "C502ySljl+VuSwV4DI+5BBx7MXk3Wy+AvaEYfLnQxP0="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -216,7 +216,7 @@
           "hash": "JKb+OaiZjXZHXpBccgCU6SbtUglItPg4PfqZam1k66o="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -228,7 +228,7 @@
           "hash": "Es4HN42s+4xVpc7VhOpFPr/3sMvLVprvQNFHHdYln64="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -240,7 +240,7 @@
           "hash": "SbWVCgxEx0kG8tZ6ckSPH2MAMn8McaJywo8eWotq7Xo="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -252,7 +252,7 @@
           "hash": "NAvMwcwB0qZFVehrw6JA1tSstJjIJ5JWV4OPtUk/Sb0="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -264,7 +264,151 @@
           "hash": "YkPflDh2OZHKH7PoQQtqpZmKMH15Dc+ORDvd6I+BALY="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.EngineException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.EngineException.html",
+          "hash": "ADBA+y0+2+ozUBbA1t8uds02+Yt7rOVKsL/VFnaSlL4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.EngineInfoEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.EngineInfoEventArgs.html",
+          "hash": "1Tkjbj9KOrYHq3+DN/RumZh/ReqWgizBROBhPbfjlMg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.EngineOutputEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.EngineOutputEventArgs.html",
+          "hash": "WR9FkziUCmlrIEfER3iH38xW6BsId+yavqRi2sV3PV8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.Info.EvaluationType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.Info.EvaluationType.html",
+          "hash": "Aoe4PLXh6T4w+u47Y1qsMud/syH560VPFQmDipx+r6Q="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.Info.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.Info.html",
+          "hash": "nkMjFhOHGcTh2VSKFGkdlAzIkT5zdTC5rpqBSQ9fV8M="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.Option.OptionType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.Option.OptionType.html",
+          "hash": "/fEPc9+02lvu7fYMYzY9YDXnusIgW62p1jfwgL+v+N0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.Option.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.Option.html",
+          "hash": "NHfSkKB6XDbjj6osqFdHUK2t5J6z4Ch0csyWQw/+wss="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.OptionCheck.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.OptionCheck.html",
+          "hash": "KiUmid7v+EvVNMFGgunYT6MSe/E/pL2ZK478io8ex3g="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.OptionCombo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.OptionCombo.html",
+          "hash": "PeMcWBOh1IGVh7Xb+NgBPDrIgE6SpJuNohssHIPw2Mc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.OptionSpin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.OptionSpin.html",
+          "hash": "YXIkuTqD33vvQV8hQu2f+3BO0/pmnKDhcu6Lw6rWxnY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.OptionString.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.OptionString.html",
+          "hash": "XhZRLMc74TO3e2VCJ8U1feSKPTfT4MP+Fw798u2f9zI="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/PonzianiComponents.Chesslib.UCIEngine.html",
+          "hash": "5bDbbnU7e6B1xj7OeIYULyFLlrCGchDKfoR/KjYGzO4="
+        }
+      },
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -273,10 +417,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Chesslib.html",
-          "hash": "1rTGfLozgeIpTZ7jOwmCiYQblhzjNtZAwBpgkFKFiF8="
+          "hash": "+RwPDa6D8G5HRy7VAruEdTc58W1KIJJRj+R69ASTkTk="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -285,10 +429,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.Engine.html",
-          "hash": "/R0O9haqLRR1slsBy5I7/WacMMTl0CKnSyiWC0TB7Vw="
+          "hash": "PmAkJwqyUljQoZwxY04mtXp/ZDwF9WS9iBuSFk7WuVA="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -300,7 +444,7 @@
           "hash": "SVc+CBXbAdqXn3pFioQXcsgv22gzEz4p3OSOwZ2T+Fs="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -312,31 +456,7 @@
           "hash": "KiIY018Kve0+ewYLCqVurnY21NjrGVcWj7J3vITOmo0="
         }
       },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/PonzianiComponents.Info.EvaluationType.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/PonzianiComponents.Info.EvaluationType.html",
-          "hash": "KtwWoxgA8A3AHvb7vE8Xc92S/RrrA0iAn1Zkc7Uro08="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/PonzianiComponents.Info.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/PonzianiComponents.Info.html",
-          "hash": "ThTu5FvMJJaYXLvQLQAm5CWZtbFdhmif6oBeu2xFnJE="
-        }
-      },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -348,7 +468,7 @@
           "hash": "in5btgv7lVvcX+F+AgfafV7/O0VJUZdvIXbzZ9z3mys="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -360,7 +480,7 @@
           "hash": "GQuYp0wjQ6J8PY9sGc8LAk86FAYmN0IEG0A7jkn+R9Y="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -372,7 +492,7 @@
           "hash": "RVL8QxJJu7y+LvZTl5szQBPtZNiaCSTrOTqBQ7A1ZoI="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -384,7 +504,7 @@
           "hash": "E3W9tdkF+O9cixMWMfE0pGuo+SDKPKIX4n2cmNysTW8="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -396,7 +516,7 @@
           "hash": "KTiOBAcQHeYVhiRwJUDTSwnEYVU/L2/gdoTGw5pl8M4="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -408,7 +528,7 @@
           "hash": "VPiMKVCZIteQWF2HZad6FUFft8fIJxEQCbgiEaSH9Xc="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -420,7 +540,7 @@
           "hash": "2cnsHwfUL0grHx80EKyiqpfHJ1OBn6dkFGjjD9D+qzE="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -429,10 +549,10 @@
       "output": {
         ".html": {
           "relative_path": "api/PonzianiComponents.html",
-          "hash": "s23EgjdHEtiNVqjQQtovRiNiNTKkBuFZcqg0q4EBt5g="
+          "hash": "eyC4hxxqkVgoTEp5isjSe92gASVFH+/t/f9F5mT8jI8="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -444,7 +564,7 @@
           "hash": "ox3X1sqX4j/JKVVq5BjLB/QPTtsJttAJ82V5IXJBt7k="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -453,10 +573,22 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "DAWGLHmEXZ+xJ+fWhPaVNgmGjphfgH3uCmPWJkVSPNA="
+          "hash": "LawxV/cHjmvQ74L5e4d3fkuIewrtlP6AmwhkTrHrx/4="
         }
       },
       "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/chesslib_overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/chesslib_overview.html",
+          "hash": "C7Lae3dvxxqFpjSI4NeqqLG1T8T09pKHxmaaLTiiPhg="
+        }
+      },
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -468,7 +600,7 @@
           "hash": "qtuE5bsGkFC3CQ3w71QkDOqueXC5j0+Ua+Fp8ldac7k="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -477,7 +609,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/toc.html",
-          "hash": "52hC4ewz0+A2G02AldLstF0WrhTftHHWuedGu88dO/0="
+          "hash": "kR2As9mM6yeUt2ZpDLnDn6nutGYmEjV9IfRX6S3yUOc="
         }
       },
       "is_incremental": false,
@@ -489,55 +621,58 @@
       "output": {
         ".html": {
           "relative_path": "articles/tutorial_1_1.html",
-          "hash": "XbR6d8sGu4RFskAJT2Iue+ee1Q6Zdb+9ymwPUfHfoEw="
+          "hash": "Eu8mCswgLlUT0Cr5WiVK16ebJHiyxzikiNcjwwMR830="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "articles/tutorial_1_2.md",
       "output": {
         ".html": {
           "relative_path": "articles/tutorial_1_2.html",
-          "hash": "nn1Wwg09KXWCA700iuibx6QEWvh2emFuNpofu1aJFUw="
+          "hash": "EaMio4P+f6yOswwOnlM4Z8TUM4RrtEc5wjrzIq6rVFI="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "articles/tutorial_1_3.md",
       "output": {
         ".html": {
           "relative_path": "articles/tutorial_1_3.html",
-          "hash": "xur8twCuUm7x/G8iMU91aw1vmeTAvGgjgllDiJkti7U="
+          "hash": "l5Dabf1vKBQUiBR11EI0A7fFq/5ZZ2rAZmMIyjdqkKQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "articles/tutorial_1_4.md",
       "output": {
         ".html": {
           "relative_path": "articles/tutorial_1_4.html",
-          "hash": "roIkj7I1SHFq2vru1ep5XVqwT98B/e3QLJhSdYTzZx4="
+          "hash": "ENIowuYOm+f/lh6qsVGFIx7wgyk+x2o8B0saoRJUJiA="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/tutorial_1_5.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/tutorial_1_5.html",
+          "hash": "DybR1QFEKJ11lY9OTsa7eJZhhKc+DeH6PY31p6psMoE="
+        }
+      },
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -545,14 +680,26 @@
         "InvalidFileLink"
       ],
       "type": "Conceptual",
-      "source_relative_path": "articles/tutorial_1_5.md",
+      "source_relative_path": "articles/uciengine.md",
       "output": {
         ".html": {
-          "relative_path": "articles/tutorial_1_5.html",
-          "hash": "JELgjV8OuTuPCBfxYFu4Y1mNF26Z836zie8d6gGEcXY="
+          "relative_path": "articles/uciengine.html",
+          "hash": "vgmU4CUyWTbdSbpKy+akZEXyeSNXZr0X6CIU3xyXuyo="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/uciengine_advanced.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/uciengine_advanced.html",
+          "hash": "lx8mUS/gXzzWd1TT1Mk3WvF/Z8juINkmFenibrC9g+0="
+        }
+      },
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -564,10 +711,10 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "aTBgVJYV2bZAORyviQJ7h/n8HgSMdoRaB7Z3lFnDsig="
+          "hash": "3kAUOY+KyJ9QXQqmvOnLZbkn4lUAsN6JO1Ye8wCmsy0="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -576,7 +723,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "gAgv6rsYHOtcAS9S079H8i7RWuxD4CfmhJlFc3OdJtI="
+          "hash": "4b3M4bi6e6btUa5JVy+7rAVxd+ly+8blUZmHJfUpok4="
         }
       },
       "is_incremental": false,
@@ -586,25 +733,23 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Disable incremental build by force rebuild option.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "ForceRebuild"
+        "skipped_file_count": 0
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 8,
-          "skipped_file_count": 0
+          "total_file_count": 11,
+          "skipped_file_count": 11
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 36,
-          "skipped_file_count": 0
+          "total_file_count": 46,
+          "skipped_file_count": 46
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
@@ -617,8 +762,8 @@
     },
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0

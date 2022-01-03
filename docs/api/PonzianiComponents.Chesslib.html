@@ -114,10 +114,51 @@
       <h4><a class="xref" href="PonzianiComponents.Chesslib.TimeControl.Entry.html">TimeControl.Entry</a></h4>
       <section><p>Single TimeControl</p>
 </section>
+      <h4><a class="xref" href="PonzianiComponents.Chesslib.UCIEngine.html">UCIEngine</a></h4>
+      <section><p>Interface to a chess engine supporting <a href="https://en.wikipedia.org/wiki/Universal_Chess_Interface">UCI protocol </a></p>
+<p>The class allows to implement the GUI part of the UCI protocol manually by using method <a class="xref" href="PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_SendToEngineAsync_System_String_">SendToEngineAsync(String)</a> 
+ to send commands to the engine process and event <a class="xref" href="PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineOutput">OnEngineOutput</a> to receive messages</p>
+<p>Nevertheless the recommended way is to use the more comfortable methods, which this class offers like <a class="xref" href="PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_AnalyzeAsync_System_String_System_TimeSpan_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_List_PonzianiComponents_Chesslib_Move__">AnalyzeAsync(String, TimeSpan, Dictionary&lt;String, String&gt;, List&lt;Move&gt;)</a> or
+<a class="xref" href="PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_StartThinkingAsync_System_Nullable_System_TimeSpan__System_Nullable_System_TimeSpan__System_Nullable_System_TimeSpan__System_Nullable_System_TimeSpan__System_Int32_System_Int32_System_Int64_System_Boolean_System_Collections_Generic_List_PonzianiComponents_Chesslib_Move__">StartThinkingAsync(Nullable&lt;TimeSpan&gt;, Nullable&lt;TimeSpan&gt;, Nullable&lt;TimeSpan&gt;, Nullable&lt;TimeSpan&gt;, Int32, Int32, Int64, Boolean, List&lt;Move&gt;)</a></p>
+<example>
+<pre><code>Game game = PGN.Parse(pathToPGN)[0];
+using (UCIEngine engine = new UCIEngine(enginePath))
+{
+     ExtendedMove move = engine.AnalyseAsync(game, TimeSpan.FromMilliseconds(100), 25, Side.BLACK).Result;
+     Console.WriteLine($&quot;Evaluation: {move.Evaluation}&quot;);   
+}</code></pre>
+</example>
+</section>
+      <h4><a class="xref" href="PonzianiComponents.Chesslib.UCIEngine.EngineException.html">UCIEngine.EngineException</a></h4>
+      <section></section>
+      <h4><a class="xref" href="PonzianiComponents.Chesslib.UCIEngine.EngineInfoEventArgs.html">UCIEngine.EngineInfoEventArgs</a></h4>
+      <section><p>Event Arguments for the <a class="xref" href="PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineInfoChanged">OnEngineInfoChanged</a> event</p>
+</section>
+      <h4><a class="xref" href="PonzianiComponents.Chesslib.UCIEngine.EngineOutputEventArgs.html">UCIEngine.EngineOutputEventArgs</a></h4>
+      <section><p>Event Arguments for the <a class="xref" href="PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineOutput">OnEngineOutput</a> event</p>
+</section>
+      <h4><a class="xref" href="PonzianiComponents.Chesslib.UCIEngine.Option.html">UCIEngine.Option</a></h4>
+      <section><p>Represents an engine option</p>
+</section>
+      <h4><a class="xref" href="PonzianiComponents.Chesslib.UCIEngine.OptionCheck.html">UCIEngine.OptionCheck</a></h4>
+      <section><p>Option, which can be represented as checkbox in a GUI</p>
+</section>
+      <h4><a class="xref" href="PonzianiComponents.Chesslib.UCIEngine.OptionCombo.html">UCIEngine.OptionCombo</a></h4>
+      <section><p>Multi-value engine option (represented by a combo box in a GUI)</p>
+</section>
+      <h4><a class="xref" href="PonzianiComponents.Chesslib.UCIEngine.OptionSpin.html">UCIEngine.OptionSpin</a></h4>
+      <section><p>An integer engine option</p>
+</section>
+      <h4><a class="xref" href="PonzianiComponents.Chesslib.UCIEngine.OptionString.html">UCIEngine.OptionString</a></h4>
+      <section><p>Option for a string field (represented by a text box in a GUI)</p>
+</section>
     <h3 id="structs">Structs
   </h3>
       <h4><a class="xref" href="PonzianiComponents.Chesslib.DetailedResult.html">DetailedResult</a></h4>
       <section><p>The detailed result, containing the information about the game's outcome</p>
+</section>
+      <h4><a class="xref" href="PonzianiComponents.Chesslib.UCIEngine.Info.html">UCIEngine.Info</a></h4>
+      <section><p>Information, sent by the engine during analyzing</p>
 </section>
     <h3 id="interfaces">Interfaces
   </h3>
@@ -148,6 +189,12 @@
       <section><p>Square of a standard chess board. Ponziani uses &quot;Little-Endian Rank-File Mapping&quot;
 (see <a href="https://chessprogramming.wikispaces.com/Square+Mapping+Considerations">https://chessprogramming.wikispaces.com/Square+Mapping+Considerations</a>).</p>
 </section>
+      <h4><a class="xref" href="PonzianiComponents.Chesslib.UCIEngine.Info.EvaluationType.html">UCIEngine.Info.EvaluationType</a></h4>
+      <section><p>Evaluation Type</p>
+<p><a class="xref" href="PonzianiComponents.Chesslib.UCIEngine.Info.html#PonzianiComponents_Chesslib_UCIEngine_Info_Evaluation">Evaluation</a> might not always be exact. Sometimes engines output a lower or a upper bound only</p>
+</section>
+      <h4><a class="xref" href="PonzianiComponents.Chesslib.UCIEngine.Option.OptionType.html">UCIEngine.Option.OptionType</a></h4>
+      <section></section>
 </article>
           </div>
           

@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Chess Library - Overview </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Chess Library - Overview ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="chess-library---overview">Chess Library - Overview</h1>
+
+<p>PonzianiComponents contains a chess library helping to create chess-related applications. This library is
+independent of Blazor and can be used in any .Net 6 based application.</p>
+<p>The library is contained in namespace <a href="/api/PonzianiComponents.Chesslib.html">PonzianiComponents.Chesslib</a></p>
+<p>Here are some examples, how to use it:</p>
+<h3 id="move-generation">Move generation</h3>
+<pre><code>using PonzianiComponents.Chesslib;
+
+//Create a position object from FEN string
+Position pos = new(&quot;rnbqkbnr/pp2pppp/3p4/1Bp5/4P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 1 3&quot;);
+//Get all legal moves
+var moves = pos.GetMoves();
+//Output moves in uci- and in SAN-Notation
+foreach(var move in moves)
+{
+    Console.WriteLine(move.ToUCIString() + &quot; &quot; + pos.ToSAN(move));
+}
+</code></pre>
+<p>The output should be something like</p>
+<pre><code>b8c6 Nc6
+b8d7 Nd7
+c8d7 Bd7
+d8d7 Qd7
+</code></pre>
+<h3 id="handling-chess-games">Handling Chess Games</h3>
+<p>The Game object allows to process complete chess games:</p>
+<pre><code>using PonzianiComponents.Chesslib;
+
+//Creates a new game 
+Game game = new();
+
+//Apply moves (first 3 moves from the immortal game https://en.wikipedia.org/wiki/Immortal_Game)
+game.Add(new(&quot;e2e4&quot;));
+game.Add(new(&quot;e7e5&quot;));
+game.Add(new(&quot;f2f4&quot;));
+game.Add(new(&quot;e5f4&quot;));
+game.Add(new(&quot;f1c4&quot;));
+game.Add(new(&quot;d8h4&quot;));
+
+//It's now white's turn to make the 4th move
+Console.WriteLine($&quot;Movenumber:         { game.Position.MoveNumber }&quot;);
+Console.WriteLine($&quot;SideToMove:         { game.SideToMove }&quot;);
+
+//White is in check, this can be tested with the API
+Console.WriteLine($&quot;Checked:            { game.Position.IsCheck }&quot;);
+
+//It's now white's turn to make the 4th move
+Console.WriteLine($&quot;Movenumber:         { game.Position.MoveNumber }&quot;);
+
+//Let's get the movetext in SAN-Notation
+Console.WriteLine($&quot;Startposition:      { game.StartPosition }&quot;);
+Console.WriteLine($&quot;Movetext:           { game.SANNotation() }&quot;);
+
+//Get the position from 2nd move after white played 2. f2f4
+Position pos = game.GetPosition(2, Side.BLACK);
+Console.WriteLine($&quot;Fen after 2. f2-f4: { pos.FEN }&quot;);
+
+//We can also output the position as ASCII graph
+Console.WriteLine(pos.ASCII());
+</code></pre>
+<p>This should give</p>
+<pre><code>Movenumber:         4
+SideToMove:         WHITE
+Checked:            True
+Movenumber:         4
+Startposition:      rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+Movetext:           1. e4 e5 2. f4 exf4 3. Bc4 Qh4+ *
+Fen after 2. f2-f4: rnbqkbnr/pppp1ppp/8/4p3/4PP2/8/PPPP2PP/RNBQKBNR b KQkq - 0 2
+  a   b   c   d   e   f   g   h
+---------------------------------
+| r | n | b | q | k | b | n | r | 8
+---------------------------------
+| p | p | p | p |   | p | p | p | 7
+---------------------------------
+|   |   |   |   |   |   |   |   | 6
+---------------------------------
+|   |   |   |   | p |   |   |   | 5
+---------------------------------
+|   |   |   |   | P | P |   |   | 4
+---------------------------------
+|   |   |   |   |   |   |   |   | 3
+---------------------------------
+| P | P | P | P |   |   | P | P | 2
+---------------------------------
+| R | N | B | Q | K | B | N | R | 1
+---------------------------------
+</code></pre>
+<h3 id="working-with-pgn-files">Working with PGN files</h3>
+<p>Ponziani also offers methods to read and write <a href="http://www.saremba.de/chessgml/standards/pgn/pgn-complete.htm">PGN (Portable Game Notation)</a> files.</p>
+<p>Reading is simple. You can either read a PGN-File from disk with</p>
+<pre><code>PGN pgn = new PGN(fileName);
+var games = pgn.LoadAsync().Result;
+</code></pre>
+<p>or get the pgn from somewhere else as string</p>
+<pre><code>//Get the last 10 games of Magnus Carlsen (alias DrNykterstein) as pgn from lichess
+HttpClient client = new HttpClient();
+string pgn = client.GetStringAsync(&quot;https://lichess.org/api/games/user/DrNykterstein?tags=true&amp;clocks=false&amp;evals=false&amp;opening=false&amp;max=10&amp;perfType=ultraBullet%2Cbullet%2Cblitz%2Crapid%2Cclassical&quot;).Result;
+//Parse pgn
+var games = PGN.Parse(pgn);
+//Output some header information for each game
+foreach (var game in games)
+{
+    Console.WriteLine($&quot;{ game.White } - { game.Black } {game.Result} Moves: {game.Position.MoveNumber}&quot;);
+}
+//Get final position of last game
+Position pos = games.Last().Position;
+Console.WriteLine($&quot;Final Position: {pos.FEN}&quot;);
+//and output it as ASCII
+Console.WriteLine(pos.ASCII());
+</code></pre>
+<p>This code snippet should output something like</p>
+<pre><code>DrNykterstein - may6enexttime WHITE_WINS Moves: 28
+may6enexttime - DrNykterstein BLACK_WINS Moves: 61
+DrNykterstein - may6enexttime WHITE_WINS Moves: 69
+may6enexttime - DrNykterstein BLACK_WINS Moves: 38
+DrNykterstein - may6enexttime WHITE_WINS Moves: 27
+may6enexttime - DrNykterstein BLACK_WINS Moves: 29
+DrNykterstein - may6enexttime WHITE_WINS Moves: 34
+may6enexttime - DrNykterstein BLACK_WINS Moves: 60
+DrNykterstein - may6enexttime WHITE_WINS Moves: 36
+may6enexttime - DrNykterstein BLACK_WINS Moves: 34
+Final Position: 6k1/5pp1/1pp4p/8/1P1N4/3Q4/3p1PPP/2q1rRK1 w - - 4 34
+  a   b   c   d   e   f   g   h
+---------------------------------
+|   |   |   |   |   |   | k |   | 8
+---------------------------------
+|   |   |   |   |   | p | p |   | 7
+---------------------------------
+|   | p | p |   |   |   |   | p | 6
+---------------------------------
+|   |   |   |   |   |   |   |   | 5
+---------------------------------
+|   | P |   | N |   |   |   |   | 4
+---------------------------------
+|   |   |   | Q |   |   |   |   | 3
+---------------------------------
+|   |   |   | p |   | P | P | P | 2
+---------------------------------
+|   |   | q |   | r | R | K |   | 1
+---------------------------------
+</code></pre>
+<p>To write PGN the Game class offers method <a href="/api/PonzianiComponents.Chesslib.Game.html#PonzianiComponents_Chesslib_Game_ToPGN_PonzianiComponents_Chesslib_IPGNOutputFormatter_System_Boolean_">ToPGN()</a>
+which returns the PGN as string.</p>
+<pre><code>//Creates a new game 
+Game game = new();
+//Set game header data
+game.White = &quot;Adolf Anderssen&quot;;
+game.Black = &quot;Lionel Kieseritzky&quot;;
+game.Date = new DateTime(1851, 6, 21).ToShortDateString();
+//Apply moves (first 3 moves from the immortal game https://en.wikipedia.org/wiki/Immortal_Game)
+game.Add(new(&quot;e2e4&quot;));
+game.Add(new(&quot;e7e5&quot;));
+game.Add(new(&quot;f2f4&quot;));
+game.Add(new(&quot;e5f4&quot;));
+game.Add(new(&quot;f1c4&quot;));
+game.Add(new(&quot;d8h4&quot;));
+//export to PGN
+string pgn = game.ToPGN();
+Console.WriteLine(pgn);
+</code></pre>
+<p>This will print</p>
+<pre><code>[Site &quot;&quot;]
+[Date &quot;21.06.1851&quot;]
+[Round &quot;&quot;]
+[White &quot;Adolf Anderssen&quot;]
+[Black &quot;Lionel Kieseritzky&quot;]
+[Result &quot;*&quot;]
+[ECO &quot;C33&quot;]
+[Opening &quot;KGA: Bishop's Gambit&quot;]
+[Termination &quot;unterminated&quot;]
+
+1. e4 e5 2. f4 exf4 3. Bc4 Qh4+ *
+</code></pre>
+<p>to the console.</p>
+<p><strong>Please note:</strong> The ECO and Opening tags haven't been set automatically.
+They were added automatically. ECO classification is another feature of the API.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/guentherc/Ponziani/blob/master/PonzianiComponents/articles/chesslib_overview.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

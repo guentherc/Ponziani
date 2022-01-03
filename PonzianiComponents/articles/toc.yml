@@ -1,4 +1,12 @@
-- name: Tutorial
+- name: Chess Library
+  href: chesslib_overview.md
+  items:
+  - name: Communicating with an UCI Chess Engine
+    href: uciengine.md
+  - name: UCI Engine Communication - Advanced Topics
+    href: uciengine_Advanced.md
+
+- name: Tutorial Blazor Components
   items:
   - name: Step 1 - Preparations
     href: tutorial_1_1.md

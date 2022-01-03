@@ -38,7 +38,7 @@ Finally we have to connect the event callback with the engine:
 After every move we will send the new position as [FEN](https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation)-string to the engine. The engine
 will start to analyze the position and we will see the analysis output in the Engine Info Panel.
 
-![Screenshot of application](img/tutorial_1_2.png) 
+![Screenshot of application](/articles/img/tutorial_1_2.png) 
 
 > [!div class="nextstepaction"]
 > [Next - Adding an Evaluation Bar](tutorial_1_3.md)
