@@ -580,15 +580,18 @@
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "articles/chesslib_overview.md",
       "output": {
         ".html": {
           "relative_path": "articles/chesslib_overview.html",
-          "hash": "C7Lae3dvxxqFpjSI4NeqqLG1T8T09pKHxmaaLTiiPhg="
+          "hash": "wlwVCefdTBe/FXw19N7uAgkV+DHKS4ZlZQ7j0c7f2fY="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -624,55 +627,67 @@
           "hash": "Eu8mCswgLlUT0Cr5WiVK16ebJHiyxzikiNcjwwMR830="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "articles/tutorial_1_2.md",
       "output": {
         ".html": {
           "relative_path": "articles/tutorial_1_2.html",
-          "hash": "EaMio4P+f6yOswwOnlM4Z8TUM4RrtEc5wjrzIq6rVFI="
+          "hash": "vYATcozWBRnJW1bnFpofQuAGZjE9cWzQMAChTawet6M="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "articles/tutorial_1_3.md",
       "output": {
         ".html": {
           "relative_path": "articles/tutorial_1_3.html",
-          "hash": "l5Dabf1vKBQUiBR11EI0A7fFq/5ZZ2rAZmMIyjdqkKQ="
+          "hash": "BAMp1IxRSbduLFY/wLkIvCeHVM2HkGjsUcnWiZNv6KY="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "articles/tutorial_1_4.md",
       "output": {
         ".html": {
           "relative_path": "articles/tutorial_1_4.html",
-          "hash": "ENIowuYOm+f/lh6qsVGFIx7wgyk+x2o8B0saoRJUJiA="
+          "hash": "EczM29H4Y0+pFPQlB2MxLvyYEo0Wn0zdgds9JLQRA28="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "articles/tutorial_1_5.md",
       "output": {
         ".html": {
           "relative_path": "articles/tutorial_1_5.html",
-          "hash": "DybR1QFEKJ11lY9OTsa7eJZhhKc+DeH6PY31p6psMoE="
+          "hash": "v8ysFw71wI8LJSHjGRGIDglWAhyN6u+XIQngcYNQJ6E="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -684,22 +699,25 @@
       "output": {
         ".html": {
           "relative_path": "articles/uciengine.html",
-          "hash": "vgmU4CUyWTbdSbpKy+akZEXyeSNXZr0X6CIU3xyXuyo="
+          "hash": "i03QEEkZWnsyA0mOw6Z8izbQEEL6+ko5VxKFRCqsNmY="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "articles/uciengine_advanced.md",
       "output": {
         ".html": {
           "relative_path": "articles/uciengine_advanced.html",
-          "hash": "lx8mUS/gXzzWd1TT1Mk3WvF/Z8juINkmFenibrC9g+0="
+          "hash": "2yjPERHAG7FPsfVkuqDLPtFXRZVyApN2ErCHPSeENEM="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -711,10 +729,10 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "3kAUOY+KyJ9QXQqmvOnLZbkn4lUAsN6JO1Ye8wCmsy0="
+          "hash": "RCo3ia4Y+f97PGbCIee7iyKzA1vJH5LakWrFKMti4lo="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -743,7 +761,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 11,
-          "skipped_file_count": 11
+          "skipped_file_count": 3
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,

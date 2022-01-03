@@ -20,7 +20,7 @@ Adding an evaluation bar is very simple
 By simply adding the attribute `ShowEvaluationbar="true"` to the Engine component you will get an 
 evaluation bar endered below the engine info panel.
 
-![Screenshot of application with evaluation bar](/articles/img/tutorial_1_3a.png) 
+![Screenshot of application with evaluation bar](../articles/img/tutorial_1_3a.png) 
 
 But with the simple approach the evaluation bar is fixed below the engine info panel. What if we would like 
 to have it vertically oriented next to the chessboard. This can be achieved by using the EvaluationGauge 
@@ -72,7 +72,7 @@ The code block manages the communication between the 3 components:
   set from the engine's info object
 * These properties are passsed to the EvaluationGauge component as parameters, which uses them for rendering
 
-![Screenshot of application with evaluation bar right of the chessboard](/articles/img/tutorial_1_3b.png) 
+![Screenshot of application with evaluation bar right of the chessboard](../articles/img/tutorial_1_3b.png) 
 
 > [!div class="nextstepaction"]
 > [Next](tutorial_1_4.md)

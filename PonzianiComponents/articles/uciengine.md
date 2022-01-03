@@ -1,6 +1,6 @@
 ﻿# Communication with an UCI Chess Engine #
 
-The class [UCIEngine](/api/PonzianiComponents.Chesslib.UCIEngine.html) offers options to control and interact with chess engines
+The class [UCIEngine](../api/PonzianiComponents.Chesslib.UCIEngine.html) offers options to control and interact with chess engines
 which support the [UCI protocol](https://en.wikipedia.org/wiki/Universal_Chess_Interface)
 
 ### Analyzing Single Positions ###
@@ -68,7 +68,7 @@ Creating an engine match between 2 different engines is just as simple
 
 Usually engine-engine matches aren't played with fix move times. Instead engine's have their own time management
 and the GUI is only responsible of managing the clocks.
-To make this possible there is an overload of [`AnalyzeAsync`](/api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_AnalyzeAsync_PonzianiComponents_Chesslib_Game_System_Int32_PonzianiComponents_Chesslib_Side_System_Nullable_System_TimeSpan__System_Nullable_System_TimeSpan__System_Nullable_System_TimeSpan__System_Nullable_System_TimeSpan__System_Int32_System_Int32_System_Int64_System_Boolean_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_List_PonzianiComponents_Chesslib_Move__),
+To make this possible there is an overload of [`AnalyzeAsync`](../api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_AnalyzeAsync_PonzianiComponents_Chesslib_Game_System_Int32_PonzianiComponents_Chesslib_Side_System_Nullable_System_TimeSpan__System_Nullable_System_TimeSpan__System_Nullable_System_TimeSpan__System_Nullable_System_TimeSpan__System_Int32_System_Int32_System_Int64_System_Boolean_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_List_PonzianiComponents_Chesslib_Move__),
 which allows to pass the clock information to the engines.
 
 Here is the code for a 1+0 bullet game between 2 different engines
@@ -101,14 +101,14 @@ If you run this code, there will be no output for about 2 minutes. In the next s
 
 UCIEngine offers 2 events:
 
-1. **[OnEngineInfoChanged](/api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineInfoChanged)** which is issued whenever the engine outputs a new evaluation
-2. **[OnEngineOutput](/api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineOutput)** which is raised at each message from the engine
+1. **[OnEngineInfoChanged](../api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineInfoChanged)** which is issued whenever the engine outputs a new evaluation
+2. **[OnEngineOutput](../api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineOutput)** which is raised at each message from the engine
 
-The [OnEngineInfoChanged](/api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineInfoChanged) event provides the engine information parsed as
-[Info](/api/PonzianiComponents.Chesslib.UCIEngine.Info.html) object, while the [OnEngineOutput](api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineOutput) passes
+The [OnEngineInfoChanged](../api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineInfoChanged) event provides the engine information parsed as
+[Info](../api/PonzianiComponents.Chesslib.UCIEngine.Info.html) object, while the [OnEngineOutput](../api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineOutput) passes
 the raw message as issued from the engine. 
 
-For the purpose to get ongoing evaluation information during an engine-engine match the [OnEngineInfoChanged](api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineInfoChanged) event is sufficient.
+For the purpose to get ongoing evaluation information during an engine-engine match the [OnEngineInfoChanged](../api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineInfoChanged) event is sufficient.
 
 <pre>
     using (UCIEngine engine1 = new UCIEngine(enginePath))

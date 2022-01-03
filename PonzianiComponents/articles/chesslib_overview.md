@@ -3,7 +3,7 @@
 PonzianiComponents contains a chess library helping to create chess-related applications. This library is 
 independent of Blazor and can be used in any .Net 6 based application.
 
-The library is contained in namespace [PonzianiComponents.Chesslib](/api/PonzianiComponents.Chesslib.html) 
+The library is contained in namespace [PonzianiComponents.Chesslib](../api/PonzianiComponents.Chesslib.html) 
 
 Here are some examples, how to use it:
 
@@ -154,7 +154,7 @@ This code snippet should output something like
     |   |   | q |   | r | R | K |   | 1
     ---------------------------------
 
-To write PGN the Game class offers method [ToPGN()](/api/PonzianiComponents.Chesslib.Game.html#PonzianiComponents_Chesslib_Game_ToPGN_PonzianiComponents_Chesslib_IPGNOutputFormatter_System_Boolean_)
+To write PGN the Game class offers method [ToPGN()](../api/PonzianiComponents.Chesslib.Game.html#PonzianiComponents_Chesslib_Game_ToPGN_PonzianiComponents_Chesslib_IPGNOutputFormatter_System_Boolean_)
 which returns the PGN as string.
 
     //Creates a new game 

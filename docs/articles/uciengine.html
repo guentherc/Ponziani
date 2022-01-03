@@ -69,7 +69,7 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="communication-with-an-uci-chess-engine">Communication with an UCI Chess Engine</h1>
 
-<p>The class <a href="/api/PonzianiComponents.Chesslib.UCIEngine.html">UCIEngine</a> offers options to control and interact with chess engines
+<p>The class <a href="../api/PonzianiComponents.Chesslib.UCIEngine.html">UCIEngine</a> offers options to control and interact with chess engines
 which support the <a href="https://en.wikipedia.org/wiki/Universal_Chess_Interface">UCI protocol</a></p>
 <h3 id="analyzing-single-positions">Analyzing Single Positions</h3>
 <p>The Example shows 2 sequential positions from the game Short - Kasparov (London, 1993)</p>
@@ -128,7 +128,7 @@ passed to <code>game.ToPGN</code> will add the engine depth, score and thinktime
 </code></pre>
 <p>Usually engine-engine matches aren't played with fix move times. Instead engine's have their own time management
 and the GUI is only responsible of managing the clocks.
-To make this possible there is an overload of <a href="/api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_AnalyzeAsync_PonzianiComponents_Chesslib_Game_System_Int32_PonzianiComponents_Chesslib_Side_System_Nullable_System_TimeSpan__System_Nullable_System_TimeSpan__System_Nullable_System_TimeSpan__System_Nullable_System_TimeSpan__System_Int32_System_Int32_System_Int64_System_Boolean_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_List_PonzianiComponents_Chesslib_Move__"><code>AnalyzeAsync</code></a>,
+To make this possible there is an overload of <a href="../api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_AnalyzeAsync_PonzianiComponents_Chesslib_Game_System_Int32_PonzianiComponents_Chesslib_Side_System_Nullable_System_TimeSpan__System_Nullable_System_TimeSpan__System_Nullable_System_TimeSpan__System_Nullable_System_TimeSpan__System_Int32_System_Int32_System_Int64_System_Boolean_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_List_PonzianiComponents_Chesslib_Move__"><code>AnalyzeAsync</code></a>,
 which allows to pass the clock information to the engines.</p>
 <p>Here is the code for a 1+0 bullet game between 2 different engines</p>
 <pre><code>using (UCIEngine engine1 = new UCIEngine(enginePath))
@@ -157,13 +157,13 @@ which allows to pass the clock information to the engines.</p>
 <h3 id="events">Events</h3>
 <p>UCIEngine offers 2 events:</p>
 <ol>
-<li><strong><a href="/api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineInfoChanged">OnEngineInfoChanged</a></strong> which is issued whenever the engine outputs a new evaluation</li>
-<li><strong><a href="/api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineOutput">OnEngineOutput</a></strong> which is raised at each message from the engine</li>
+<li><strong><a href="../api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineInfoChanged">OnEngineInfoChanged</a></strong> which is issued whenever the engine outputs a new evaluation</li>
+<li><strong><a href="../api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineOutput">OnEngineOutput</a></strong> which is raised at each message from the engine</li>
 </ol>
-<p>The <a href="/api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineInfoChanged">OnEngineInfoChanged</a> event provides the engine information parsed as
-<a href="/api/PonzianiComponents.Chesslib.UCIEngine.Info.html">Info</a> object, while the <a href="api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineOutput">OnEngineOutput</a> passes
+<p>The <a href="../api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineInfoChanged">OnEngineInfoChanged</a> event provides the engine information parsed as
+<a href="../api/PonzianiComponents.Chesslib.UCIEngine.Info.html">Info</a> object, while the <a href="../api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineOutput">OnEngineOutput</a> passes
 the raw message as issued from the engine.</p>
-<p>For the purpose to get ongoing evaluation information during an engine-engine match the <a href="api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineInfoChanged">OnEngineInfoChanged</a> event is sufficient.</p>
+<p>For the purpose to get ongoing evaluation information during an engine-engine match the <a href="../api/PonzianiComponents.Chesslib.UCIEngine.html#PonzianiComponents_Chesslib_UCIEngine_OnEngineInfoChanged">OnEngineInfoChanged</a> event is sufficient.</p>
 <pre>
     using (UCIEngine engine1 = new UCIEngine(enginePath))
     {
