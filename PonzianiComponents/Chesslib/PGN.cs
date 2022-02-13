@@ -337,7 +337,11 @@ namespace PonzianiComponents.Chesslib
             //Remove comments
             if (comments)
             {
-                if (mGame.Groups[2].Value != null && mGame.Groups[2].Value.Trim().Length > 0) game.IntroductionComment = mGame.Groups[2].Value.Trim();
+                if (mGame.Groups[2].Value != null && mGame.Groups[2].Value.Trim().Length > 3)
+                {
+                    game.IntroductionComment = mGame.Groups[2].Value.Trim();
+                    game.IntroductionComment = game.IntroductionComment.Substring(0, game.IntroductionComment.Length - 1).Substring(1).Trim();
+                }
                 commentBuffer = new List<string>();
                 moveText = regexPGNComment.Replace(moveText, ReplaceComment);
             }
