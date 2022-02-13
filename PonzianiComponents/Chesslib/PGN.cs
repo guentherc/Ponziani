@@ -308,10 +308,17 @@ namespace PonzianiComponents.Chesslib
             foreach (Match mGame in mcGames)
             {
                 if (indx < offset) continue;
-                Game game = ParseGame(mGame, comments, variations);
-                games.Add(game);
-                if (indx >= count) break;
-                indx++;
+                try
+                {
+                    Game game = ParseGame(mGame, comments, variations);
+                    games.Add(game);
+                    if (indx >= count) break;
+                    indx++;
+                }
+                catch (Exception)
+                {
+                    continue;
+                }
             }
             return games;
         }
@@ -319,7 +326,7 @@ namespace PonzianiComponents.Chesslib
         private static Game ParseGame(Match mGame, bool comments = false, bool variations = false)
         {
             string tags = mGame.Groups[1].Value;
-            string moveText = mGame.Groups[2].Value;
+            string moveText = mGame.Groups[3].Value;
             Game game = new();
             MatchCollection mcTags = regexPGNTag.Matches(tags);
             foreach (Match mTag in mcTags)
@@ -330,6 +337,7 @@ namespace PonzianiComponents.Chesslib
             //Remove comments
             if (comments)
             {
+                if (mGame.Groups[2].Value != null && mGame.Groups[2].Value.Trim().Length > 0) game.IntroductionComment = mGame.Groups[2].Value.Trim();
                 commentBuffer = new List<string>();
                 moveText = regexPGNComment.Replace(moveText, ReplaceComment);
             }
@@ -540,7 +548,7 @@ namespace PonzianiComponents.Chesslib
             return move;
         }
 
-        private static readonly Regex regexPGNGame = new(@"((?:^\[[^\]]+\]\s*$?){2,})(?:^\s*)(?:^\{[^\}]+\}\r?\n)?(^[^\[\{].*(?:\r?\n^\S.*$)*)", RegexOptions.Multiline | RegexOptions.Compiled);
+        private static readonly Regex regexPGNGame = new(@"((?:^\[[^\]]+\]\s*$?){2,})(?:^\s*)(^\{[^\}]+\}\r?\n)?(^[^\[\{].*(?:\r?\n^\S.*$)*)", RegexOptions.Multiline | RegexOptions.Compiled);
         private static readonly Regex regexPGNTag = new(@"\[([^\s]*)\s+""(.*)""\]", RegexOptions.Multiline | RegexOptions.Compiled);
         private static readonly Regex regexPGNComment = new(@"\{(?>\{(?<c>)|[^{}]+|\}(?<-c>))*(?(c)(?!))\}", RegexOptions.Singleline | RegexOptions.Compiled);
         private static readonly Regex regexPGNVariations = new(@"\((?>\((?<c>)|[^()]+|\)(?<-c>))*(?(c)(?!))\)", RegexOptions.Singleline | RegexOptions.Compiled);

@@ -94,9 +94,15 @@ namespace PonzianiComponents.Chesslib
             return sb.ToString().Trim();
         }
         /// <summary>
-        /// TimeControl used whan game was played (usually null)
+        /// TimeControl used when game was played (usually null)
         /// </summary>
         public TimeControl TimeControl { set; get; } = null;
+
+        /// <summary>
+        /// Introduction Comment: When parsing PGN there is sometimes a comment before the 1st move, adding some additional
+        /// information about the game or the initial position
+        /// </summary>
+        public string IntroductionComment { set; get; } = null;
 
         private StringBuilder GetMoveText(Position pos, List<ExtendedMove> _moves, bool withComments, bool withVariations)
         {
@@ -512,33 +518,38 @@ namespace PonzianiComponents.Chesslib
             //sandclock may be used.An example sandclock specification for a common three
             //minute egg timer sandclock would have a tag value of "*180".
 
-            string[] token = tc.Split(':');
-            foreach (var t in token)
+            try
             {
-                int time;
-                int to = int.MaxValue;
-                double inc = 0;
-                int from = Controls.Count == 0 ? 1 : Controls.Last().To + 1;
-                int indx1 = t.IndexOf("/");
-                int indx2 = t.IndexOf("+");
-                if (indx1 < 0 && indx2 < 0)
+                string[] token = tc.Split(':');
+                foreach (var t in token)
                 {
-                    Debug.Assert(Controls.Count == 0 || Controls.Last().To < int.MaxValue);
-                    if (int.TryParse(t, out time))
+                    int time;
+                    int to = int.MaxValue;
+                    double inc = 0;
+                    int from = Controls.Count == 0 ? 1 : Controls.Last().To + 1;
+                    int indx1 = t.IndexOf("/");
+                    int indx2 = t.IndexOf("+");
+                    if (indx1 < 0 && indx2 < 0)
                     {
-                        Controls.Add(new Entry(from, int.MaxValue, TimeSpan.FromSeconds(time), TimeSpan.Zero));
-                        continue;
+                        Debug.Assert(Controls.Count == 0 || Controls.Last().To < int.MaxValue);
+                        if (int.TryParse(t, out time))
+                        {
+                            Controls.Add(new Entry(from, int.MaxValue, TimeSpan.FromSeconds(time), TimeSpan.Zero));
+                            continue;
+                        }
+                    }
+                    else
+                    {
+                        if (indx1 > 0) to = int.Parse(t.Substring(0, indx1)) + from - 1;
+                        if (indx2 > 0) inc = double.Parse(t[(indx2 + 1)..], CultureInfo.InvariantCulture);
+                        string t1 = indx2 > 0 ? t.Substring(0, indx2) : t;
+                        if (indx1 > 0) t1 = t1[(indx1 + 1)..];
+                        time = int.Parse(t1);
+                        Controls.Add(new Entry(from, to, TimeSpan.FromSeconds(time), TimeSpan.FromSeconds(inc)));
                     }
                 }
-                else
-                {
-                    if (indx1 > 0) to = int.Parse(t.Substring(0, indx1)) + from - 1;
-                    if (indx2 > 0) inc = double.Parse(t[(indx2 + 1)..], CultureInfo.InvariantCulture);
-                    string t1 = indx2 > 0 ? t.Substring(0, indx2) : t;
-                    if (indx1 > 0) t1 = t1[(indx1 + 1)..];
-                    time = int.Parse(t1);
-                    Controls.Add(new Entry(from, to, TimeSpan.FromSeconds(time), TimeSpan.FromSeconds(inc)));
-                }
+            } catch (Exception) {
+                return;
             }
         }
         /// <summary>

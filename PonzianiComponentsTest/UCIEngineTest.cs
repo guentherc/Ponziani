@@ -18,11 +18,14 @@ namespace PonzianiComponentsTest
     public class UCIEngineTest
     {
         private static string enginePath = null;
+        private static string xboardEnginePath = null;
         [ClassInitialize]
         public static void TestFixtureSetup(TestContext context)
         {
             enginePath = InstallStockfishAsync().Result;
             Console.WriteLine(enginePath);
+            xboardEnginePath = InstallCraftyAsync().Result;
+            Console.WriteLine(xboardEnginePath);
         }
 
         [TestMethod]
@@ -221,6 +224,22 @@ namespace PonzianiComponentsTest
             }
             return path;
         }
+
+        private async static Task<string> InstallCraftyAsync()
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) return null;
+            string path = Path.Combine(AppDataFolder(), "crafty", "crafty25.3.exe");
+            if (!File.Exists(path))
+            {
+                string url = "https://github.com/MichaelB7/Crafty/releases/download/25-3/crafty25.3.exe";
+                if (!Directory.Exists(Path.GetDirectoryName(path))) 
+                    Directory.CreateDirectory(Path.GetDirectoryName(path));
+                bool downloadSuccessful = await DownloadFileAsync(url, path);
+                if (!downloadSuccessful) return null;
+            }
+            return path;
+        }
+
 
         private static string AppDataFolder()
         {

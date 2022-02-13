@@ -199,7 +199,14 @@ namespace PonzianiComponents.Chesslib
                             else if (key == "eval")
                             {
                                 var token = value.Split(',');
-                                Evaluation = token[0].IndexOf('.') >= 0 ? (int)(100 * Double.Parse(token[0], CultureInfo.InvariantCulture)) : int.Parse(token[0]);
+                                int hindx = token[0].IndexOf('#');
+                                if (hindx >= 0)
+                                {
+                                    int s = int.Parse(token[0].Substring(hindx + 1));
+                                    Evaluation = s >= 0 ? short.MaxValue - s : short.MinValue - s;
+                                }
+                                else
+                                    Evaluation = token[0].IndexOf('.') >= 0 ? (int)(100 * Double.Parse(token[0], CultureInfo.InvariantCulture)) : int.Parse(token[0]);
                                 if (token.Length > 1) Depth = Int32.Parse(token[1]);
                             }
                             else if (key == "emt")

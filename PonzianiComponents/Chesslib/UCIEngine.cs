@@ -619,7 +619,8 @@ namespace PonzianiComponents.Chesslib
         /// <inheritdoc cref="IDisposable.Dispose"/>
         public void Dispose()
         {
-            Exit().Wait();
+            Task.WhenAny(Task.Delay(1000), Exit()).Wait();
+            process?.Kill();
         }
 
         private Process process;
@@ -648,12 +649,13 @@ namespace PonzianiComponents.Chesslib
 
         private void Process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
+            if (e.Data == null || e.Data.Trim().Length == 0) return;
             Trace.WriteLine("<= " + e.Data);
         }
 
         private void Process_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
-            if (e.Data == null) return;
+            if (e.Data == null || e.Data.Trim().Length == 0) return;
             Trace.WriteLine("<= " + e.Data);
             if (e.Data.StartsWith("info string"))
             {
@@ -963,6 +965,20 @@ namespace PonzianiComponents.Chesslib
             /// Number of table base hits
             /// </summary>
             public long TableBaseHits { get; private set; } = 0;
+            /// <summary>
+            /// Textual representation of Score (with representations for mate scores and upper-/lowerbound scores)
+            /// </summary>
+            /// <param name="side">Side to Move (has to be provided, to get score from white's POV)</param>
+            /// <returns>Score as text</returns>
+            public string ScoreText(Side side = Side.WHITE)
+            {
+                int factor = side == Side.WHITE ? 1 : -1;
+                if (Type == Info.EvaluationType.Exact) return $"{factor * Evaluation / 100.0}";
+                else if (Type == Info.EvaluationType.Mate) return $"#{factor * MateDistance }";
+                else if (Type == Info.EvaluationType.Upperbound) return factor > 1 ? $"<= {Evaluation / 100.0}" : $">= {-Evaluation / 100.0}";
+                else if (Type == Info.EvaluationType.Lowerbound) return factor > 1 ? $">= {Evaluation / 100.0}" : $"<= {-Evaluation / 100.0}";
+                else return String.Empty;
+            }
 
         }
 
@@ -1010,12 +1026,13 @@ namespace PonzianiComponents.Chesslib
             /// </summary>
             public OptionType Type { get; internal set; }
 
-            private static Regex regexOption = new Regex(@"option\sname\s(\S+\s)+type\s(\S+)");
+            private static Regex regexOption = new Regex(@"option\sname\s((?:\S+\s)+)type\s(\S+)");
 
             internal static Option Create(string ucicommand)
             {
                 if (ucicommand.IndexOf("type check") >= 0) return new OptionCheck(ucicommand);
                 else if (ucicommand.IndexOf("type spin") >= 0) return new OptionSpin(ucicommand);
+                else if (ucicommand.IndexOf("type string") >= 0) return new OptionString(ucicommand);
                 else return new Option(ucicommand);
             }
 

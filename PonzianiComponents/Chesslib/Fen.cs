@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace PonzianiComponents.Chesslib
 {
@@ -138,6 +139,17 @@ namespace PonzianiComponents.Chesslib
             }
             return sb.ToString();
         }
+        /// <summary>
+        /// Checks if a given string is a valid Fen string. This means that the fen can be parsed and 
+        /// a position can be determined, but not that the position is legal. Fens without 50 move counter and
+        /// movenumber (as used in EPD) are accepted
+        /// </summary>
+        /// <param name="fen">Fen to be checked</param>
+        /// <returns>treu, if valid</returns>
+        public static bool CheckValid(string fen)
+        {
+            return RegexFen.IsMatch(fen);
+        }
 
         /// <summary>
         /// Parses a square provided by it's field name (such as 'a1', 'e5' or 'h8') 
@@ -202,5 +214,7 @@ namespace PonzianiComponents.Chesslib
         internal static Dictionary<char, Piece> PieceMapping = new() {
             { 'Q', Piece.WQUEEN }, { 'R', Piece.WROOK }, { 'B', Piece.WBISHOP }, { 'N', Piece.WKNIGHT }, { 'P', Piece.WPAWN }, { 'K', Piece.WKING },
             { 'q', Piece.BQUEEN }, { 'r', Piece.BROOK }, { 'b', Piece.BBISHOP }, { 'n', Piece.BKNIGHT }, { 'p', Piece.BPAWN }, { 'k', Piece.BKING }};
+
+        private static Regex RegexFen = new Regex(@"^(?:[pnbrqkPNBRQK1-8]+/){7}[pnbrqkPNBRQK1-8]+\s(?:b|w)\s(?:-|K?Q?k?q)\s(?:-|[a-h][3-6])(?:\s+(?:\d+)){0,2}$", RegexOptions.Compiled);
     }
 }

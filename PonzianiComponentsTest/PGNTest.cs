@@ -129,5 +129,14 @@ namespace PonzianiComponentsTest
             Assert.AreEqual(3, games[0].Moves[10].Variations[0].Count);
             Assert.AreEqual(2, games[0].Moves[31].Variations.Count);
         }
+
+
+        [TestMethod]
+        public void TestIntroductionComment()
+        {
+            var games = PGN.Parse(Data.PGN_LICHESS_STUDY, true, true);
+            Assert.IsNotNull(games[0].IntroductionComment);
+        }
+
     }
 }

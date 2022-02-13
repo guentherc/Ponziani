@@ -77,6 +77,18 @@ namespace PonzianiComponentsTest
             }
         }
 
+        [TestMethod]
+        public void TestCheckFenValid()
+        {
+            Assert.IsTrue(Fen.CheckValid(Fen.INITIAL_POSITION));
+            Assert.IsTrue(Fen.CheckValid(@"r3kb1r/pp1n1ppp/1qp1pn2/3p4/P2P1B2/1PPQPN2/3N1PPP/R3K2R b KQkq -"));
+            Assert.IsTrue(Fen.CheckValid(@"r3kb1r/pp1n1ppp/1qp1pn2/3p4/P2P1B2/1PPQPN2/3N1PPP/R3K2R b - - 0 23"));
+            Assert.IsFalse(Fen.CheckValid(@"r3kb1r/pp1n1ppp/1qp1pn2/3p4/P2P1B2/1PPQLN2/3N1PPP/R3K2R b KQkq -"));
+            Assert.IsFalse(Fen.CheckValid(@"r3kb1r/pp1n1ppp/1qp1pn2/3p4/P2P1B2/1PPQPN2/3N1PPP/R3K2R b - -K 0 23"));
+            Assert.IsFalse(Fen.CheckValid(@"r3kb1r/pp1n1ppp/1qp1pn2/3p4/P2P1B2/1PPQPN2/3N1PPP/R3K2R b - - d 23"));
+            Assert.IsFalse(Fen.CheckValid(@"r3kb1r/pp1n1ppp/1qp1pn2/3p4/P2P1B2/1PPQLN2/3N1PPP/R3K2R x KQkq -"));
+        }
+
         private string ArrayString(string fen)
         {
             string part = fen.Substring(0, fen.IndexOf(' '));

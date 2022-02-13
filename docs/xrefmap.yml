@@ -900,6 +900,19 @@ references:
   commentId: T:PonzianiComponents.Chesslib.Fen
   fullName: PonzianiComponents.Chesslib.Fen
   nameWithType: Fen
+- uid: PonzianiComponents.Chesslib.Fen.CheckValid(System.String)
+  name: CheckValid(String)
+  href: api/PonzianiComponents.Chesslib.Fen.html#PonzianiComponents_Chesslib_Fen_CheckValid_System_String_
+  commentId: M:PonzianiComponents.Chesslib.Fen.CheckValid(System.String)
+  fullName: PonzianiComponents.Chesslib.Fen.CheckValid(System.String)
+  nameWithType: Fen.CheckValid(String)
+- uid: PonzianiComponents.Chesslib.Fen.CheckValid*
+  name: CheckValid
+  href: api/PonzianiComponents.Chesslib.Fen.html#PonzianiComponents_Chesslib_Fen_CheckValid_
+  commentId: Overload:PonzianiComponents.Chesslib.Fen.CheckValid
+  isSpec: "True"
+  fullName: PonzianiComponents.Chesslib.Fen.CheckValid
+  nameWithType: Fen.CheckValid
 - uid: PonzianiComponents.Chesslib.Fen.FenPartFromBoard(System.Char[])
   name: FenPartFromBoard(Char[])
   href: api/PonzianiComponents.Chesslib.Fen.html#PonzianiComponents_Chesslib_Fen_FenPartFromBoard_System_Char___
@@ -1204,6 +1217,19 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Chesslib.Game.GetPosition
   nameWithType: Game.GetPosition
+- uid: PonzianiComponents.Chesslib.Game.IntroductionComment
+  name: IntroductionComment
+  href: api/PonzianiComponents.Chesslib.Game.html#PonzianiComponents_Chesslib_Game_IntroductionComment
+  commentId: P:PonzianiComponents.Chesslib.Game.IntroductionComment
+  fullName: PonzianiComponents.Chesslib.Game.IntroductionComment
+  nameWithType: Game.IntroductionComment
+- uid: PonzianiComponents.Chesslib.Game.IntroductionComment*
+  name: IntroductionComment
+  href: api/PonzianiComponents.Chesslib.Game.html#PonzianiComponents_Chesslib_Game_IntroductionComment_
+  commentId: Overload:PonzianiComponents.Chesslib.Game.IntroductionComment
+  isSpec: "True"
+  fullName: PonzianiComponents.Chesslib.Game.IntroductionComment
+  nameWithType: Game.IntroductionComment
 - uid: PonzianiComponents.Chesslib.Game.Moves
   name: Moves
   href: api/PonzianiComponents.Chesslib.Game.html#PonzianiComponents_Chesslib_Game_Moves
@@ -3336,6 +3362,19 @@ references:
   isSpec: "True"
   fullName: PonzianiComponents.Chesslib.UCIEngine.Info.PrincipalVariation
   nameWithType: UCIEngine.Info.PrincipalVariation
+- uid: PonzianiComponents.Chesslib.UCIEngine.Info.ScoreText(PonzianiComponents.Chesslib.Side)
+  name: ScoreText(Side)
+  href: api/PonzianiComponents.Chesslib.UCIEngine.Info.html#PonzianiComponents_Chesslib_UCIEngine_Info_ScoreText_PonzianiComponents_Chesslib_Side_
+  commentId: M:PonzianiComponents.Chesslib.UCIEngine.Info.ScoreText(PonzianiComponents.Chesslib.Side)
+  fullName: PonzianiComponents.Chesslib.UCIEngine.Info.ScoreText(PonzianiComponents.Chesslib.Side)
+  nameWithType: UCIEngine.Info.ScoreText(Side)
+- uid: PonzianiComponents.Chesslib.UCIEngine.Info.ScoreText*
+  name: ScoreText
+  href: api/PonzianiComponents.Chesslib.UCIEngine.Info.html#PonzianiComponents_Chesslib_UCIEngine_Info_ScoreText_
+  commentId: Overload:PonzianiComponents.Chesslib.UCIEngine.Info.ScoreText
+  isSpec: "True"
+  fullName: PonzianiComponents.Chesslib.UCIEngine.Info.ScoreText
+  nameWithType: UCIEngine.Info.ScoreText
 - uid: PonzianiComponents.Chesslib.UCIEngine.Info.TableBaseHits
   name: TableBaseHits
   href: api/PonzianiComponents.Chesslib.UCIEngine.Info.html#PonzianiComponents_Chesslib_UCIEngine_Info_TableBaseHits
