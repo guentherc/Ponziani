@@ -10,7 +10,7 @@ API offering legal move generation, PGN parsing, communication with UCI chess en
 
 
 ## Installation ##
-`dotnet add package PonzianiComponents --version 0.5.0`
+`dotnet add package PonzianiComponents --version 0.5.1`
 
 ## Demo ##
 Have a look at [Ponziani Demo Site](https://ponziani.de/)
