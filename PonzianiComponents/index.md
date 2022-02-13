@@ -21,7 +21,7 @@ So far these components are available:
 
 ## Installation ##
 
-`dotnet add package PonzianiComponents --version 0.5.0`
+`dotnet add package PonzianiComponents --version 0.5.1`
 
 ## License ##
 
